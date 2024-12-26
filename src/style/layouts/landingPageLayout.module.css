@@ -1,0 +1,18 @@
+/* Start Variables */
+:root
+{
+    --main-color: #026AA2;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Landing Page Layout */
+.landing_page_layout
+{
+    display: flex;
+    flex-direction: column;
+}
+/* End Landing Page Layout */
