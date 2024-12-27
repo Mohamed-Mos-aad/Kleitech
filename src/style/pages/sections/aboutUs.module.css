@@ -1,0 +1,17 @@
+/* Start Variables */
+:root
+{
+    --main-color: #026AA2;
+}
+/* End Variables */
+
+
+
+
+
+/* Start About Us Section */
+.about_container
+{
+    display: flex;
+}
+/* End About Us Section */

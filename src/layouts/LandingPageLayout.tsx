@@ -6,7 +6,6 @@ export default function LandingPageLayout() {
     return (
         <>
             <div className={style.landing_page_layout}>
-                <nav></nav>
                 <NavBar />
                 <Outlet />
             </div>
