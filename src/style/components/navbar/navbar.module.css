@@ -1,0 +1,90 @@
+/* Start Variables */
+:root
+{
+    --main-color: #026AA2;
+    --main-text-color: #282828;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Nav Bar Component */
+nav
+{
+    width: 100%;
+}
+.nav_container
+{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 24px auto;
+}
+.logo
+{
+    display: flex;
+    align-items: center;
+}
+.logo img
+{
+    width: 80%;
+}
+.menu ul
+{
+    display: flex;
+    list-style-type: none;
+    gap: 56px;
+}
+.menu ul li
+{
+    font-size: 18px;
+    font-weight: 600;
+    color: #282828;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.menu ul li:hover
+{
+    color: var(--main-color);
+}
+.menu ul li.active_section
+{
+    position: relative;
+    color: var(--main-color);
+}
+.active_section::after
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: solid 2px var(--main-color);
+}
+.auth_btns
+{
+    display: flex;
+    gap: 16px;
+}
+.auth_btns button
+{
+    padding: 0 16px;
+    background-color: transparent;
+    border: solid 1px var(--main-color);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 36px;
+    color: var(--main-color);
+    cursor: pointer;
+}
+.auth_btns button:first-of-type
+{
+    background-color: var(--main-color);
+    border: solid 1px var(--main-color);
+    color: white;
+}
+/* End Nav Bar Component */

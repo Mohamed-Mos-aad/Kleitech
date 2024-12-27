@@ -1,5 +1,5 @@
 import style from '../style/layouts/landingPageLayout.module.css'
-import NavBar from "../components/NavBar/NavBar";
+import NavBar from "../components/navbar/NavBar";
 import { Outlet } from "react-router-dom";
 
 export default function LandingPageLayout() {
