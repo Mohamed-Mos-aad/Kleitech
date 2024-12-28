@@ -1,0 +1,151 @@
+/* Start Variables */
+:root
+{
+    --main-color-700: #026AA2;
+    --gray-color-400: #AFAFAF;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Contact Us Section */
+section
+{
+    width: 100%;
+}
+.section_container
+{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+}
+.section_header
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.section_header h2
+{
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--main-color-700);
+}
+.section_header p
+{
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: var(--gray-color-700);
+}
+.section_content
+{
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+}
+form
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+}
+.form_row
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 15%;
+}
+.form_input
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.form_input label
+{   
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--gray-color-800);
+}
+.form_input input
+{
+    width: 100%;
+    padding: 16px;
+    border: solid 1px var(--gray-color-400);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px #1018280D;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.form_input input:focus
+{
+    outline: none;
+}
+.form_input textarea
+{
+    width: 100%;
+    padding: 16px;
+    border: solid 1px var(--gray-color-400);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px #1018280D;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    resize: none;
+}
+.form_input textarea:focus
+{
+    outline: none;
+}
+.form_terms
+{
+    display: flex;
+    gap: 8px;
+}
+.form_terms label
+{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.form_terms a
+{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;    
+    color: var(--main-color-700);
+    text-decoration: none;
+}
+form button
+{
+    padding: 16px;
+    background-color: var(--main-color-700);
+    border: solid 1px var(--main-color-700);
+    border-radius: 4px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    color: white;
+    cursor: pointer;
+}
+.contact_photo img
+{
+    width: 100%;
+}
+/* End Contact Us Section */

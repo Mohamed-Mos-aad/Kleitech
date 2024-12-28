@@ -8,7 +8,7 @@ export default function AboutUs() {
     return (
         <>
             <div className={style.about_container}>
-                about us
+                
             </div>
         </>
     )
