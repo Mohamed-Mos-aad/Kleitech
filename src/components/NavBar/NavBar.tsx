@@ -1,10 +1,25 @@
 import style from '../../style/components/navbar/navbar.module.css'
 import logo from '../../assets/landingPage/landingPageLogo.svg'
+import { useNavigate } from 'react-router-dom'
 
 
 
 
 export default function NavBar() {
+    // ** Defaults
+    const navigate = useNavigate();
+
+
+
+
+
+    // ** Handlers
+    const signUpHandler = ()=>{navigate('/u')};
+
+
+
+
+
     return (
         <>
             <nav className={style.nav}>
@@ -21,7 +36,7 @@ export default function NavBar() {
                         </ul>
                     </div>
                     <div className={style.auth_btns}>
-                        <button>إنشاء حساب</button>
+                        <button onClick={signUpHandler}>إنشاء حساب</button>
                         <button>تسجيل دخول</button>
                     </div>
                 </div>

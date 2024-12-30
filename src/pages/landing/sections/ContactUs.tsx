@@ -1,5 +1,5 @@
 // ** Style
-import style from '../../../style/pages/sections/contactUs.module.css'
+import style from '../../../style/pages/landing/sections/contactUs.module.css'
 // ** assets
 import contactPhoto from '../../../assets/landingPage/contactUsPhoto.svg'
 

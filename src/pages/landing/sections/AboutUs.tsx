@@ -1,4 +1,4 @@
-import style from '../../../style/pages/sections/aboutUs.module.css'
+import style from '../../../style/pages/landing/sections/aboutUs.module.css'
 
 
 

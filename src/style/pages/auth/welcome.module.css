@@ -1,0 +1,78 @@
+/* Start Variables */
+:root
+{
+    --main-color-50: #EFF9FF;
+    --main-color-700: #026AA2;
+    --gray-color-400: #AFAFAF;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Auth Welcome Page */
+.welcome_container
+{
+    width: 65%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: auto;
+}
+.welcome_title
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.welcome_title h2
+{
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 68px;
+    color: var(--gray-color-900);
+}
+.welcome_title p
+{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 40.8px;
+    text-align: center;
+    color: var(--gray-color-700);
+}
+.auth_btns
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+.auth_btns button
+{
+    width: 100%;
+    background-color: var(--main-color-700);
+    border: solid 1px var(--main-color-700);
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+}
+.auth_btns button:last-of-type
+{
+    background-color: transparent;
+    color: var(--main-color-700);
+}
+/* End Auth Welcome Page */

@@ -1,0 +1,45 @@
+/* Start Variables */
+:root
+{
+    --main-color-50: #EFF9FF;
+    --main-color-700: #026AA2;
+    --gray-color-400: #AFAFAF;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Auth Layout */
+.auth_container
+{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.logo
+{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    background-color: var(--main-color-50);
+}
+.logo img
+{
+    width: 17%;
+}
+.logo h1
+{
+    font-size: 130px;
+    font-weight: 600;
+    line-height: 195px;
+    color: var(--main-color-700);
+}
+/* End Auth Layout */
