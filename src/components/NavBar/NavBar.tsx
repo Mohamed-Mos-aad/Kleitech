@@ -1,6 +1,8 @@
 import style from '../../style/components/navbar/navbar.module.css'
 import logo from '../../assets/landingPage/landingPageLogo.svg'
+import navBarMenuIcon from '../../assets/navBar/navBarIcon.svg'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react';
 
 
 
@@ -13,10 +15,30 @@ export default function NavBar() {
 
 
 
+    // ** States
+    const [navOpen,setNavOpen] = useState<boolean>(false);
+
+
+
+
+
     // ** Handlers
     const signUpHandler = ()=>{navigate('/u')};
+    const nabBarToggelHandler = ()=>{
+        const menuElement = document.getElementById('menu');
+        if(!navOpen && menuElement)
+        {
+            menuElement.style.display = 'flex';
+            setNavOpen(true);
+        }
+        else if(navOpen && menuElement)
+        {
+            menuElement.style.display = 'none';
+            setNavOpen(false);
+        }
+    }
 
-
+    
 
 
 
@@ -27,7 +49,10 @@ export default function NavBar() {
                     <div className={style.logo}>
                         <img src={logo} alt="" />
                     </div>
-                    <div className={style.menu}>
+                    <div className={style.mb_menu}>
+                        <img src={navBarMenuIcon} alt="Nav Bar Icon" onClick={nabBarToggelHandler}/>
+                    </div>
+                    <div className={style.menu} id='menu'>
                         <ul>
                             <li className={style.active_section}>نبذة عنّا</li>
                             <li>خدماتنا</li>
