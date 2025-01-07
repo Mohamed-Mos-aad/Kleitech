@@ -197,7 +197,18 @@ nav
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) 
 {
-
+    .menu ul
+    {
+        gap: 20px;
+    }
+    .menu ul li
+    {
+        font-size: 16px;
+        font-weight: 600;
+        color: #282828;
+        cursor: pointer;
+        transition: 0.3s;
+    }
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) 

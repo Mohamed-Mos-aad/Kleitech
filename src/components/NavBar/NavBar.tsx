@@ -55,6 +55,7 @@ export default function NavBar() {
                     <div className={style.menu} id='menu'>
                         <ul>
                             <li className={style.active_section}>نبذة عنّا</li>
+                            <li>انضم لنا</li>
                             <li>خدماتنا</li>
                             <li>تواصل معنا</li>
                             <li>تقييمات المستخدمين</li>
