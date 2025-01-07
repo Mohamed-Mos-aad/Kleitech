@@ -21,18 +21,19 @@ section
 .section_container
 {
     width: 90%;
+    min-height: 100vh;
     margin: auto;
     display: flex;
     flex-direction: column;
-    gap: 56px;
+    gap: 24px;
 }
 .section_content
 {
     width: 100%;
-    min-height: 100vh;
     display: grid;
     grid-template-columns: repeat(2,1fr);
     align-items: center;
+    padding: 24px 0;
 }
 form
 {
@@ -96,7 +97,9 @@ form
 }
 .form_terms
 {
+    width: 100%;
     display: flex;
+    align-items: center;
     gap: 8px;
 }
 .form_terms label
@@ -115,11 +118,11 @@ form
 }
 form button
 {
-    padding: 16px;
+    padding: 8px;
     background-color: var(--main-color-700);
     border: solid 1px var(--main-color-700);
     border-radius: 4px;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600;
     line-height: 36px;
     color: white;
@@ -130,3 +133,133 @@ form button
     width: 100%;
 }
 /* End Contact Us Section */
+
+
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .section_content
+    {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .section_content .form
+    {
+        order: 2;
+    }
+    .section_content .contact_photo
+    {
+        order: 1;
+    }
+    .form_row
+    {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .form_terms
+    {
+        align-items: start;
+    }
+    .form_terms label
+    {
+        font-size: 16px;
+    }
+    .form_terms a
+    {
+        font-size: 16px;
+    }
+    form button
+    {
+        padding: 4px;
+        font-size: 14px;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    .section_content
+    {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .section_content .form
+    {
+        order: 2;
+    }
+    .section_content .contact_photo
+    {
+        order: 1;
+    }
+    .form_row
+    {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .form_terms
+    {
+        align-items: start;
+    }
+    .form_terms label
+    {
+        font-size: 16px;
+    }
+    .form_terms a
+    {
+        font-size: 16px;
+    }
+    form button
+    {
+        padding: 4px;
+        font-size: 14px;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    form
+    {
+        gap: 16px;
+    }
+    .form_row
+    {
+        gap: 24px;
+    }
+    .form_input label
+    {   
+        font-size: 14px;
+    }
+    .form_input input
+    {
+        padding: 10px 14px;
+        font-size: 16px;
+        font-weight: 400;
+    }
+    .form_terms label
+    {
+        font-size: 16px;
+    }
+    .form_terms a
+    {
+        font-size: 16px;
+    }
+    form button
+    {
+        padding: 4px;
+        font-size: 14px;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */
