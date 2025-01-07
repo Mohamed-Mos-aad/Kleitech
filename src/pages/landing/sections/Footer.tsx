@@ -30,7 +30,7 @@ export default function Footer() {
                         <p>نحن نقدم حلولًا رقمية مبتكرة لدعم صحتك. اكتشف كيف يمكننا مساعدتك في متابعة حالتك الصحية بكل سهولة وراحة.</p>
                     </div>
                     <footer className={style.footer}>
-                        <p>© 2024 <span>كليّتِك</span> جميع الحقوق محفوظة تم تصميم وتطوير هذه المنصة لتقديم أفضل دعم صحي ورعاية للمستخدمين.</p>
+                        <p>©2024 <span>كليّتِك</span> جميع الحقوق محفوظة تم تصميم وتطوير هذه المنصة لتقديم أفضل دعم صحي ورعاية للمستخدمين.</p>
                         <div className={style.social}>
                             <div className={style.social_item}>
                                 <img src={facebookIcon} alt="" />
