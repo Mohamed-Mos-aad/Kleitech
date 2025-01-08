@@ -26,7 +26,7 @@ export default function NavBar() {
     const signUpHandler = ()=>{navigate('/u')};
     const nabBarToggelHandler = ()=>{
         const menuElement = document.getElementById('menu');
-        if(!navOpen && menuElement)
+        if(!navOpen && menuElement && window.innerWidth < 992)
         {
             menuElement.style.display = 'flex';
             setNavOpen(true);
