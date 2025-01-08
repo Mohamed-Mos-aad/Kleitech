@@ -42,6 +42,7 @@ export default function NavBar() {
         if(sectionId)
         {
             sectionId.scrollIntoView({behavior:'smooth'});
+            nabBarToggelHandler();
         }
     }
 
