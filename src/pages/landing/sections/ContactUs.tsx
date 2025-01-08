@@ -7,10 +7,15 @@ import SectionHeader from '../../../components/landing/SectionHeader'
 
 
 
-export default function ContactUs() {
+// ** InterFaces
+interface ISection{
+    sectionId: string
+}
+
+export default function ContactUs({sectionId}:ISection) {
     return (
         <>
-            <section className={style.section}>
+            <section className={style.section} id={sectionId}>
                 <div className={style.section_container}>
                     <SectionHeader title='تواصل معانا:' description='سواء كان لديك استفسار حول خدماتنا، أو تحتاج إلى مساعدة في استخدام المنصة، نحن هنا لدعمك. فريقنا مستعد للرد على أسئلتك وتقديم المساعدة اللازمة لضمان تجربة سلسة ومريحة.'/>
                     <div className={style.section_content}>

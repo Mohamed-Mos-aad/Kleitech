@@ -6,10 +6,10 @@ import JoinUs from "./sections/JoinUs";
 export default function LandingPage() {
     return (
         <>
-            <AboutUs />
-            <JoinUs />
-            <ContactUs />
-            <Footer />
+            <AboutUs sectionId="about-us"/>
+            <JoinUs sectionId="join-us"/>
+            <ContactUs sectionId="contact-us"/>
+            <Footer sectionId="footer"/>
         </>
     )
 }

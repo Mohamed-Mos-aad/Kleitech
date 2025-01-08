@@ -64,7 +64,7 @@ footer
 {
     width: 100%;
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 5fr 1fr;
     padding: 16px 0;
 }
 footer p
@@ -200,7 +200,7 @@ footer p span
     }
     .social
     {
-        gap: 8px;
+        gap: 10px;
     }
     .social_item img
     {

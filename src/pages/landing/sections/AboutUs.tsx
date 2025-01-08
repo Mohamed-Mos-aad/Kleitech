@@ -3,13 +3,17 @@ import style from '../../../style/pages/landing/sections/aboutUs.module.css'
 
 
 
+// ** InterFaces
+interface ISection{
+    sectionId: string
+}
 
-export default function AboutUs() {
+export default function AboutUs({sectionId}:ISection) {
     return (
         <>
-            <div className={style.about_container}>
+            <section className={style.section} id={sectionId}>
                 
-            </div>
+            </section>
         </>
     )
 }

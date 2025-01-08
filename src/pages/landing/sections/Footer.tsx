@@ -17,10 +17,15 @@ import twitterIcon from '../../../assets/social icons/twitterIcon.svg'
 
 
 
-export default function Footer() {
+// ** InterFaces
+interface ISection{
+    sectionId: string
+}
+
+export default function Footer({sectionId}:ISection) {
     return (
         <>
-            <section className={style.section}>
+            <section className={style.section} id={sectionId}>
                 <div className={style.section_container}>
                     <div className={style.section_content}>
                         <div className={style.logo}>

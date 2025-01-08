@@ -37,6 +37,13 @@ export default function NavBar() {
             setNavOpen(false);
         }
     }
+    const smoothScrollHandler = (id:string)=>{
+        const sectionId = document.getElementById(id);;
+        if(sectionId)
+        {
+            sectionId.scrollIntoView({behavior:'smooth'});
+        }
+    }
 
     
 
@@ -54,11 +61,11 @@ export default function NavBar() {
                     </div>
                     <div className={style.menu} id='menu'>
                         <ul>
-                            <li className={style.active_section}>نبذة عنّا</li>
-                            <li>انضم لنا</li>
-                            <li>خدماتنا</li>
-                            <li>تواصل معنا</li>
-                            <li>تقييمات المستخدمين</li>
+                            <li className={style.active_section} onClick={()=>{smoothScrollHandler('about-us')}}>نبذة عنّا</li>
+                            <li onClick={()=>{smoothScrollHandler('join-us')}}>انضم لنا</li>
+                            <li onClick={()=>{smoothScrollHandler('our-services')}}>خدماتنا</li>
+                            <li onClick={()=>{smoothScrollHandler('contact-us')}}>تواصل معنا</li>
+                            <li onClick={()=>{smoothScrollHandler('users-rates')}}>تقييمات المستخدمين</li>
                         </ul>
                     </div>
                     <div className={style.auth_btns}>

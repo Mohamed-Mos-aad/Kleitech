@@ -8,7 +8,11 @@ import { useNavigate } from 'react-router-dom'
 
 
 
-export default function JoinUs() {
+// ** InterFaces
+interface ISection{
+    sectionId: string
+}
+export default function JoinUs({sectionId}:ISection) {
     // ** Defaults
     const navigate = useNavigate();
 
@@ -21,7 +25,7 @@ export default function JoinUs() {
 
     return (
         <>
-            <section className={style.section}>
+            <section className={style.section} id={sectionId}>
                 <div className={style.section_container}>
                     <div className={style.section_photo}>
                         <img src={joinUsPhoto} alt="join Us Photo" />
