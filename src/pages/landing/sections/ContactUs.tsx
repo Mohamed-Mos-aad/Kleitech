@@ -19,7 +19,7 @@ export default function ContactUs({sectionId}:ISection) {
                 <div className={style.section_container}>
                     <SectionHeader title='تواصل معانا:' description='سواء كان لديك استفسار حول خدماتنا، أو تحتاج إلى مساعدة في استخدام المنصة، نحن هنا لدعمك. فريقنا مستعد للرد على أسئلتك وتقديم المساعدة اللازمة لضمان تجربة سلسة ومريحة.'/>
                     <div className={style.section_content}>
-                        <form className={style.form}>
+                        <form className={style.contact_us_form}>
                             <div className={style.form_row}>
                                 <div className={style.form_input}>
                                     <label htmlFor="">الاسم الاول</label>

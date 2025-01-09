@@ -24,6 +24,8 @@ export default function NavBar() {
 
     // ** Handlers
     const signUpHandler = ()=>{navigate('/u')};
+    const signInHandler = ()=>{navigate('/u/sign-in')};
+
     const nabBarToggelHandler = ()=>{
         const menuElement = document.getElementById('menu');
         if(!navOpen && menuElement && window.innerWidth < 992)
@@ -71,7 +73,7 @@ export default function NavBar() {
                     </div>
                     <div className={style.auth_btns}>
                         <button onClick={signUpHandler}>إنشاء حساب</button>
-                        <button>تسجيل دخول</button>
+                        <button onClick={signInHandler}>تسجيل دخول</button>
                     </div>
                 </div>
             </nav>

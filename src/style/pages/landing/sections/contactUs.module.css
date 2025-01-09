@@ -14,14 +14,13 @@
 
 
 /* Start Contact Us Section */
-sectionw
+section
 {
     width: 100%;
 }
 .section_container
 {
     width: 90%;
-    min-height: 100vh;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -35,36 +34,35 @@ sectionw
     align-items: center;
     padding: 24px 0;
 }
-form
+.contact_us_form
 {
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 24px;
 }
-.form_row
+.contact_us_form .form_row
 {
     width: 100%;
     display: flex;
     justify-content: space-between;
     gap: 15%;
 }
-.form_input
+.contact_us_form .form_input
 {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
-.form_input label
+.contact_us_form .form_input label
 {   
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
     color: var(--gray-color-800);
 }
-.form_input input
+.contact_us_form .form_input input
 {
     width: 100%;
     padding: 16px;
@@ -75,11 +73,11 @@ form
     font-weight: 400;
     line-height: 24px;
 }
-.form_input input:focus
+.contact_us_form .form_input input:focus
 {
     outline: none;
 }
-.form_input textarea
+.contact_us_form .form_input textarea
 {
     width: 100%;
     padding: 16px;
@@ -91,24 +89,24 @@ form
     line-height: 24px;
     resize: none;
 }
-.form_input textarea:focus
+.contact_us_form .form_input textarea:focus
 {
     outline: none;
 }
-.form_terms
+.contact_us_form .form_terms
 {
     width: 100%;
     display: flex;
     align-items: center;
     gap: 8px;
 }
-.form_terms label
+.contact_us_form .form_terms label
 {
     font-size: 20px;
     font-weight: 500;
     line-height: 24px;
 }
-.form_terms a
+.contact_us_form .form_terms a
 {
     font-size: 20px;
     font-weight: 500;
@@ -116,7 +114,7 @@ form
     color: var(--main-color-700);
     text-decoration: none;
 }
-form button
+.contact_us_form form button
 {
     padding: 8px;
     background-color: var(--main-color-700);
@@ -155,24 +153,24 @@ form button
     {
         order: 1;
     }
-    .form_row
+    .contact_us_form .form_row
     {
         flex-direction: column;
         gap: 24px;
     }
-    .form_terms
+    .contact_us_form .form_terms
     {
         align-items: start;
     }
-    .form_terms label
+    .contact_us_form .form_terms label
     {
         font-size: 16px;
     }
-    .form_terms a
+    .contact_us_form .form_terms a
     {
         font-size: 16px;
     }
-    form button
+    .contact_us_form form button
     {
         padding: 4px;
         font-size: 14px;
@@ -194,24 +192,24 @@ form button
     {
         order: 1;
     }
-    .form_row
+    .contact_us_form .form_row
     {
         flex-direction: column;
         gap: 24px;
     }
-    .form_terms
+    .contact_us_form .form_terms
     {
         align-items: start;
     }
-    .form_terms label
+    .contact_us_form .form_terms label
     {
         font-size: 16px;
     }
-    .form_terms a
+    .contact_us_form .form_terms a
     {
         font-size: 16px;
     }
-    form button
+    .contact_us_form form button
     {
         padding: 4px;
         font-size: 14px;
@@ -220,33 +218,33 @@ form button
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) 
 {
-    form
+    .contact_us_form
     {
         gap: 16px;
     }
-    .form_row
+    .contact_us_form .form_row
     {
         gap: 24px;
     }
-    .form_input label
+    .contact_us_form .form_input label
     {   
         font-size: 14px;
     }
-    .form_input input
+    .contact_us_form .form_input input
     {
         padding: 10px 14px;
         font-size: 16px;
         font-weight: 400;
     }
-    .form_terms label
+    .contact_us_form .form_terms label
     {
         font-size: 16px;
     }
-    .form_terms a
+    .contact_us_form .form_terms a
     {
         font-size: 16px;
     }
-    form button
+    .contact_us_form form button
     {
         padding: 4px;
         font-size: 14px;
