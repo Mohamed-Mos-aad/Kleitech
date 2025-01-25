@@ -30,6 +30,7 @@ export default function AboutUs() {
                     {/* Line Overlay */}
                     <img src={line} alt="Decorative Line" className={style.line_image} />
                     </div>
+                    <div>I love coding enrj </div>
                 </div>
             </div>
 
