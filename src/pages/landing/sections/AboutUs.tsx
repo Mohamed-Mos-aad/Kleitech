@@ -3,10 +3,19 @@ import aboutImage from '../../../assets/images/about.png';
 import line from '../../../assets/images/line.png';
 import happyClients from '../../../assets/images/happy-clients.png';
 
+// ** InterFaces
+interface ISection{
+    sectionId: string
+}
 
-export default function AboutUs() {
+export default function AboutUs({sectionId}:ISection) {
     return (
         <>
+<<<<<<< HEAD
+            <section className={style.section} id={sectionId}>
+                
+            </section>
+=======
             <div className={style.about_section}>
                 <div className={style.about_container}>
                     {/* Happy Clients Image */}
@@ -34,6 +43,7 @@ export default function AboutUs() {
                 </div>
             </div>
 
+>>>>>>> About-Us
         </>
     )
 }

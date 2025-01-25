@@ -1,0 +1,135 @@
+/* Start Variables */
+:root
+{
+    --main-color-700: #026AA2;
+    --gray-color-400: #AFAFAF;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Our Services Section */
+section
+{
+    width: 100%;
+}
+.section_container
+{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 50px 0;
+}
+.our_services
+{
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 32px;
+}
+.service
+{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 32px;
+}
+.service_photo
+{
+    display: flex;
+}
+.service_photo img
+{
+    width: 100%;
+    border-radius: 4px;
+}
+.service_content h2
+{
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--main-color-700);    
+}
+.service_content p
+{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--gray-color-700);
+}
+/* End Our Services Section */
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .our_services
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .service
+    {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        text-align: center;
+    }
+    .service_content h2
+    {
+        font-size: 24px;
+    }
+    .service_content p
+    {
+        font-size: 16px;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    .our_services
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .service
+    {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        text-align: center;
+    }
+    .service_content h2
+    {
+        font-size: 24px;
+    }
+    .service_content p
+    {
+        font-size: 16px;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    .service_content h2
+    {
+        font-size: 26px;
+    }
+    .service_content p
+    {
+        font-size: 18px;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */

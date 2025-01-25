@@ -1,0 +1,145 @@
+/* Start Variables */
+:root
+{
+    --main-color-700: #026AA2;
+    --gray-color-400: #AFAFAF;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Sign In Screen */
+.sign_in_container
+{
+    width: 75%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    margin: 0 auto;
+}
+h2
+{
+    font-size: 28px;
+    font-weight: 500;
+    text-align: center;
+}
+.sign_in_form
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+}
+.sign_in_form .form_row
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.sign_in_form .form_row label
+{
+    font-size: 16px;
+    font-weight: 500;
+}
+.sign_in_form .form_row input
+{
+    font-size: 16px;
+    font-weight: 400;
+    padding: 12px;
+    border: solid 1px  var(--gray-color-400);
+    border-radius: 8px;
+}
+.sign_in_form .form_row input:focus
+{
+    outline: solid 1px  var(--main-color-700);
+    border: solid 1px  var(--main-color-700);
+}
+.sign_in_form .form_footer
+{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    margin-top: -16px;
+}
+.sign_in_form .form_footer label
+{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--main-color-700);
+}
+.sign_in_form .form_footer a
+{
+    position: absolute;
+    left: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gray-color-900);
+    text-decoration: none;
+}
+.sign_in_form .form_btn button
+{
+    width: 100%;
+    background-color: var(--main-color-700);
+    border: solid 1px var(--main-color-700);
+    border-radius: 4px;
+    padding: 10px 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    margin: 16px 0;
+}
+.sign_in_form a
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    color: var(--gray-color-900);
+    text-decoration: none;
+    opacity: 50%;
+}
+.sign_in_form a span
+{
+    width: 30%;
+    height: 1px;
+    border-top: solid 1px var(--gray-color-400);
+}
+.sign_in_container .platforms
+{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+}
+.sign_in_container .platforms .platform_item
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px var(--main-color-700);
+    border-radius: 4px;
+    padding: 16px 24px;
+    cursor: pointer;
+}
+.switch_auth h4
+{
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+.switch_auth h4 a
+{
+    font-weight: 700;
+    color: var(--main-color-700);
+}
+/* End Sign In Screen */

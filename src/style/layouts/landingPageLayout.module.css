@@ -15,4 +15,8 @@
     display: flex;
     flex-direction: column;
 }
+.sections
+{
+    margin-top: 75px;
+}
 /* End Landing Page Layout */

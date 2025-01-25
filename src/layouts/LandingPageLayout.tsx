@@ -7,7 +7,9 @@ export default function LandingPageLayout() {
         <>
             <div className={style.landing_page_layout}>
                 <NavBar />
-                <Outlet />
+                <div className={style.sections}>
+                    <Outlet />
+                </div>
             </div>
         </>
     )
