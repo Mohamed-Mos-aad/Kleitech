@@ -1,7 +1,17 @@
 /* Start Variables */
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
 :root
 {
     --main-color: #026AA2;
+    --padding-horizontal: 5%;
+    /* 2rm === 2 * 16 = 32pixel */
+    --gap: 2rem;
+
 }
 /* End Variables */
 
@@ -10,8 +20,170 @@
 
 
 /* Start About Us Section */
+span{
+    color: var(--main-color);
+    font-weight: bold;
+}
+.about_section{
+    width: 100%;
+    position: relative;
+    padding: 2rem 0px;
+}
 .about_container
 {
+    width: 90%;
+    /* max screeen size  */
+    max-width: 1500px;
+
+    margin: 0px auto;
     display: flex;
+    /* may be incrocte design here */
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 2rem;
+    padding: 0 5%;
+
+    /* text-align: right; */
+    
 }
+
+.happy_clients{
+    position: absolute;
+    /* error here */
+    /* i will solve it using media query */
+    right: 8%;
+    bottom: 15%;
+    width: 100%;
+    max-width: 15%;
+}
+.about_img img{
+    /* position: relative; */
+    width: 100%;
+    max-width: 500px;
+}
+
+
+.about_content{
+   
+    flex: 1;
+    max-width: 1000px;
+}
+
+.about_content h2{
+    color: var(--main-color);
+    /* 16 * 1.8 =  28.8 pixel*/
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+.about_content p{
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.line_image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    /* max-width: 100px; */
+}
+
+
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .about_container{
+        flex-direction: column;
+        text-align: center;
+        gap: 0.6rem;
+    }
+    .happy_clients{
+        right: 25%;
+        bottom: 50%;
+        width: 100%;
+        max-width: 15%;
+    }
+    .about_img img{
+        max-width: 50%;
+    }
+    .about_content h2{
+        font-size: 1rem;
+    }
+    .about_content p{
+        font-size: 0.6rem;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    .about_container{
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+    .happy_clients{
+        right: 20%;
+        bottom: 40%;
+        width: 100%;
+        max-width: 18%;
+    }
+    .about_img img{
+        max-width: 70%;
+    }
+    .about_content h2{
+        font-size: 1.2rem;
+    }
+    .about_content p{
+        font-size: 0.7rem;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    .about_container{
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    .happy_clients{
+        position: absolute;
+        right: 20%;
+        bottom: 40%;
+        width: 100%;
+        max-width: 20%;
+    }
+    .about_img img{
+        max-width: 80%;
+    }
+    .about_content h2{
+        font-size: 1.5rem;
+    }
+    .about_content p{
+        font-size: 0.9rem;
+    }
+}
+
+
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+    /* Nice */
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+    /* Nice */
+}
+
+
+
+
+
+
 /* End About Us Section */
