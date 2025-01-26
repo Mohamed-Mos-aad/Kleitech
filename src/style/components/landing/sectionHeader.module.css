@@ -22,7 +22,7 @@
 }
 .section_header h2
 {
-    font-size: 2rem;
+    font-size: 32px;
     font-weight: 600;
     color: var(--main-color-700);
 }
@@ -45,11 +45,11 @@
 {
     .section_header h2
     {
-        font-size: 16px;
+        font-size: 24px;
     }
     .section_header p
     {
-        font-size: 12px;
+        font-size: 18px;
         font-weight: 400;
     }
 }
@@ -58,11 +58,11 @@
 {
     .section_header h2
     {
-        font-size: 15px;
+        font-size: 28px;
     }
     .section_header p
     {
-        font-size: 12px;
+        font-size: 18px;
         font-weight: 400;
     }
 }
