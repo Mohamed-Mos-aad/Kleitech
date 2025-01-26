@@ -23,7 +23,7 @@ export default function NavBar() {
 
 
     // ** Handlers
-    const signUpHandler = ()=>{navigate('/u')};
+    const signUpHandler = ()=>{navigate('/u/sign-up')};
     const signInHandler = ()=>{navigate('/u/sign-in')};
 
     const nabBarToggelHandler = ()=>{

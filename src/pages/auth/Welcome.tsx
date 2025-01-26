@@ -1,4 +1,5 @@
 // ** Style
+import { useNavigate } from 'react-router-dom';
 import style from '../../style/pages/auth/welcome.module.css'
 
 
@@ -6,6 +7,21 @@ import style from '../../style/pages/auth/welcome.module.css'
 
 
 export default function Welcome() {
+    // ** Defaults
+    const navigate = useNavigate();
+
+
+
+
+
+    // ** Handlers
+    const signInHandler = ()=>{navigate('/u/sign-in')};
+    const signUpHandler = ()=>{navigate('/u/sign-up')};
+
+
+
+
+
     return (
         <>
             <div className={style.welcome_container}>
@@ -14,8 +30,8 @@ export default function Welcome() {
                     <p>للحصول على تجربة مميزة، يمكنك تسجيل الدخول أو إنشاء حساب جديد</p>    
                 </div>
                 <div className={style.auth_btns}>
-                    <button>إنشاء حساب</button>
-                    <button>تسجيل دخول</button>
+                    <button onClick={signUpHandler}>إنشاء حساب</button>
+                    <button onClick={signInHandler}>تسجيل دخول</button>
                 </div>
             </div>
         </>

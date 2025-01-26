@@ -23,6 +23,11 @@ export default function JoinUs({sectionId}:ISection) {
     // ** Handlers
     const openWelcomeAuthPageHandler = ()=>{navigate('/u')};
 
+
+
+
+
+    
     return (
         <>
             <section className={style.section} id={sectionId}>
