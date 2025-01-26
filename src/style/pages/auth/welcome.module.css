@@ -76,3 +76,69 @@
     color: var(--main-color-700);
 }
 /* End Auth Welcome Page */
+
+
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .welcome_container
+    {
+        width: 90%;
+        gap: 32px;
+    }
+    .welcome_title h2
+    {
+        font-size: 32px;
+        line-height: 40px;
+    }
+    .welcome_title p
+    {
+        line-height: 34px;
+    }
+    .auth_btns
+    {
+        gap: 16px;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    .welcome_container
+    {
+        /* width: 70%; */
+        gap: 32px;
+    }
+    .welcome_title h2
+    {
+        font-size: 32px;
+        line-height: 40px;
+    }
+    .welcome_title p
+    {
+        line-height: 34px;
+    }
+    .auth_btns
+    {
+        gap: 16px;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */

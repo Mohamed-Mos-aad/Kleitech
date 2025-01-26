@@ -4,6 +4,7 @@ import LandingPage from "../pages/landing/LandingPage";
 import AuthLayout from "../layouts/AuthLayout";
 import Welcome from "../pages/auth/Welcome";
 import SignIn from "../pages/auth/SignIn";
+import SignUp from './../pages/auth/SignUp';
 
 export default function Routers() {
     return (
@@ -15,6 +16,7 @@ export default function Routers() {
                 <Route path="/u" element={<AuthLayout />}>
                     <Route index element={<Welcome />}/>
                     <Route path="sign-in" element={<SignIn />}/>
+                    <Route path="sign-up" element={<SignUp />}/>
                 </Route>
             </Routes>
         </>
