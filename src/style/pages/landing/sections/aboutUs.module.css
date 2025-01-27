@@ -70,6 +70,8 @@ span{
 }
 
 .about_content h2{
+
+    text-align: right;
     color: var(--main-color);
     /* 16 * 1.8 =  28.8 pixel*/
     font-size: 1.8rem;
