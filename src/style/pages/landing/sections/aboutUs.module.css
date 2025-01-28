@@ -1,50 +1,24 @@
 /* Start Variables */
-*{
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    box-sizing: border-box;
-}
 :root
 {
-    --main-color: #026AA2;
-    --padding-horizontal: 5%;
-    /* 2rm === 2 * 16 = 32pixel */
-    --gap: 2rem;
-
+    --main-color-700: #026AA2;
+    --gray-color-400: #AFAFAF;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
 }
 /* End Variables */
 
 
 /* Start About Us Section */
-span{
-    color: var(--main-color);
-    font-weight: bold;
-}
-.about_section{
-    width: 100%;
-    position: relative;
-    padding: 2rem 0px;
-}
-.about_container
+.section
 {
-    width: 90%;
-    /* max screeen size  */
-    max-width: 1500px;
-
-    margin: 0px auto;
-    display: flex;
-    /* may be incrocte design here */
-    flex-wrap: wrap;
-
-    justify-content: center;
-    align-items: center;
-
-    gap: 2rem;
-    padding: 0 5%;
-
-    /* text-align: right; */
-    
+    width: 100%;
+}
+.section_container
+{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 }
 
 .happy_clients{

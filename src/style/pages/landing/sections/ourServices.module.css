@@ -52,6 +52,7 @@ section
 }
 .service_content h2
 {
+    text-align: start;
     font-size: 28px;
     font-weight: 600;
     color: var(--main-color-700);    
@@ -81,10 +82,15 @@ section
     }
     .service_content h2
     {
+    }
+    .service_content h2
+    {
+        text-align: center;
         font-size: 24px;
     }
     .service_content p
     {
+        text-align: center;
         font-size: 16px;
     }
 }
@@ -103,10 +109,15 @@ section
     }
     .service_content h2
     {
+    }
+    .service_content h2
+    {
+        text-align: center;
         font-size: 24px;
     }
     .service_content p
     {
+        text-align: center;
         font-size: 16px;
     }
 }
@@ -116,6 +127,8 @@ section
     .service_content h2
     {
         font-size: 26px;
+        text-align: start;
+        font-size: 22px;
     }
     .service_content p
     {
