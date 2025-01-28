@@ -4,12 +4,27 @@ import style from '../../style/pages/auth/signIn.module.css'
 import googleIcon from '../../assets/auth/socialIcons/googleIcon.svg'
 import facebookIcon from '../../assets/auth/socialIcons/facebookIcon.svg'
 import appleIcon from '../../assets/auth/socialIcons/appleIcon.svg'
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 
 export default function SignIn() {
+    // ** Defaults
+    const navigate = useNavigate();
+
+
+
+
+
+    // ** Handlers
+    const signUpHandler = ()=>{navigate('/u/sign-up')};
+
+
+
+
+
     return (
         <>
             <div className={style.sign_in_container}>
@@ -45,7 +60,7 @@ export default function SignIn() {
                     </div>
                 </div>
                 <div className={style.switch_auth}>
-                    <h4>ليس لديك حساب؟ <a href=""> إنشاء حساب</a></h4>
+                    <h4>ليس لديك حساب؟ <span onClick={signUpHandler}>إنشاء حساب</span></h4>
                 </div>
             </div>
         </>
