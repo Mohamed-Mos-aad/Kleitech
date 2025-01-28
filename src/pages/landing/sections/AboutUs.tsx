@@ -45,7 +45,6 @@ export default function AboutUs({sectionId}:ISection) {
                     </div>
                 </div>
             </section>
-
         </>
     );
 }
