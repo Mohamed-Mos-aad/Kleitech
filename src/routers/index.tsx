@@ -5,6 +5,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import Welcome from "../pages/auth/Welcome";
 import SignIn from "../pages/auth/SignIn";
 import SignUp from './../pages/auth/SignUp';
+import ForgetPassword from "../pages/auth/ForgetPassword";
 
 export default function Routers() {
     return (
@@ -17,6 +18,7 @@ export default function Routers() {
                     <Route index element={<Welcome />}/>
                     <Route path="sign-in" element={<SignIn />}/>
                     <Route path="sign-up" element={<SignUp />}/>
+                    <Route path="forget-password" element={<ForgetPassword />}/>
                 </Route>
             </Routes>
         </>
