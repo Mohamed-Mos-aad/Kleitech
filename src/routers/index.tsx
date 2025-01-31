@@ -6,6 +6,7 @@ import Welcome from "../pages/auth/Welcome";
 import SignIn from "../pages/auth/SignIn";
 import SignUp from './../pages/auth/SignUp';
 import ForgetPassword from "../pages/auth/ForgetPassword";
+import Otp from "../pages/auth/Otp";
 
 export default function Routers() {
     return (
@@ -19,6 +20,7 @@ export default function Routers() {
                     <Route path="sign-in" element={<SignIn />}/>
                     <Route path="sign-up" element={<SignUp />}/>
                     <Route path="forget-password" element={<ForgetPassword />}/>
+                    <Route path="otp" element={<Otp />}/>
                 </Route>
             </Routes>
         </>
