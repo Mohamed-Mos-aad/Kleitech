@@ -1,7 +1,7 @@
 // ** Style
 import style from '../../../style/pages/landing/sections/aboutUs.module.css'
 // ** assets
-import aboutImage from '../../../assets/landingPage/aboutUs/about.png';
+import aboutPhoto from '../../../assets/landingPage/aboutUs/about.png';
 
 import client1 from '../../../assets/landingPage/aboutUs/client1.png';
 import client2 from '../../../assets/landingPage/aboutUs/client2.png';
@@ -17,25 +17,21 @@ import halfStar from '../../../assets/landingPage/aboutUs/half-star.png';
 
 
 
-
-
 // ** InterFaces
 interface ISection{
     sectionId: string
 }
-
 export default function AboutUs({sectionId}:ISection) {
     return (
         <>
-            <section className={style.section} id={sectionId}>
+            <section className={`${style.section} ${style.about_us_bg}`} id={sectionId}>
                 <div className={style.section_container}>
                         <div className={style.section_content}>
-
                             <div className={style.about_us_photo}>
-                                <img src={aboutImage} alt="About Us" />
+                                <img className={style.about_us_img} src={aboutPhoto} alt="About Us" />
                                 <div className={style.about_us_clients}>
                                         <div className={style.clients_photos}>
-                                        <span className={style.counter}>2400<span className={style.plus}>+</span></span>
+                                        <span className={style.counter}><span className={style.plus}>+</span>2400</span>
                                             <div className= {style.avatars}>
                                                 <img src={client1} alt="client-1"/>
                                                 <img src={client2} alt="client-2"/>
@@ -46,15 +42,14 @@ export default function AboutUs({sectionId}:ISection) {
                                         <p>Happy Customers</p>
                                         <div className= {style.stars}>
                                             <span className={style.rating}>(4.7 Stars)</span>
+                                            <img src={halfStar} alt="half-star"/>
                                             <img src={star} alt="star-1"/>
                                             <img src={star} alt="star-2"/>
                                             <img src={star} alt="star-3"/>
                                             <img src={star} alt="star-4"/>
-                                            <img src={halfStar} alt="half-star"/>
                                         </div>
                                 </div>
                             </div>
-
                             <div className={style.about_us_text}>
                                 <h2>شريكك الموثوق لدعم صحتك الرقمية:</h2>
                                 <p>
