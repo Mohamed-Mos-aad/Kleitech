@@ -10,152 +10,107 @@
 /* End Variables */
 
 
+
+
 /* Start About Us Section */
-.section
+section
 {
     width: 100%;
+    background: url(../../../../assets/landingPage/aboutUs/line.png) no-repeat;
 }
 .section_container
 {
+    width: 90%;
+    margin: auto;
+}
+.section_content
+{
     display: grid;
     grid-template-columns: 1fr 2fr;
+    align-items: center;
+    padding: 24px 0;
 }
-
-.happy_clients{
+.about_us_photo{
+    position: relative;
+}
+.about_us_photo img{
+    
+}
+.about_us_clients{
+    /*  */
     position: absolute;
-    /* error here */
-    /* i will solve it using media query */
-    right: 8%;
-    bottom: 15%;
-    width: 100%;
-    max-width: 15%;
+    top: 50%;
+    right: 0;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    width: 300px;
+    text-align: left;
+    border: 1px solid #ddd;
 }
-.about_img img{
-    /* position: relative; */
-    width: 100%;
-    max-width: 500px;
+.clients_photos{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.avatars img{
+    margin: -5px;
+}
+.counter {
+    font-size: 22px;
+    font-weight: bold;
+}
+.about_us_clients p{
+
 }
 
-
-.about_content{
-   
-    flex: 1;
-    max-width: 1000px;
+.plus {
+    color: var(--main-color-700);
 }
 
-.about_content h2{
-
+.about_us_text h2{
+    font-size: 28px;
+    font-weight: 600;
     text-align: right;
-    color: var(--main-color);
-    /* 16 * 1.8 =  28.8 pixel*/
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+    color: var(--main-color-700); 
 }
-.about_content p{
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+.about_us_text p{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--gray-color-700);
+}
+.about_us_text p span{
+    font-weight: bold;
+    color: var(--main-color-700);
 }
 
-.line_image{
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    /* max-width: 100px; */
-}
 
 
 /* Extra small devices (phones, portrait) */
 @media (max-width: 575.98px) 
 {
-    .about_container{
-        flex-direction: column;
-        text-align: center;
-        gap: 0.6rem;
-    }
-    .happy_clients{
-        right: 25%;
-        bottom: 50%;
-        width: 100%;
-        max-width: 15%;
-    }
-    .about_img img{
-        max-width: 50%;
-    }
-    .about_content h2{
-        font-size: 1rem;
-    }
-    .about_content p{
-        font-size: 0.6rem;
-    }
+
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) 
 {
-    .about_container{
-        flex-direction: column;
-        text-align: center;
-        gap: 0.8rem;
-    }
-    .happy_clients{
-        right: 20%;
-        bottom: 40%;
-        width: 100%;
-        max-width: 18%;
-    }
-    .about_img img{
-        max-width: 70%;
-    }
-    .about_content h2{
-        font-size: 1.2rem;
-    }
-    .about_content p{
-        font-size: 0.7rem;
-    }
+
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) 
 {
-    .about_container{
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-    .happy_clients{
-        position: absolute;
-        right: 20%;
-        bottom: 40%;
-        width: 100%;
-        max-width: 20%;
-    }
-    .about_img img{
-        max-width: 80%;
-    }
-    .about_content h2{
-        font-size: 1.5rem;
-    }
-    .about_content p{
-        font-size: 0.9rem;
-    }
+
 }
-
-
-
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) 
 {
-    /* Nice */
+
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) 
 {
-    /* Nice */
+
 }
-
-
-
 
 
 
