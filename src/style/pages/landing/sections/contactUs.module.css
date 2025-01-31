@@ -114,6 +114,7 @@ section
     color: var(--main-color-700);
     text-decoration: none;
 }
+.contact_us_form form button
 .section_content form button
 {
     padding: 8px;
@@ -170,6 +171,7 @@ section
     {
         font-size: 16px;
     }
+    .contact_us_form form button
     .section_content form button
     {
         padding: 4px;
@@ -209,6 +211,7 @@ section
     {
         font-size: 16px;
     }
+    .contact_us_form form button
     .section_content form button
     {
         padding: 4px;
@@ -244,6 +247,7 @@ section
     {
         font-size: 16px;
     }
+    .contact_us_form form button
     .section_content form button
     {
         padding: 4px;

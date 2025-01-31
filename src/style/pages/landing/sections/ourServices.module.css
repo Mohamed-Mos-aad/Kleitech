@@ -78,6 +78,10 @@ section
     {
         grid-template-columns: 1fr;
         gap: 8px;
+        text-align: center;
+    }
+    .service_content h2
+    {
     }
     .service_content h2
     {
@@ -101,6 +105,10 @@ section
     {
         grid-template-columns: 1fr;
         gap: 8px;
+        text-align: center;
+    }
+    .service_content h2
+    {
     }
     .service_content h2
     {
@@ -118,6 +126,7 @@ section
 {
     .service_content h2
     {
+        font-size: 26px;
         text-align: start;
         font-size: 22px;
     }
