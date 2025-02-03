@@ -1,4 +1,5 @@
 import AboutUs from "./sections/AboutUs";
+import Benefit from "./sections/Benefit";
 import ContactUs from "./sections/ContactUs";
 import Footer from "./sections/Footer";
 import JoinUs from "./sections/JoinUs";
@@ -10,7 +11,8 @@ export default function LandingPage() {
         <>
             <AboutUs sectionId="about-us"/>
             <JoinUs sectionId="join-us"/>
-            <OurServices />
+            <Benefit sectionId="benefit"/>
+            <OurServices sectionId="our-services"/>
             <ContactUs sectionId="contact-us"/>
             <PatientReviews sectionId="patient-reviews" />
             <Footer sectionId="footer"/>
