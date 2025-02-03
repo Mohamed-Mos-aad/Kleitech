@@ -12,10 +12,18 @@ import service4Img from '../../../assets/landingPage/services/service4.png'
 
 
 
-export default function OurServices() {
+// ** InterFaces
+interface ISection{
+    sectionId: string
+}
+
+
+
+
+export default function OurServices({sectionId}:ISection) {
     return (
         <>
-            <section className={style.section} id='our-services'>
+            <section className={style.section} id={sectionId}>
                 <div className={style.section_container}>
                     <SectionHeader title='خدماتنا المتخصصة لدعم صحتك' description='قدم لك مجموعة من الخدمات المتكاملة التي تهدف إلى تحسين صحتك الجسدية والنفسية'/>
                     <div className={style.our_services}>
