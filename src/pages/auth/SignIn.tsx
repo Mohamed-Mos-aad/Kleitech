@@ -19,7 +19,8 @@ export default function SignIn() {
 
 
     // ** Handlers
-    const signUpHandler = ()=>{navigate('/u/sign-up')};
+    const signUpPageHandler = ()=>{navigate('/u/sign-up')};
+    const forgetPasswordPageHandler = ()=>{navigate('/u/forget-password')};
 
 
 
@@ -41,7 +42,7 @@ export default function SignIn() {
                     <div className={style.form_footer}>
                         <input type="checkbox"/>
                         <label htmlFor="">تذكرني</label>
-                        <a href="">هل نسيت كلمه المرور؟</a>
+                        <a onClick={forgetPasswordPageHandler}>هل نسيت كلمه المرور؟</a>
                     </div>
                     <div className={style.form_btn}>
                         <button>تسجيل الدخول</button>
@@ -60,7 +61,7 @@ export default function SignIn() {
                     </div>
                 </div>
                 <div className={style.switch_auth}>
-                    <h4>ليس لديك حساب؟ <span onClick={signUpHandler}>إنشاء حساب</span></h4>
+                    <h4>ليس لديك حساب؟ <span onClick={signUpPageHandler}>إنشاء حساب</span></h4>
                 </div>
             </div>
         </>

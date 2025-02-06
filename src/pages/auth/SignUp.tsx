@@ -18,7 +18,7 @@ import { useState } from 'react'
 export default function SignUp() {
     // ** Defaults
     const navigate = useNavigate();
-    const signUpHandler = ()=>{navigate('/u/sign-up')};
+    const signInHandler = ()=>{navigate('/u/sign-in')};
     const singUpPage1Content = (
         <div>
             <form className={style.sign_up_form}>
@@ -51,7 +51,7 @@ export default function SignUp() {
                 </div>
             </div>
             <div className={style.switch_auth}>
-                <h4>هل لديك حساب؟ <span onClick={signUpHandler}>تسجيل الدخول</span></h4>
+                <h4>هل لديك حساب؟ <span onClick={signInHandler}>تسجيل الدخول</span></h4>
             </div>
         </div>
     )
@@ -87,7 +87,7 @@ export default function SignUp() {
                 </div>
             </div>
             <div className={style.switch_auth}>
-                <h4>هل لديك حساب؟ <span onClick={signUpHandler}>تسجيل الدخول</span></h4>
+                <h4>هل لديك حساب؟ <span onClick={signInHandler}>تسجيل الدخول</span></h4>
             </div>
         </div>
     )
