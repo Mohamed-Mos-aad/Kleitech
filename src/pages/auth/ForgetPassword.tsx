@@ -3,12 +3,21 @@ import style from '../../style/pages/auth/forgetPassword.module.css'
 // ** assets
 import keyIcon from '../../assets/auth/forgetPasswordIcon.svg'
 import emailInputIcon from '../../assets/auth/formIcons/emailInputIcon.svg'
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 
 export default function ForgetPassword() {
+    // ** Defaults
+    const navigate = useNavigate();
+    const otpPageHandler = ()=>{navigate('/u/otp')};
+
+
+
+
+
     return (
         <>
             <div className={style.forget_password_container}>
@@ -26,7 +35,7 @@ export default function ForgetPassword() {
                         <input type="email" name="" id="" placeholder='ادخل البريد الالكتروني'/>
                         <img src={emailInputIcon} alt="Email input icon" />
                     </div>
-                    <button>إرسال رمز التأكيد</button>
+                    <button onClick={otpPageHandler}>إرسال رمز التأكيد</button>
                 </form>
             </div>
         </>

@@ -1,4 +1,5 @@
 // ** Assets
+import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/auth/otpIcon.svg'
 // ** Style
 import style from '../../style/pages/auth/otp.module.css'
@@ -8,6 +9,14 @@ import style from '../../style/pages/auth/otp.module.css'
 
 
 export default function Otp() {
+    // ** Defaults
+    const navigate = useNavigate();
+    const newPasswordPageHandler = ()=>{navigate('/u/new-password')};
+
+
+
+
+    
     return (
         <>
             <div className={style.otp_container}>
@@ -33,7 +42,7 @@ export default function Otp() {
                         <input type="text" />
                         <input type="text" />
                     </div>
-                    <button>إرسال رمز التأكيد</button>
+                    <button onClick={newPasswordPageHandler}>إرسال رمز التأكيد</button>
                     <h4>لم يتم ارسال رمز تأكيد ؟<span> ارسل مره اخري</span></h4>
                 </form>
             </div>
