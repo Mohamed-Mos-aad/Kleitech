@@ -1,0 +1,22 @@
+/* Start Variables */
+:root
+{
+    --main-color: #026AA2;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Main Layout */
+.main_layout
+{
+    display: flex;
+    flex-direction: column;
+}
+.pages
+{
+    margin-top: 75px;
+}
+/* End Main Layout */

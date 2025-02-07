@@ -9,6 +9,7 @@ import ForgetPassword from "../pages/auth/ForgetPassword";
 import Otp from "../pages/auth/Otp";
 import NewPassword from "../pages/auth/NewPassword";
 import Done from "../pages/auth/Done";
+import MainLayout from "../layouts/MainLayout";
 
 export default function Routers() {
     return (
@@ -25,6 +26,9 @@ export default function Routers() {
                     <Route path="otp" element={<Otp />}/>
                     <Route path="new-password" element={<NewPassword />}/>
                     <Route path="done" element={<Done />}/>
+                </Route>
+                <Route path="/m" element={<MainLayout />}>
+                    <Route/>
                 </Route>
             </Routes>
         </>
