@@ -30,6 +30,7 @@
     align-items: center;
     gap: 40px;
     background-color: var(--main-color-50);
+    position: relative;
 }
 .logo img
 {
@@ -42,8 +43,39 @@
     line-height: 195px;
     color: var(--main-color-700);
 }
+.logo span
+{
+    display: none;
+    position: absolute;
+    bottom: 32px;
+    animation-name: arrowDownMove;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    opacity: 1;
+}
+.logo span img
+{
+    width: 100%;
+    filter: brightness(0) saturate(100%) invert(24%) sepia(98%) saturate(1622%) hue-rotate(180deg) brightness(94%) contrast(98%);
+}
 /* End Auth Layout */
 
+
+
+/* Start Animation */
+@keyframes arrowDownMove
+{
+    0%{
+        bottom: 32px;
+        opacity: 1;
+    }
+    100%{
+        bottom: 8px;
+        opacity: 0;
+    }
+}
+/* End Animation */
 
 
 
@@ -69,6 +101,10 @@
         font-size: 96px;
         line-height: 96px;
     }
+    .logo span
+    {
+        display: flex;
+    }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) 
@@ -85,6 +121,10 @@
     {
         font-size: 104px;
         line-height: 104px;
+    }
+    .logo span
+    {
+        display: flex;
     }
 }
 /* Medium devices (tablets, 768px and up) */
