@@ -6,6 +6,7 @@
     --gray-color-700: #515151;
     --gray-color-800: #373737;
     --gray-color-900: #282828;
+    --red-color-500: #F05252;
 }
 /* End Variables */
 
@@ -29,7 +30,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 16px;
+    gap: 8px;
     margin: 0 auto;
 }
 h2
@@ -44,52 +45,102 @@ h2
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 8px;
+    gap: 24px;
 }
-.sign_up_form .form_row
+.sign_up_form .form_input
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+}
+.sign_up_form .form_input label
+{
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+}
+.sign_up_form .input_element
+{
+    width: 100%;
+    position: relative;
+}
+.sign_up_form .input_element input
+{
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 48px 12px 12px;
+    border: solid 1px  var(--gray-color-400);
+    border-radius: 8px;
+}
+.sign_up_form .input_element input:focus
+{
+    outline: solid 1px  var(--main-color-700);
+    border: solid 1px  var(--main-color-700);
+}
+.sign_up_form .input_element img
+{
+    width: 16px;
+    position: absolute;
+    right: 16px;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+.sign_up_form .error
+{
+    position: absolute;
+    right: 0;
+    top: calc(100% + 4px);
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 1%;
+    color: var(--red-color-500);
+}
+.sign_up_form .form_inputs
+{
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+.sign_up_form .form_inputs .form_input
+{
+    width: 100%;
+}
+.form_radios
 {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
-.sign_up_form .form_row label
+.form_radios h4
 {
-    font-size: 14px;
-    font-weight: 500;
+    width: 100%;
+    display: block;
 }
-.sign_up_form .form_row input
-{
-    font-size: 14px;
-    font-weight: 400;
-    padding: 12px;
-    border: solid 1px  var(--gray-color-400);
-    border-radius: 8px;
-}
-.sign_up_form .form_row input:focus
-{
-    outline: solid 1px  var(--main-color-700);
-    border: solid 1px  var(--main-color-700);
-}
-.form_radios
+.form_radios .radios
 {
     display: flex;
-    gap: 80px;
+    gap: 50%;
+    position: relative;
 }
-.form_radios .form_input
+.form_radios .form_input_radio
 {
     display: flex;
     gap: 16px;
 }
-.form_radios .form_input input
+.form_radios .form_input_radio input
 {
     width: 20px;
+    cursor: pointer;
 }
-.form_radios .form_input input:focus
+.form_radios .form_input_radio input:focus
 {
     outline: none;
     border: none;
 }
-.form_radios .form_input label
+.form_radios .form_input_radio label
 {
     font-size: 16px;
     font-weight: 400;
@@ -104,10 +155,9 @@ h2
     font-size: 16px;
     font-weight: 600;
     color: white;
-    margin: 8px 0;
     cursor: pointer;
 }
-.sign_up_form a
+.sign_up_container h3
 {
     display: flex;
     justify-content: space-between;
@@ -119,9 +169,9 @@ h2
     text-decoration: none;
     opacity: 50%;
 }
-.sign_up_form a span
+.sign_up_container h3 span
 {
-    width: 30%;
+    width: 25%;
     height: 1px;
     border-top: solid 1px var(--gray-color-400);
 }
@@ -190,3 +240,102 @@ h2
     font-weight: 500;    
 }
 /* End Sign Up Screen */
+
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .sign_up_container
+    {
+        width: 90%;
+    }
+    .sign_up_container h3
+    {
+        font-size: 14px;
+    }
+    .sign_up_container h3 span
+    {
+        width: 20%;
+    }
+    .sign_up_container .platforms .platform_item img
+    {
+        width: 20px;
+    }
+    .switch_auth h4
+    {
+        font-size: 14px;
+        font-weight: 500;    
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    .sign_up_container
+    {
+        width: 70%;
+    }
+    .sign_up_container h3
+    {
+        font-size: 16px;
+    }
+    .sign_up_container h3 span
+    {
+        width: 25%;
+    }
+    .switch_auth h4
+    {
+        font-size: 14px;
+        font-weight: 500;    
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    .sign_up_container
+    {
+        width: 90%;
+    }
+    .sign_up_container h3
+    {
+        font-size: 16px;
+    }
+    .sign_up_container h3 span
+    {
+        width: 25%;
+    }
+    .switch_auth h4
+    {
+        font-size: 14px;
+        font-weight: 500;    
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+    .sign_up_container
+    {
+        width: 75%;
+    }
+    .sign_up_container h3
+    {
+        font-size: 16px;
+    }
+    .sign_up_container h3 span
+    {
+        width: 25%;
+    }
+    .switch_auth h4
+    {
+        font-size: 14px;
+        font-weight: 500;    
+    }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */
