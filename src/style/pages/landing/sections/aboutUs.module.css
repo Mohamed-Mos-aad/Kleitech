@@ -3,6 +3,7 @@
 {
     --main-color-700: #026AA2;
     --gray-color-400: #AFAFAF;
+    --gray-color-600: #636363;
     --gray-color-700: #515151;
     --gray-color-800: #373737;
     --gray-color-900: #282828;
@@ -16,243 +17,247 @@ section
 {
     width: 100%;
 }
-.about_us_bg{
-    background-image: url(../../../../assets/landingPage/aboutUs/line.png);
+.section_bg
+{
+    background-image: url('../../../../assets/landingPage/aboutUs//backgroundLine.svg');
+    background-position: right center;
     background-repeat: no-repeat;
-    background-position: right bottom;
-    background-size: cover;
+    background-size: contain;
 }
 .section_container
 {
     width: 90%;
     margin: auto;
 }
-.section_content
+.about_us
 {
     display: grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 1fr 2fr;
     align-items: center;
-    gap: 80px;
+    gap: 100px;
+    padding: 24px 0;
 }
 .about_us_photo
 {
+    display: flex;
+    justify-content: center;
+    text-align: end;
     position: relative;
+    z-index: 1;
 }
-.about_us_img
+.about_us_photo::before
+{
+    content: '';
+    width: 75%;
+    height: 85%;
+    background-image: linear-gradient(to bottom, #00A4F4, #C2EBFF);
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-55%);
+    z-index: -1;
+}
+.about_us_photo > img
 {
     width: 95%;
 }
-.about_us_clients
+.about_us_simple_rate
 {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background-color: #ffffff;
+    border: solid 2px #95DDFF;
+    border-radius: 8px;
+    padding: 18px 23px;
     position: absolute;
-    top: 52%;
-    right: -1%;
-    background-color: #fff;
-    padding: 19px;
-    width: 220px;
-    text-align: left;
-    border: 3px solid #95DDFF;
-    border-radius: 12px;
-    line-height: 24px;
+    right: 0;
+    bottom: 10%;
 }
-.clients_photos
+.simple_rate_head
+{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: end;
+    align-items: center;
+}
+.simple_rate_head img
+{
+    width: 32px;
+    margin-right: -8px;
+}
+.simple_rate_head img:first-of-type
+{
+    z-index: 1;
+}
+.simple_rate_head img:nth-of-type(2)
+{
+    z-index: 2;
+}
+.simple_rate_head img:nth-of-type(3)
+{
+    z-index: 3;
+}
+.simple_rate_head img:last-of-type
+{
+    z-index: 4;
+}
+.simple_rate_head h4
 {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 12px;
 }
-.avatars img
+.simple_rate_head h4 span
 {
-    margin: 0px -5px;
-    width: 35px;
-}
-.counter
-{
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: -8px;
-    color: var(--gray-color-900);
-}
-.plus
-{
-    color: var(--main-color-700);
-    font-size: 18px;
-}
-.about_us_clients p
-{
-    font-size: 18px;
-    font-weight: 600;
+    font-weight: 800;
     color: var(--main-color-700);
 }
-.stars
+.about_us_simple_rate h5
 {
-    color: var(--gray-color-900);
-}
-.stars img
-{
-    margin: 0px 1px;
-    width: 14px;
-}
-.rating
-{
-    margin-left: 10px;
     font-size: 14px;
-}
-.about_us_text h3
-{
-    font-size: 32px;
     font-weight: 600;
-    text-align: right;
-    color: var(--main-color-700); 
+    line-height: 12px;
+    color: var(--main-color-700);
 }
-.about_us_text p
+.simple_rate_stars
 {
-    font-size: 22px;
-    font-weight: 500;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 4px;
+}
+.simple_rate_stars img
+{
+    width: 15px;
+}
+.simple_rate_stars h6
+{
+    font-size: 12.49px;
+    font-weight: 700;
+    color: var(--gray-color-600);
+}
+.about_us_content h1
+{
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--main-color-700);
+}
+.about_us_content p
+{
+    font-size: 20px;
+    font-weight: 400;
     color: var(--gray-color-700);
 }
-.about_us_text p span{
-    font-weight: bold;
-    color: var(--main-color-700);
-}
+/* End About Us Section */
+
+
+
+
+
+
+/* Start Media Query */
 /* Extra small devices (phones, portrait) */
 @media (max-width: 575.98px) 
 {
-    .section_content 
+    .section_bg
+    {
+        background-image: none;
+    }
+    .about_us
     {
         grid-template-columns: 1fr;
-        text-align: center;
+        gap: 24px;
     }
-    .about_us_photo 
+    .simple_rate_head img
     {
-        width: 90%;
-        text-align: center;
-    }
-    .about_us_clients
+        width: 24px;
+    }    
+    .simple_rate_head h4
     {
-        width: 190px;
+        font-size: 14px;
     }
-    .avatars img
+    .about_us_simple_rate h5
     {
-    margin: 0px -5px;
-    width: 30px;
+        font-size: 12px;
     }
-    .counter
+    .simple_rate_stars img
     {
-    font-size: 18px;
-    }
-    .plus
+        width: 12px;
+    }    
+    .about_us_content h1
     {
-    font-size: 21px;
-    }
-    .about_us_clients p
-    {
-    font-size: 14px;
-    }
-    .about_us_text h3,
-    .about_us_text p {
-        text-align: right;
-    }
-    .about_us_text h3 {
         font-size: 24px;
     }
-    .about_us_text p {
-        font-size: 16px;
+    .about_us_content p
+    {
+        font-size: 18px;
     }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) 
 {
-    .section_content 
+    .section_bg
+    {
+        background-image: none;
+    }
+    .about_us
     {
         grid-template-columns: 1fr;
-        text-align: center;
+        gap: 24px;
     }
-    .about_us_img 
+    .simple_rate_head img
     {
-        width: 85%;
-        margin-bottom: -60px;
-    }
-    .about_us_clients 
+        width: 24px;
+    }    
+    .simple_rate_head h4
     {
-        width: 220px;
-        top: 65%;
-        right: 14%;
-        line-height: 26px;
-    }
-    .about_us_clients p{
-        font-size: 16px;
-    }
-    .counter, .plus 
-    {
-        font-size: 20px;
-    }
-    .avatars img{
-        width: 35px;
-    }
-    .stars img{
-        width: 14px;
-    }
-    .rating{
         font-size: 14px;
     }
-    .about_us_text h3 
+    .about_us_simple_rate h5
     {
-        font-size: 28px;
+        font-size: 12px;
     }
-    .about_us_text p {
-        font-size: 28px;
-        text-align: right;
+    .simple_rate_stars img
+    {
+        width: 12px;
+    }
+    .about_us_content h1
+    {
+        font-size: 24px;
+    }
+    .about_us_content p
+    {
+        font-size: 18px;
     }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) 
 {
-    .section_container 
+    .about_us
     {
-        width: 95%;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 24px;
     }
-    .section_content 
+    .about_us_content h1
     {
-        grid-template-columns: 1fr;
-        text-align: center;
+        font-size: 24px;
     }
-    .about_us_img 
+    .about_us_content p
     {
-        width: 75%;
-        margin-bottom: -60px;
+        font-size: 18px;
     }
-    .about_us_clients 
-    {
-        width: 250px;
-        top: 70%;
-        right: 14%;
-        line-height: 26px;
-    }
-    .about_us_clients p{
-        font-size: 20px;
-    }
-    .counter, .plus 
-    {
-        font-size: 25px;
-    }
-    .avatars img{
-        width: 40px;
-    }
-    .stars img{
-        width: 16px;
-    }
-    .rating{
-        font-size: 16px;
-    }
-    .about_us_text h3 
-    {
-        font-size: 30px;
-    }
-    .about_us_text p {
-        font-size: 20px;
-        text-align: right;
-    }
-    }
-/* End About Us Section */
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */

@@ -23,9 +23,8 @@ export default function NavBar() {
 
 
     // ** Handlers
-    const signUpHandler = ()=>{navigate('/u/sign-up')};
-    const signInHandler = ()=>{navigate('/u/sign-in')};
-
+    const signUpPageHandler = ()=>{navigate('/u/sign-up')};
+    const signInPageHandler = ()=>{navigate('/u/sign-in')};
     const nabBarToggelHandler = ()=>{
         const menuElement = document.getElementById('menu');
         if(!navOpen && menuElement && window.innerWidth < 992)
@@ -68,12 +67,12 @@ export default function NavBar() {
                             <li onClick={()=>{smoothScrollHandler('join-us')}}>انضم لنا</li>
                             <li onClick={()=>{smoothScrollHandler('our-services')}}>خدماتنا</li>
                             <li onClick={()=>{smoothScrollHandler('contact-us')}}>تواصل معنا</li>
-                            <li onClick={()=>{smoothScrollHandler('users-rates')}}>تقييمات المستخدمين</li>
+                            <li onClick={()=>{smoothScrollHandler('patient-reviews')}}>تقييمات المستخدمين</li>
                         </ul>
                     </div>
                     <div className={style.auth_btns}>
-                        <button onClick={signUpHandler}>إنشاء حساب</button>
-                        <button onClick={signInHandler}>تسجيل دخول</button>
+                        <button onClick={signUpPageHandler}>إنشاء حساب</button>
+                        <button onClick={signInPageHandler}>تسجيل دخول</button>
                     </div>
                 </div>
             </nav>

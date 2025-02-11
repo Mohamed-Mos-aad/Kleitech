@@ -6,6 +6,7 @@ import patient1 from '../../../assets/landingPage/PatientReviews/PatientReview-1
 import patient2 from '../../../assets/landingPage/PatientReviews/PatientReview-2.png'
 import patient3 from '../../../assets/landingPage/PatientReviews/PatientReview-3.png'
 import patient4 from '../../../assets/landingPage/PatientReviews/PatientReview-4.png'
+import SectionHeader from '../../../components/landing/SectionHeader'
 
 
 
@@ -21,10 +22,7 @@ export default function PatientReviews({sectionId}:ISection){
             <section className={style.section} id = {sectionId}>
                 <div className={style.section_container}>
                     <div className={style.section_content}>
-                        <div className={style.patient_reviews_header}>
-                            <h3>آراء المرضى:</h3>
-                            <p>اكتشف كيف أحدثنا فرقاً في حياتهم من خلال تجارب من قدمنا لهم الرعاية.</p>
-                        </div>
+                        <SectionHeader title='آراء المرضى:' description='اكتشف كيف أحدثنا فرقاً في حياتهم من خلال تجارب من قدمنا لهم الرعاية.'/>
                         <div className={style.patient_reviews_numbers}>
                             <div>
                                 <h3>+50</h3>

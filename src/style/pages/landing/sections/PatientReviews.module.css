@@ -10,93 +10,119 @@
 /* End Variables */
 
 /* Start Patient Reviews Section */
-.section{
+.section
+{
     width: 100%;
 }
-.section_container{
+.section_container
+{
     width: 90%;
     margin: auto;
 }
-.section_content{
+.section_content
+{
     padding: 24px 0;
 }
-.patient_reviews_header h3{
+.patient_reviews_numbers
+{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
     text-align: center;
+    padding: 56px 0;
+}
+.patient_reviews_numbers h3
+{
     font-size: 28px;
-    font-weight: bold;
-    color: var(--main-color-700);
-}
-.patient_reviews_header p{
-    text-align: center;
-    font-size: 22px;
-    margin-bottom: 30px;
-}
-.patient_reviews_numbers{
-    display: flex;
-    justify-content: space-evenly;
-    text-align: center;
-    /* gap: 50px; */
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-}
-.patient_reviews_numbers h3{
-    font-size: 28px;
-    font-weight: bold;
-    background: linear-gradient(90deg, #0179B4, #88D8FF);
+    background: linear-gradient(to right, #0179B4, 55%, #88D8FF);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    /* color: var(--main-color-700); */
 }
-.patient_reviews_numbers p{
-    font-size: 15px;
+.patient_reviews_numbers p
+{
+    font-size: 18px;
+    font-weight: 600;
     color: var(--gray-color-700);
 }
-.patient_reviews_comments{
+.patient_reviews_comments
+{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    /* gap: 20px; */
-    margin: 24px 0px;
+    gap: 56px;
 }
-.patient_reviews_comments div{
+.patient_reviews_comments div
+{
     display: flex;
+    align-items: center;
+    gap: 24px;
+    background-image: linear-gradient(to right , #FDFEFF, 85%, #EBF8FF);
     border: 2px solid #95DDFF;
     border-radius: 12px;
     padding: 18px;
-    margin: 6px 12px;
 }
-.patient_reviews_comments img{
-    
+.patient_reviews_comments img
+{
+    width: 25%;
 }
-.patient_reviews_comments p{
+.patient_reviews_comments p
+{
     font-size: 16px;
-    line-height: 1.6;
-    margin-right: 8px;
+    font-weight: 500;
 }
+/* End Patient Reviews Section */
+
+
+
+
+
+
 /* Extra small devices (phones, portrait) */
 @media (max-width: 575.98px) 
 {
-    .patient_reviews_comments{
+    .patient_reviews_comments
+    {
         grid-template-columns: repeat(1, 1fr);
     }
-    .patient_reviews_comments div{
+    .patient_reviews_comments div
+    {
         flex-direction: column;
+        gap: 18px;
+    }
+    .patient_reviews_comments img
+    {
+        width: 75%;
     }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) 
 {
-    .patient_reviews_comments div{
+    .patient_reviews_comments div
+    {
         flex-direction: column;
+        gap: 18px;
+        text-align: center;
+    }
+    .patient_reviews_comments img
+    {
+        width: 75%;
     }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) 
 {
-    .patient_reviews_comments div{
-        flex-direction: column;
+    .patient_reviews_comments div
+    {
+        gap: 16px;
+    }
+    .patient_reviews_comments img
+    {
+        width: 35%;
     }
 }
-/* End Patient Reviews Section */
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */
 

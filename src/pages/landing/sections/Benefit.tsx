@@ -2,7 +2,7 @@
 import SectionHeader from '../../../components/landing/SectionHeader'
 import style from '../../../style/pages/landing/sections/benefit.module.css'
 // ** Assets
-import doctorImage from '../../../assets/landingPage/benefitImage.svg'
+import doctorImage from '../../../assets/landingPage/benefitImage.png'
 
 
 
