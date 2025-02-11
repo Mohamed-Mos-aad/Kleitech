@@ -16,6 +16,7 @@ import arrowDownIcon from '../../assets/auth/formIcons/downArrowIcon.svg'
 // ** Other
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'
+import InputElement from '../../components/ui/InputElement'
 
 
 
@@ -62,30 +63,9 @@ export default function SignUp() {
         <div className={style.sign_up_container}>
             <h2>إنشاء حساب جديد</h2>
             <form className={style.sign_up_form}>
-                <div className={style.form_input}>
-                    <label htmlFor="userName">الإسم</label>
-                    <div className={style.input_element}>
-                        <input type="text" placeholder="ادخل الإسم بالكامل" id='userName'/>
-                        <img src={userNameIcon} alt="User Name Icon" />
-                    </div>
-                    <span className={style.error}></span>
-                </div>
-                <div className={style.form_input}>
-                    <label htmlFor="userId">الرقم القومي</label>
-                    <div className={style.input_element}>
-                        <input type="text" placeholder="ادخل الرقم القومي" id='userId'/>
-                        <img src={userIdIcon} alt="User Id Icon" />
-                    </div>
-                    <span className={style.error}></span>
-                </div>
-                <div className={style.form_input}>
-                    <label htmlFor="userPhone">رقم الهاتف</label>
-                    <div className={style.input_element}>
-                        <input type="text" placeholder="ادخل رقم الهاتف" id='userPhone'/>
-                        <img src={userPhoneIcon} alt="" />
-                    </div>
-                    <span className={style.error}></span>
-                </div>
+                <InputElement id='userName' type='text' placeholder='ادخل الإسم بالكامل' img= {{src:userNameIcon,alt:"User Name Icon"}} error=''/>
+                <InputElement id='userId' type='text' placeholder='ادخل الرقم القومي' img= {{src:userIdIcon,alt:"User Id Icon"}} error=''/>
+                <InputElement id='userPhone' type='text' placeholder='ادخل رقم الهاتف' img= {{src:userPhoneIcon,alt:"User Phone Icon"}} error=''/>
                 <div className={style.form_btn}>
                     <button onClick={nextSignUpPage}>التالي</button>
                 </div>
@@ -111,30 +91,9 @@ export default function SignUp() {
         <div className={style.sign_up_container}>
             <h2>إنشاء حساب جديد</h2>
             <form className={style.sign_up_form}>
-                <div className={style.form_input}>
-                    <label htmlFor="userEmail">البريد الالكتروني</label>
-                    <div className={style.input_element}>
-                        <input type="email" placeholder="ادخل البريد الالكتروني" id='userEmail'/>
-                        <img src={userEmailIcon} alt="User Email Icon" />
-                    </div>
-                    <span className={style.error}></span>
-                </div>
-                <div className={style.form_input}>
-                    <label htmlFor="userPassword">كلمه المرور</label>
-                    <div className={style.input_element}>
-                        <input type="password" placeholder="ادخل كلمه المرور" id='userPassword'/>
-                        <img src={userPasswordIcon} alt="User password icon" />
-                    </div>
-                    <span className={style.error}></span>
-                </div>
-                <div className={style.form_input}>
-                    <label htmlFor="userPasswordConfirm">تأكيد كلمه المرور</label>
-                    <div className={style.input_element}>
-                        <input type="password" placeholder="تأكيد كلمه المرور" id='userPasswordConfirm'/>
-                        <img src={userPasswordIcon} alt="User password confirm icon" />
-                    </div>
-                    <span className={style.error}></span>
-                </div>
+                <InputElement id='userEmail' type='email' placeholder='ادخل البريد الالكتروني' img= {{src:userEmailIcon,alt:"User Email Icon"}} error=''/>
+                <InputElement id='userPassword' type='password' placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error=''/>
+                <InputElement id='userPasswordConfirm' type='password' placeholder='تأكيد كلمه المرور' img= {{src:userPasswordIcon,alt:"User password confirm icon"}} error=''/>
                 <div className={style.form_btn}>
                     <button onClick={nextSignUpPage}>التالي</button>
                 </div>

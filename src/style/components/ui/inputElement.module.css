@@ -1,0 +1,68 @@
+/* Start Variables */
+:root
+{
+    --main-color-700: #026AA2;
+    --gray-color-400: #AFAFAF;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-500: #F05252;
+}
+/* End Variables */
+
+
+
+
+/* Start Input Element Component */
+.sign_up_form .form_input
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+}
+.sign_up_form .form_input label
+{
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+}
+.sign_up_form .input_element
+{
+    width: 100%;
+    position: relative;
+}
+.sign_up_form .input_element input
+{
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 48px 12px 12px;
+    border: solid 1px  var(--gray-color-400);
+    border-radius: 8px;
+}
+.sign_up_form .input_element input:focus
+{
+    outline: solid 1px  var(--main-color-700);
+    border: solid 1px  var(--main-color-700);
+}
+.sign_up_form .input_element img
+{
+    width: 16px;
+    position: absolute;
+    right: 16px;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+.sign_up_form .error
+{
+    position: absolute;
+    right: 0;
+    top: calc(100% + 4px);
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 1%;
+    color: var(--red-color-500);
+}
+/* End Input Element Component */
