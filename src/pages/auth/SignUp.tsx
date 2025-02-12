@@ -17,6 +17,7 @@ import arrowDownIcon from '../../assets/auth/formIcons/downArrowIcon.svg'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'
 import InputElement from '../../components/ui/InputElement'
+import PasswordInputElement from '../../components/ui/PasswordInputElement'
 
 
 
@@ -63,9 +64,9 @@ export default function SignUp() {
         <div className={style.sign_up_container}>
             <h2>إنشاء حساب جديد</h2>
             <form className={style.sign_up_form}>
-                <InputElement id='userName' type='text' placeholder='ادخل الإسم بالكامل' img= {{src:userNameIcon,alt:"User Name Icon"}} error=''/>
-                <InputElement id='userId' type='text' placeholder='ادخل الرقم القومي' img= {{src:userIdIcon,alt:"User Id Icon"}} error=''/>
-                <InputElement id='userPhone' type='text' placeholder='ادخل رقم الهاتف' img= {{src:userPhoneIcon,alt:"User Phone Icon"}} error=''/>
+                <InputElement id='userName' name='الإسم' type='text' placeholder='ادخل الإسم بالكامل' img= {{src:userNameIcon,alt:"User Name Icon"}} error=''/>
+                <InputElement id='userId' name='الرقم القومي' type='text' placeholder='ادخل الرقم القومي' img= {{src:userIdIcon,alt:"User Id Icon"}} error=''/>
+                <InputElement id='userPhone' name='رقم الهاتف' type='text' placeholder='ادخل رقم الهاتف' img= {{src:userPhoneIcon,alt:"User Phone Icon"}} error=''/>
                 <div className={style.form_btn}>
                     <button onClick={nextSignUpPage}>التالي</button>
                 </div>
@@ -91,9 +92,9 @@ export default function SignUp() {
         <div className={style.sign_up_container}>
             <h2>إنشاء حساب جديد</h2>
             <form className={style.sign_up_form}>
-                <InputElement id='userEmail' type='email' placeholder='ادخل البريد الالكتروني' img= {{src:userEmailIcon,alt:"User Email Icon"}} error=''/>
-                <InputElement id='userPassword' type='password' placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error=''/>
-                <InputElement id='userPasswordConfirm' type='password' placeholder='تأكيد كلمه المرور' img= {{src:userPasswordIcon,alt:"User password confirm icon"}} error=''/>
+                <InputElement id='userEmail' name='البريد الالكتروني' type='email' placeholder='ادخل البريد الالكتروني' img= {{src:userEmailIcon,alt:"User Email Icon"}} error=''/>
+                <PasswordInputElement id='userPassword' name='كلمه المرور' type='password' placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error=''/>
+                <PasswordInputElement id='userPasswordConfirm' name='تأكيد كلمه المرور' type='password' placeholder='تأكيد كلمه المرور' img= {{src:userPasswordIcon,alt:"User password confirm icon"}} error=''/>
                 <div className={style.form_btn}>
                     <button onClick={nextSignUpPage}>التالي</button>
                 </div>
