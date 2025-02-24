@@ -13,11 +13,14 @@ import appleIcon from '../../assets/auth/socialIcons/appleIcon.svg'
 import arrowLeftIcon from '../../assets/auth/arrow-left.svg'
 import arrowRightIcon from '../../assets/auth/arrow-right.svg'
 import arrowDownIcon from '../../assets/auth/formIcons/downArrowIcon.svg'
+import arrowUpandDownIcon from '../../assets/auth/formIcons/arrowsUpandDownIcon.svg'
 // ** Other
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'
 import InputElement from '../../components/ui/InputElement'
 import PasswordInputElement from '../../components/ui/PasswordInputElement'
+import { ISignUpData } from '../../interfaces'
+import { inputValidation } from '../../validation'
 
 
 
@@ -29,31 +32,103 @@ export default function SignUp() {
     const navigate = useNavigate();
     const signInPageHandler = ()=>{navigate('/u/sign-in')};
     const otpPageHandler = ()=>{navigate('/u/otp')};
-
-
+    const defaultuserSignUpData:ISignUpData = {
+        userName: '',
+        userId: '',
+        userPhone: '',
+        userEmail: '',
+        userPassword: '',
+        userPasswordConfirm: '',
+        hasIllnesses: '',
+        userWeight: '',
+        userHeight: '',
+        hasDoctor: '',
+        userDate: '',
+        userState: ''
+    }
+    const defaultuserSignUpDataErrors:ISignUpData = {
+        userName: '',
+        userId: '',
+        userPhone: '',
+        userEmail: '',
+        userPassword: '',
+        userPasswordConfirm: '',
+        hasIllnesses: '',
+        userWeight: '',
+        userHeight: '',
+        hasDoctor: '',
+        userDate: '',
+        userState: ''
+    }
 
 
 
 
     // ** States
     const [currentSignUpPage,setCurrentSignUpPage] = useState<number>(1);
+    const [userSignUpData,setUserSignUpData] = useState<ISignUpData>(defaultuserSignUpData);
+    const [userSignUpDataErrors,setUserSignUpDataErrors] = useState<ISignUpData>(defaultuserSignUpDataErrors);
+
+
 
 
 
     // ** Handlers
-    const nextSignUpPage = ()=>{
+    const nextSignUpPageHandler = (e: React.FormEvent) => {
+        e.preventDefault();
+        const validationResults = inputValidation(userSignUpData);
+        if(currentSignUpPage === 1)
+        {
+            if(validationResults.userName !== '' || validationResults.userId !== '' || validationResults.userPhone !== '') {
+                setUserSignUpDataErrors(validationResults);
+                return;
+            }
+        }
+        if(currentSignUpPage === 2)
+        {
+            if(validationResults.userEmail !== '' || validationResults.userPassword !== '' || validationResults.userPasswordConfirm !== '') {
+                setUserSignUpDataErrors(validationResults);
+                return;
+            }
+        }
+        
         if(currentSignUpPage != 3)
         {
+            setUserSignUpDataErrors(defaultuserSignUpDataErrors);
             setCurrentSignUpPage(currentSignUpPage+1);
         }
     }
-    const prevSignUpPage = ()=>{
+    const prevSignUpPageHandler =(e: React.FormEvent) => {
+        e.preventDefault();
         if(currentSignUpPage != 1)
         {
             setCurrentSignUpPage(currentSignUpPage-1);
         }
     }
+    const inputChangeValueHandler = (e: React.ChangeEvent<HTMLInputElement>)=>{
+        setUserSignUpDataErrors((prev)=>{
+            return{
+                ...prev,
+                [e.target.id]: '' 
+            }
+        })
+        setUserSignUpData((prev)=>{
+            return{
+                ...prev,
+                [e.target.id]: e.target.value 
+            }
+        })
+    }
+    const creatAccountHandler = (e: React.FormEvent)=>{
+        e.preventDefault();
+        const validationResults = inputValidation(userSignUpData);
+        if(validationResults.hasIllnesses !== '' || validationResults.userWeight !== '' || validationResults.userHeight !== '' || validationResults.hasDoctor !== '' || validationResults.userDate !== '' || validationResults.userState !== '') {
+            setUserSignUpDataErrors(validationResults);
+            return;
+        }
 
+        otpPageHandler();
+    }
     
 
 
@@ -64,11 +139,11 @@ export default function SignUp() {
         <div className={style.sign_up_container}>
             <h2>إنشاء حساب جديد</h2>
             <form className={style.sign_up_form}>
-                <InputElement id='userName' name='الإسم' type='text' placeholder='ادخل الإسم بالكامل' img= {{src:userNameIcon,alt:"User Name Icon"}} error=''/>
-                <InputElement id='userId' name='الرقم القومي' type='text' placeholder='ادخل الرقم القومي' img= {{src:userIdIcon,alt:"User Id Icon"}} error=''/>
-                <InputElement id='userPhone' name='رقم الهاتف' type='text' placeholder='ادخل رقم الهاتف' img= {{src:userPhoneIcon,alt:"User Phone Icon"}} error=''/>
+                <InputElement id='userName' name='الإسم' type='text' value={userSignUpData.userName} placeholder='ادخل الإسم بالكامل' img= {{src:userNameIcon,alt:"User Name Icon"}} error={userSignUpDataErrors.userName} onChange={(e)=>{inputChangeValueHandler(e)}}/>
+                <InputElement id='userId' name='الرقم القومي' type='text' value={userSignUpData.userId} placeholder='ادخل الرقم القومي' img= {{src:userIdIcon,alt:"User Id Icon"}} error={userSignUpDataErrors.userId} onChange={(e)=>{inputChangeValueHandler(e)}}/>
+                <InputElement id='userPhone' name='رقم الهاتف' type='text' value={userSignUpData.userPhone} placeholder='ادخل رقم الهاتف' img= {{src:userPhoneIcon,alt:"User Phone Icon"}} error={userSignUpDataErrors.userPhone} onChange={(e)=>{inputChangeValueHandler(e)}}/>
                 <div className={style.form_btn}>
-                    <button onClick={nextSignUpPage}>التالي</button>
+                    <button onClick={nextSignUpPageHandler}>التالي</button>
                 </div>
             </form>
             <h3><span></span>او إنشاء حساب باستخدام<span></span></h3>
@@ -92,11 +167,11 @@ export default function SignUp() {
         <div className={style.sign_up_container}>
             <h2>إنشاء حساب جديد</h2>
             <form className={style.sign_up_form}>
-                <InputElement id='userEmail' name='البريد الالكتروني' type='email' placeholder='ادخل البريد الالكتروني' img= {{src:userEmailIcon,alt:"User Email Icon"}} error=''/>
-                <PasswordInputElement id='userPassword' name='كلمه المرور' type='password' placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error=''/>
-                <PasswordInputElement id='userPasswordConfirm' name='تأكيد كلمه المرور' type='password' placeholder='تأكيد كلمه المرور' img= {{src:userPasswordIcon,alt:"User password confirm icon"}} error=''/>
+                <InputElement id='userEmail' name='البريد الالكتروني' type='email' value={userSignUpData.userEmail} placeholder='ادخل البريد الالكتروني' img= {{src:userEmailIcon,alt:"User Email Icon"}} error={userSignUpDataErrors.userEmail} onChange={(e)=>{inputChangeValueHandler(e)}}/>
+                <PasswordInputElement id='userPassword' name='كلمه المرور' type='password' value={userSignUpData.userPassword} placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={userSignUpDataErrors.userPassword} onChange={(e)=>{inputChangeValueHandler(e)}}/>
+                <PasswordInputElement id='userPasswordConfirm' name='تأكيد كلمه المرور' type='password' value={userSignUpData.userPasswordConfirm} placeholder='تأكيد كلمه المرور' img= {{src:userPasswordIcon,alt:"User password confirm icon"}} error={userSignUpDataErrors.userPasswordConfirm} onChange={(e)=>{inputChangeValueHandler(e)}}/>
                 <div className={style.form_btn}>
-                    <button onClick={nextSignUpPage}>التالي</button>
+                    <button onClick={nextSignUpPageHandler}>التالي</button>
                 </div>
             </form>
             <h3><span></span>او إنشاء حساب باستخدام<span></span></h3>
@@ -123,32 +198,32 @@ export default function SignUp() {
                         <h4>هل تعاني من امراض مزمنه؟</h4>
                         <div className={style.radios}>
                             <div className={style.form_input_radio}>
-                                <input type="radio" name="hasIllnesses" id="hasIllnesses" />
+                                <input type="radio" name="hasIllnesses" id="hasIllnesses"/>
                                 <label htmlFor="hasIllnesses">نعم</label>
                             </div>
                             <div className={style.form_input_radio}>
-                                <input type="radio" name="hasIllnesses" id="noIllnesses" />
+                                <input type="radio" name="hasIllnesses" id="noIllnesses"/>
                                 <label htmlFor="noIllnesses">لا</label>
                             </div>
-                            <span className={style.error}></span>
+                            <span className={style.error}>{userSignUpDataErrors.hasIllnesses}</span>
                         </div>
                     </div>
                     <div className={style.form_inputs}>
                     <div className={style.form_input}>
                         <label htmlFor="userWeight">الوزن</label>
                         <div className={style.input_element}>
-                            <input type="text" placeholder="ادخل وزنك" id='userWeight'/>
-                            <img src={userPhoneIcon} alt="User weight icon" />
+                            <input type="text" value={userSignUpData.userWeight} placeholder="ادخل وزنك" id='userWeight' onChange={(e)=>{inputChangeValueHandler(e)}}/>
+                            <img src={arrowUpandDownIcon} alt="User weight icon" />
                         </div>
-                        <span className={style.error}></span>
+                        <span className={style.error}>{userSignUpDataErrors.userWeight}</span>
                     </div>
                     <div className={style.form_input}>
                         <label htmlFor="userHeight">الطول</label>
                         <div className={style.input_element}>
-                            <input type="text" placeholder="ادخل طولك" id='userHeight'/>
-                            <img src={userPhoneIcon} alt="User height icon" />
+                            <input type="text" value={userSignUpData.userHeight} placeholder="ادخل طولك" id='userHeight' onChange={(e)=>{inputChangeValueHandler(e)}}/>
+                            <img src={arrowUpandDownIcon} alt="User height icon" />
                         </div>
-                        <span className={style.error}></span>
+                        <span className={style.error}>{userSignUpDataErrors.userHeight}</span>
                     </div>
                 </div>
                 <div className={style.form_radios}>
@@ -162,7 +237,7 @@ export default function SignUp() {
                             <input type="radio" name="hasDoctor" id="noDoctor" />
                             <label htmlFor="noDoctor">لا</label>
                         </div>
-                        <span className={style.error}></span>
+                        <span className={style.error}>{userSignUpDataErrors.hasDoctor}</span>
                     </div>
                 </div>
                 <div className={style.form_input}>
@@ -171,7 +246,7 @@ export default function SignUp() {
                         <input type="text" placeholder="التاريخ" id='userDate'/>
                         <img src={userDataIcon} alt="User date icon" />
                     </div>
-                    <span className={style.error}></span>
+                    <span className={style.error}>{userSignUpDataErrors.userDate}</span>
                 </div>
                 <div className={style.form_input}>
                     <label htmlFor="userState">المرحله الحاليه من المرض</label>
@@ -179,14 +254,17 @@ export default function SignUp() {
                         <input type="text" placeholder="حالتك" id='userState'/>
                         <img src={arrowDownIcon} alt="User state icon" />
                     </div>
-                    <span className={style.error}></span>
+                    <span className={style.error}>{userSignUpDataErrors.userState}</span>
                 </div>
                 <div className={style.form_btn}>
-                    <button onClick={otpPageHandler}>إنشاء الحساب</button>
+                    <button onClick={creatAccountHandler}>إنشاء الحساب</button>
                 </div>
             </form>
         </div>
     )
+
+
+
 
     return (
         <>
@@ -195,11 +273,11 @@ export default function SignUp() {
                 {currentSignUpPage === 2 && singUpPage2Content}
                 {currentSignUpPage === 3 && singUpPage3Content}
                 <div className={style.sign_up_footer}>
-                    <div className={style.arrow_icon} onClick={nextSignUpPage}>
+                    <div className={style.arrow_icon} onClick={nextSignUpPageHandler}>
                         <img src={arrowRightIcon} alt="" />
                     </div>
                     <h3>صفحه {currentSignUpPage} من 3</h3>
-                    <div className={style.arrow_icon} onClick={prevSignUpPage}>
+                    <div className={style.arrow_icon} onClick={prevSignUpPageHandler}>
                         <img src={arrowLeftIcon} alt=""/>
                     </div>
                 </div>
