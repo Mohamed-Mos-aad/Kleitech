@@ -21,7 +21,10 @@ export default function SignIn() {
     // ** Handlers
     const signUpPageHandler = ()=>{navigate('/u/sign-up')};
     const forgetPasswordPageHandler = ()=>{navigate('/u/forget-password')};
-
+    const loginHandler = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+        e.preventDefault();
+        navigate('/m')
+    };
 
 
 
@@ -45,7 +48,7 @@ export default function SignIn() {
                         <a onClick={forgetPasswordPageHandler}>هل نسيت كلمه المرور؟</a>
                     </div>
                     <div className={style.form_btn}>
-                        <button>تسجيل الدخول</button>
+                        <button onClick={(e)=>{loginHandler(e)}}>تسجيل الدخول</button>
                     </div>
                     <a href=''><span></span>او إنشاء حساب باستخدام<span></span></a>
                 </form>

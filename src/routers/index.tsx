@@ -10,6 +10,7 @@ import Otp from "../pages/auth/Otp";
 import NewPassword from "../pages/auth/NewPassword";
 import Done from "../pages/auth/Done";
 import MainLayout from "../layouts/MainLayout";
+import Home from "../pages/main/Home";
 
 export default function Routers() {
     return (
@@ -28,7 +29,7 @@ export default function Routers() {
                     <Route path="done" element={<Done />}/>
                 </Route>
                 <Route path="/m" element={<MainLayout />}>
-                    <Route/>
+                    <Route index element={<Home/>}/>
                 </Route>
             </Routes>
         </>
