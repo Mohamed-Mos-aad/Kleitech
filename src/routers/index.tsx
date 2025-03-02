@@ -11,6 +11,7 @@ import NewPassword from "../pages/auth/NewPassword";
 import Done from "../pages/auth/Done";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/main/Home";
+import AllowAndNotAllow from "../pages/main/AllowAndNotAllow";
 
 export default function Routers() {
     return (
@@ -30,6 +31,7 @@ export default function Routers() {
                 </Route>
                 <Route path="/m" element={<MainLayout />}>
                     <Route index element={<Home/>}/>
+                    <Route path="allow-notAllow" element={<AllowAndNotAllow />}/>
                 </Route>
             </Routes>
         </>

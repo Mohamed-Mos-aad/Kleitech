@@ -1,0 +1,130 @@
+/* Start Variables */
+:root
+{
+    --main-color-100: #E0F2FE;
+    --main-color-700: #026AA2;
+    --gray-color-400: #AFAFAF;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-100: #FDE8E8;
+    --red-color-500: #F05252;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Allow And Not Allow Screen */
+.allow_not_allow
+{
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 24px;
+    margin: 24px auto;
+}
+.allowing_container
+{
+    background-color: var(--main-color-100);
+}
+.allowing_container .head_title
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    background-color: var(--main-color-700);
+    padding: 16px;
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+}
+.allowing_container:last-child
+{
+    background-color: var(--red-color-100);
+}
+.allowing_container:last-child .head_title
+{
+    background-color: var(--red-color-500);
+}
+.allowing_container .head_title img
+{
+    width: 40px;
+}
+.allowing_list
+{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 48px 32px 24px;
+}
+.allowing_list ul
+{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.allowing_list ul li
+{
+    font-size: 18px;
+    font-weight: 400;
+}
+.allowing_list ul li h4
+{
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--main-color-700);
+}
+.allowing_container:last-child .allowing_list ul li h4
+{
+    color: var(--red-color-500);
+}
+/* End Allow And Not Allow Screen */
+
+
+
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (min-width: 575.98px) and (max-width: 767.98px) 
+{
+    .allow_not_allow
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .allowing_container .head_title
+    {
+        font-size: 18px;
+    }
+    .allowing_list ul
+    {
+        gap: 8px;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    .allowing_container .head_title
+    {
+        font-size: 18px;
+    }
+    .allowing_list ul
+    {
+        gap: 8px;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */

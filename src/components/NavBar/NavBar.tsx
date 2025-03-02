@@ -1,6 +1,11 @@
+// ** Style
 import style from '../../style/components/navbar/navbar.module.css'
+// ** Assets
 import logo from '../../assets/landingPage/landingPageLogo.svg'
 import navBarMenuIcon from '../../assets/navBar/navBarIcon.svg'
+import logOutIcon from '../../assets/navBar/logOutIcon.svg'
+import settingIcon from '../../assets/navBar/settingIcon.svg'
+// ** Other
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 
@@ -17,7 +22,7 @@ export default function NavBar() {
 
     // ** States
     const [navOpen,setNavOpen] = useState<boolean>(false);
-
+    const [userLogged,setUserLogged] = useState<boolean>(false);
 
 
 
@@ -46,7 +51,7 @@ export default function NavBar() {
             nabBarToggelHandler();
         }
     }
-
+    const logOutHandler = ()=>{setUserLogged(false)};
     
 
 
@@ -62,18 +67,34 @@ export default function NavBar() {
                         <img src={navBarMenuIcon} alt="Nav Bar Icon" onClick={nabBarToggelHandler}/>
                     </div>
                     <div className={style.menu} id='menu'>
-                        <ul>
-                            <li className={style.active_section} onClick={()=>{smoothScrollHandler('about-us')}}>نبذة عنّا</li>
-                            <li onClick={()=>{smoothScrollHandler('join-us')}}>انضم لنا</li>
-                            <li onClick={()=>{smoothScrollHandler('our-services')}}>خدماتنا</li>
-                            <li onClick={()=>{smoothScrollHandler('contact-us')}}>تواصل معنا</li>
-                            <li onClick={()=>{smoothScrollHandler('patient-reviews')}}>تقييمات المستخدمين</li>
-                        </ul>
+                        {userLogged ?
+                            <ul>
+                                <li className={style.active_section}>الرئيسيه</li>
+                                <li>الاستشارات</li>
+                                <li>النصائح</li>
+                                <li>التذكيرات</li>
+                            </ul>
+                            :
+                            <ul>
+                                <li className={style.active_section} onClick={()=>{smoothScrollHandler('about-us')}}>نبذة عنّا</li>
+                                <li onClick={()=>{smoothScrollHandler('join-us')}}>انضم لنا</li>
+                                <li onClick={()=>{smoothScrollHandler('our-services')}}>خدماتنا</li>
+                                <li onClick={()=>{smoothScrollHandler('contact-us')}}>تواصل معنا</li>
+                                <li onClick={()=>{smoothScrollHandler('patient-reviews')}}>تقييمات المستخدمين</li>
+                            </ul>
+                        }
                     </div>
-                    <div className={style.auth_btns}>
-                        <button onClick={signUpPageHandler}>إنشاء حساب</button>
-                        <button onClick={signInPageHandler}>تسجيل دخول</button>
-                    </div>
+                    {userLogged ?
+                        <div className={style.auth_btns}>
+                            <button className={style.userLoggedIcon}><img src={settingIcon} alt="Setting icon" /></button>
+                            <button className={style.userLoggedIcon} onClick={logOutHandler}><img src={logOutIcon} alt="LogOut icon" /></button>
+                        </div>
+                        :
+                        <div className={style.auth_btns}>
+                            <button onClick={signUpPageHandler}>إنشاء حساب</button>
+                            <button onClick={signInPageHandler}>تسجيل دخول</button>
+                        </div>
+                    }
                 </div>
             </nav>
         </>
