@@ -1,6 +1,7 @@
 /* Start Variables */
 :root
 {
+    --main-color-100: #E0F2FE;
     --main-color-700: #026AA2;
     --gray-color-400: #AFAFAF;
     --gray-color-700: #515151;
@@ -100,6 +101,21 @@ nav
     background-color: var(--main-color-700);
     border: solid 1px var(--main-color-700);
     color: white;
+}
+.auth_btns button.userLoggedIcon
+{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color-100);
+    border: none;
+    border-radius: 50px;
+}
+.auth_btns button.userLoggedIcon:last-of-type img
+{
+    transform: translateX(10%);
 }
 /* End Nav Bar Component */
 

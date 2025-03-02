@@ -29,3 +29,16 @@ export interface ISignUpData{
     userDate: string,
     userState: string
 }
+
+
+// Allow And not Alow
+export interface IAllowAndNotAllowData{
+    allow: {
+        food: string[],
+        drinks: string[]
+    },
+    notAllow: {
+        food: string[],
+        drinks: string[]
+    }
+}
