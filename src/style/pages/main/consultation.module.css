@@ -1,0 +1,167 @@
+/* Start Variables */
+:root
+{
+    --main-color-100: #E0F2FE;
+    --main-color-700: #026AA2;
+    --gray-color-400: #AFAFAF;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-100: #FDE8E8;
+    --red-color-500: #F05252;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Consultation Screen */
+.consultation_container
+{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin: 24px auto 0px;
+}
+.doctors_container
+{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 24px;
+    margin: 24px 0;
+}
+.doctors_container .doctor
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 72px 0;
+    border-radius: 12px;
+    box-shadow: -6px 10px 46px 6px var(--main-color-100);
+    cursor: pointer;
+    text-align: center;
+}
+.doctors_container .doctor .doctor_img
+{
+    width: 160px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 10px var(--main-color-100);
+    border-radius: 160px;
+    overflow: hidden;
+}
+.doctors_container .doctor .doctor_img img
+{
+    width: 100%;
+    transform: scale(1.25);
+    border-radius: 200px;
+}
+.doctor_data h2
+{
+    font-size: 24px;
+    font-weight: 400;
+}
+.doctor_data h3
+{
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--gray-color-700);
+}
+.page_number
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-top: solid 1px #E4E7EC;
+}
+.page_number_btns
+{
+    display: flex;
+    gap: 2px;
+}
+.page_number_btns span
+{
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 32px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--main-color-700);
+    cursor: pointer;
+}
+.page_number_btns span.active_page
+{
+    background-color: var(--main-color-100);
+}
+.state_btn
+{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+/* End Consultation Screen */
+
+
+
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 767.98px) 
+{
+    .doctors_container
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .doctors_container .doctor .doctor_img
+    {
+        width: 144px;
+        height: 144px;
+    }
+    .page_number
+    {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    .doctors_container
+    {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .doctors_container .doctor .doctor_img
+    {
+        width: 152px;
+        height: 152px;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+    .doctors_container .doctor .doctor_img
+    {
+        width: 136px;
+        height: 136px;
+    }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */

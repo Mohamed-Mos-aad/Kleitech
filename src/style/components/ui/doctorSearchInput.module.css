@@ -1,0 +1,67 @@
+/* Start Variables */
+:root
+{
+    --main-color-100: #E0F2FE;
+    --main-color-700: #026AA2;
+    --gray-color-400: #AFAFAF;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-100: #FDE8E8;
+    --red-color-500: #F05252;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Doctor Search Input */
+.doctors_search
+{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+.doctors_search .icon
+{
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color-100);
+    border-radius: 48px;
+    cursor: pointer;
+}
+.doctors_search_input
+{
+    width: 72%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+}
+.doctors_search_input input
+{
+    width: 100%;
+    height: 48px;
+    padding: 8px 48px 8px 16px;
+    border: solid 1px var(--main-color-700);
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 400;
+}
+.doctors_search_input input:focus
+{
+    outline: none;
+}
+.doctors_search_input img
+{
+    width: 20px;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+}
+/* End Doctor Search Input */
