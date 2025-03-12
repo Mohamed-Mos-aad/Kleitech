@@ -90,7 +90,7 @@
 
 /* Start Media Query */
 /* Extra small devices (phones, portrait) */
-@media (min-width: 575.98px) and (max-width: 767.98px) 
+@media (max-width: 767.98px) 
 {
     .allow_not_allow
     {
