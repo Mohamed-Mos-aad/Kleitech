@@ -9,6 +9,7 @@ import SectionHeader from "../../components/landing/SectionHeader";
 import DoctorSearchInput from '../../components/ui/DoctorSearchInput';
 import { useState } from 'react';
 import { doctorsData } from '../../data';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -16,11 +17,14 @@ import { doctorsData } from '../../data';
 
 
 export default function Consultation() {
+    // ** Default
+    const navigate = useNavigate();
     // ** States
     const doctorData = doctorsData.doctorsSimple;
     const doctorsPerPage = 4;
     const totalPages = Math.ceil(doctorData.length / doctorsPerPage);
     const [pageNumber,setPageNumber] = useState(1);
+
 
 
     
@@ -50,18 +54,16 @@ export default function Consultation() {
         target.classList.add(style.active_page)
         setPageNumber(Number(target.id));
     }
-
+    const openDoctorDetailsPageHanlder = (id:number)=>{navigate(`/m/doctor/${id}`)}
 
 
 
 
 
     const currentDoctors = doctorData.slice((pageNumber - 1) * doctorsPerPage,pageNumber*doctorsPerPage);
-
-
     // ** Render
     const doctorDataRender = currentDoctors.map(doctor =>
-            <div className={style.doctor} key={doctor.id}>
+            <div className={style.doctor} key={doctor.id} id={`${doctor.id}`} onClick={()=>{openDoctorDetailsPageHanlder(doctor.id)}}>
                 <div className={style.doctor_img}>
                     <img src={doctorPhoto} alt="Doctor photo" />
                 </div>
@@ -92,7 +94,7 @@ export default function Consultation() {
                 else
                 {
                     pageButtons.unshift(
-                        <span>...</span>
+                        <span key={i}>...</span>
                     )
                 }
             }

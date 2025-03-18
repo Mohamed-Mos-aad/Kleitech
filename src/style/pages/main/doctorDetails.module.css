@@ -1,0 +1,194 @@
+/* Start Variables */
+:root
+{
+    --main-color-100: #E0F2FE;
+    --main-color-700: #026AA2;
+    --main-color-800: #00598D;
+    --gray-color-400: #AFAFAF;
+    --gray-color-600: #636363;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-100: #FDE8E8;
+    --red-color-500: #F05252;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Doctor Details Screen */
+.doctor_details_container
+{
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 72px;
+    margin: auto;
+    padding: 32px;
+    border: solid 1px var(--main-color-800);
+    border-radius: 20px;
+}
+.doctor_details
+{
+    display: flex;
+    gap: 24px;
+}
+.doctor_details .doctor_photo img
+{
+    width: 160px;
+    height: 160px;
+    border-radius: 160px;
+}
+.doctor_data
+{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.doctor_title h1
+{
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--main-color-700);
+}
+.doctor_title h2
+{
+    font-size: 18px;
+    font-weight: 400;
+    text-align: start;
+    color: var(--gray-color-700);
+}
+.doctor_title .doctor_rate
+{
+    display: flex;
+    gap: 8px;
+}
+.doctor_title h3
+{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--gray-color-600);
+}
+.doctor_data ul
+{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    list-style-type: none;
+}
+.doctor_data ul li
+{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.doctor_data ul li span,a
+{
+    font-weight: 600;
+    color: var(--main-color-700);
+    text-decoration: none;
+}
+.doctor_time_tables
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+.doctor_time_tables .tables
+{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 32px;
+}
+.doctor_time_tables .tables .table
+{
+    width: 100%;
+}
+.doctor_time_tables .tables .table ul
+{
+    list-style-type: none;
+    border: solid 1px var(--main-color-700);
+    border-radius: 8px;
+}
+.doctor_time_tables .tables .table ul li
+{
+    font-size: 16px;    
+    font-weight: 600;
+    color: var(--main-color-700);
+    line-height: 24px;
+    text-align: center;
+    padding: 14px 0;
+    border-top: solid 1px var(--main-color-700);
+}
+.doctor_time_tables .tables .table ul li:first-of-type
+{
+    font-size: 20px;
+    font-weight: 600;
+    background-color: var(--main-color-100);
+    border-top: none;
+    border-radius: 8px 8px 0 0;
+}
+.doctor_time_tables .tables .table ul li:last-of-type
+{
+    border-radius: 0 0 8px 8px;
+}
+.doctor_time_tables .tables .table ul li.time_done
+{
+    color: var(--gray-color-700);
+    text-decoration: line-through;
+}
+/* End Doctor Details Screen */
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .doctor_details_container
+    {
+        grid-template-columns: 1fr;
+    }
+    .doctor_details
+    {
+        flex-direction: column;
+    }
+    .doctor_time_tables .tables
+    {
+        grid-template-columns: 1fr;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    .doctor_details_container
+    {
+        grid-template-columns: 1fr;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    .doctor_details_container
+    {
+        grid-template-columns: 1fr;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+    .doctor_details_container
+    {
+        grid-template-columns: 1fr;
+    }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */

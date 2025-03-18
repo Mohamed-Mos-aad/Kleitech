@@ -13,6 +13,7 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/main/Home";
 import AllowAndNotAllow from "../pages/main/AllowAndNotAllow";
 import Consultation from "../pages/main/Consultation";
+import DoctorDetails from "../pages/main/DoctorDetails";
 
 export default function Routers() {
     return (
@@ -33,7 +34,8 @@ export default function Routers() {
                 <Route path="/m" element={<MainLayout />}>
                     <Route index element={<Home/>}/>
                     <Route path="allow-notAllow" element={<AllowAndNotAllow />}/>
-                    <Route path="consultation" element={<Consultation />}/>
+                    <Route path="consultation" element={<Consultation />} />
+                    <Route path="doctor/:id" element={<DoctorDetails />} />
                 </Route>
             </Routes>
         </>
