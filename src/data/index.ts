@@ -59,367 +59,1368 @@ export const allowAndNotAllowData: IAllowAndNotAllowData = {
 
 export const doctorsData = {
     "doctors": [
-    { "id": 1, "name": "دكتور أحمد علي", "specialty": "استشاري أمراض الكلى", "location": "القاهرة: مدينة نصر", "price": "٥٠٠ جنيه", "rating": { "avg_rating": 22, "visitors_count": 50 }, "availability": [
+        {
+        "id": 1,
+        "name": "دكتور أحمد علي",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "القاهرة: مدينة نصر",
+        "price": "٥٠٠ جنيه",
+        "rating": { "avg_rating": 22, "visitors_count": 50 },
+        "availability": [
+            [
             { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": false },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
             { "time": "6:00 PM", "status": true },
             { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 2, "name": "دكتوره سارة محمود", "specialty": "استشاري الطب النفسي", "location": "الإسكندرية: سموحة", "price": "٣٥٠ جنيه", "rating": { "avg_rating": 19, "visitors_count": 30 }, "availability": [
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
             { "time": "3:00 PM", "status": false },
             { "time": "4:00 PM", "status": true },
             { "time": "5:00 PM", "status": true },
             { "time": "6:00 PM", "status": false },
             { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
-        ]
-    },
-    { "id": 3, "name": "دكتور محمد سعيد", "specialty": "استشاري أمراض الكلى", "location": "الجيزة: الدقي", "price": "٤٠٠ جنيه", "rating": { "avg_rating": 20, "visitors_count": 40 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 4, "name": "دكتوره منى حسن", "specialty": "استشاري الطب النفسي", "location": "المنصورة: شارع الجمهورية", "price": "٣٢٠ جنيه", "rating": { "avg_rating": 18, "visitors_count": 28 }, "availability": [
-            { "time": "3:00 PM", "status": false },
-            { "time": "4:00 PM", "status": false },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": true },
-            { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 5, "name": "دكتور خالد عبد الله", "specialty": "استشاري أمراض الكلى", "location": "طنطا: شارع الجيش", "price": "٤٥٠ جنيه", "rating": { "avg_rating": 21, "visitors_count": 35 }, "availability": [
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
             { "time": "3:00 PM", "status": true },
             { "time": "4:00 PM", "status": false },
             { "time": "5:00 PM", "status": true },
             { "time": "6:00 PM", "status": true },
             { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ]
         ]
-    },
-    { "id": 6, "name": "دكتوره نادية فاروق", "specialty": "استشاري الطب النفسي", "location": "أسيوط: شارع الهلالي", "price": "٣٠٠ جنيه", "rating": { "avg_rating": 17, "visitors_count": 25 }, "availability": [
-            { "time": "3:00 PM", "status": false },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": false },
-            { "time": "6:00 PM", "status": true },
-            { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 7, "name": "دكتور عمر يوسف", "specialty": "استشاري أمراض الكلى", "location": "الزقازيق: شارع فاروق", "price": "٤٧٠ جنيه", "rating": { "avg_rating": 23, "visitors_count": 38 }, "availability": [
+        },
+        {
+        "id": 2,
+        "name": "دكتوره سارة محمود",
+        "specialty": "استشاري الطب النفسي",
+        "location": "الإسكندرية: سموحة",
+        "price": "٣٥٠ جنيه",
+        "rating": { "avg_rating": 19, "visitors_count": 30 },
+        "availability": [
+            [
             { "time": "3:00 PM", "status": true },
             { "time": "4:00 PM", "status": true },
             { "time": "5:00 PM", "status": false },
             { "time": "6:00 PM", "status": true },
             { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 8, "name": "دكتوره ياسمين أحمد", "specialty": "استشاري الطب النفسي", "location": "سوهاج: ميدان الثقافة", "price": "٣٣٠ جنيه", "rating": { "avg_rating": 19, "visitors_count": 30 }, "availability": [
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
             { "time": "3:00 PM", "status": false },
             { "time": "4:00 PM", "status": true },
             { "time": "5:00 PM", "status": true },
             { "time": "6:00 PM", "status": false },
             { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
+            { "time": "8:00 PM", "status": false }
+            ]
         ]
-    },
-    { "id": 9, "name": "دكتور محمود سامي", "specialty": "استشاري أمراض الكلى", "location": "دمياط: كورنيش النيل", "price": "٤٦٠ جنيه", "rating": { "avg_rating": 22, "visitors_count": 32 }, "availability": [
+        },
+        {
+        "id": 3,
+        "name": "دكتور محمد سعيد",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "الجيزة: الدقي",
+        "price": "٤٠٠ جنيه",
+        "rating": { "avg_rating": 20, "visitors_count": 40 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
             { "time": "3:00 PM", "status": true },
             { "time": "4:00 PM", "status": true },
             { "time": "5:00 PM", "status": false },
             { "time": "6:00 PM", "status": true },
             { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 10, "name": "دكتوره هدى إبراهيم", "specialty": "استشاري الطب النفسي", "location": "الإسماعيلية: شارع الثلاثيني", "price": "٣٧٠ جنيه", "rating": { "avg_rating": 20, "visitors_count": 27 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": false },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
-        ]
-    },
-    { "id": 11, "name": "دكتور سعيد وليد", "specialty": "استشاري أمراض الكلى", "location": "شرم الشيخ: النور", "price": "٥٢٠ جنيه", "rating": { "avg_rating": 22, "visitors_count": 60 }, "availability": [
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
             { "time": "3:00 PM", "status": false },
             { "time": "4:00 PM", "status": true },
             { "time": "5:00 PM", "status": true },
             { "time": "6:00 PM", "status": false },
             { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
         ]
-    },
-    { "id": 12, "name": "دكتوره إيمان أشرف", "specialty": "استشاري الطب النفسي", "location": "الغردقة: ميدان الدهار", "price": "٣٢٥ جنيه", "rating": { "avg_rating": 20, "visitors_count": 33 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": false },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
-        ]
-    },
-    { "id": 13, "name": "دكتور حسن عبد العزيز", "specialty": "استشاري أمراض الكلى", "location": "بني سويف: شارع النيل", "price": "٤٨٠ جنيه", "rating": { "avg_rating": 21, "visitors_count": 39 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": false },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 14, "name": "دكتوره فاطمة لطفي", "specialty": "استشاري الطب النفسي", "location": "قنا: ميدان السد العالي", "price": "٣٤٠ جنيه", "rating": { "avg_rating": 18, "visitors_count": 25 }, "availability": [
-            { "time": "3:00 PM", "status": false },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
-        ]
-    },
-    { "id": 15, "name": "دكتور محمود أسامة", "specialty": "استشاري أمراض الكلى", "location": "الفيوم: ش الجلاء", "price": "٤٥٠ جنيه", "rating": { "avg_rating": 22, "visitors_count": 41 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": false },
-            { "time": "6:00 PM", "status": true },
-            { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 16, "name": "دكتوره هالة نبيل", "specialty": "استشاري الطب النفسي", "location": "السويس: شارع السلام", "price": "٣٢٠ جنيه", "rating": { "avg_rating": 19, "visitors_count": 35 }, "availability": [
+        },
+        {
+        "id": 4,
+        "name": "دكتوره منى حسن",
+        "specialty": "استشاري الطب النفسي",
+        "location": "المنصورة: شارع الجمهورية",
+        "price": "٣٢٠ جنيه",
+        "rating": { "avg_rating": 18, "visitors_count": 28 },
+        "availability": [
+            [
             { "time": "3:00 PM", "status": true },
             { "time": "4:00 PM", "status": false },
             { "time": "5:00 PM", "status": true },
             { "time": "6:00 PM", "status": true },
-            { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": false },
-        ]
-    },
-    { "id": 17, "name": "دكتور وليد أشرف", "specialty": "استشاري أمراض الكلى", "location": "أسوان: كورنيش النيل", "price": "٤٨٠ جنيه", "rating": { "avg_rating": 20, "visitors_count": 30 }, "availability": [
-            { "time": "3:00 PM", "status": false },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 18, "name": "دكتوره سارة شريف", "specialty": "استشاري الطب النفسي", "location": "الإسماعيلية: شارع الروضة", "price": "٣٥٠ جنيه", "rating": { "avg_rating": 21, "visitors_count": 38 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": false },
-            { "time": "6:00 PM", "status": true },
-            { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 19, "name": "دكتور عادل فهمي", "specialty": "استشاري أمراض الكلى", "location": "شبين الكوم: ميدان الجيش", "price": "٤٥٠ جنيه", "rating": { "avg_rating": 19, "visitors_count": 29 }, "availability": [
-            { "time": "3:00 PM", "status": false },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": false },
             { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 20, "name": "دكتوره ليلى فتحي", "specialty": "استشاري الطب النفسي", "location": "المحلة الكبرى: شارع بورسعيد", "price": "٣٣٠ جنيه", "rating": { "avg_rating": 18, "visitors_count": 26 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": false },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
-        ]
-    },
-    { "id": 21, "name": "دكتور عماد سمير", "specialty": "استشاري أمراض الكلى", "location": "قليوبية: ش شبرا", "price": "٤٦٠ جنيه", "rating": { "avg_rating": 22, "visitors_count": 40 }, "availability": [
-            { "time": "3:00 PM", "status": false },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
-        ]
-    },
-    { "id": 22, "name": "دكتوره شرين توفيق", "specialty": "استشاري الطب النفسي", "location": "مرسى مطروح: ش 26 يوليو", "price": "٣٧٠ جنيه", "rating": { "avg_rating": 20, "visitors_count": 34 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": false },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
-        ]
-    },
-    { "id": 23, "name": "دكتور عبد الرحمن خالد", "specialty": "استشاري أمراض الكلى", "location": "البحيرة: ش التحرير", "price": "٤٧٠ جنيه", "rating": { "avg_rating": 21, "visitors_count": 35 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": false },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": true },
-            { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 24, "name": "دكتوره جهاد محسن", "specialty": "استشاري الطب النفسي", "location": "الأقصر: ميدان أبو الهول", "price": "٣٤٠ جنيه", "rating": { "avg_rating": 20, "visitors_count": 29 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": false },
-            { "time": "5:00 PM", "status": false },
-            { "time": "6:00 PM", "status": true },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 25, "name": "دكتور حسام فؤاد", "specialty": "استشاري أمراض الكلى", "location": "الخارج: شارع الماسورة", "price": "٤٨٠ جنيه", "rating": { "avg_rating": 22, "visitors_count": 32 }, "availability": [
-            { "time": "3:00 PM", "status": false },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": true },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
-        ]
-    },
-    { "id": 26, "name": "دكتوره لمياء سليم", "specialty": "استشاري الطب النفسي", "location": "مسطرد: ش 23 يوليو", "price": "٣١٠ جنيه", "rating": { "avg_rating": 19, "visitors_count": 27 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": false },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 27, "name": "دكتور حسام رجب", "specialty": "استشاري أمراض الكلى", "location": "شبرا: ش السيدة زينب", "price": "٤٦٠ جنيه", "rating": { "avg_rating": 22, "visitors_count": 38 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": false },
-            { "time": "5:00 PM", "status": false },
-            { "time": "6:00 PM", "status": true },
-            { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 28, "name": "دكتوره فاطمة عبد الله", "specialty": "استشاري الطب النفسي", "location": "دمياط: مستشفى الشفاء", "price": "٣٤٠ جنيه", "rating": { "avg_rating": 20, "visitors_count": 36 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": false },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": true },
-            { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 29, "name": "دكتور علي كمال", "specialty": "استشاري أمراض الكلى", "location": "العباسية: ش 6 أكتوبر", "price": "٥٠٠ جنيه", "rating": { "avg_rating": 23, "visitors_count": 42 }, "availability": [
-            { "time": "3:00 PM", "status": false },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
-        ]
-    },
-    { "id": 30, "name": "دكتوره سمية شهاب", "specialty": "استشاري الطب النفسي", "location": "15 مايو: ميدان السادات", "price": "٣٥٠ جنيه", "rating": { "avg_rating": 19, "visitors_count": 31 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": false },
-            { "time": "6:00 PM", "status": true },
-            { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 31, "name": "دكتور هاني فرج", "specialty": "استشاري أمراض الكلى", "location": "دمياط: ش الجندي", "price": "٤٨٠ جنيه", "rating": { "avg_rating": 20, "visitors_count": 41 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": true },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
-        ]
-    },
-    { "id": 32, "name": "دكتوره غادة توفيق", "specialty": "استشاري الطب النفسي", "location": "بني سويف: ش الجامعة", "price": "٣٢٠ جنيه", "rating": { "avg_rating": 19, "visitors_count": 35 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": false },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
-        ]
-    },
-    { "id": 33, "name": "دكتور أسامة زكي", "specialty": "استشاري أمراض الكلى", "location": "أسيوط: ميدان 6 أكتوبر", "price": "٤٥٠ جنيه", "rating": { "avg_rating": 22, "visitors_count": 38 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": false },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
-        ]
-    },
-    { "id": 34, "name": "دكتوره رانيا نعيم", "specialty": "استشاري الطب النفسي", "location": "العريش: ش فلسطين", "price": "٣٣٢ جنيه", "rating": { "avg_rating": 20, "visitors_count": 32 }, "availability": [
-            { "time": "3:00 PM", "status": true },
-            { "time": "4:00 PM", "status": false },
-            { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": false },
-            { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
-        ]
-    },
-    { "id": 35, "name": "دكتور حمدي هلال", "specialty": "استشاري أمراض الكلى", "location": "الفيوم: ش النيل", "price": "٤٧٠ جنيه", "rating": { "avg_rating": 19, "visitors_count": 29 }, "availability": [
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
             { "time": "3:00 PM", "status": false },
             { "time": "4:00 PM", "status": true },
             { "time": "5:00 PM", "status": true },
             { "time": "6:00 PM", "status": true },
             { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ]
         ]
-    },
-    { "id": 36, "name": "دكتوره نجلاء سامي", "specialty": "استشاري الطب النفسي", "location": "سوهاج: ش التحرير", "price": "٣٤٥ جنيه", "rating": { "avg_rating": 18, "visitors_count": 28 }, "availability": [
+        },
+        {
+        "id": 5,
+        "name": "دكتور خالد عبد الله",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "طنطا: شارع الجيش",
+        "price": "٤٥٠ جنيه",
+        "rating": { "avg_rating": 21, "visitors_count": 35 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
             { "time": "3:00 PM", "status": false },
             { "time": "4:00 PM", "status": true },
             { "time": "5:00 PM", "status": true },
             { "time": "6:00 PM", "status": false },
             { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
+            { "time": "8:00 PM", "status": false }
+            ]
         ]
-    },
-    { "id": 37, "name": "دكتور يوسف قاسم", "specialty": "استشاري أمراض الكلى", "location": "العريش: ش 23 يوليو", "price": "٤٨٥ جنيه", "rating": { "avg_rating": 20, "visitors_count": 33 }, "availability": [
+        },
+        {
+        "id": 6,
+        "name": "دكتوره نادية فاروق",
+        "specialty": "استشاري الطب النفسي",
+        "location": "أسيوط: شارع الهلالي",
+        "price": "٣٠٠ جنيه",
+        "rating": { "avg_rating": 17, "visitors_count": 25 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
             { "time": "3:00 PM", "status": true },
             { "time": "4:00 PM", "status": false },
             { "time": "5:00 PM", "status": true },
-            { "time": "6:00 PM", "status": true },
-            { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
-        ]
-    },
-    { "id": 38, "name": "دكتوره سمية مصطفى", "specialty": "استشاري الطب النفسي", "location": "رفح: ش الجمل", "price": "٣١٠ جنيه", "rating": { "avg_rating": 21, "visitors_count": 37 }, "availability": [
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
             { "time": "3:00 PM", "status": true },
             { "time": "4:00 PM", "status": true },
             { "time": "5:00 PM", "status": false },
             { "time": "6:00 PM", "status": false },
             { "time": "7:00 PM", "status": true },
-            { "time": "8:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
         ]
-    },
-    { "id": 39, "name": "دكتور كريم طارق", "specialty": "استشاري أمراض الكلى", "location": "دمياط: ش الورد", "price": "٤٩٠ جنيه", "rating": { "avg_rating": 22, "visitors_count": 42 }, "availability": [
+        },
+        {
+        "id": 7,
+        "name": "دكتور عمر يوسف",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "الزقازيق: شارع فاروق",
+        "price": "٤٧٠ جنيه",
+        "rating": { "avg_rating": 23, "visitors_count": 38 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 8,
+        "name": "دكتوره ياسمين أحمد",
+        "specialty": "استشاري الطب النفسي",
+        "location": "سوهاج: ميدان الثقافة",
+        "price": "٣٣٠ جنيه",
+        "rating": { "avg_rating": 19, "visitors_count": 30 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
             { "time": "3:00 PM", "status": true },
             { "time": "4:00 PM", "status": true },
             { "time": "5:00 PM", "status": false },
             { "time": "6:00 PM", "status": true },
             { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ]
         ]
-    },
-    { "id": 40, "name": "دكتوره رشا علي", "specialty": "استشاري الطب النفسي", "location": "بني سويف: ش المريوطية", "price": "٣٤٠ جنيه", "rating": { "avg_rating": 20, "visitors_count": 31 }, "availability": [
+        },
+        {
+        "id": 9,
+        "name": "دكتور محمود سامي",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "دمياط: كورنيش النيل",
+        "price": "٤٦٠ جنيه",
+        "rating": { "avg_rating": 22, "visitors_count": 32 },
+        "availability": [
+            [
             { "time": "3:00 PM", "status": true },
             { "time": "4:00 PM", "status": false },
             { "time": "5:00 PM", "status": true },
             { "time": "6:00 PM", "status": true },
             { "time": "7:00 PM", "status": false },
-            { "time": "8:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ]
         ]
-    }
+        },
+        {
+        "id": 10,
+        "name": "دكتوره هدى إبراهيم",
+        "specialty": "استشاري الطب النفسي",
+        "location": "الإسماعيلية: شارع الثلاثيني",
+        "price": "٣٧٠ جنيه",
+        "rating": { "avg_rating": 20, "visitors_count": 27 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ]
+        ]
+        },
+        {
+        "id": 11,
+        "name": "دكتور سعيد وليد",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "شرم الشيخ: النور",
+        "price": "٥٢٠ جنيه",
+        "rating": { "avg_rating": 22, "visitors_count": 60 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 12,
+        "name": "دكتوره إيمان أشرف",
+        "specialty": "استشاري الطب النفسي",
+        "location": "الغردقة: ميدان الدهار",
+        "price": "٣٢٥ جنيه",
+        "rating": { "avg_rating": 20, "visitors_count": 33 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 13,
+        "name": "دكتور حسن عبد العزيز",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "بني سويف: شارع النيل",
+        "price": "٤٨٠ جنيه",
+        "rating": { "avg_rating": 21, "visitors_count": 39 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 14,
+        "name": "دكتوره فاطمة لطفي",
+        "specialty": "استشاري الطب النفسي",
+        "location": "قنا: ميدان السد العالي",
+        "price": "٣٤٠ جنيه",
+        "rating": { "avg_rating": 18, "visitors_count": 25 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 15,
+        "name": "دكتور محمود أسامة",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "الفيوم: ش الجلاء",
+        "price": "٤٥٠ جنيه",
+        "rating": { "avg_rating": 22, "visitors_count": 41 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 16,
+        "name": "دكتوره هالة نبيل",
+        "specialty": "استشاري الطب النفسي",
+        "location": "السويس: شارع السلام",
+        "price": "٣٢٠ جنيه",
+        "rating": { "avg_rating": 19, "visitors_count": 35 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ]
+        ]
+        },
+        {
+        "id": 17,
+        "name": "دكتور وليد أشرف",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "أسوان: كورنيش النيل",
+        "price": "٤٨٠ جنيه",
+        "rating": { "avg_rating": 20, "visitors_count": 30 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ]
+        ]
+        },
+        {
+        "id": 18,
+        "name": "دكتوره سارة شريف",
+        "specialty": "استشاري الطب النفسي",
+        "location": "الإسماعيلية: شارع الروضة",
+        "price": "٣٥٠ جنيه",
+        "rating": { "avg_rating": 21, "visitors_count": 38 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 19,
+        "name": "دكتور عادل فهمي",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "شبين الكوم: ميدان الجيش",
+        "price": "٤٥٠ جنيه",
+        "rating": { "avg_rating": 19, "visitors_count": 29 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 20,
+        "name": "دكتوره ليلى فتحي",
+        "specialty": "استشاري الطب النفسي",
+        "location": "المحلة الكبرى: شارع بورسعيد",
+        "price": "٣٣٠ جنيه",
+        "rating": { "avg_rating": 18, "visitors_count": 26 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 21,
+        "name": "دكتور عماد سمير",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "قليوبية: ش شبرا",
+        "price": "٤٦٠ جنيه",
+        "rating": { "avg_rating": 22, "visitors_count": 40 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ]
+        ]
+        },
+        {
+        "id": 22,
+        "name": "دكتوره شرين توفيق",
+        "specialty": "استشاري الطب النفسي",
+        "location": "مرسى مطروح: ش 26 يوليو",
+        "price": "٣٧٠ جنيه",
+        "rating": { "avg_rating": 20, "visitors_count": 34 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 23,
+        "name": "دكتور عبد الرحمن خالد",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "البحيرة: ش التحرير",
+        "price": "٤٧٠ جنيه",
+        "rating": { "avg_rating": 21, "visitors_count": 35 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 24,
+        "name": "دكتوره جهاد محسن",
+        "specialty": "استشاري الطب النفسي",
+        "location": "الأقصر: ميدان أبو الهول",
+        "price": "٣٤٠ جنيه",
+        "rating": { "avg_rating": 20, "visitors_count": 29 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 25,
+        "name": "دكتور حسام فؤاد",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "الخارج: شارع الماسورة",
+        "price": "٤٨٠ جنيه",
+        "rating": { "avg_rating": 22, "visitors_count": 32 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 26,
+        "name": "دكتوره لمياء سليم",
+        "specialty": "استشاري الطب النفسي",
+        "location": "مسطرد: ش 23 يوليو",
+        "price": "٣١٠ جنيه",
+        "rating": { "avg_rating": 19, "visitors_count": 27 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ]
+        ]
+        },
+        {
+        "id": 27,
+        "name": "دكتور حسام رجب",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "شبرا: ش السيدة زينب",
+        "price": "٤٦٠ جنيه",
+        "rating": { "avg_rating": 22, "visitors_count": 38 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 28,
+        "name": "دكتوره فاطمة عبد الله",
+        "specialty": "استشاري الطب النفسي",
+        "location": "دمياط: مستشفى الشفاء",
+        "price": "٣٤٠ جنيه",
+        "rating": { "avg_rating": 20, "visitors_count": 36 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ]
+        ]
+        },
+        {
+        "id": 29,
+        "name": "دكتور علي كمال",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "العباسية: ش 6 أكتوبر",
+        "price": "٥٠٠ جنيه",
+        "rating": { "avg_rating": 23, "visitors_count": 42 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 30,
+        "name": "دكتوره سمية شهاب",
+        "specialty": "استشاري الطب النفسي",
+        "location": "15 مايو: ميدان السادات",
+        "price": "٣٥٠ جنيه",
+        "rating": { "avg_rating": 19, "visitors_count": 31 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 31,
+        "name": "دكتور هاني فرج",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "دمياط: ش الجندي",
+        "price": "٤٨٠ جنيه",
+        "rating": { "avg_rating": 20, "visitors_count": 41 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ]
+        ]
+        },
+        {
+        "id": 32,
+        "name": "دكتوره غادة توفيق",
+        "specialty": "استشاري الطب النفسي",
+        "location": "بني سويف: ش الجامعة",
+        "price": "٣٢٠ جنيه",
+        "rating": { "avg_rating": 19, "visitors_count": 35 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 33,
+        "name": "دكتور أسامة زكي",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "أسيوط: ميدان 6 أكتوبر",
+        "price": "٤٥٠ جنيه",
+        "rating": { "avg_rating": 22, "visitors_count": 38 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 34,
+        "name": "دكتوره رانيا نعيم",
+        "specialty": "استشاري الطب النفسي",
+        "location": "العريش: ش فلسطين",
+        "price": "٣٣٢ جنيه",
+        "rating": { "avg_rating": 20, "visitors_count": 32 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": false }
+            ]
+        ]
+        },
+        {
+        "id": 35,
+        "name": "دكتور حمدي هلال",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "الفيوم: ش النيل",
+        "price": "٤٧٠ جنيه",
+        "rating": { "avg_rating": 19, "visitors_count": 29 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ]
+        ]
+        },
+        {
+        "id": 36,
+        "name": "دكتوره نجلاء سامي",
+        "specialty": "استشاري الطب النفسي",
+        "location": "سوهاج: ش التحرير",
+        "price": "٣٤٥ جنيه",
+        "rating": { "avg_rating": 18, "visitors_count": 28 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 37,
+        "name": "دكتور يوسف قاسم",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "العريش: ش 23 يوليو",
+        "price": "٤٨٥ جنيه",
+        "rating": { "avg_rating": 20, "visitors_count": 33 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 38,
+        "name": "دكتوره سمية مصطفى",
+        "specialty": "استشاري الطب النفسي",
+        "location": "رفح: ش الجمل",
+        "price": "٣١٠ جنيه",
+        "rating": { "avg_rating": 21, "visitors_count": 37 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 39,
+        "name": "دكتور كريم طارق",
+        "specialty": "استشاري أمراض الكلى",
+        "location": "دمياط: ش الورد",
+        "price": "٤٩٠ جنيه",
+        "rating": { "avg_rating": 22, "visitors_count": 42 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": false },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        },
+        {
+        "id": 40,
+        "name": "دكتوره رشا علي",
+        "specialty": "استشاري الطب النفسي",
+        "location": "بني سويف: ش المريوطية",
+        "price": "٣٤٠ جنيه",
+        "rating": { "avg_rating": 20, "visitors_count": 31 },
+        "availability": [
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": true },
+            { "time": "7:00 PM", "status": false },
+            { "time": "8:00 PM", "status": false }
+            ],
+            [
+            { "time": "3:00 PM", "status": true },
+            { "time": "4:00 PM", "status": false },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ],
+            [
+            { "time": "3:00 PM", "status": false },
+            { "time": "4:00 PM", "status": true },
+            { "time": "5:00 PM", "status": true },
+            { "time": "6:00 PM", "status": false },
+            { "time": "7:00 PM", "status": true },
+            { "time": "8:00 PM", "status": true }
+            ]
+        ]
+        }
     ],
+
 
     "doctorsSimple": [
         { "id": 1, "name": "أحمد علي", "specialty": "دكتور كلى" },

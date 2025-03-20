@@ -1,0 +1,130 @@
+/* Start Variables */
+:root
+{
+    --main-color-100: #E0F2FE;
+    --main-color-700: #026AA2;
+    --main-color-800: #00598D;
+    --gray-color-400: #AFAFAF;
+    --gray-color-600: #636363;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-100: #FDE8E8;
+    --red-color-500: #F05252;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Booking Component */
+.booking
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999999999999999999;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.booking_container
+{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 48px;
+    background-color: white;
+    border-radius: 8px;
+}
+.booking_container h3
+{
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--main-color-700);
+}
+.booking_container form
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.booking_container form .form_btns
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+.booking_container form .form_btns button
+{
+    width: 100%;
+    padding: 0 16px;
+    background-color: transparent;
+    border: solid 1px var(--main-color-700);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 36px;
+    color: var(--main-color-700);
+    cursor: pointer;
+}
+.booking_container form .form_btns button:first-of-type
+{
+    background-color: var(--main-color-700);
+    border: solid 1px var(--main-color-700);
+    color: white;
+}
+/* End Booking Component */
+
+
+
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .booking_container
+    {
+        width: 95%;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    .booking_container
+    {
+        width: 90%;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    .booking_container
+    {
+        width: 50%;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+    .booking_container
+    {
+        width: 40%;
+    }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */

@@ -82,8 +82,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: -75px;
+    position: fixed;
+    top: 0;
     left: 0;
     z-index: 9999999999999;
     background-color: rgba(150, 150, 150, 0.51);
@@ -139,6 +139,7 @@
 }
 .upload_area h3
 {
+    text-align: center;
     font-size: 18px;
     font-weight: 400;
 }
@@ -246,6 +247,14 @@
     {
         width: 75%;
     }
+    .upload_component
+    {
+        top: 0;
+    }
+    .upload_container
+    {
+        width: 90%;
+    }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) 
@@ -276,6 +285,14 @@
         font-size: 16px;
     }
     .home_img img
+    {
+        width: 75%;
+    }
+    .upload_component
+    {
+        top: 0;
+    }
+    .upload_container
     {
         width: 75%;
     }
@@ -312,11 +329,26 @@
     {
         width: 50%;
     }
+    .upload_component
+    {
+        top: 0;
+    }
+    .upload_container
+    {
+        width: 60%;
+    }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) 
 {
-
+    .upload_component
+    {
+        top: 0;
+    }
+    .upload_container
+    {
+        width: 50%;
+    }
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) 

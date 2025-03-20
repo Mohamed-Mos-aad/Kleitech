@@ -47,7 +47,6 @@ export default function Consultation() {
         const pagesNumbers = document.getElementsByTagName('span');
         for(let i = 0 ; i < pagesNumbers.length ; i++)
         {
-            console.log(pagesNumbers[i]);
             pagesNumbers[i].classList.remove('_active_page_ltnrp_205');
         }
         const target = e.target as HTMLSpanElement;

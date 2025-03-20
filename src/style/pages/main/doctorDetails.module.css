@@ -123,6 +123,12 @@
     text-align: center;
     padding: 14px 0;
     border-top: solid 1px var(--main-color-700);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.doctor_time_tables .tables .table ul li:hover
+{
+    background-color: var(--main-color-100);
 }
 .doctor_time_tables .tables .table ul li:first-of-type
 {
