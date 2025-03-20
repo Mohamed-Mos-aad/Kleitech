@@ -42,3 +42,10 @@ export interface IAllowAndNotAllowData{
         drinks: string[]
     }
 }
+
+
+// ** BookingData
+export interface IBookingData{
+    userName: string,
+    userPhone: string
+}

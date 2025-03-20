@@ -1,5 +1,6 @@
 // ** Interfaces
 import { ISignUpData } from "../interfaces";
+import { IBookingData } from '../interfaces'
 
 
 
@@ -96,6 +97,31 @@ export function inputValidation(
     {
         validationMessages.userState = "يرجى إدخال حالتك بشكل صحيح."; 
     }
+
+
+    return validationMessages;
+}
+
+
+export function bookingValidation({userName,userPhone}:IBookingData)
+{
+    const validationMessages:IBookingData = {
+        userName: '',
+        userPhone: ''
+    }
+
+
+
+    if(!userName.trim() || userName.length < 8)
+    {
+        validationMessages.userName = "يرجى إدخال الاسم بالكامل.";
+    }
+
+    if(!userPhone.trim() || userPhone.length < 11)
+    {
+        validationMessages.userPhone = "يرجى إدخال رقم الهاتف بشكل صحيح."
+    }
+    
 
 
     return validationMessages;

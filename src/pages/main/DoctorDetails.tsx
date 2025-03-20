@@ -16,6 +16,7 @@ import { useEffect, useState } from 'react'
 // ** Other
 import doctorPhoto from '../../assets/landingPage/PatientReviews/PatientReview-1.png'
 import { doctorsData } from '../../data'
+import Booking from '../../components/ui/Booking'
 
 
 
@@ -34,8 +35,13 @@ interface IDoctordoctors{
     availability: {
         time: string,
         status: boolean,
-    }[],
+    }[][],
 }
+
+
+
+
+
 export default function DoctorDetails() {
     // Defaults
     const { id } = useParams();
@@ -43,9 +49,21 @@ export default function DoctorDetails() {
 
 
 
-
     // ** States
     const [doctor,setDoctor] = useState<IDoctordoctors>();
+    const [bookingOpened,setBookingOpenend] = useState<boolean>(false);
+
+
+
+
+
+    // ** Handlers
+    const bookingStateToggelHanlder = (state:boolean)=>{
+        if(!state)
+        {
+            setBookingOpenend(!bookingOpened)
+        }
+    };
 
 
 
@@ -55,23 +73,53 @@ export default function DoctorDetails() {
     const renderFirstDayTabel = ()=>{
         if(doctor)
         {
-            return doctor.availability.map((day,index) =>(
-                <li className={day.status ? style.time_done : ''}>
+            return doctor.availability[0].map((day,index) =>(
+                <li className={day.status ? style.time_done : ''} key={`first${index}`} onClick={()=>{bookingStateToggelHanlder(day.status)}}>
                     من {day.time}
-                    <br />حتى{doctor.availability[index+1]?.time}
+                    <br />حتى{doctor.availability[0]?.[index+1]?.time}
                 </li>
             ))
         }
         return null
     }
+    const renderSecondDayTabel = ()=>{
+        if(doctor)
+        {
+            return doctor.availability[1].map((day,index) =>(
+                <li className={day.status ? style.time_done : ''} key={`second${index}`} onClick={()=>{bookingStateToggelHanlder(day.status)}}>
+                    من {day.time}
+                    <br />حتى{doctor.availability[1]?.[index+1]?.time}
+                </li>
+            ))
+        }
+        return null
+    }
+    const renderThirdDayTabel = ()=>{
+        if(doctor)
+        {
+            return doctor.availability[2].map((day,index) =>(
+                <li className={day.status ? style.time_done : ''} key={`third${index}`} onClick={()=>{bookingStateToggelHanlder(day.status)}}>
+                    من {day.time}
+                    <br />حتى{doctor.availability[2]?.[index+1]?.time}
+                </li>
+            ))
+        }
+        return null
+    }
+
+
+
+
+
     // ** UseEffect
     useEffect(()=>{
-        if(id)
+        if(id && doctorsData.doctors[Number(id)-1])
         {
             setDoctor(doctorsData.doctors[Number(id)-1]);
         }
     },[id])
 
+    
 
 
 
@@ -140,68 +188,26 @@ export default function DoctorDetails() {
                         <div className={style.table}>
                             <ul>
                                 <li>
-                                    اليوم  
+                                    غداً  
                                 </li>
-                                <li>
-                                    من 3:00م
-                                    <br />حتى00 :4 م 
-                                </li>
-                                <li className={style.time_done}>
-                                    من 4:00م
-                                    <br />حتى00 :5 م 
-                                </li>
-                                <li>
-                                    من 4:00م
-                                    <br />حتى00 :5 م 
-                                </li>
-                                <li className={style.time_done}>
-                                    من 7:30م
-                                    <br />حتى30 :8 م 
-                                </li>
-                                <li>
-                                    من 9:00م
-                                    <br />حتى00 :10 م
-                                </li>
-                                <li>
-                                    من 11:00م
-                                    <br />حتى00 :12 م
-                                </li>
+                                {renderSecondDayTabel()}
                             </ul>
                         </div>
                         <div className={style.table}>
                             <ul>
                                 <li>
-                                    اليوم  
+                                    اليوم الثالث
                                 </li>
-                                <li className={style.time_done}>
-                                    من 3:00م
-                                    <br />حتى00 :4 م 
-                                </li>
-                                <li>
-                                    من 4:00م
-                                    <br />حتى00 :5 م 
-                                </li>
-                                <li>
-                                    من 4:00م
-                                    <br />حتى00 :5 م 
-                                </li>
-                                <li className={style.time_done}>
-                                    من 7:30م
-                                    <br />حتى30 :8 م 
-                                </li>
-                                <li>
-                                    من 9:00م
-                                    <br />حتى00 :10 م
-                                </li>
-                                <li>
-                                    من 11:00م
-                                    <br />حتى00 :12 م
-                                </li>
+                                {renderThirdDayTabel()}
                             </ul>
                         </div>
                     </div>
                     <button><img src={rightIcon} alt="right icon" /></button>
                 </div>
+                {
+                    bookingOpened &&
+                    <Booking setBookingOpenend={setBookingOpenend}/>
+                }
             </div>
         </>
     )
