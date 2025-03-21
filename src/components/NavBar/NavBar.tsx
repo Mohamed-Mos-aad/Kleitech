@@ -7,12 +7,24 @@ import logOutIcon from '../../assets/navBar/logOutIcon.svg'
 import settingIcon from '../../assets/navBar/settingIcon.svg'
 // ** Other
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+// ** Store
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState, AppDispatch } from '../../app/store'
+import { logout } from '../../app/slices/userSlice'
 
 
 
 
 export default function NavBar() {
+    // ** Store
+    const dispatch: AppDispatch = useDispatch();
+    const user = useSelector((state: RootState) => state.userLogin);
+
+
+
+
+
     // ** Defaults
     const navigate = useNavigate();
 
@@ -51,8 +63,29 @@ export default function NavBar() {
             nabBarToggelHandler();
         }
     }
-    const logOutHandler = ()=>{setUserLogged(false)};
+    const logOutHandler = ()=>{
+        setUserLogged(false)
+        handleLogout();
+        navigate('/')
+    };
     
+
+    // ** Store Handler 
+    const handleLogout = () => {
+        dispatch(logout());
+    };
+
+
+
+    // ** UseEffect
+    useEffect(()=>{
+        if(user.loggedIn)
+        {
+            setUserLogged(true);
+        }
+    },[user])
+
+
 
 
 

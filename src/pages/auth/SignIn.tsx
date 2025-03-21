@@ -5,12 +5,22 @@ import googleIcon from '../../assets/auth/socialIcons/googleIcon.svg'
 import facebookIcon from '../../assets/auth/socialIcons/facebookIcon.svg'
 import appleIcon from '../../assets/auth/socialIcons/appleIcon.svg'
 import { useNavigate } from 'react-router-dom';
-
+// ** Store
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../../app/store'
+import { setUserLogin } from '../../app/slices/userSlice'
 
 
 
 
 export default function SignIn() {
+    // ** Store
+    const dispatch: AppDispatch = useDispatch();
+
+
+
+
+
     // ** Defaults
     const navigate = useNavigate();
 
@@ -20,11 +30,24 @@ export default function SignIn() {
 
     // ** Handlers
     const signUpPageHandler = ()=>{navigate('/u/sign-up')};
+
     const forgetPasswordPageHandler = ()=>{navigate('/u/forget-password')};
     const loginHandler = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault();
+        handleLogin();
         navigate('/m')
     };
+
+
+
+
+    // ** Store Handler 
+    const handleLogin = () => {
+    dispatch(setUserLogin({ name: 'John Doe', email: 'john@example.com', loggedIn: true }));
+    };
+
+
+
 
 
 
