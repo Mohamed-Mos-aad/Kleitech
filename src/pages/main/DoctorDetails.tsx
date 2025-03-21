@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react'
 import doctorPhoto from '../../assets/landingPage/PatientReviews/PatientReview-1.png'
 import { doctorsData } from '../../data'
 import Booking from '../../components/ui/Booking'
+import BookingDone from '../../components/ui/BookingDone'
 
 
 
@@ -51,7 +52,8 @@ export default function DoctorDetails() {
 
     // ** States
     const [doctor,setDoctor] = useState<IDoctordoctors>();
-    const [bookingOpened,setBookingOpenend] = useState<boolean>(false);
+    const [bookingOpened,setBookingOpened] = useState<boolean>(false);
+    const [bookingDoneOpened,setBookingDoneOpened] = useState<boolean>(false);
 
 
 
@@ -61,7 +63,7 @@ export default function DoctorDetails() {
     const bookingStateToggelHanlder = (state:boolean)=>{
         if(!state)
         {
-            setBookingOpenend(!bookingOpened)
+            setBookingOpened(!bookingOpened)
         }
     };
 
@@ -206,7 +208,11 @@ export default function DoctorDetails() {
                 </div>
                 {
                     bookingOpened &&
-                    <Booking setBookingOpenend={setBookingOpenend}/>
+                    <Booking setBookingOpened={setBookingOpened} setBookingDoneOpened={setBookingDoneOpened}/>
+                }
+                {
+                    bookingDoneOpened &&
+                    <BookingDone />
                 }
             </div>
         </>

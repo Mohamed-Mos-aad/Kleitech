@@ -14,14 +14,15 @@ import { bookingValidation } from '../../validation'
 
 // ** Interface
 interface IBooking{
-    setBookingOpenend : React.Dispatch<React.SetStateAction<boolean>>
+    setBookingOpened : React.Dispatch<React.SetStateAction<boolean>>
+    setBookingDoneOpened : React.Dispatch<React.SetStateAction<boolean>>
 }
 import { IBookingData } from '../../interfaces'
 
 
 
 
-export default function Booking({setBookingOpenend}:IBooking) {
+export default function Booking({setBookingOpened,setBookingDoneOpened}:IBooking) {
     // ** Defaults
     const defaultBookingData:IBookingData = {
         userName: '',
@@ -68,7 +69,9 @@ export default function Booking({setBookingOpenend}:IBooking) {
             setBookingError(validationResults);
             return;
         }
-        console.log(bookingData);
+        
+        setBookingOpened(false);
+        setBookingDoneOpened(true);
     }
     
     
@@ -85,7 +88,7 @@ export default function Booking({setBookingOpenend}:IBooking) {
                         <InputElement type='text' id='userPhone' name='رقم الهاتف' error={bookingError.userPhone} img={{src:userNameIcon,alt:'userNameIcon'}} placeholder='ادخل رقم الهاتف' value={bookingData.userPhone} onChange={inputChangeValueHandler}/>
                         <div className={style.form_btns}>
                             <button onClick={(e)=>{bookingHanlder(e)}}>احجز</button>
-                            <button onClick={() => setBookingOpenend(false)}>الغاء</button>
+                            <button onClick={() => setBookingOpened(false)}>الغاء</button>
                         </div>
                     </form>
                 </div>
