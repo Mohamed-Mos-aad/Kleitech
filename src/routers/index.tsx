@@ -15,6 +15,7 @@ import AllowAndNotAllow from "../pages/main/AllowAndNotAllow";
 import Consultation from "../pages/main/Consultation";
 import DoctorDetails from "../pages/main/DoctorDetails";
 import BookingDetails from "../pages/main/BookingDetails";
+import ChatLayout from "../layouts/ChatLayout";
 
 export default function Routers() {
     return (
@@ -39,6 +40,7 @@ export default function Routers() {
                     <Route path="doctor/:id" element={<DoctorDetails />} />
                     <Route path="booking-details" element={<BookingDetails />} />
                 </Route>
+                <Route path="/chats" element={<ChatLayout />}/>
             </Routes>
         </>
     )
