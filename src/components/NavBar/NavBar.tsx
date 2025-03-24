@@ -42,7 +42,7 @@ export default function NavBar() {
     // ** Handlers
     const signUpPageHandler = ()=>{navigate('/u/sign-up')};
     const signInPageHandler = ()=>{navigate('/u/sign-in')};
-    const nabBarToggelHandler = ()=>{
+    const nabBarToggleHandler = ()=>{
         const menuElement = document.getElementById('menu');
         if(!navOpen && menuElement && window.innerWidth < 992)
         {
@@ -60,7 +60,7 @@ export default function NavBar() {
         if(sectionId)
         {
             sectionId.scrollIntoView({behavior:'smooth'});
-            nabBarToggelHandler();
+            nabBarToggleHandler();
         }
     }
     const logOutHandler = ()=>{
@@ -91,13 +91,13 @@ export default function NavBar() {
 
     return (
         <>
-            <nav className={style.nav}>
+            <nav className={style.navCompoent}>
                 <div className={style.nav_container}>
                     <div className={style.logo}>
                         <img src={logo} alt="" />
                     </div>
                     <div className={style.mb_menu}>
-                        <img src={navBarMenuIcon} alt="Nav Bar Icon" onClick={nabBarToggelHandler}/>
+                        <img src={navBarMenuIcon} alt="Nav Bar Icon" onClick={nabBarToggleHandler}/>
                     </div>
                     <div className={style.menu} id='menu'>
                         {userLogged ?
