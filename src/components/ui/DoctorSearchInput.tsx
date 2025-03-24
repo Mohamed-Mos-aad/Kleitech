@@ -18,20 +18,20 @@ export default function DoctorSearchInput() {
 
 
     // ** Handlers
-    const searchStateToggelHandler = ()=>{setSearchStateOpen(!searchStateOpen)};
+    const searchStateToggleHandler = ()=>{setSearchStateOpen(!searchStateOpen)};
 
 
     return (
         <>
             <div className={style.doctors_search}>
                 {!searchStateOpen ?
-                    <div className={style.icon} onClick={searchStateToggelHandler}>
+                    <div className={style.icon} onClick={searchStateToggleHandler}>
                         <img src={searchIcon} alt="Search icon" />
                     </div>
                     :
                     <div className={style.doctors_search_input}>
                         <img src={searchIcon} alt="Search icon" />
-                        <input type="text" placeholder='بحث' onBlur={searchStateToggelHandler}/>
+                        <input type="text" placeholder='بحث' onBlur={searchStateToggleHandler}/>
                     </div>
                 }
             </div>

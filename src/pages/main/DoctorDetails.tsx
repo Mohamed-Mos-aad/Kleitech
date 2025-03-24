@@ -60,7 +60,7 @@ export default function DoctorDetails() {
 
 
     // ** Handlers
-    const bookingStateToggelHanlder = (state:boolean)=>{
+    const bookingStateToggleHanlder = (state:boolean)=>{
         if(!state)
         {
             setBookingOpened(!bookingOpened)
@@ -76,7 +76,7 @@ export default function DoctorDetails() {
         if(doctor)
         {
             return doctor.availability[0].map((day,index) =>(
-                <li className={day.status ? style.time_done : ''} key={`first${index}`} onClick={()=>{bookingStateToggelHanlder(day.status)}}>
+                <li className={day.status ? style.time_done : ''} key={`first${index}`} onClick={()=>{bookingStateToggleHanlder(day.status)}}>
                     من {day.time}
                     <br />حتى{doctor.availability[0]?.[index+1]?.time}
                 </li>
@@ -88,7 +88,7 @@ export default function DoctorDetails() {
         if(doctor)
         {
             return doctor.availability[1].map((day,index) =>(
-                <li className={day.status ? style.time_done : ''} key={`second${index}`} onClick={()=>{bookingStateToggelHanlder(day.status)}}>
+                <li className={day.status ? style.time_done : ''} key={`second${index}`} onClick={()=>{bookingStateToggleHanlder(day.status)}}>
                     من {day.time}
                     <br />حتى{doctor.availability[1]?.[index+1]?.time}
                 </li>
@@ -100,7 +100,7 @@ export default function DoctorDetails() {
         if(doctor)
         {
             return doctor.availability[2].map((day,index) =>(
-                <li className={day.status ? style.time_done : ''} key={`third${index}`} onClick={()=>{bookingStateToggelHanlder(day.status)}}>
+                <li className={day.status ? style.time_done : ''} key={`third${index}`} onClick={()=>{bookingStateToggleHanlder(day.status)}}>
                     من {day.time}
                     <br />حتى{doctor.availability[2]?.[index+1]?.time}
                 </li>

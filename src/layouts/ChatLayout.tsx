@@ -10,9 +10,8 @@ import micIcon from '../assets/main/chat/micIcon.svg'
 import style from '../style/layouts/chatLayout.module.css'
 import { useState } from 'react'
 import { chats } from './../data/index';
-
-
-
+// ** Components
+import EmojyPicker from '../components/ui/EmojyPicker'
 
 
 // ** Interfaces
@@ -49,10 +48,20 @@ interface IFindChat{
 
 
 export default function ChatLayout() {
-    // ** States
+    // ** Default
     const chatsData = chats;
+
+
+
+
+
+    // ** States
+    const [displayedChats,setDisplayedChats] = useState(chatsData);
     const [chatSelected,setChatSelected] = useState<boolean>(false);
     const [currentChat,setCurrentChat] = useState<IFindChat|undefined>();
+    const [emojysComponentOpened,setEmojysComponentOpened] = useState<boolean>(false);
+
+
 
 
 
@@ -62,25 +71,68 @@ export default function ChatLayout() {
         const newDateType = new Date(date).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
         return newDateType;
     }
+    const chatsSearchHandler = (e: React.FormEvent<HTMLInputElement>)=>{
+        const searchValue = e.currentTarget.value;
+        const searchResult = chats.filter(chat => chat.participants[0].name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
+        setDisplayedChats(searchResult);
+    }
     const selectChatHandler = (id:string)=>{
         setChatSelected(true);
-        const findChat = chatsData.find(chat => chat.chatId === id);
+        const findChat = displayedChats.find(chat => chat.chatId === id);
         setCurrentChat(findChat);
+    }
+    const sendMessageHandler = ()=>{
+        const messageInput = document.getElementById('messageInput') as HTMLInputElement;
+        if(messageInput)
+        {
+            const newMessage = {
+                messageId: `msg${Number(currentChat?.messages.length)+1}`,
+                senderId: `${currentChat?.participants[1].userId}`,
+                receiverId: `${currentChat?.participants[0].userId}`,
+                text: messageInput.value,
+                timestamp: new Date().toISOString(),
+                status: "delivered",
+                type: "text",
+                reactions: []
+            }
+
+            setCurrentChat((prev)=> {
+                if(!prev) return
+
+                return {
+                    ...prev,
+                    messages: [...prev.messages,newMessage]
+                }
+            })
+
+
+            messageInput.value = '';
+            setEmojysComponentOpened(false);
+        }
+    }
+    const emojyComponentStateToggleHandler = ()=>{setEmojysComponentOpened(!emojysComponentOpened)};
+    const addEmojiHandler = (emoji:string)=>{
+        const messageInput = document.getElementById('messageInput') as HTMLInputElement;
+        if(messageInput)
+        {
+            messageInput.value += emoji;
+        }
     }
 
 
 
 
-
     // ** Render
-    const chatsListRender = chatsData.map(chatItme =>
+    const chatsListRender = displayedChats.map(chatItme =>
         <div className={style.chats_list_item} key={chatItme.chatId} onClick={()=>{selectChatHandler(chatItme.chatId)}}>
-            <div className={style.chats_list_item_photo}>
-                <img src={userPhoto} alt="User photo"/>
-            </div>
-            <div className={style.chats_list_item_content}>
-                <h2>{chatItme.participants[0].name}</h2>
-                <p>{chatItme.lastMessage.text}</p>
+            <div className={style.chats_list_item_data}>
+                <div className={style.chats_list_item_photo}>
+                    <img src={userPhoto} alt="User photo"/>
+                </div>
+                <div className={style.chats_list_item_content}>
+                    <h2>{chatItme.participants[0].name}</h2>
+                    <p>{chatItme.lastMessage.text}</p>
+                </div>
             </div>
             <div className={style.chats_list_item_details}>
                 <h4>{convertDateTypeHandler(chatItme.lastMessage.timestamp)}</h4>
@@ -97,6 +149,7 @@ export default function ChatLayout() {
     )
 
 
+    
 
 
 
@@ -105,7 +158,7 @@ export default function ChatLayout() {
             <div className={style.chats_container}>
                 <div className={style.chats_list_container}>
                     <div className={style.search}>
-                        <input type="text" placeholder='بحث'/>
+                        <input type="text" placeholder='بحث' onInput={(e)=>{chatsSearchHandler(e)}}/>
                         <img src={searchIcon} alt="Search icon" />
                     </div>
                     <div className={style.chats_list}>
@@ -132,9 +185,9 @@ export default function ChatLayout() {
                             </div>
                             <div className={style.chat_footer}>
                                 <div className={style.send_input}>
-                                    <input type="text" placeholder='اكتب رسالتك'/>
+                                    <input type="text" placeholder='اكتب رسالتك' id='messageInput'/>
                                     <div className={style.imojy}>
-                                        <img src={imojySolidIcon} alt="Imojy solid icon" />
+                                        <img src={imojySolidIcon} alt="Imojy solid icon" onClick={emojyComponentStateToggleHandler}/>
                                     </div>
                                     <div className={style.message_media}>
                                         <img src={micIcon} alt="Mic icon" />
@@ -142,10 +195,14 @@ export default function ChatLayout() {
                                         <img src={studioIcon} alt="Studio icon" />
                                     </div>
                                 </div>
-                                <button>
+                                <button onClick={sendMessageHandler}>
                                     <img src={sendIcon} alt="Send icon" />
                                 </button>
                             </div>
+                            {
+                                emojysComponentOpened && 
+                                <EmojyPicker addEmojiHandler={addEmojiHandler}/>
+                            }
                         </div>
                     }
                 </div>
