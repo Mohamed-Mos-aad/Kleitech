@@ -84,13 +84,13 @@
     align-items: center;
     justify-content: space-between;
     gap: 8px;
+    cursor: pointer;
 }
 .chats_list_item_data
 {
     display: flex;
     align-items: center;
     gap: 12px;
-    cursor: pointer;
     min-width: 0;
 }
 .chats_list_item_photo 

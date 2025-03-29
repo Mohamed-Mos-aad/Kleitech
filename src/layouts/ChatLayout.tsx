@@ -30,8 +30,9 @@ interface IFindChat{
         messageId: string;
         senderId: string;
         receiverId: string;
-        text: string;
-        audioUrl?: string,
+        text?: string | undefined,
+        audioUrl?: string | undefined,
+        photoUrl?: string | undefined,
         timestamp: string;
         status: string;
         type: string;
