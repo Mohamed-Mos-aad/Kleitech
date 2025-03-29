@@ -6,13 +6,16 @@ import sendIcon from '../assets/main/chat/sendIcon.svg'
 import studioIcon from '../assets/main/chat/studioIcon.svg'
 import attachFileIcon from '../assets/main/chat/attachFileIcon.svg'
 import micIcon from '../assets/main/chat/micIcon.svg'
+import voiceTest from '../assets/voice.mp3'
 // ** Style
 import style from '../style/layouts/chatLayout.module.css'
 import { useRef, useState } from 'react'
 import { chats } from './../data/index';
 // ** Components
 import EmojyPicker from '../components/ui/EmojyPicker'
-import Message from '../components/ui/chat/Message'
+import VoiceMessage from '../components/ui/chat/VoiceMessage'
+import TextMessage from '../components/ui/chat/TextMessage'
+import PhotoMessage from '../components/ui/chat/PhotoMessage'
 
 
 // ** Interfaces
@@ -202,17 +205,16 @@ export default function ChatLayout() {
         if(message.type === 'text')
         {
             return(
-                <div className={`${style.message} ${message.senderId.includes('doc') ? style.receiver : '' }`} key={message.messageId}>
-                    <div className={style.message_content}>
-                        <h2>{message.text}</h2>
-                        <h3>{convertDateTypeHandler(message.timestamp)}</h3>
-                    </div>
-                </div>
+                <TextMessage senderId={message.senderId} timestamp={convertDateTypeHandler(message.timestamp)} text={message.text} key={message.messageId}/>
             )
+        }
+        else if(message.type === 'voice')
+        {
+            return(<VoiceMessage senderId={message.senderId} timestamp={convertDateTypeHandler(message.timestamp)} voiceUrl={voiceTest} key={message.messageId}/>)
         }
         else
         {
-            return(<Message senderId={message.senderId} timestamp={message.timestamp} voiceUrl='../assets/voice.amr' key={message.messageId}/>)
+            return(<PhotoMessage senderId={message.senderId} timestamp={convertDateTypeHandler(message.timestamp)} photoUrl={userPhoto} key={message.messageId}/>)
         }
     }
 

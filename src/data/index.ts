@@ -1496,7 +1496,7 @@ export const chats = [
                 "messageId": "msg1",
                 "senderId": "doc1",
                 "receiverId": "pat1",
-                "text": "مرحبًا، كيف يمكنني مساعدتك اليوم؟",
+                "text": "مرحبًا ليلى، كيف حالك اليوم؟ هل لديك تحديثات حول صحتك؟",
                 "timestamp": "2023-10-01T10:00:00Z",
                 "status": "read",
                 "type": "text",
@@ -1506,7 +1506,7 @@ export const chats = [
                 "messageId": "msg2",
                 "senderId": "pat1",
                 "receiverId": "doc1",
-                "text": "مرحبًا دكتور، أشعر بألم في صدري.",
+                "text": "مرحبًا دكتور، لا زلت أشعر بالألم في الجانب الأيسر.",
                 "timestamp": "2023-10-01T10:05:00Z",
                 "status": "delivered",
                 "type": "text",
@@ -1516,7 +1516,7 @@ export const chats = [
                 "messageId": "msg3",
                 "senderId": "doc1",
                 "receiverId": "pat1",
-                "text": "هل يمكنني الحصول على موعد في أقرب وقت؟",
+                "text": "هل الألم حاد، أو أكثر خفيفًا مستمرًا؟",
                 "timestamp": "2023-10-01T10:10:00Z",
                 "status": "sent",
                 "type": "text",
@@ -1526,7 +1526,7 @@ export const chats = [
                 "messageId": "msg4",
                 "senderId": "pat1",
                 "receiverId": "doc1",
-                "text": "متى يمكنني زيارة العيادة؟",
+                "text": "إنه ألم خفيف، لكنه مستمر.",
                 "timestamp": "2023-10-01T10:15:00Z",
                 "status": "sent",
                 "type": "text",
@@ -1536,15 +1536,34 @@ export const chats = [
                 "messageId": "msg5",
                 "senderId": "doc1",
                 "receiverId": "pat1",
-                "text": "يمكنك زيارة العيادة يوم الإثنين المقبل الساعة 10 صباحًا.",
+                "text": "سأحتاج إلى إجراء بعض الفحوصات. هل يمكنك القدوم غدًا؟",
                 "timestamp": "2023-10-01T10:20:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
-            // Random voice message
             {
                 "messageId": "msg6",
+                "senderId": "pat1",
+                "receiverId": "doc1",
+                "text": "نعم، سأكون هناك. شكرًا دكتور.",
+                "timestamp": "2023-10-01T10:25:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg7",
+                "senderId": "doc1",
+                "receiverId": "pat1",
+                "text": "تأكد من إحضار جميع الفحوصات السابقة.",
+                "timestamp": "2023-10-01T10:30:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg8",
                 "senderId": "doc1",
                 "receiverId": "pat1",
                 "audioUrl": "https://example.com/audio/voice-message-1.mp3",
@@ -1553,45 +1572,52 @@ export const chats = [
                 "type": "voice",
                 "reactions": []
             },
-            // Random photo message
             {
-                "messageId": "msg7",
+                "messageId": "msg9",
                 "senderId": "pat1",
                 "receiverId": "doc1",
-                "photoUrl": "https://via.placeholder.com/400/3498DB/FFFFFF/?text=صورة+1",
+                "photoUrl": "https://via.placeholder.com/400/3498DB/FFFFFF/?text=فحص+الدم",
                 "timestamp": "2023-10-02T10:05:00Z",
                 "status": "sent",
                 "type": "photo",
                 "reactions": []
             },
-            // Another random voice message
             {
-                "messageId": "msg8",
-                "senderId": "pat1",
-                "receiverId": "doc1",
-                "audioUrl": "https://example.com/audio/voice-message-2.mp3",
-                "timestamp": "2023-10-02T10:10:00Z",
-                "status": "sent",
-                "type": "voice",
-                "reactions": []
-            },
-            // Another random photo message
-            {
-                "messageId": "msg9",
+                "messageId": "msg10",
                 "senderId": "doc1",
                 "receiverId": "pat1",
-                "photoUrl": "https://via.placeholder.com/400/E74C3C/FFFFFF/?text=صورة+2",
-                "timestamp": "2023-10-02T10:15:00Z",
+                "text": "أحتاج النتائج لنتمكن من اتخاذ الخطوات التالية.",
+                "timestamp": "2023-10-02T10:10:00Z",
                 "status": "sent",
-                "type": "photo",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg11",
+                "senderId": "pat1",
+                "receiverId": "doc1",
+                "text": "أرسلت لك تحليل البول الأخير.",
+                "timestamp": "2023-10-03T10:15:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg12",
+                "senderId": "doc1",
+                "receiverId": "pat1",
+                "text": "شكرًا، سأقوم بمراجعته.",
+                "timestamp": "2023-10-03T10:20:00Z",
+                "status": "sent",
+                "type": "text",
                 "reactions": []
             }
         ],
         "isArchived": false,
         "lastMessage": {
-            "messageId": "msg9",
-            "text": "صورة+2",
-            "timestamp": "2023-10-02T10:15:00Z"
+            "messageId": "msg12",
+            "text": "شكرًا، سأقوم بمراجعته.",
+            "timestamp": "2023-10-03T10:20:00Z"
         }
     },
     {
@@ -1616,41 +1642,91 @@ export const chats = [
         ],
         "messages": [
             {
-                "messageId": "msg6",
+                "messageId": "msg1",
                 "senderId": "doc2",
                 "receiverId": "pat2",
-                "text": "من المهم متابعة صحتك بشكل دوري.",
+                "text": "مرحبا كمال، كيف تسير الأمور منذ آخر زيارة؟",
                 "timestamp": "2023-10-02T09:00:00Z",
                 "status": "read",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg7",
+                "messageId": "msg2",
                 "senderId": "pat2",
                 "receiverId": "doc2",
-                "text": "لقد أخذت الأدوية كما نصحتني، لكن الأعراض لا تزال موجودة.",
+                "text": "لدي تحسن، لكن أشعر ببعض الإرهاق.",
                 "timestamp": "2023-10-02T09:05:00Z",
                 "status": "delivered",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg8",
+                "messageId": "msg3",
                 "senderId": "doc2",
                 "receiverId": "pat2",
-                "text": "هل يمكنك تقديم تفاصيل أكثر عن الأعراض؟",
+                "text": "هل قمت بتناول الأدوية بشكل منتظم؟",
                 "timestamp": "2023-10-02T09:10:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg9",
+                "messageId": "msg4",
                 "senderId": "pat2",
                 "receiverId": "doc2",
-                "text": "أشعر بالإرهاق المستمر.",
+                "text": "نعم، ولكنني عانيت من بعض الأعراض الجانبية.",
                 "timestamp": "2023-10-02T09:15:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg5",
+                "senderId": "doc2",
+                "receiverId": "pat2",
+                "text": "ما هي الأعراض الجانبية التي شعرت بها؟",
+                "timestamp": "2023-10-02T09:20:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg6",
+                "senderId": "pat2",
+                "receiverId": "doc2",
+                "text": "شعرت بالغثيان والم المعدة.",
+                "timestamp": "2023-10-02T09:25:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg7",
+                "senderId": "doc2",
+                "receiverId": "pat2",
+                "text": "يمكن أن يكون ذلك طبيعيًا، لكن سنحتاج لتعديل الجرعة إن استمرت.",
+                "timestamp": "2023-10-02T09:30:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg8",
+                "senderId": "pat2",
+                "receiverId": "doc2",
+                "text": "حسنًا، سأتابع ذلك. شكرًا لك.",
+                "timestamp": "2023-10-02T09:35:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg9",
+                "senderId": "doc2",
+                "receiverId": "pat2",
+                "text": "تأكد من البقاء على تواصل إن شعرت بأي تغيرات.",
+                "timestamp": "2023-10-02T09:40:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
@@ -1659,18 +1735,38 @@ export const chats = [
                 "messageId": "msg10",
                 "senderId": "doc2",
                 "receiverId": "pat2",
-                "text": "سأقوم بتحويلك إلى طبيب مختص.",
-                "timestamp": "2023-10-02T09:20:00Z",
+                "text": "إذا ظهرت أعراض جديدة، يفضل زيارة العيادة.",
+                "timestamp": "2023-10-02T09:45:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
+            {
+                "messageId": "msg11",
+                "senderId": "doc2",
+                "receiverId": "pat2",
+                "audioUrl": "https://example.com/audio/voice-message-2.mp3",
+                "timestamp": "2023-10-02T09:50:00Z",
+                "status": "sent",
+                "type": "voice",
+                "reactions": []
+            },
+            {
+                "messageId": "msg12",
+                "senderId": "pat2",
+                "receiverId": "doc2",
+                "photoUrl": "https://via.placeholder.com/400/FFDD44/FFFFFF/?text=نتائج+التحليل",
+                "timestamp": "2023-10-02T09:55:00Z",
+                "status": "sent",
+                "type": "photo",
+                "reactions": []
+            }
         ],
         "isArchived": false,
         "lastMessage": {
-            "messageId": "msg10",
-            "text": "سأقوم بتحويلك إلى طبيب مختص.",
-            "timestamp": "2023-10-02T09:20:00Z"
+            "messageId": "msg12",
+            "text": "نتائج+التحليل",
+            "timestamp": "2023-10-02T09:55:00Z"
         }
     },
     {
@@ -1695,61 +1791,131 @@ export const chats = [
         ],
         "messages": [
             {
-                "messageId": "msg11",
+                "messageId": "msg1",
                 "senderId": "doc3",
                 "receiverId": "pat3",
-                "text": "كيف حالك اليوم؟",
+                "text": "كيف تسير حالتك الصحية مؤخرًا؟",
                 "timestamp": "2023-10-03T08:30:00Z",
                 "status": "read",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg12",
+                "messageId": "msg2",
                 "senderId": "pat3",
                 "receiverId": "doc3",
-                "text": "أشعر بتحسن، شكرًا لك.",
+                "text": "أشعر بتحسن، لكن لا زالت بعض الآلام.",
                 "timestamp": "2023-10-03T08:35:00Z",
                 "status": "delivered",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg13",
+                "messageId": "msg3",
                 "senderId": "doc3",
                 "receiverId": "pat3",
-                "text": "جيد أن أسمع ذلك. كيف كانت فترة التعافي؟",
+                "text": "هذا جيد. هل لديك أي اختبارات جديدة؟",
                 "timestamp": "2023-10-03T08:40:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg14",
+                "messageId": "msg4",
                 "senderId": "pat3",
                 "receiverId": "doc3",
-                "text": "كانت صعبة في البداية، لكن الأمور بدأت تتحسن.",
+                "text": "نعم، أجريت اختبارًا لوظائف الكلى.",
                 "timestamp": "2023-10-03T08:45:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg15",
+                "messageId": "msg5",
                 "senderId": "doc3",
                 "receiverId": "pat3",
-                "text": "استمر في اتباع التعليمات وسنرى كيف ستسير الأمور.",
+                "text": "ممتاز! ما هي النتائج؟",
                 "timestamp": "2023-10-03T08:50:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
+            {
+                "messageId": "msg6",
+                "senderId": "pat3",
+                "receiverId": "doc3",
+                "text": "كل شيء على ما يرام، لكن نسبة الكرياتينين قد ارتفعت قليلاً.",
+                "timestamp": "2023-10-03T08:55:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg7",
+                "senderId": "doc3",
+                "receiverId": "pat3",
+                "text": "دعينا نقوم بتحليل نتائج الفحص في موعدنا المقبل.",
+                "timestamp": "2023-10-03T09:00:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg8",
+                "senderId": "pat3",
+                "receiverId": "doc3",
+                "text": "بالطبع، متى سيكون موعدنا التالي؟",
+                "timestamp": "2023-10-03T09:05:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg9",
+                "senderId": "doc3",
+                "receiverId": "pat3",
+                "text": "يوم الخميس في الساعة 4 عصرًا.",
+                "timestamp": "2023-10-03T09:10:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg10",
+                "senderId": "pat3",
+                "receiverId": "doc3",
+                "text": "شكرًا، سأكون هناك.",
+                "timestamp": "2023-10-03T09:15:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg11",
+                "senderId": "pat3",
+                "receiverId": "doc3",
+                "photoUrl": "https://via.placeholder.com/400/FF5555/FFFFFF/?text=فحص+الدم",
+                "timestamp": "2023-10-03T09:20:00Z",
+                "status": "sent",
+                "type": "photo",
+                "reactions": []
+            },
+            {
+                "messageId": "msg12",
+                "senderId": "doc3",
+                "receiverId": "pat3",
+                "audioUrl": "https://example.com/audio/voice-message-3.mp3",
+                "timestamp": "2023-10-03T09:25:00Z",
+                "status": "sent",
+                "type": "voice",
+                "reactions": []
+            }
         ],
         "isArchived": false,
         "lastMessage": {
-            "messageId": "msg15",
-            "text": "استمر في اتباع التعليمات وسنرى كيف ستسير الأمور.",
-            "timestamp": "2023-10-03T08:50:00Z"
+            "messageId": "msg12",
+            "text": "فحص+الدم",
+            "timestamp": "2023-10-03T09:25:00Z"
         }
     },
     {
@@ -1760,75 +1926,145 @@ export const chats = [
                 "name": "د. ريم شريف",
                 "photo": "https://via.placeholder.com/150/33FF88/FFFFFF/?text=ريم",
                 "role": "doctor",
-                "isOnline": false,
-                "lastSeen": "2023-10-05T09:00:00Z"
+                "isOnline": true,
+                "lastSeen": "2023-10-05T12:00:00Z"
             },
             {
                 "userId": "pat4",
                 "name": "سارة عادل",
                 "photo": "https://via.placeholder.com/150/FF3355/FFFFFF/?text=سارة",
                 "role": "patient",
-                "isOnline": true,
-                "lastSeen": "2023-10-05T12:30:00Z"
+                "isOnline": false,
+                "lastSeen": "2023-10-05T11:30:00Z"
             }
         ],
         "messages": [
             {
-                "messageId": "msg16",
+                "messageId": "msg1",
                 "senderId": "doc4",
                 "receiverId": "pat4",
-                "text": "لديك موعد جديد الأسبوع المقبل.",
-                "timestamp": "2023-10-04T10:15:00Z",
+                "text": "مرحبًا سارة، كيف كانت حالتك بعد العلاج الأخير؟",
+                "timestamp": "2023-10-04T10:00:00Z",
+                "status": "read",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg2",
+                "senderId": "pat4",
+                "receiverId": "doc4",
+                "text": "أشعر بتحسن، لكن ما زلت أعاني من الصداع.",
+                "timestamp": "2023-10-04T10:05:00Z",
                 "status": "delivered",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg17",
+                "messageId": "msg3",
+                "senderId": "doc4",
+                "receiverId": "pat4",
+                "text": "هل استعمالت المسكنات كما نصحتك؟",
+                "timestamp": "2023-10-04T10:10:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg4",
                 "senderId": "pat4",
                 "receiverId": "doc4",
-                "text": "متى سيكون الموعد؟",
+                "text": "نعم، لكن الألم يعود بعد فترة قصيرة.",
+                "timestamp": "2023-10-04T10:15:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg5",
+                "senderId": "doc4",
+                "receiverId": "pat4",
+                "text": "سنحتاج لتعديل علاجك. هل يمكنك تناول دواء إضافي؟",
                 "timestamp": "2023-10-04T10:20:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg18",
-                "senderId": "doc4",
-                "receiverId": "pat4",
-                "text": "يوم الأربعاء الساعة 3 مساءً.",
+                "messageId": "msg6",
+                "senderId": "pat4",
+                "receiverId": "doc4",
+                "text": "بالطبع، سأقوم بذلك. متى يجب أن أعود للمتابعة؟",
                 "timestamp": "2023-10-04T10:25:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg19",
-                "senderId": "pat4",
-                "receiverId": "doc4",
-                "text": "شكرًا لك، سأكون هناك.",
+                "messageId": "msg7",
+                "senderId": "doc4",
+                "receiverId": "pat4",
+                "text": "عودة بعد أسبوع ستكون مناسبة.",
                 "timestamp": "2023-10-04T10:30:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg20",
-                "senderId": "doc4",
-                "receiverId": "pat4",
-                "text": "أرجو أن تتذكري إحضار المعلومات الطبية السابقة.",
+                "messageId": "msg8",
+                "senderId": "pat4",
+                "receiverId": "doc4",
+                "text": "شكرًا لك على الدعم الدائم.",
                 "timestamp": "2023-10-04T10:35:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
+            {
+                "messageId": "msg9",
+                "senderId": "doc4",
+                "receiverId": "pat4",
+                "text": "لا تترددي في الاتصال إذا زادت الأعراض.",
+                "timestamp": "2023-10-04T10:40:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg10",
+                "senderId": "doc4",
+                "receiverId": "pat4",
+                "audioUrl": "https://example.com/audio/voice-message-4.mp3",
+                "timestamp": "2023-10-04T10:45:00Z",
+                "status": "sent",
+                "type": "voice",
+                "reactions": []
+            },
+            {
+                "messageId": "msg11",
+                "senderId": "pat4",
+                "receiverId": "doc4",
+                "photoUrl": "https://via.placeholder.com/400/33FF88/FFFFFF/?text=تحليل+الدم",
+                "timestamp": "2023-10-04T10:50:00Z",
+                "status": "sent",
+                "type": "photo",
+                "reactions": []
+            },
+            {
+                "messageId": "msg12",
+                "senderId": "doc4",
+                "receiverId": "pat4",
+                "text": "أمتاز، سأقوم بمراجعة النتائج.",
+                "timestamp": "2023-10-04T10:55:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            }
         ],
         "isArchived": false,
         "lastMessage": {
-            "messageId": "msg20",
-            "text": "أرجو أن تتذكري إحضار المعلومات الطبية السابقة.",
-            "timestamp": "2023-10-04T10:35:00Z"
+            "messageId": "msg12",
+            "text": "أمتاز، سأقوم بمراجعة النتائج.",
+            "timestamp": "2023-10-04T10:55:00Z"
         }
     },
     {
@@ -1853,61 +2089,131 @@ export const chats = [
         ],
         "messages": [
             {
-                "messageId": "msg21",
+                "messageId": "msg1",
                 "senderId": "doc5",
                 "receiverId": "pat5",
-                "text": "تأكدي من متابعة الأدوية بشكل جيد.",
+                "text": "مرحبًا علياء، كيف تسير صحتك مع الأدوية؟",
                 "timestamp": "2023-10-05T08:00:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg22",
+                "messageId": "msg2",
                 "senderId": "pat5",
                 "receiverId": "doc5",
-                "text": "أشعر بتحسن، لكن لا زالت بعض الأعراض.",
+                "text": "أنا بخير، لكن شعرت بصداع خفيف مؤخرًا.",
                 "timestamp": "2023-10-05T08:05:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg23",
+                "messageId": "msg3",
                 "senderId": "doc5",
                 "receiverId": "pat5",
-                "text": "ما هي الأعراض المتبقية؟",
+                "text": "هل تناولت المسكنات؟",
                 "timestamp": "2023-10-05T08:10:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg24",
+                "messageId": "msg4",
                 "senderId": "pat5",
                 "receiverId": "doc5",
-                "text": "أعاني من صداع خفيف.",
+                "text": "نعم، لكن الصداع عاد بعد فترة.",
                 "timestamp": "2023-10-05T08:15:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg25",
+                "messageId": "msg5",
                 "senderId": "doc5",
                 "receiverId": "pat5",
-                "text": "إذا استمر الصداع، عليك مراجعة العيادة.",
+                "text": "إذا استمر، يمكنك مراجعة العيادة مرة أخرى.",
                 "timestamp": "2023-10-05T08:20:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
+            {
+                "messageId": "msg6",
+                "senderId": "pat5",
+                "receiverId": "doc5",
+                "text": "حسنًا، سأراقب حالتي. شكرًا لك.",
+                "timestamp": "2023-10-05T08:25:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg7",
+                "senderId": "doc5",
+                "receiverId": "pat5",
+                "text": "ممتاز. تأكدي من متابعة الأدوية بشكل جيد.",
+                "timestamp": "2023-10-05T08:30:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg8",
+                "senderId": "pat5",
+                "receiverId": "doc5",
+                "text": "سأفعل ذلك. شكرًا لتوجيهاتك.",
+                "timestamp": "2023-10-05T08:35:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg9",
+                "senderId": "doc5",
+                "receiverId": "pat5",
+                "text": "لا تترددي في طرح أي تساؤلات.",
+                "timestamp": "2023-10-05T08:40:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg10",
+                "senderId": "doc5",
+                "receiverId": "pat5",
+                "text": "أتمنى لك الشفاء العاجل.",
+                "timestamp": "2023-10-05T08:45:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg11",
+                "senderId": "doc5",
+                "receiverId": "pat5",
+                "audioUrl": "https://example.com/audio/voice-message-5.mp3",
+                "timestamp": "2023-10-05T08:50:00Z",
+                "status": "sent",
+                "type": "voice",
+                "reactions": []
+            },
+            {
+                "messageId": "msg12",
+                "senderId": "pat5",
+                "receiverId": "doc5",
+                "photoUrl": "https://via.placeholder.com/400/AAFF33/FFFFFF/?text=وصفات+الأدوية",
+                "timestamp": "2023-10-05T08:55:00Z",
+                "status": "sent",
+                "type": "photo",
+                "reactions": []
+            }
         ],
         "isArchived": false,
         "lastMessage": {
-            "messageId": "msg25",
-            "text": "إذا استمر الصداع، عليك مراجعة العيادة.",
-            "timestamp": "2023-10-05T08:20:00Z"
+            "messageId": "msg12",
+            "text": "وصفات+الأدوية",
+            "timestamp": "2023-10-05T08:55:00Z"
         }
     },
     {
@@ -1932,61 +2238,131 @@ export const chats = [
         ],
         "messages": [
             {
-                "messageId": "msg26",
+                "messageId": "msg1",
                 "senderId": "doc6",
                 "receiverId": "pat6",
-                "text": "تأكد من عدم تجاهل الأعراض.",
+                "text": "كيف كانت نتائج التحليل؟",
                 "timestamp": "2023-10-05T07:30:00Z",
                 "status": "read",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg27",
+                "messageId": "msg2",
                 "senderId": "pat6",
                 "receiverId": "doc6",
-                "text": "تم أخذي للأدوية كما نصحتني.",
+                "text": "أجريت التحليل، لكنني لم أتلق النتائج بعد.",
                 "timestamp": "2023-10-05T07:35:00Z",
                 "status": "delivered",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg28",
+                "messageId": "msg3",
                 "senderId": "doc6",
                 "receiverId": "pat6",
-                "text": "إذا كنت تشعر بالتحسن، فهذا مؤشر جيد.",
+                "text": "تأكد من مراجعة المعمل للحصول على النتائج.",
                 "timestamp": "2023-10-05T07:40:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg29",
+                "messageId": "msg4",
                 "senderId": "pat6",
                 "receiverId": "doc6",
-                "text": "شكرًا جزيلاً، سأتابع ذلك.",
+                "text": "سأفعل ذلك. هل هناك أي شيء آخر يجب علي فعله؟",
                 "timestamp": "2023-10-05T07:45:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg30",
+                "messageId": "msg5",
                 "senderId": "doc6",
                 "receiverId": "pat6",
-                "text": "تابع التعليمات وابق على تواصل.",
+                "text": "استمر في تناول الأدوية بانتظام.",
                 "timestamp": "2023-10-05T07:50:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
+            {
+                "messageId": "msg6",
+                "senderId": "pat6",
+                "receiverId": "doc6",
+                "text": "نعم، سأتأكد من ذلك.",
+                "timestamp": "2023-10-05T07:55:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg7",
+                "senderId": "doc6",
+                "receiverId": "pat6",
+                "text": "إذا شعرت بأي أعراض غير طبيعية، اتصل بي على الفور.",
+                "timestamp": "2023-10-05T08:00:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg8",
+                "senderId": "pat6",
+                "receiverId": "doc6",
+                "text": "شكراً جزيلاً، سأتابع ذلك.",
+                "timestamp": "2023-10-05T08:05:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg9",
+                "senderId": "doc6",
+                "receiverId": "pat6",
+                "text": "تابع التعليمات وابق على تواصل.",
+                "timestamp": "2023-10-05T08:10:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg10",
+                "senderId": "doc6",
+                "receiverId": "pat6",
+                "text": "أتمنى لك الشفاء العاجل.",
+                "timestamp": "2023-10-05T08:15:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg11",
+                "senderId": "doc6",
+                "receiverId": "pat6",
+                "photoUrl": "https://via.placeholder.com/400/FFC300/FFFFFF/?text=نتائج+التحليل",
+                "timestamp": "2023-10-05T08:20:00Z",
+                "status": "sent",
+                "type": "photo",
+                "reactions": []
+            },
+            {
+                "messageId": "msg12",
+                "senderId": "doc6",
+                "receiverId": "pat6",
+                "audioUrl": "https://example.com/audio/voice-message-6.mp3",
+                "timestamp": "2023-10-05T08:25:00Z",
+                "status": "sent",
+                "type": "voice",
+                "reactions": []
+            }
         ],
         "isArchived": false,
         "lastMessage": {
-            "messageId": "msg30",
-            "text": "تابع التعليمات وابق على تواصل.",
-            "timestamp": "2023-10-05T07:50:00Z"
+            "messageId": "msg12",
+            "text": "نتائج+التحليل",
+            "timestamp": "2023-10-05T08:25:00Z"
         }
     },
     {
@@ -2011,61 +2387,131 @@ export const chats = [
         ],
         "messages": [
             {
-                "messageId": "msg31",
+                "messageId": "msg1",
                 "senderId": "doc7",
                 "receiverId": "pat7",
-                "text": "كيف تسير حالتك الصحية؟",
+                "text": "كيف تسير حالتك الصحية؟ هل هناك أي تطورات؟",
                 "timestamp": "2023-10-05T06:00:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg32",
+                "messageId": "msg2",
                 "senderId": "pat7",
                 "receiverId": "doc7",
-                "text": "أشعر بتحسن، لكني بحاجة إلى نصائح إضافية.",
+                "text": "لا زلت أشعر بالتعب العام، لكن الألم تراجع.",
                 "timestamp": "2023-10-05T06:05:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg33",
+                "messageId": "msg3",
                 "senderId": "doc7",
                 "receiverId": "pat7",
-                "text": "تأكد من ممارسة التمارين بانتظام.",
+                "text": "هذا تحسن جيد. هل تقوم بممارسة الرياضة؟",
                 "timestamp": "2023-10-05T06:10:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg34",
+                "messageId": "msg4",
                 "senderId": "pat7",
                 "receiverId": "doc7",
-                "text": "هل يجب أن أدرب نفسي في المنزل؟",
+                "text": "نعم، أمارس المشي كل يوم.",
                 "timestamp": "2023-10-05T06:15:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg35",
+                "messageId": "msg5",
                 "senderId": "doc7",
                 "receiverId": "pat7",
-                "text": "نعم، يمكن أن تكون التمارين المنزلية مفيدة.",
+                "text": "ممتاز، هذا سيساعدك كثيرًا.",
                 "timestamp": "2023-10-05T06:20:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
+            {
+                "messageId": "msg6",
+                "senderId": "pat7",
+                "receiverId": "doc7",
+                "text": "هل هناك أي نصائح إضافية تود أن تعطيني إياها؟",
+                "timestamp": "2023-10-05T06:25:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg7",
+                "senderId": "doc7",
+                "receiverId": "pat7",
+                "text": "حاول تناول وجبات غذائية صحية وشرب الماء بكميات كافية.",
+                "timestamp": "2023-10-05T06:30:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg8",
+                "senderId": "pat7",
+                "receiverId": "doc7",
+                "text": "شكرًا، سأكثر من شرب الماء.",
+                "timestamp": "2023-10-05T06:35:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg9",
+                "senderId": "doc7",
+                "receiverId": "pat7",
+                "text": "نراعي دائمًا التوازن في الأنشطة والراحة.",
+                "timestamp": "2023-10-05T06:40:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg10",
+                "senderId": "doc7",
+                "receiverId": "pat7",
+                "audioUrl": "https://example.com/audio/voice-message-7.mp3",
+                "timestamp": "2023-10-05T06:45:00Z",
+                "status": "sent",
+                "type": "voice",
+                "reactions": []
+            },
+            {
+                "messageId": "msg11",
+                "senderId": "pat7",
+                "receiverId": "doc7",
+                "photoUrl": "https://via.placeholder.com/400/9955FF/FFFFFF/?text=نتائج+التحليل",
+                "timestamp": "2023-10-05T06:50:00Z",
+                "status": "sent",
+                "type": "photo",
+                "reactions": []
+            },
+            {
+                "messageId": "msg12",
+                "senderId": "doc7",
+                "receiverId": "pat7",
+                "text": "أتمنى لك الصحة دائمًا.",
+                "timestamp": "2023-10-05T06:55:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            }
         ],
         "isArchived": false,
         "lastMessage": {
-            "messageId": "msg35",
-            "text": "نعم، يمكن أن تكون التمارين المنزلية مفيدة.",
-            "timestamp": "2023-10-05T06:20:00Z"
+            "messageId": "msg12",
+            "text": "أتمنى لك الصحة دائمًا.",
+            "timestamp": "2023-10-05T06:55:00Z"
         }
     },
     {
@@ -2090,61 +2536,131 @@ export const chats = [
         ],
         "messages": [
             {
-                "messageId": "msg36",
+                "messageId": "msg1",
                 "senderId": "doc8",
                 "receiverId": "pat8",
-                "text": "انتبه لعلامات التحذير.",
+                "text": "ما هي البروتينات اليومية التي تتناولها؟",
                 "timestamp": "2023-10-04T14:15:00Z",
                 "status": "read",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg37",
+                "messageId": "msg2",
                 "senderId": "pat8",
                 "receiverId": "doc8",
-                "text": "ما هي علامات التحذير التي يجب أن أبحث عنها؟",
+                "text": "أحاول تجنب البروتينات الحيوانية.",
                 "timestamp": "2023-10-04T14:20:00Z",
-                "status": "sent",
+                "status": "delivered",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg38",
+                "messageId": "msg3",
                 "senderId": "doc8",
                 "receiverId": "pat8",
-                "text": "إذا شعرت بأي ألم غير معتاد أو أعراض مفاجئة.",
+                "text": "هذا جيد، ولكن تأكد من أنك تحصل على ما يكفي من البروتين النباتي.",
                 "timestamp": "2023-10-04T14:25:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg39",
+                "messageId": "msg4",
                 "senderId": "pat8",
                 "receiverId": "doc8",
-                "text": "شكرًا على التوضيح، سأكون حذرًا.",
+                "text": "سأحرص على ذلك.شكرًا لتذكيري.",
                 "timestamp": "2023-10-04T14:30:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg40",
+                "messageId": "msg5",
                 "senderId": "doc8",
                 "receiverId": "pat8",
-                "text": "تأكد من مراجعة العيادة إذا استمرت الأعراض.",
+                "text": "إذا شعرت بأي أعراض أو إذا كان هناك شيء غير عادي، لا تتردد في الاتصال بي.",
                 "timestamp": "2023-10-04T14:35:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
+            {
+                "messageId": "msg6",
+                "senderId": "pat8",
+                "receiverId": "doc8",
+                "text": "بالطبع، سأكون في تواصل دائم.",
+                "timestamp": "2023-10-04T14:40:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg7",
+                "senderId": "doc8",
+                "receiverId": "pat8",
+                "text": "كيف تسير الأمور بشكل عام في حياتك اليومية؟",
+                "timestamp": "2023-10-04T14:45:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg8",
+                "senderId": "pat8",
+                "receiverId": "doc8",
+                "text": "الأمور جيدة، لكنني بحاجة للمزيد من الوقت للراحة.",
+                "timestamp": "2023-10-04T14:50:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg9",
+                "senderId": "doc8",
+                "receiverId": "pat8",
+                "text": "راحة جيدة ستساعدك على التعافي السريع.",
+                "timestamp": "2023-10-04T14:55:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg10",
+                "senderId": "doc8",
+                "receiverId": "pat8",
+                "audioUrl": "https://example.com/audio/voice-message-8.mp3",
+                "timestamp": "2023-10-04T15:00:00Z",
+                "status": "sent",
+                "type": "voice",
+                "reactions": []
+            },
+            {
+                "messageId": "msg11",
+                "senderId": "pat8",
+                "receiverId": "doc8",
+                "photoUrl": "https://via.placeholder.com/400/1567FF/FFFFFF/?text=نتائج+التحليل",
+                "timestamp": "2023-10-04T15:05:00Z",
+                "status": "sent",
+                "type": "photo",
+                "reactions": []
+            },
+            {
+                "messageId": "msg12",
+                "senderId": "doc8",
+                "receiverId": "pat8",
+                "text": "أتمنى لك التوفيق في كل شيء.",
+                "timestamp": "2023-10-04T15:10:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            }
         ],
         "isArchived": false,
         "lastMessage": {
-            "messageId": "msg40",
-            "text": "تأكد من مراجعة العيادة إذا استمرت الأعراض.",
-            "timestamp": "2023-10-04T14:35:00Z"
+            "messageId": "msg12",
+            "text": "أتمنى لك التوفيق في كل شيء.",
+            "timestamp": "2023-10-04T15:10:00Z"
         }
     },
     {
@@ -2169,61 +2685,131 @@ export const chats = [
         ],
         "messages": [
             {
-                "messageId": "msg41",
+                "messageId": "msg1",
                 "senderId": "doc9",
                 "receiverId": "pat9",
-                "text": "تأكد من مراجعة نتائج التحاليل.",
+                "text": "مرحبًا فتحية، كيف تسير حالتك اليوم؟",
                 "timestamp": "2023-10-03T16:00:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg42",
+                "messageId": "msg2",
                 "senderId": "pat9",
                 "receiverId": "doc9",
-                "text": "كيف ستكون النتائج هامة؟",
+                "text": "لا أشعر بتحسن كبير. الألم مستمر.",
                 "timestamp": "2023-10-03T16:05:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg43",
+                "messageId": "msg3",
                 "senderId": "doc9",
                 "receiverId": "pat9",
-                "text": "سأشرح لك كل شيء عند الموعد.",
+                "text": "هل نمط حياتك صحي؟",
                 "timestamp": "2023-10-03T16:10:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg44",
+                "messageId": "msg4",
                 "senderId": "pat9",
                 "receiverId": "doc9",
-                "text": "أحتاج إلى مزيد من التوضيح حول الأعراض.",
+                "text": "لم ألتزم بالنظام الغذائي كما يجب.",
                 "timestamp": "2023-10-03T16:15:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg45",
+                "messageId": "msg5",
                 "senderId": "doc9",
                 "receiverId": "pat9",
-                "text": "بالتأكيد، سأكون لائقًا لذلك.",
+                "text": "نحتاج إلى تحسين نمط حياتك لضمان الشفاء.",
                 "timestamp": "2023-10-03T16:20:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
+            {
+                "messageId": "msg6",
+                "senderId": "pat9",
+                "receiverId": "doc9",
+                "text": "ما هي الخطوات التي يجب أخذها؟",
+                "timestamp": "2023-10-03T16:25:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg7",
+                "senderId": "doc9",
+                "receiverId": "pat9",
+                "text": "تركيز أكبر على الفواكه والخضروات، وتجنب الأطعمة المصنعة.",
+                "timestamp": "2023-10-03T16:30:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg8",
+                "senderId": "pat9",
+                "receiverId": "doc9",
+                "text": "تشعرني ذلك بالقلق، لكنني سأحاول.",
+                "timestamp": "2023-10-03T16:35:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg9",
+                "senderId": "doc9",
+                "receiverId": "pat9",
+                "text": "إذا لم يتحسن الوضع، يجب علينا التفكير في الخيارات العلاجية الأخرى.",
+                "timestamp": "2023-10-03T16:40:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg10",
+                "senderId": "pat9",
+                "receiverId": "doc9",
+                "text": "أبذل قصارى جهدي.",
+                "timestamp": "2023-10-03T16:45:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg11",
+                "senderId": "doc9",
+                "receiverId": "pat9",
+                "audioUrl": "https://example.com/audio/voice-message-9.mp3",
+                "timestamp": "2023-10-03T16:50:00Z",
+                "status": "sent",
+                "type": "voice",
+                "reactions": []
+            },
+            {
+                "messageId": "msg12",
+                "senderId": "pat9",
+                "receiverId": "doc9",
+                "photoUrl": "https://via.placeholder.com/400/55FF8D/FFFFFF/?text=نتائج+التحليل",
+                "timestamp": "2023-10-03T16:55:00Z",
+                "status": "sent",
+                "type": "photo",
+                "reactions": []
+            }
         ],
         "isArchived": false,
         "lastMessage": {
-            "messageId": "msg45",
-            "text": "بالتأكيد، سأكون لائقًا لذلك.",
-            "timestamp": "2023-10-03T16:20:00Z"
+            "messageId": "msg12",
+            "text": "نتائج+التحليل",
+            "timestamp": "2023-10-03T16:55:00Z"
         }
     },
     {
@@ -2248,7 +2834,7 @@ export const chats = [
         ],
         "messages": [
             {
-                "messageId": "msg46",
+                "messageId": "msg1",
                 "senderId": "doc10",
                 "receiverId": "pat10",
                 "text": "لا تنسى المتابعة الدورية.",
@@ -2258,7 +2844,7 @@ export const chats = [
                 "reactions": []
             },
             {
-                "messageId": "msg47",
+                "messageId": "msg2",
                 "senderId": "pat10",
                 "receiverId": "doc10",
                 "text": "هل يمكنني تحديد موعد قريب؟",
@@ -2268,41 +2854,111 @@ export const chats = [
                 "reactions": []
             },
             {
-                "messageId": "msg48",
+                "messageId": "msg3",
                 "senderId": "doc10",
                 "receiverId": "pat10",
-                "text": "نعم، هل يناسبك يوم الخميس؟",
+                "text": "نعم، هل يناسبك يوم الخميس القادم؟",
                 "timestamp": "2023-10-02T11:10:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg49",
+                "messageId": "msg4",
                 "senderId": "pat10",
                 "receiverId": "doc10",
-                "text": "نعم، يوم الخميس مناسب.",
+                "text": "نعم، يوم الخميس يناسبني.",
                 "timestamp": "2023-10-02T11:15:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
             {
-                "messageId": "msg50",
+                "messageId": "msg5",
                 "senderId": "doc10",
                 "receiverId": "pat10",
-                "text": "أراك يوم الخميس في الساعة 5 مساءً.",
+                "text": "سأراك يوم الخميس في الساعة 5 مساءً.",
                 "timestamp": "2023-10-02T11:20:00Z",
                 "status": "sent",
                 "type": "text",
                 "reactions": []
             },
+            {
+                "messageId": "msg6",
+                "senderId": "pat10",
+                "receiverId": "doc10",
+                "text": "شكرًا لك، سأكون هناك.",
+                "timestamp": "2023-10-02T11:25:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg7",
+                "senderId": "doc10",
+                "receiverId": "pat10",
+                "text": "هل لديك الفحوصات اللازمة للعرض بها؟",
+                "timestamp": "2023-10-02T11:30:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg8",
+                "senderId": "pat10",
+                "receiverId": "doc10",
+                "text": "نعم، أحتفظ بكل الوثائق.",
+                "timestamp": "2023-10-02T11:35:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg9",
+                "senderId": "doc10",
+                "receiverId": "pat10",
+                "text": "جيد، سأكون في انتظارك.",
+                "timestamp": "2023-10-02T11:40:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg10",
+                "senderId": "doc10",
+                "receiverId": "pat10",
+                "text": "أتمنى لك يومًا سعيدًا.",
+                "timestamp": "2023-10-02T11:45:00Z",
+                "status": "sent",
+                "type": "text",
+                "reactions": []
+            },
+            {
+                "messageId": "msg11",
+                "senderId": "pat10",
+                "receiverId": "doc10",
+                "photoUrl": "https://via.placeholder.com/400/FFA500/FFFFFF/?text=نتائج+الفحص",
+                "timestamp": "2023-10-02T11:50:00Z",
+                "status": "sent",
+                "type": "photo",
+                "reactions": []
+            },
+            {
+                "messageId": "msg12",
+                "senderId": "doc10",
+                "receiverId": "pat10",
+                "audioUrl": "https://example.com/audio/voice-message-10.mp3",
+                "timestamp": "2023-10-02T11:55:00Z",
+                "status": "sent",
+                "type": "voice",
+                "reactions": []
+            }
         ],
         "isArchived": false,
         "lastMessage": {
-            "messageId": "msg50",
-            "text": "أراك يوم الخميس في الساعة 5 مساءً.",
-            "timestamp": "2023-10-02T11:20:00Z"
+            "messageId": "msg12",
+            "text": "نتائج+الفحص",
+            "timestamp": "2023-10-02T11:55:00Z"
         }
     }
 ];
