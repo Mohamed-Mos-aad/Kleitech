@@ -1,0 +1,125 @@
+/* Start Variables */
+:root
+{
+    --main-color-100: #E0F2FE;
+    --main-color-200: #B9E6FE;
+    --main-color-700: #026AA2;
+    --main-color-800: #00598D;
+    --gray-color-400: #AFAFAF;
+    --gray-color-600: #636363;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-100: #FDE8E8;
+    --red-color-500: #F05252;
+    --green-color-400: #31C48D;
+    --chat-1-color: #E0F0FF;
+    --chat-2-color: #E9EAED;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Remember Screen */
+.remember
+{
+    position: relative;
+}
+.add_btn
+{
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+}
+.add_btn button
+{
+    width: 50px;
+    height: 50px;
+    background-color: var(--main-color-700);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+}
+.remember_container
+{
+    width: 90%;
+    min-height: calc(100vh - 123px);
+    display: grid;
+    grid-template-columns: 1fr 11fr;
+    gap: 24px;
+    margin: 24px auto;
+}
+.remember_type
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style-type: none;
+}
+.remember_type li img
+{
+    width: 48px;
+    cursor: pointer;
+}
+.remember_type li img.active
+{
+    filter: brightness(0) saturate(100%) invert(28%) sepia(61%) saturate(1722%) hue-rotate(175deg) brightness(94%) contrast(98%);
+}
+.remember_form
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.remember_form form
+{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 8px;
+    padding: 32px 100px;
+    box-shadow: 0 2px 21px var(--main-color-100);
+}
+.remember_form form h1
+{
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--main-color-700);
+    margin-bottom: -8px;
+}
+.remember_form form .form_btns
+{
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+.remember_form form .form_btns button
+{
+    width: 100%;
+    background-color: var(--main-color-700);
+    border: solid 2px var(--main-color-700);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.remember_form form .form_btns button:hover
+{
+    background-color: var(--main-color-700);
+    color: white;
+}
+.remember_form form .form_btns button:last-of-type
+{
+    background-color: transparent;
+    color: var(--main-color-700);
+}
+/* End Remember Screen */
