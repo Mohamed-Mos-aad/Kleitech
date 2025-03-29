@@ -8,10 +8,11 @@ import attachFileIcon from '../assets/main/chat/attachFileIcon.svg'
 import micIcon from '../assets/main/chat/micIcon.svg'
 // ** Style
 import style from '../style/layouts/chatLayout.module.css'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { chats } from './../data/index';
 // ** Components
 import EmojyPicker from '../components/ui/EmojyPicker'
+import Message from '../components/ui/chat/Message'
 
 
 // ** Interfaces
@@ -30,6 +31,7 @@ interface IFindChat{
         senderId: string;
         receiverId: string;
         text: string;
+        audioUrl?: string,
         timestamp: string;
         status: string;
         type: string;
@@ -54,17 +56,26 @@ export default function ChatLayout() {
 
 
 
-
     // ** States
     const [displayedChats,setDisplayedChats] = useState(chatsData);
     const [chatSelected,setChatSelected] = useState<boolean>(false);
     const [currentChat,setCurrentChat] = useState<IFindChat|undefined>();
     const [emojysComponentOpened,setEmojysComponentOpened] = useState<boolean>(false);
+    const [recordStarted,setRecordStarted] = useState<boolean>(false);
+
+
+
+
+    // ** Refs
+    const audioPlayBackRef = useRef<HTMLAudioElement>(null);
+    const imgUploadRef = useRef<HTMLInputElement | null>(null);
+    const fileUploadRef = useRef<HTMLInputElement | null>(null);
 
 
 
 
 
+    const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
 
     // ** Handler
     const convertDateTypeHandler = (date:string)=>{
@@ -118,6 +129,52 @@ export default function ChatLayout() {
             messageInput.value += emoji;
         }
     }
+    const fileUploadHandler = ()=>{
+        fileUploadRef?.current?.click();
+    }
+    const imgUploadHandler = ()=>{
+        imgUploadRef?.current?.click();
+    }
+    const startRecordHandler = async () => {
+        if (recordStarted) {
+            // Stop recording
+            if (mediaRecorder) {
+                mediaRecorder.stop();
+                setRecordStarted(false);
+            }
+            return;
+        }
+    
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            const recorder = new MediaRecorder(stream);
+            const audioChunks: BlobPart[] = [];
+    
+            recorder.ondataavailable = (event: BlobEvent) => {
+                audioChunks.push(event.data);
+            };
+    
+            recorder.onstop = () => {
+                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                const audioUrl = URL.createObjectURL(audioBlob);
+    
+                
+                if (audioPlayBackRef.current) {
+                    audioPlayBackRef.current.src = audioUrl;
+                }
+    
+                stream.getTracks().forEach(track => track.stop());
+            };
+    
+            recorder.start();
+            setMediaRecorder(recorder);
+            setRecordStarted(true);
+        } catch (error) {
+            console.error("Error accessing the microphone", error);
+        }
+    };
+
+
 
 
 
@@ -140,12 +197,24 @@ export default function ChatLayout() {
         </div>
     )
     const chatMessagesRender = currentChat?.messages.slice().reverse().map(message =>
-        <div className={`${style.message} ${message.senderId.includes('doc') ? style.receiver : '' }`} key={message.messageId}>
-            <div className={style.message_content} key={message.messageId}>
-                <h2>{message.text}</h2>
-                <h3>{convertDateTypeHandler(message.timestamp)}</h3>
-            </div>
-        </div>
+    {
+        if(message.type === 'text')
+        {
+            return(
+                <div className={`${style.message} ${message.senderId.includes('doc') ? style.receiver : '' }`} key={message.messageId}>
+                    <div className={style.message_content}>
+                        <h2>{message.text}</h2>
+                        <h3>{convertDateTypeHandler(message.timestamp)}</h3>
+                    </div>
+                </div>
+            )
+        }
+        else
+        {
+            return(<Message senderId={message.senderId} timestamp={message.timestamp} voiceUrl='../assets/voice.amr' key={message.messageId}/>)
+        }
+    }
+
     )
 
 
@@ -190,9 +259,11 @@ export default function ChatLayout() {
                                         <img src={imojySolidIcon} alt="Imojy solid icon" onClick={emojyComponentStateToggleHandler}/>
                                     </div>
                                     <div className={style.message_media}>
-                                        <img src={micIcon} alt="Mic icon" />
-                                        <img src={attachFileIcon} alt="Attach File icon" />
-                                        <img src={studioIcon} alt="Studio icon" />
+                                        <img src={micIcon} onClick={startRecordHandler} className={recordStarted? `${style.delete_record}`: ''} alt="Mic icon" />
+                                        <input type="file" ref={fileUploadRef} style={{display:'none'}} accept='.pdf'/> 
+                                        <img src={attachFileIcon} alt="Attach File icon" onClick={fileUploadHandler} />
+                                        <input type="file" ref={imgUploadRef} style={{display:'none'}} accept='.jpg, .jpeg, .png, .gif'/> 
+                                        <img src={studioIcon} alt="Studio icon" onClick={imgUploadHandler}/>
                                     </div>
                                 </div>
                                 <button onClick={sendMessageHandler}>

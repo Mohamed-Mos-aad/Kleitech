@@ -1,0 +1,115 @@
+/* Start Variables */
+:root
+{
+    --main-color-100: #E0F2FE;
+    --main-color-200: #B9E6FE;
+    --main-color-700: #026AA2;
+    --main-color-800: #00598D;
+    --gray-color-400: #AFAFAF;
+    --gray-color-600: #636363;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-100: #FDE8E8;
+    --red-color-500: #F05252;
+    --green-color-400: #31C48D;
+    --chat-1-color: #E0F0FF;
+    --chat-2-color: #E9EAED;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Message Component */
+.message
+{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+.message.receiver
+{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.message .message_content h2
+{
+    width: fit-content;
+    background-color: var(--chat-1-color);
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--gray-color-900);
+    text-align: start;
+}
+.message.receiver .message_content h2
+{
+    background-color: var(--chat-2-color);
+}
+.message .message_content h3
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 500;
+    color: #AFAFAF;
+}
+.message.receiver .message_content h3
+{
+    flex-direction: row-reverse;
+}
+.message .message_content .audio_player
+{
+    height: 46px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    background-color: var(--chat-1-color);
+    padding: 8px 16px;
+    border-radius: 12px;
+    position: relative;
+}
+.message.receiver .message_content .audio_player
+{
+    background-color: var(--chat-2-color);
+}
+input[type='range']
+{
+    width: 248px;
+    height: 6px;
+    border-radius: 8px;
+    outline: none;
+    appearance: none;
+    direction: ltr;
+}
+input[type='range']::-webkit-slider-thumb
+{
+    width: 16px;
+    height: 16px;
+    background: var(--main-color-200);
+    border: solid 4px var(--main-color-700);
+    border-radius: 50%;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition-timing-function: ease-in-out;
+}
+.message .message_content .audio_player h5
+{
+    position: absolute;
+    bottom: -2px;
+    right: 16px;
+    font-size: 12px;
+    color: var(--main-color-700);
+}
+.message .message_content .audio_player img
+{
+    width: 12px;
+    filter: brightness(0) saturate(100%) invert(15%) sepia(62%) saturate(5467%) hue-rotate(188deg) brightness(104%) contrast(98%);
+}
+/* End Message Component */

@@ -240,7 +240,10 @@
 }
 .chat_messages_content .message .message_content h2
 {
+    display: flex;
+    align-items: center;
     width: fit-content;
+    height: 46px;
     background-color: var(--chat-1-color);
     padding: 8px 16px;
     border-radius: 12px;
@@ -265,6 +268,17 @@
 .chat_messages_content .message.receiver .message_content h3
 {
     flex-direction: row-reverse;
+}
+.chat_messages_content .message .message_content .audio_player
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    background-color: var(--chat-1-color);
+    padding: 8px 16px;
+    border-radius: 12px;
+    position: relative;
 }
 .chat_footer
 {
@@ -319,6 +333,10 @@
     display: flex;
     align-items: center;
     gap: 16px;
+}
+.chat_footer .send_input .delete_record
+{
+    filter: brightness(0) saturate(100%) invert(15%) sepia(96%) saturate(6895%) hue-rotate(359deg) brightness(94%) contrast(111%);
 }
 .chat_footer button
 {

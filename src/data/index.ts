@@ -1542,12 +1542,56 @@ export const chats = [
                 "type": "text",
                 "reactions": []
             },
+            // Random voice message
+            {
+                "messageId": "msg6",
+                "senderId": "doc1",
+                "receiverId": "pat1",
+                "audioUrl": "https://example.com/audio/voice-message-1.mp3",
+                "timestamp": "2023-10-02T10:00:00Z",
+                "status": "sent",
+                "type": "voice",
+                "reactions": []
+            },
+            // Random photo message
+            {
+                "messageId": "msg7",
+                "senderId": "pat1",
+                "receiverId": "doc1",
+                "photoUrl": "https://via.placeholder.com/400/3498DB/FFFFFF/?text=صورة+1",
+                "timestamp": "2023-10-02T10:05:00Z",
+                "status": "sent",
+                "type": "photo",
+                "reactions": []
+            },
+            // Another random voice message
+            {
+                "messageId": "msg8",
+                "senderId": "pat1",
+                "receiverId": "doc1",
+                "audioUrl": "https://example.com/audio/voice-message-2.mp3",
+                "timestamp": "2023-10-02T10:10:00Z",
+                "status": "sent",
+                "type": "voice",
+                "reactions": []
+            },
+            // Another random photo message
+            {
+                "messageId": "msg9",
+                "senderId": "doc1",
+                "receiverId": "pat1",
+                "photoUrl": "https://via.placeholder.com/400/E74C3C/FFFFFF/?text=صورة+2",
+                "timestamp": "2023-10-02T10:15:00Z",
+                "status": "sent",
+                "type": "photo",
+                "reactions": []
+            }
         ],
         "isArchived": false,
         "lastMessage": {
-            "messageId": "msg5",
-            "text": "يمكنك زيارة العيادة يوم الإثنين المقبل الساعة 10 صباحًا.",
-            "timestamp": "2023-10-01T10:20:00Z"
+            "messageId": "msg9",
+            "text": "صورة+2",
+            "timestamp": "2023-10-02T10:15:00Z"
         }
     },
     {
