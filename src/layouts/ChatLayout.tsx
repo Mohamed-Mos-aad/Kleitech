@@ -1,6 +1,7 @@
 // ** Assets
 import userPhoto from '../assets/landingPage/PatientReviews/PatientReview-1.png'
 import searchIcon from '../assets/main/chat/searchIcon.svg'
+import backIcon from '../assets/main/chat/backIcon.svg'
 import imojySolidIcon from '../assets/main/chat/imojySolidIcon.svg'
 import sendIcon from '../assets/main/chat/sendIcon.svg'
 import studioIcon from '../assets/main/chat/studioIcon.svg'
@@ -9,7 +10,9 @@ import micIcon from '../assets/main/chat/micIcon.svg'
 import voiceTest from '../assets/voice.mp3'
 // ** Style
 import style from '../style/layouts/chatLayout.module.css'
+// ** Hooks
 import { useRef, useState } from 'react'
+// ** Data
 import { chats } from './../data/index';
 // ** Components
 import EmojyPicker from '../components/ui/EmojyPicker'
@@ -95,6 +98,7 @@ export default function ChatLayout() {
         setChatSelected(true);
         const findChat = displayedChats.find(chat => chat.chatId === id);
         setCurrentChat(findChat);
+        openChatMobilesToggleHandler();
     }
     const sendMessageHandler = ()=>{
         const messageInput = document.getElementById('messageInput') as HTMLInputElement;
@@ -177,6 +181,22 @@ export default function ChatLayout() {
             console.error("Error accessing the microphone", error);
         }
     };
+    const openChatMobilesToggleHandler = ()=>{
+        const chatsList = document.getElementById('chats_list');
+        if(chatsList && window.innerWidth < 767.98)
+        {
+            if(!chatSelected)
+            {
+                chatsList.style.display = 'none';
+            }
+            else
+            {
+                chatsList.style.display = 'flex';
+                setChatSelected(false);
+            }
+        }
+    }
+    
 
 
 
@@ -228,7 +248,7 @@ export default function ChatLayout() {
     return (
         <>
             <div className={style.chats_container}>
-                <div className={style.chats_list_container}>
+                <div className={style.chats_list_container} id='chats_list'>
                     <div className={style.search}>
                         <input type="text" placeholder='بحث' onInput={(e)=>{chatsSearchHandler(e)}}/>
                         <img src={searchIcon} alt="Search icon" />
@@ -250,6 +270,11 @@ export default function ChatLayout() {
                                 <div className={style.chat_title}>
                                     <h2>{currentChat?.participants[0].name}</h2>
                                     <h3 className={currentChat?.participants[0].isOnline ? `${style.active}` : ''}>{currentChat?.participants[0].isOnline ? 'متصل' : 'غير متصل'}</h3>
+                                </div>
+                                <div className={style.back_btn}>
+                                    <button>
+                                        <img src={backIcon} alt="Back icon" onClick={openChatMobilesToggleHandler}/>
+                                    </button>
                                 </div>
                             </div>
                             <div className={style.chat_messages_content}>
