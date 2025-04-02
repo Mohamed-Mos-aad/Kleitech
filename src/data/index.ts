@@ -1469,7 +1469,6 @@ export const doctorsData = {
 
 
 
-
 export const chats = [
     {
         "chatId": "chat1",

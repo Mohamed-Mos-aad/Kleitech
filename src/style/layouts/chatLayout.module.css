@@ -29,6 +29,7 @@
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr 2.5fr;
+    position: relative;
 }
 .chats_list_container
 {
@@ -38,6 +39,7 @@
     gap: 32px;
     padding: 40px 40px 40px 32px;
     overflow-y: scroll;
+    background-color: white;
 }
 .chats_list_container::-webkit-scrollbar
 {
@@ -177,6 +179,7 @@
     gap: 16px;
     padding: 0 16px;
     border-bottom: solid 1px var(--main-color-200);
+    position: relative;
 }
 .chat_header .chat_photo
 {
@@ -215,6 +218,27 @@
     height: 12px;
     border-radius: 12px;
     background-color: var(--green-color-400);
+}
+.chat_header .back_btn
+{
+    display: none;
+    position: absolute;
+    left: 16px;
+}
+.chat_header .back_btn button
+{
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: solid 2px var(--main-color-700);
+    border-radius: 32px;
+}
+.chat_header .back_btn button img
+{
+    filter: brightness(0) saturate(100%) invert(15%) sepia(62%) saturate(5467%) hue-rotate(188deg) brightness(104%) contrast(98%);
 }
 .chat_messages_content
 {
@@ -340,8 +364,8 @@
 }
 .chat_footer button
 {
-    width: 50px;
-    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -360,19 +384,49 @@
 /* Extra small devices (phones, portrait) */
 @media (max-width: 575.98px) 
 {
-
+    .chats_container
+    {
+        grid-template-columns: 1fr;
+    }
+    .chats_list_container
+    {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 11111111111111;
+    }
+    .chat_header .back_btn
+    {
+        display: flex;
+    }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) 
 {
-
+    .chats_container
+    {
+        grid-template-columns: 1fr;
+    }
+    .chats_list_container
+    {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 11111111111111;
+    }
+    .chat_header .back_btn
+    {
+        display: flex;
+    }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) 
 {
     .chats_container
     {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1.5fr 2fr;
     }
 }
 /* Large devices (desktops, 992px and up) */
