@@ -19,6 +19,7 @@ import EmojyPicker from '../components/ui/EmojyPicker'
 import VoiceMessage from '../components/ui/chat/VoiceMessage'
 import TextMessage from '../components/ui/chat/TextMessage'
 import PhotoMessage from '../components/ui/chat/PhotoMessage'
+import ChatListItem from '../components/ui/chat/ChatListItem'
 
 
 // ** Interfaces
@@ -205,20 +206,7 @@ export default function ChatLayout() {
 
     // ** Render
     const chatsListRender = displayedChats.map(chatItme =>
-        <div className={style.chats_list_item} key={chatItme.chatId} onClick={()=>{selectChatHandler(chatItme.chatId)}}>
-            <div className={style.chats_list_item_data}>
-                <div className={style.chats_list_item_photo}>
-                    <img src={userPhoto} alt="User photo"/>
-                </div>
-                <div className={style.chats_list_item_content}>
-                    <h2>{chatItme.participants[0].name}</h2>
-                    <p>{chatItme.lastMessage.text}</p>
-                </div>
-            </div>
-            <div className={style.chats_list_item_details}>
-                <h4>{convertDateTypeHandler(chatItme.lastMessage.timestamp)}</h4>
-            </div>
-        </div>
+        <ChatListItem name={chatItme.participants[0].name} lastMessage={chatItme.lastMessage.text} timesTamp={convertDateTypeHandler(chatItme.lastMessage.timestamp)} onClick={()=>{selectChatHandler(chatItme.chatId)}} key={chatItme.chatId}/>
     )
     const chatMessagesRender = currentChat?.messages.slice().reverse().map(message =>
     {
