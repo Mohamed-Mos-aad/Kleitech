@@ -139,7 +139,22 @@
 {
     height: 100%;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+}
+.chats_list_item_details .message_numebr
+{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-color-700);
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
 }
 .chats_list_item_details h4
 {
