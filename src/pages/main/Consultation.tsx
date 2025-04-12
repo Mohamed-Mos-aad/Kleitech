@@ -7,9 +7,10 @@ import doctorPhoto from '../../assets/landingPage/PatientReviews/PatientReview-1
 // ** Components
 import SectionHeader from "../../components/landing/SectionHeader";
 import DoctorSearchInput from '../../components/ui/DoctorSearchInput';
-import { useState } from 'react';
-import { doctorsData } from '../../data';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { fetchDoctors } from '../../api/doctorsApi';
+import { IDoctorsSimpleData } from '../../interfaces';
 
 
 
@@ -20,9 +21,9 @@ export default function Consultation() {
     // ** Default
     const navigate = useNavigate();
     // ** States
-    const doctorData = doctorsData.doctorsSimple;
+    const [doctors,setDoctors] = useState<IDoctorsSimpleData[]>([]);
     const doctorsPerPage = 4;
-    const totalPages = Math.ceil(doctorData.length / doctorsPerPage);
+    const totalPages = Math.ceil(doctors.length / doctorsPerPage);
     const [pageNumber,setPageNumber] = useState(1);
 
 
@@ -59,7 +60,8 @@ export default function Consultation() {
 
 
 
-    const currentDoctors = doctorData.slice((pageNumber - 1) * doctorsPerPage,pageNumber*doctorsPerPage);
+    const currentDoctors = doctors.slice((pageNumber - 1) * doctorsPerPage,pageNumber*doctorsPerPage);
+
     // ** Render
     const doctorDataRender = currentDoctors.map(doctor =>
             <div className={style.doctor} key={doctor.id} id={`${doctor.id}`} onClick={()=>{openDoctorDetailsPageHanlder(doctor.id)}}>
@@ -109,6 +111,23 @@ export default function Consultation() {
     }
 
 
+
+
+
+
+    useEffect(()=>{
+        const loadDoctors = async ()=>{
+            try{
+                const doctorsData = await fetchDoctors();
+                setDoctors(doctorsData.doctorsSimple);
+            }
+            catch(error)
+            {
+                console.log(error);
+            }
+        }
+        loadDoctors();
+    },[])
 
 
 

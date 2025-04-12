@@ -11,7 +11,7 @@ import NewPassword from "../pages/auth/NewPassword";
 import Done from "../pages/auth/Done";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/main/Home";
-import AllowAndNotAllow from "../pages/main/AllowAndNotAllow";
+import Advices from "../pages/main/Advices";
 import Consultation from "../pages/main/Consultation";
 import DoctorDetails from "../pages/main/DoctorDetails";
 import BookingDetails from "../pages/main/BookingDetails";
@@ -36,7 +36,7 @@ export default function Routers() {
                 </Route>
                 <Route path="/m" element={<MainLayout />}>
                     <Route index element={<Home/>}/>
-                    <Route path="allow-notAllow" element={<AllowAndNotAllow />}/>
+                    <Route path="advices" element={<Advices />}/>
                     <Route path="consultation" element={<Consultation />} />
                     <Route path="doctor/:id" element={<DoctorDetails />} />
                     <Route path="booking-details" element={<BookingDetails />} />

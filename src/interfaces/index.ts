@@ -32,7 +32,7 @@ export interface ISignUpData{
 
 
 // Allow And not Alow
-export interface IAllowAndNotAllowData{
+export interface IAdvices{
     allow: {
         food: string[],
         drinks: string[]
@@ -48,4 +48,24 @@ export interface IAllowAndNotAllowData{
 export interface IBookingData{
     userName: string,
     userPhone: string
+}
+
+
+export interface IDoctorsData{
+    id: number,
+    name: string,
+    specialty: string,
+    location: string,
+    price: string,
+    rating: { avg_rating: number, visitors_count: number },
+    availability: {
+        time: string,
+        status: boolean
+    }[][]
+}
+
+export interface IDoctorsSimpleData{
+    id: number,
+    name: string,
+    specialty: string
 }

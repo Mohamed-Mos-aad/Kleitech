@@ -11,16 +11,14 @@ import voiceTest from '../assets/voice.mp3'
 // ** Style
 import style from '../style/layouts/chatLayout.module.css'
 // ** Hooks
-import { useRef, useState } from 'react'
-// ** Data
-import { chats } from './../data/index';
+import { useEffect, useRef, useState } from 'react'
 // ** Components
 import EmojyPicker from '../components/ui/EmojyPicker'
 import VoiceMessage from '../components/ui/chat/VoiceMessage'
 import TextMessage from '../components/ui/chat/TextMessage'
 import PhotoMessage from '../components/ui/chat/PhotoMessage'
 import ChatListItem from '../components/ui/chat/ChatListItem'
-
+import { fetchMessages } from '../api/chatApi'
 
 // ** Interfaces
 interface IFindChat{
@@ -58,14 +56,9 @@ interface IFindChat{
 
 
 export default function ChatLayout() {
-    // ** Default
-    const chatsData = chats;
-
-
-
-
     // ** States
-    const [displayedChats,setDisplayedChats] = useState(chatsData);
+    const [chats,setChats] = useState<IFindChat[]>([]);
+    const [displayedChats,setDisplayedChats] = useState<IFindChat[]>(chats);
     const [chatSelected,setChatSelected] = useState<boolean>(false);
     const [currentChat,setCurrentChat] = useState<IFindChat|undefined>();
     const [emojysComponentOpened,setEmojysComponentOpened] = useState<boolean>(false);
@@ -203,7 +196,6 @@ export default function ChatLayout() {
 
 
 
-
     // ** Render
     const chatsListRender = displayedChats.map(chatItme =>
         <ChatListItem name={chatItme.participants[0].name} lastMessage={chatItme.lastMessage.text} timesTamp={convertDateTypeHandler(chatItme.lastMessage.timestamp)} onClick={()=>{selectChatHandler(chatItme.chatId)}} key={chatItme.chatId}/>
@@ -233,6 +225,23 @@ export default function ChatLayout() {
 
 
 
+
+    useEffect(()=>{
+        const loadChat = async ()=>{
+            try{
+                const chatsData = await fetchMessages();
+                setChats(chatsData);
+                setDisplayedChats(chatsData);
+            }
+            catch(error)
+            {
+                console.log(error);
+            }
+        }
+        loadChat();
+    },[])
+
+    
     return (
         <>
             <div className={style.chats_container}>
