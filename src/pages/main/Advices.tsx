@@ -3,14 +3,16 @@ import style from '../../style/pages/main/allowAndNotAllow.module.css'
 // ** assets 
 import allowIcon from '../../assets/main/allow&notAllow/allowIcon.svg'
 import notAllowIcon from '../../assets/main/allow&notAllow/notAllowIcon.svg'
-import { allowAndNotAllowData } from '../../data'
+import { useEffect, useState } from 'react';
+import { fetchAdvices } from '../../api/advicesApi';
+import { IAdvices } from '../../interfaces';
 
 
 
 
-export default function AllowAndNotAllow() {
+export default function Advices() {
     // ** States
-    const AllowingData = allowAndNotAllowData;
+    const [advices,setAdvices] = useState<IAdvices>();
 
 
 
@@ -19,11 +21,31 @@ export default function AllowAndNotAllow() {
 
 
     // ** Render
-    const allowFoodRender = AllowingData.allow.food.map((item,index) =><li key={index}>{item}</li>)
-    const allowDrinksRender = AllowingData.allow.drinks.map((item,index) =><li key={index}>{item}</li>)
-    const notAllowFoodRender = AllowingData.notAllow.food.map((item,index) =><li key={index}>{item}</li>)
-    const notAllowDrinksRender = AllowingData.notAllow.drinks.map((item,index) =><li key={index}>{item}</li>)
+    const allowFoodRender = advices?.allow.food.map((item,index) =><li key={index}>{item}</li>)
+    const allowDrinksRender = advices?.allow.drinks.map((item,index) =><li key={index}>{item}</li>)
+    const notAllowFoodRender = advices?.notAllow.food.map((item,index) =><li key={index}>{item}</li>)
+    const notAllowDrinksRender = advices?.notAllow.drinks.map((item,index) =><li key={index}>{item}</li>)
     
+
+
+
+    useEffect(()=>{
+        const loadAdvices = async ()=>{
+            try{
+                const AllowingData = await fetchAdvices();
+                setAdvices(AllowingData)
+            }
+            catch(error){
+                console.log(error)
+            }
+        }
+        loadAdvices();
+    },[])
+
+
+
+
+
 
     return (
         <>

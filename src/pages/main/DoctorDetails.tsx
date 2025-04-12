@@ -15,29 +15,10 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from 'react'
 // ** Other
 import doctorPhoto from '../../assets/landingPage/PatientReviews/PatientReview-1.png'
-import { doctorsData } from '../../data'
 import Booking from '../../components/ui/Booking'
 import BookingDone from '../../components/ui/BookingDone'
-
-
-
-
-// ** Interfaces
-interface IDoctordoctors{
-    id: number,
-    name: string,
-    specialty: string,
-    location: string,
-    price: string,
-    rating: {
-        avg_rating: number,
-        visitors_count: number,
-    },
-    availability: {
-        time: string,
-        status: boolean,
-    }[][],
-}
+import { IDoctorsData } from '../../interfaces'
+import { fetchDoctors } from '../../api/doctorsApi'
 
 
 
@@ -51,7 +32,7 @@ export default function DoctorDetails() {
 
 
     // ** States
-    const [doctor,setDoctor] = useState<IDoctordoctors>();
+    const [doctor,setDoctor] = useState<IDoctorsData>();
     const [bookingOpened,setBookingOpened] = useState<boolean>(false);
     const [bookingDoneOpened,setBookingDoneOpened] = useState<boolean>(false);
 
@@ -115,15 +96,24 @@ export default function DoctorDetails() {
 
     // ** UseEffect
     useEffect(()=>{
-        if(id && doctorsData.doctors[Number(id)-1])
-        {
-            setDoctor(doctorsData.doctors[Number(id)-1]);
+        const loadDoctor = async ()=>{
+            try{
+                const doctorData = await fetchDoctors();
+                if(id)
+                {
+                    setDoctor(doctorData.doctors[id])
+                }
+            }
+            catch(error)
+            {
+                console.log(error)
+            }
         }
-    },[id])
+        loadDoctor();
+    },[id]);
+
 
     
-
-
 
 
     return (
