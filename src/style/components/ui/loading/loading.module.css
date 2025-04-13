@@ -1,0 +1,70 @@
+/* Start Loading Component */
+.loading
+{
+    width: 100%;
+    min-height: calc(100vh - 75px);    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loading img
+{
+    width: 100px;
+    animation-name: loadingAnimation;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    filter: brightness(0) saturate(100%) invert(24%) sepia(98%) saturate(1622%) hue-rotate(180deg) brightness(94%) contrast(98%);
+}
+@keyframes loadingAnimation
+{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+/* End Loading Component */
+
+
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .loading img
+    {
+        width: 50px;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    .loading img
+    {
+        width: 50px;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    .loading img
+    {
+        width: 75px;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+    .loading img
+    {
+        width: 75px;
+    }
+}
+/* End Media Query */

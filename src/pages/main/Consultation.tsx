@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchDoctors } from '../../api/doctorsApi';
 import { IDoctorsSimpleData } from '../../interfaces';
+import Loading from '../../components/ui/loading/Loading';
 
 
 
@@ -25,6 +26,7 @@ export default function Consultation() {
     const doctorsPerPage = 4;
     const totalPages = Math.ceil(doctors.length / doctorsPerPage);
     const [pageNumber,setPageNumber] = useState(1);
+    const [isloading,setIsLoading] = useState<boolean>(true);
 
 
 
@@ -125,6 +127,10 @@ export default function Consultation() {
             {
                 console.log(error);
             }
+            finally
+            {
+                setIsLoading(false);
+            }
         }
         loadDoctors();
     },[])
@@ -134,6 +140,10 @@ export default function Consultation() {
 
     return (
         <>
+        {
+            isloading ? 
+                <Loading />
+            :
             <div className={style.consultation_container}>
                 <DoctorSearchInput />
                 <SectionHeader title="تواصل مع طبيبك بسهولة واطمئن على صحتك." description="نوفر لك إمكانية الوصول إلى الأطباء المختصين لتلقي الاستشارات الطبية بسهولة من أي مكان، مع متابعة حالتك الصحية أولاً بأول."/>
@@ -154,6 +164,7 @@ export default function Consultation() {
                     </div>
                 </div>
             </div>
+        }
         </>
     )
 }
