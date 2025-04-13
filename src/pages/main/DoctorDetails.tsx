@@ -19,6 +19,7 @@ import Booking from '../../components/ui/Booking'
 import BookingDone from '../../components/ui/BookingDone'
 import { IDoctorsData } from '../../interfaces'
 import { fetchDoctors } from '../../api/doctorsApi'
+import Loading from '../../components/ui/loading/Loading'
 
 
 
@@ -35,6 +36,7 @@ export default function DoctorDetails() {
     const [doctor,setDoctor] = useState<IDoctorsData>();
     const [bookingOpened,setBookingOpened] = useState<boolean>(false);
     const [bookingDoneOpened,setBookingDoneOpened] = useState<boolean>(false);
+    const [isloading,setIsLoading] = useState<boolean>(true);
 
 
 
@@ -108,6 +110,10 @@ export default function DoctorDetails() {
             {
                 console.log(error)
             }
+            finally
+            {
+                setIsLoading(false);
+            }
         }
         loadDoctor();
     },[id]);
@@ -118,6 +124,10 @@ export default function DoctorDetails() {
 
     return (
         <>
+        {
+            isloading ? 
+                <Loading />
+            :
             <div className={style.doctor_details_container}>
                 <div className={style.doctor_details}>
                     <div className={style.doctor_photo}>
@@ -205,6 +215,7 @@ export default function DoctorDetails() {
                     <BookingDone />
                 }
             </div>
+        }
         </>
     )
 }

@@ -6,6 +6,7 @@ import notAllowIcon from '../../assets/main/allow&notAllow/notAllowIcon.svg'
 import { useEffect, useState } from 'react';
 import { fetchAdvices } from '../../api/advicesApi';
 import { IAdvices } from '../../interfaces';
+import Loading from '../../components/ui/loading/Loading';
 
 
 
@@ -13,6 +14,7 @@ import { IAdvices } from '../../interfaces';
 export default function Advices() {
     // ** States
     const [advices,setAdvices] = useState<IAdvices>();
+    const [isloading,setIsLoading] = useState<boolean>(true);
 
 
 
@@ -38,6 +40,10 @@ export default function Advices() {
             catch(error){
                 console.log(error)
             }
+            finally
+            {
+                setIsLoading(false);
+            }
         }
         loadAdvices();
     },[])
@@ -49,6 +55,10 @@ export default function Advices() {
 
     return (
         <>
+        {
+            isloading ? 
+                <Loading />
+            :
             <div className={style.allow_not_allow}>
                 <div className={style.allowing_container}>
                     <div className={style.head_title}>
@@ -83,6 +93,7 @@ export default function Advices() {
                     </div>
                 </div>
             </div>
+        }
         </>
     )
 }
