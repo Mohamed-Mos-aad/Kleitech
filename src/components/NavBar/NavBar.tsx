@@ -68,7 +68,7 @@ export default function NavBar() {
         handleLogout();
         navigate('/')
     };
-    
+    const profilePageHandler = ()=>{navigate('/m/profile')};
 
     // ** Store Handler 
     const handleLogout = () => {
@@ -119,7 +119,7 @@ export default function NavBar() {
                     </div>
                     {userLogged ?
                         <div className={style.auth_btns}>
-                            <button className={style.userLoggedIcon}><img src={settingIcon} alt="Setting icon" /></button>
+                            <button className={style.userLoggedIcon} onClick={profilePageHandler}><img src={settingIcon} alt="Setting icon" /></button>
                             <button className={style.userLoggedIcon} onClick={logOutHandler}><img src={logOutIcon} alt="LogOut icon" /></button>
                         </div>
                         :

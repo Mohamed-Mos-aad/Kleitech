@@ -17,6 +17,12 @@ import DoctorDetails from "../pages/main/DoctorDetails";
 import BookingDetails from "../pages/main/BookingDetails";
 import ChatLayout from "../layouts/ChatLayout";
 import Remember from "../pages/main/Remember";
+import Profile from "../pages/main/Profile";
+
+
+
+
+
 
 export default function Routers() {
     return (
@@ -41,6 +47,7 @@ export default function Routers() {
                     <Route path="doctor/:id" element={<DoctorDetails />} />
                     <Route path="booking-details" element={<BookingDetails />} />
                     <Route path="remember" element={<Remember />} />
+                    <Route path="profile" element={<Profile />}/>
                 </Route>
                 <Route path="/chats" element={<ChatLayout />}/>
             </Routes>
