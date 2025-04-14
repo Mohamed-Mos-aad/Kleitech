@@ -34,7 +34,7 @@ export default function Profile() {
 
     // ** Handlers
     const settingToggelHandler = ()=>{setSettingOpened(!settingOpened)};
-    const changePasswordPageHandler = ()=>{navigate('/u/new-password')}
+    const changePasswordPageHandler = ()=>{navigate('/u/change-password')}
     const editingToggelHanlder = ()=>{setEditeOpened(!editeOpened)};
 
 
