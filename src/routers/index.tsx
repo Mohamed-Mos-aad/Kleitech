@@ -18,6 +18,7 @@ import BookingDetails from "../pages/main/BookingDetails";
 import ChatLayout from "../layouts/ChatLayout";
 import Remember from "../pages/main/Remember";
 import Profile from "../pages/main/Profile";
+import ChangePassword from "../pages/auth/ChangePassword";
 
 
 
@@ -39,6 +40,7 @@ export default function Routers() {
                     <Route path="otp" element={<Otp />}/>
                     <Route path="new-password" element={<NewPassword />}/>
                     <Route path="done" element={<Done />}/>
+                    <Route path="change-password" element={<ChangePassword />}/>
                 </Route>
                 <Route path="/m" element={<MainLayout />}>
                     <Route index element={<Home/>}/>
