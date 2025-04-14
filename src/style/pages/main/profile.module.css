@@ -1,0 +1,264 @@
+/* Start Variables */
+:root
+{
+    --main-color-100: #E0F2FE;
+    --main-color-200: #B9E6FE;
+    --main-color-700: #026AA2;
+    --main-color-800: #00598D;
+    --gray-color-400: #AFAFAF;
+    --gray-color-600: #636363;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-100: #FDE8E8;
+    --red-color-500: #F05252;
+    --green-color-400: #31C48D;
+    --chat-1-color: #E0F0FF;
+    --chat-2-color: #E9EAED;
+}
+/* End Variables */
+
+
+
+
+
+
+/* Start Profile Screen */
+.profile_container
+{
+    width: 90%;
+    min-height: calc(100vh - 75px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 58px;
+    margin: 24px auto;
+}
+.profile_container section
+{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    border: solid 1px var(--main-color-800);
+    border-radius: 16px;
+    padding: 42px;
+    position: relative;
+}
+.profile_container section:first-of-type
+{
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+.profile_container section .setting_btn
+{
+    position: absolute;
+    top: 42px;
+    left: 42px;
+}
+.profile_container section .setting_btn img
+{
+    padding: 4px 8px;
+    cursor: pointer;
+}
+.profile_container section .setting_btn .setting_list
+{
+    position: absolute;
+    top: 50%;
+    left: 8px;
+}
+.profile_container section .setting_btn .setting_list ul
+{
+    list-style-type: none;
+    background-color: white;
+    box-shadow: 0 0 10px #B7B7B740;
+}
+.profile_container section .setting_btn .setting_list ul li
+{
+    text-wrap: nowrap;
+    padding: 16px;
+    cursor: pointer;
+}
+.profile_container .profile_img
+{
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 150px;
+    overflow: hidden;
+}
+.profile_container .profile_img img
+{
+    width: 100%;
+    transform: scale(1.25);
+    border-radius: 200px;
+}
+.profile_container .user_short_data h1
+{
+    font-size: 28px;
+    font-weight: 400;
+}
+.profile_container .user_short_data p
+{
+    font-size: 18px;
+    color: var(--gray-color-700);
+}
+.profile_container section .section_title h2
+{
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--main-color-700);
+    text-align: start;
+}
+.profile_container section .user_data ul
+{
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 40px;
+}
+.profile_container section .user_data ul li
+{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.profile_container section .user_data ul li h3
+{
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--gray-color-800);
+}
+.profile_container section .user_data ul li p
+{
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--gray-color-700);
+}
+.profile_container section .edite_btn
+{
+    position: absolute;
+    top: 42px;
+    left: 42px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 16px;
+    border: solid 1px var(--main-color-700);
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--main-color-700);
+    cursor: pointer;
+}
+.profile_container .editing_section
+{
+    align-items: center;
+}
+.profile_container .editing_section .user_data
+{
+    width: 100%;
+    display: flex;
+}
+.profile_container .editing_section .user_data ul
+{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 25%;
+}
+.profile_container .editing_section button
+{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--main-color-700);
+    border: solid 1px var(--main-color-700);
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    margin-top: 24px;
+}
+/* End Profile Screen */
+
+
+
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .profile_container section:first-of-type
+    {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    .profile_container section
+    {
+        padding: 16px;
+    }
+    .profile_container section .setting_btn
+    {
+        top: 16px;
+        left: 16px;
+    }
+    .profile_container section .user_data ul
+    {
+        grid-template-columns: repeat(1,1fr);
+        gap: 32px;
+    }
+    .profile_container section .edite_btn
+    {
+        top: 75px;
+        left: 16px;
+    }
+    .profile_container .editing_section .user_data ul
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    .profile_container section .user_data ul
+    {
+        grid-template-columns: repeat(1,1fr);
+        gap: 32px;
+    }
+    .profile_container .editing_section .user_data ul
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    .profile_container .editing_section .user_data ul
+    {
+        column-gap: 5%;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+    .profile_container .editing_section .user_data ul
+    {
+        column-gap: 10%;
+    }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */
