@@ -16,7 +16,7 @@ import Consultation from "../pages/main/Consultation";
 import DoctorDetails from "../pages/main/DoctorDetails";
 import BookingDetails from "../pages/main/BookingDetails";
 import ChatLayout from "../layouts/ChatLayout";
-import Remember from "../pages/main/Remember";
+import Alarm from "../pages/main/Alarm";
 import Profile from "../pages/main/Profile";
 import ChangePassword from "../pages/auth/ChangePassword";
 
@@ -48,7 +48,7 @@ export default function Routers() {
                     <Route path="consultation" element={<Consultation />} />
                     <Route path="doctor/:id" element={<DoctorDetails />} />
                     <Route path="booking-details" element={<BookingDetails />} />
-                    <Route path="remember" element={<Remember />} />
+                    <Route path="alarm" element={<Alarm />} />
                     <Route path="profile" element={<Profile />}/>
                 </Route>
                 <Route path="/chats" element={<ChatLayout />}/>

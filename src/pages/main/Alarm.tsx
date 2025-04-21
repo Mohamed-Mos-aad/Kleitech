@@ -13,7 +13,7 @@ import { useState } from 'react'
 
 
 
-export default function Remember() {
+export default function Alarm() {
     // ** Default
     const waterData = ()=>{
         return (
