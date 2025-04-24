@@ -22,10 +22,10 @@ export interface ISignUpData{
     userEmail: string,
     userPassword: string,
     userPasswordConfirm: string,
-    hasIllnesses: string,
+    hasIllnesses: boolean | null | string,
     userWeight: string,
     userHeight: string,
-    hasDoctor: string,
+    hasDoctor: boolean | null | string,
     userDate: string,
     userState: string
 }
