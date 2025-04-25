@@ -10,6 +10,7 @@ import { AppDispatch, RootState } from '../../app/store';
 import emailjs from '@emailjs/browser';
 // ** Store
 import { setdonePage } from '../../app/slices/donePageSlice';
+import { registerUser } from '../../api/userApi';
 
 
 
@@ -79,6 +80,16 @@ export default function Otp() {
         });
         setCodeWrong(false);
     }
+    const userRegisterHandler = async ()=>{
+        try{
+            await registerUser(userData);
+            dispatch(setdonePage('signUp'));
+            goToDonePage();
+        }
+        catch (error){
+            console.error("Registration failed:", error);
+        }
+    }
     const submitCodeHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault();
         const codeInput = userInput.join('');
@@ -91,12 +102,10 @@ export default function Otp() {
         if(codeInput === otpCode)
         {
             setCodeWrong(false);
-            dispatch(setdonePage('signUp'));
-            goToDonePage();
+            userRegisterHandler();
         }
         else
         {
-            
             setCodeWrong(true);
         }
     }
@@ -116,11 +125,11 @@ export default function Otp() {
     // Timer
     useEffect(()=>{
         if (!emailSent) return;
-        const startCountDownHandler = setInterval(()=>{
+        const timerId = setInterval(()=>{
             setTimer(prev=>{
-                const totalSeconds = prev.minutes * 60 + prev.seconds;
-                if (totalSeconds <= 1) {
-                    clearInterval(startCountDownHandler);
+                const totalSeconds = prev.minutes * 60 + prev.seconds - 1;
+                if (totalSeconds <= 0) {
+                    clearInterval(timerId);
                     return { minutes: 0, seconds: 0 };
                 }
                 const newTotalSeconds = totalSeconds - 1;
@@ -130,7 +139,7 @@ export default function Otp() {
                 }
             })
         },1000);
-        return () => clearInterval(startCountDownHandler);
+        return () => clearInterval(timerId);
     },[emailSent])
 
     // Resend
