@@ -7,7 +7,7 @@ import arrowRightIcon from '../../assets/auth/arrow-right.svg'
 
 // ** Hooks && Tools
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { AppDispatch } from '../../app/store';
 import { useDispatch } from 'react-redux';
 import { setUserSignUpData } from '../../app/slices/userSignUpSlice';
