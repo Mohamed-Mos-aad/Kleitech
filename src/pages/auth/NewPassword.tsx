@@ -3,18 +3,25 @@ import logo from '../../assets/auth/lockIcon.svg'
 import passwordIcon from '../../assets/auth/formIcons/passwordInputIcon.svg'
 // ** Style
 import style from '../../style/pages/auth/newPassword.module.css'
+// ** Hooks
 import { useNavigate } from 'react-router-dom';
+// ** Store
+import { AppDispatch } from '../../app/store';
+import { useDispatch } from 'react-redux';
+import { setdonePage } from '../../app/slices/donePageSlice';
 
 
 
 
 export default function NewPassword() {
+    // ** Store
+    const dispatch: AppDispatch = useDispatch();
     // ** Defaults
     const navigate = useNavigate();
     const donePageHandler = ()=>{navigate('/u/done')};
 
 
-
+    dispatch(setdonePage('passwordReset'));
 
     
     return (

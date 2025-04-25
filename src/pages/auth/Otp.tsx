@@ -5,9 +5,11 @@ import logo from '../../assets/auth/otpIcon.svg'
 import style from '../../style/pages/auth/otp.module.css'
 // ** Hooks & Tools
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../app/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../app/store';
 import emailjs from '@emailjs/browser';
+// ** Store
+import { setdonePage } from '../../app/slices/donePageSlice';
 
 
 
@@ -15,6 +17,7 @@ import emailjs from '@emailjs/browser';
 
 export default function Otp() {
     // ** Store
+    const dispatch: AppDispatch = useDispatch();
     const userData = useSelector((state: RootState) => state.userSignUp);
 
 
@@ -88,10 +91,12 @@ export default function Otp() {
         if(codeInput === otpCode)
         {
             setCodeWrong(false);
+            dispatch(setdonePage('signUp'));
             goToDonePage();
         }
         else
         {
+            
             setCodeWrong(true);
         }
     }

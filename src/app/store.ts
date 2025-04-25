@@ -1,6 +1,9 @@
+// ** Hooks && Tools
 import { configureStore } from '@reduxjs/toolkit'
+// ** Slices
 import userSignUpSlice from './slices/userSignUpSlice';
 import userLoginSlice from './slices/userSlice';
+import donePageSlice from './slices/donePageSlice';
 
 
 
@@ -8,7 +11,8 @@ import userLoginSlice from './slices/userSlice';
 const store = configureStore({
     reducer: {
         userSignUp: userSignUpSlice.reducer,
-        userLogin: userLoginSlice.reducer
+        userLogin: userLoginSlice.reducer,
+        donePage: donePageSlice.reducer
     },
 })
 
