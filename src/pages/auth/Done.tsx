@@ -20,7 +20,7 @@ export default function Done() {
     const goTosignIn = ()=>{navigate('/u/sign-in')};
 
     const doneActions:Record<string, { title: string; message: string }> = {
-        SignUp :{
+        signUp :{
             title: 'تأكيد التسجيل',
             message: 'لقد تم تسجيل حسابك بنجاح انقر لتسجيل الدخول'
         },
