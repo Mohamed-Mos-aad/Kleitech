@@ -8,6 +8,9 @@ import arrowRightIcon from '../../assets/auth/arrow-right.svg'
 // ** Hooks && Tools
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react'
+import { AppDispatch } from '../../app/store';
+import { useDispatch } from 'react-redux';
+import { setUserSignUpData } from '../../app/slices/userSignUpSlice';
 
 // ** Interfaces
 import { ISignUpData } from '../../interfaces'
@@ -19,6 +22,7 @@ import { inputValidation } from '../../validation'
 import SignUpPage1 from '../../components/pages/signUp/SignUpPage1'
 import SignUpPage2 from '../../components/pages/signUp/SignUpPage2';
 import SignUpPage3 from '../../components/pages/signUp/SignUpPage3';
+
 
 
 
@@ -47,6 +51,10 @@ const SignUpSteps = {
 
 
 export default function SignUp() {
+    // ** Store
+    const dispatch: AppDispatch = useDispatch();
+
+    
     const navigate = useNavigate();
 
     // ** Navigation
@@ -100,6 +108,7 @@ export default function SignUp() {
             setErrors(validationResults);
             return;
         }
+        dispatch(setUserSignUpData(userData));
         goToOtp();
     }
 
@@ -120,13 +129,6 @@ export default function SignUp() {
             case 3 : return <SignUpPage3 {...commonProps} createAccountHandler={createAccountHandler}/>;
         }
     }
-
-
-
-
-    useEffect(()=>{
-        console.log(userData)
-    },[userData])
 
 
     return (

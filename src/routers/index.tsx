@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+// ** Elements
 import LandingPageLayout from "../layouts/LandingPageLayout";
 import LandingPage from "../pages/landing/LandingPage";
 import AuthLayout from "../layouts/AuthLayout";
@@ -20,6 +20,9 @@ import Alarm from "../pages/main/Alarm";
 import Profile from "../pages/main/Profile";
 import ChangePassword from "../pages/auth/ChangePassword";
 
+// ** Hooks && Tools
+import { Route, Routes } from "react-router-dom";
+import { ProtectedRoute } from "./ProtectedRoutes";
 
 
 
@@ -37,7 +40,7 @@ export default function Routers() {
                     <Route path="sign-in" element={<SignIn />}/>
                     <Route path="sign-up" element={<SignUp />}/>
                     <Route path="forget-password" element={<ForgetPassword />}/>
-                    <Route path="otp" element={<Otp />}/>
+                    <Route path="otp" element={<ProtectedRoute><Otp /></ProtectedRoute>} />
                     <Route path="new-password" element={<NewPassword />}/>
                     <Route path="done" element={<Done />}/>
                     <Route path="change-password" element={<ChangePassword />}/>
