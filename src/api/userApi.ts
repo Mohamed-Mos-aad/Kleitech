@@ -35,14 +35,25 @@ export const registerUser = async (userData: ISignUpData) => {
             address: "Cairo, Egypt"
         };
         const response = await api.post('/register', apiData);
-        localStorage.setItem("kleitech_user", JSON.stringify({
-            token: response.data.token,
-            user: response.data.user
-        }));
         return response.data;
     }
     catch(error)
     {
         console.log(error);
+    }
+}
+
+
+
+
+export const loginUser = async (userData: {email: string, password: string}) => {
+    try{
+        const response = await api.post('/login', userData);
+        return response.data;
+    }
+    catch(error)
+    {
+        console.log(error);
+        throw error;
     }
 }

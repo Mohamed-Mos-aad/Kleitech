@@ -17,3 +17,10 @@ export function ProtectDoneRoute({ children }: { children: JSX.Element })
     const actionType = useSelector((state: RootState) => state.donePage.actionType);
     return actionType === '' ?  <Navigate to="/u/sign-up" /> : children ;
 }
+
+
+export function ProtectMainRutes({ children }: { children: JSX.Element })
+{
+    const userData = JSON.parse(localStorage.getItem('kleitech_user') || sessionStorage.getItem('kleitech_user') || 'null');
+    return userData ?   children : <Navigate to="/u/sign-in" />;
+}

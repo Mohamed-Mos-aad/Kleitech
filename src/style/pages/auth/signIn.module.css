@@ -75,6 +75,11 @@ h2
     font-size: 14px;
     font-weight: 600;
     color: var(--main-color-700);
+    cursor: pointer;
+}
+.sign_in_form .form_footer input
+{
+    cursor: pointer;
 }
 .sign_in_form .form_footer a
 {
@@ -96,8 +101,9 @@ h2
     font-weight: 600;
     color: white;
     margin: 16px 0;
+    cursor: pointer;
 }
-.sign_in_form a
+.sign_in_form h5
 {
     display: flex;
     justify-content: space-between;
@@ -109,7 +115,7 @@ h2
     text-decoration: none;
     opacity: 50%;
 }
-.sign_in_form a span
+.sign_in_form h5 span
 {
     width: 30%;
     height: 1px;

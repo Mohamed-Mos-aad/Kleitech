@@ -11,7 +11,7 @@ import { useEffect, useRef, useState } from 'react';
 // ** Store
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState, AppDispatch } from '../../app/store'
-import { logout } from '../../app/slices/userSlice'
+import { logout, setUserLogin } from '../../app/slices/userSlice'
 // ** Data
 import { landingPageSections, mainPages } from '../../data/navbar/navbarData'
 
@@ -71,9 +71,10 @@ export default function NavBar() {
                 nabBarToggleHandler();
             }
         }
-    const logOutHandler = ()=>{
-        handleLogout();
-        navigate('/')
+    const logOutSubmitHandler = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+        e.preventDefault();
+        handleLogOut();
+        navigate('/u')
     };
     const changePageHandler = (e: React.MouseEvent<HTMLElement>)=>{
         const page = e.currentTarget.id;
@@ -88,8 +89,10 @@ export default function NavBar() {
 
 
     // ** Store Handler 
-    const handleLogout = () => {
+    const handleLogOut = () => {
         dispatch(logout());
+        localStorage.removeItem('kleitech_user');
+        sessionStorage.removeItem('kleitech_user');
     };
 
 
@@ -137,6 +140,13 @@ export default function NavBar() {
 
 
 
+    useEffect(() => {
+        const userData = JSON.parse(localStorage.getItem('kleitech_user') || 'null');
+        if (userData) {
+        dispatch(setUserLogin({ ...userData.user, token: userData.token, loggedIn: true }));
+        }
+    }, [dispatch]);
+
 
 
     return (
@@ -156,7 +166,7 @@ export default function NavBar() {
                             </ul>
                             <div className={`${style.auth_btns} ${style.auth_btns_logged}`}>
                                 <button className={style.userLoggedIcon} id='profile' onClick={(e)=>{changePageHandler(e)}}><img src={settingIcon} alt="Setting icon" /></button>
-                                <button className={style.userLoggedIcon} onClick={logOutHandler}><img src={logOutIcon} alt="LogOut icon" /></button>
+                                <button className={style.userLoggedIcon} onClick={(e)=>{logOutSubmitHandler(e)}}><img src={logOutIcon} alt="LogOut icon" /></button>
                             </div>
                         </div>
                         :
