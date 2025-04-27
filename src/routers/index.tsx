@@ -22,7 +22,7 @@ import ChangePassword from "../pages/auth/ChangePassword";
 
 // ** Hooks && Tools
 import { Route, Routes } from "react-router-dom";
-import { ProtectDoneRoute, ProtectOtpRoute } from "./ProtectedRoutes";
+import { ProtectDoneRoute, ProtectMainRutes, ProtectOtpRoute } from "./ProtectedRoutes";
 
 
 
@@ -45,7 +45,7 @@ export default function Routers() {
                     <Route path="done" element={<ProtectDoneRoute><Done /></ProtectDoneRoute>} />
                     <Route path="change-password" element={<ChangePassword />}/>
                 </Route>
-                <Route path="/m" element={<MainLayout />}>
+                <Route path="/m" element={<ProtectMainRutes><MainLayout /></ProtectMainRutes>}>
                     <Route index element={<Home/>}/>
                     <Route path="advices" element={<Advices />}/>
                     <Route path="consultation" element={<Consultation />} />
@@ -54,7 +54,7 @@ export default function Routers() {
                     <Route path="alarm" element={<Alarm />} />
                     <Route path="profile" element={<Profile />}/>
                 </Route>
-                <Route path="/chats" element={<ChatLayout />}/>
+                <Route path="/chats" element={<ProtectMainRutes><ChatLayout /></ProtectMainRutes>}/>
             </Routes>
         </>
     )

@@ -4,46 +4,80 @@ import style from '../../style/pages/auth/signIn.module.css'
 import googleIcon from '../../assets/auth/socialIcons/googleIcon.svg'
 import facebookIcon from '../../assets/auth/socialIcons/facebookIcon.svg'
 import appleIcon from '../../assets/auth/socialIcons/appleIcon.svg'
+import userEmailIcon from '../../assets/auth/formIcons/userEmailIcon.svg'
+import userPasswordIcon from '../../assets/auth/formIcons/userPasswordIcon.svg'
+// ** Hooks && Tools
 import { useNavigate } from 'react-router-dom';
-// ** Store
-import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+// ** Components
+import PasswordInputElement from '../../components/ui/PasswordInputElement';
+import InputElement from '../../components/ui/InputElement'
+import { loginUser } from '../../api/userApi'
 import { AppDispatch } from '../../app/store'
+import { useDispatch } from 'react-redux'
 import { setUserLogin } from '../../app/slices/userSlice'
 
 
-
+// ** Constants
+const defaultUserData = {
+    email: '',
+    password: ''
+}
 
 export default function SignIn() {
     // ** Store
     const dispatch: AppDispatch = useDispatch();
 
 
-
-
-
-    // ** Defaults
+    // ** Default
     const navigate = useNavigate();
 
 
+    // ** Navigation
+    const goToSignUpPage = ()=>{navigate('/u/sign-up')};
+    const goToForgetPasswordPage = ()=>{navigate('/u/forget-password')};
+    const goToHomePage = ()=>{navigate('/m')};
+
+
+
+    // ** States
+    const [userData,setUserData] = useState(defaultUserData);
+    const [errors,setErrors] = useState(defaultUserData);
+    const [isRememberMeChecked ,setIsRememberMeChecked ] = useState<boolean>(false)
 
 
 
     // ** Handlers
-    const signUpPageHandler = ()=>{navigate('/u/sign-up')};
-
-    const forgetPasswordPageHandler = ()=>{navigate('/u/forget-password')};
-    const loginHandler = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | { target: { id: string; value: string } }) => {
+        const {id,value} = e.target as HTMLInputElement;
+        setErrors((prev)=>({...prev,[id]: '' }))
+        setUserData((prev)=>({...prev,[id]: value }))
+    }
+    const loginUserHandler = async ()=>{
+        try{
+            const res = await loginUser(userData);
+            if (res&& res.token && res.user)
+            {
+                const storage = isRememberMeChecked ? localStorage : sessionStorage;
+                storage.setItem("kleitech_user", JSON.stringify({
+                    token: res.token,
+                    user: res.user
+                }));
+                dispatch(setUserLogin({ ...res.user, token: res.token, loggedIn: true }));
+                goToHomePage();
+            }
+        }
+        catch(error){
+            console.log(error)
+            setErrors((prev)=>({...prev,email: 'البريد الالكتروني أو كلمة المرور غير صحيحة' }));
+        }
+    }
+    const toggleRememberMeHandler = ()=>{
+        setIsRememberMeChecked(!isRememberMeChecked)
+    }
+    const submitLoginHandler = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault();
-        handleLogin();
-        navigate('/m')
-    };
-
-
-
-
-    // ** Store Handler 
-    const handleLogin = () => {
-    dispatch(setUserLogin({ name: 'John Doe', email: 'john@example.com', loggedIn: true }));
+        loginUserHandler();
     };
 
 
@@ -57,23 +91,17 @@ export default function SignIn() {
             <div className={style.sign_in_container}>
                 <h2>تسجيل الدخول</h2>
                 <form className={style.sign_in_form}>
-                    <div className={style.form_row}>
-                        <label htmlFor="">البريد الالكتروني</label>
-                        <input type="text" placeholder="ادخل البريد الالكتروني"/>
-                    </div>
-                    <div className={style.form_row}>
-                        <label htmlFor="">كلمه المرور</label>
-                        <input type="password" placeholder="ادخل كلمه المرور"/>
-                    </div>
+                    <InputElement id='email' name='البريد الالكتروني' type='email' value={userData.email} placeholder='ادخل البريد الالكتروني' img= {{src:userEmailIcon,alt:"User Email Icon"}} error={errors.email} onChange={handleInputChange}/>
+                    <PasswordInputElement id='password' name='كلمه المرور' type='password' value={userData.password} placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.password} onChange={handleInputChange}/>
                     <div className={style.form_footer}>
-                        <input type="checkbox"/>
+                        <input type="checkbox" onChange={toggleRememberMeHandler}/>
                         <label htmlFor="">تذكرني</label>
-                        <a onClick={forgetPasswordPageHandler}>هل نسيت كلمه المرور؟</a>
+                        <a onClick={goToForgetPasswordPage}>هل نسيت كلمه المرور؟</a>
                     </div>
                     <div className={style.form_btn}>
-                        <button onClick={(e)=>{loginHandler(e)}}>تسجيل الدخول</button>
+                        <button onClick={(e)=>{submitLoginHandler(e)}}>تسجيل الدخول</button>
                     </div>
-                    <a href=''><span></span>او إنشاء حساب باستخدام<span></span></a>
+                    <h5><span></span>او إنشاء حساب باستخدام<span></span></h5>
                 </form>
                 <div className={style.platforms}>
                     <div className={style.platform_item}>
@@ -87,7 +115,7 @@ export default function SignIn() {
                     </div>
                 </div>
                 <div className={style.switch_auth}>
-                    <h4>ليس لديك حساب؟ <span onClick={signUpPageHandler}>إنشاء حساب</span></h4>
+                    <h4>ليس لديك حساب؟ <span onClick={goToSignUpPage}>إنشاء حساب</span></h4>
                 </div>
             </div>
         </>
