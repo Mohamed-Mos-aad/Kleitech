@@ -3,9 +3,11 @@ import style from '../../style/pages/main/home.module.css'
 // ** assets
 import homeImg from '../../assets/main/home.svg'
 import uploadIcon from '../../assets/main/uploadIcon.svg'
-import uploadImg from '../../assets/main/uploadImg.svg'
-import closeIcon from '../../assets/main/closeIcon.svg'
+// ** Hooks && Tools
 import { useState } from 'react'
+// ** Components
+import UploadPhoto from '../../components/pages/home/UploadPhoto'
+import XrayResultPopup from '../../components/pages/home/XrayResultPopup'
 
 
 
@@ -13,16 +15,15 @@ import { useState } from 'react'
 
 export default function Home() {
     // ** States
-    const [uploadComponentHidden,setUploadComponentHidden] = useState<boolean>(false);
-
-
+    const [isUploadVisible, setIsUploadVisible] = useState(false);
+    const [isResultVisible, setIsResultVisible] = useState(false);
+    const [xrayImageUrl,setXrayImageUrl] = useState<string>('');
 
 
 
     // ** Handlers
-    const uploadComponentStateToggleHandler = ()=>{setUploadComponentHidden(!uploadComponentHidden)};
-
-
+    const toggleUpload = ()=>{setIsUploadVisible(prev => !prev)};
+    const showResult = ()=>{setIsResultVisible(true)};
 
 
 
@@ -34,7 +35,7 @@ export default function Home() {
                     <div className={style.home_content}>
                         <h1>رفع الأشعة المقطعية للحصول على تقرير حول حالة الكلى:</h1>
                         <p>يمكنك رفع صورة الأشعة المقطعية الخاصة بك والحصول على تقرير سريع حول حالتك الصحية. يساعدك هذا التحليل في فهم حالة الكلى بشكل أفضل، مع تحديد ما إذا كانت الكلى سليمة أو تحتوي على حصوات أو أورام. بناءً على نتائج التقرير، سيتم تحديد الخطوات المناسبة التي يجب اتخاذها. إذا كنت ترغب في استشارات إضافية أو دعم مستمر</p>
-                        <button onClick={uploadComponentStateToggleHandler}>
+                        <button onClick={toggleUpload}>
                             رفع صوره الاشعه
                             <img src={uploadIcon} alt="Upload icon" />
                         </button>
@@ -44,28 +45,12 @@ export default function Home() {
                     </div>
                 </div>
                 {
-                    uploadComponentHidden && 
-                    <div className={style.upload_component}>
-                        <div className={style.upload_container}>
-                            <div className={style.upload_title}>
-                                <h2>تحميل الوسائط</h2>
-                                <p>ارفع صور الأشعة المقطعية لتحصل على تحليل سريع لحالتك الصحية</p>
-                                <img src={closeIcon} alt="Close icon" onClick={uploadComponentStateToggleHandler}/>
-                            </div>
-                            <div className={style.upload_area}>
-                                <img src={uploadImg} alt="Upload img" />
-                                <h3>اسحب ملفاتك لبدأ التحميل</h3>
-                                <h4><span></span>او<span></span></h4>
-                                <label htmlFor="uploadFile">تصفح الملفات</label>
-                                <input type="file" id='uploadFile' hidden/>
-                            </div>
-                            <h5>يدعم فقط jpg,svg,png,zip</h5>
-                            <div className={style.upload_btns}>
-                                <button onClick={uploadComponentStateToggleHandler}>إلغاء</button>
-                                <button>التالي</button>
-                            </div>
-                        </div>
-                    </div>
+                    isUploadVisible && 
+                    <UploadPhoto close={toggleUpload} setXrayImageUrl={setXrayImageUrl} next={showResult}/>
+                }
+                {
+                    isResultVisible && xrayImageUrl &&
+                    <XrayResultPopup xrayImageUrl={xrayImageUrl}/>
                 }
             </div>
         </>

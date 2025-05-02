@@ -22,5 +22,6 @@ export function ProtectDoneRoute({ children }: { children: JSX.Element })
 export function ProtectMainRutes({ children }: { children: JSX.Element })
 {
     const userData = JSON.parse(localStorage.getItem('kleitech_user') || sessionStorage.getItem('kleitech_user') || 'null');
-    return userData ?   children : <Navigate to="/u/sign-in" />;
+    // return userData ?   children : <Navigate to="/u/sign-in" />;
+    return children;
 }
