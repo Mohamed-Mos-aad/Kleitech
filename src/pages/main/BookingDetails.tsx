@@ -9,46 +9,70 @@ import calendarIcon from '../../assets/main/booking/calendarIcon.svg'
 import locationPinIcon from '../../assets/main/doctorDetails/locationPinIcon.svg'
 // ** Style
 import style from '../../style/pages/main/bookingDetails.module.css'
-
+// ** Hooks && Tools
+import { useRef } from 'react'
+import html2canvas from 'html2canvas'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../app/store'
 
 
 
 
 export default function BookingDetails() {
+    const bookindDetails = useSelector((state: RootState) => state.BookingDetails);
+
+    // ** Refs
+    const bookingRef = useRef<HTMLDivElement | null>(null);
+
+
+
+    // ** Handlers
+    const downloadHandler = async ()=>{
+        if(bookingRef.current)
+        {
+            const canvas = await html2canvas(bookingRef.current);
+            const image = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.href = image;
+            link.download = 'xray-result.png';
+            link.click();
+        }
+    }
+
     return (
         <>
             <div className={style.booking_details_container}>
-                <div className={style.booking_content}>
+                <div className={style.booking_content} ref={bookingRef}>
                     <div className={style.booking_data}>
                         <h1>تفاصيل الحجز</h1>
                         <ul>
                             <li>
                                 <img src={doctorIcon} alt="Doctor icon" />
-                                <h2><span>اسم الدكتور:</span>اميره محمد</h2>
+                                <h2><span>اسم الدكتور:</span>{bookindDetails.doctorName}</h2>
                             </li>
                             <li>
                                 <img src={patientIcon} alt="Patient icon" />
-                                <h2><span>اسم المريض:</span>احمد يوسف ابراهيم محمد</h2>
+                                <h2><span>اسم المريض:</span>{bookindDetails.patientName}</h2>
                             </li>
                             <li>
                                 <img src={priceIcon} alt="Price icon" />
-                                <h2><span>الكشف: 150 جنيه</span></h2>
+                                <h2><span>الكشف: {bookindDetails.cost} جنيه</span></h2>
                             </li>
                             <li>
                                 <img src={phoneIcon} alt="Phone icon" />
-                                <h2><span>رقم الهاتف:</span>01283529923</h2>
+                                <h2><span>رقم الهاتف:</span>{bookindDetails.patientPhone}</h2>
                             </li>
                             <li>
                                 <img src={timerIcon} alt="Timer icon" />
-                                <h2><span>مده الانتظار:</span>20دفيفة</h2>
+                                <h2><span>مده الانتظار:</span>{bookindDetails.waitTime} دقيقة</h2>
                             </li>
                             <li>
                                 <img src={calendarIcon} alt="Calendar icon" />
-                                <h2><span>تاريخ الحجز:</span>٢٩ يناير، من 7.30 مساءا إلي 8.30 مساءا الدخول بميعاد</h2>
+                                <h2><span>تاريخ الحجز:</span>٢٩ يناير، من {bookindDetails.date} الدخول بميعاد</h2>
                             </li>
                             <li>
                                 <img src={locationPinIcon} alt="Location pin icon" />
-                                <h2><span>عنوان العياده:</span>المنصورة: شارع الترعه- الدور 1 - شقة 1 - برج الصي-الدور الاول علوي</h2>
+                                <h2><span>عنوان العياده:</span>{bookindDetails.address}</h2>
                             </li>
                         </ul>
                     </div>
@@ -57,7 +81,7 @@ export default function BookingDetails() {
                     </div>
                 </div>
                 <div className={style.booking_footer}>
-                    <button>تنزيل <img src="" alt="" /></button>
+                    <button onClick={downloadHandler}>تنزيل <img src="" alt="" /></button>
                 </div>
             </div>
         </>

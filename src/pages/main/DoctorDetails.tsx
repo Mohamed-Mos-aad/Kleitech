@@ -29,27 +29,40 @@ export default function DoctorDetails() {
     const [bookingOpened,setBookingOpened] = useState<boolean>(false);
     const [bookingDoneOpened,setBookingDoneOpened] = useState<boolean>(false);
     const [isloading,setIsLoading] = useState<boolean>(true);
-
+    const [bookingData,setBookingData] = useState({
+        userName: '',
+        userPhone: '',
+        bookingDate: ''
+    })
 
 
 
 
     // ** Handlers
-    const handleBookingClick = (state:boolean)=>{
-        if(!state)
+    const handleBookingClick = (time: string,status: boolean)=>{
+        if(!status)
         {
-            setBookingOpened(!bookingOpened)
+            setBookingOpened(true);
+            setBookingData(prev => ({
+                ...prev,
+                bookingDate : time
+            }))
         }
     };
     const handleChatOpen = (id: number | undefined) =>
     {
         if(id && doctor)
         {
-
             navigate('/chats', { state: { doctor : doctor } });
         }
     };
-
+    const saveBookingDataHandler = (userName: string, userPhone: string, bookingDate: string) => {
+        setBookingData({
+            userName,
+            userPhone,
+            bookingDate
+        });
+    };
 
 
 
@@ -66,7 +79,7 @@ export default function DoctorDetails() {
                     </li>
                     {
                     doctor.availability[dayIndex].map((day,index) =>(
-                        <li className={day.status ? style.time_done : ''} key={`second${index}`} onClick={()=>{handleBookingClick(day.status)}}>
+                        <li className={day.status ? style.time_done : ''} key={`second${index}`} onClick={()=>{handleBookingClick(`من ${doctor.availability[dayIndex][index].time} الي ${doctor.availability[dayIndex][index+1].time}`,day.status)}}>
                             من {day.time}
                             <br />حتى{doctor.availability[dayIndex]?.[index+1]?.time}
                         </li>
@@ -103,7 +116,7 @@ export default function DoctorDetails() {
 
 
     
-
+    if(!doctor) return
 
     return (
         <>
@@ -112,7 +125,7 @@ export default function DoctorDetails() {
                 <Loading />
             :
             <div className={style.doctor_details_container}>
-                <DoctorData doctor={doctor} openChat={()=>{handleChatOpen(doctor?.id)}}/>
+                <DoctorData doctor={doctor} openChat={()=>{handleChatOpen(doctor.id)}}/>
                 <div className={style.doctor_time_tables}>
                     <button><img src={leftIcon} alt="left icon" /></button>
                     <div className={style.tables}>
@@ -124,11 +137,11 @@ export default function DoctorDetails() {
                 </div>
                 {
                     bookingOpened &&
-                    <Booking setBookingOpened={setBookingOpened} setBookingDoneOpened={setBookingDoneOpened}/>
+                    <Booking setBookingOpened={setBookingOpened} setBookingDoneOpened={setBookingDoneOpened} saveBookingData={saveBookingDataHandler} bookingDate={bookingData.bookingDate}/>
                 }
                 {
                     bookingDoneOpened &&
-                    <BookingDone />
+                    <BookingDone address={doctor.location} cost={doctor.price} date={bookingData.bookingDate} doctorName={doctor.name} patientName={bookingData.userName} patientPhone={bookingData.userPhone} waitTime={'20'}/>
                 }
             </div>
         }

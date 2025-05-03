@@ -28,13 +28,15 @@
     align-items: center;
     justify-content: center;
     gap: 58px;
-    margin: 24px auto;
+    margin: auto;
+    padding-bottom: 25px;
 }
 .booking_content
 {
     width: 100%;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
+    padding: 0 25px;
 }
 .booking_data
 {
