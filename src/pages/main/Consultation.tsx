@@ -3,15 +3,15 @@ import style from '../../style/pages/main/consultation.module.css'
 // ** Assets
 import backIcon from '../../assets/main/consultation/backIcon.svg'
 import nextIcon from '../../assets/main/consultation/nextIcon.svg'
-import doctorPhoto from '../../assets/landingPage/PatientReviews/PatientReview-1.png'
+import noPhoto from '../../assets/main/consultation/noPhoto.png'
 // ** Components
 import SectionHeader from "../../components/landing/SectionHeader";
 import DoctorSearchInput from '../../components/ui/DoctorSearchInput';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchDoctors } from '../../api/doctorsApi';
 import { IDoctorsSimpleData } from '../../interfaces';
-import Loading from '../../components/ui/loading/Loading';
+import DoctorSkeleton from '../../components/ui/consultation/DoctorSkeleton';
 
 
 
@@ -24,51 +24,62 @@ export default function Consultation() {
     // ** States
     const [doctors,setDoctors] = useState<IDoctorsSimpleData[]>([]);
     const doctorsPerPage = 4;
-    const totalPages = Math.ceil(doctors.length / doctorsPerPage);
     const [pageNumber,setPageNumber] = useState(1);
     const [isloading,setIsLoading] = useState<boolean>(true);
-
+    const [searchValue,setSearchValue] = useState<string>('');
+    const normalizeArabic = (text: string) =>
+        text.replace(/[\u064B-\u0652]/g, '')
+            .replace(/أ|إ|آ/g, 'أ')
+            .replace(/ى/g, 'ي')
+            .replace(/ة/g, 'ه')
+            .replace(/ئ/g, 'ي')
+            .replace(/ؤ/g, 'و')
+            .replace(/\s+/g, ' ')
+            .trim();
+    const filteredDoctors = useMemo(()=>
+        doctors.filter(doctor=> normalizeArabic(doctor.name).includes(normalizeArabic(searchValue))),
+        [doctors,searchValue]
+    )
+    const totalPages = Math.ceil(filteredDoctors.length / doctorsPerPage);
 
 
     
 
 
     // ** Handlers
-    const nextPageHanlder = ()=>{
+    const nextPageHandler = ()=>{
         if(pageNumber < totalPages)
         {
             setPageNumber(pageNumber+1);
         }
     }
-    const prevPageHanlder = ()=>{
+    const prevPageHandler = ()=>{
         if(pageNumber > 1)
         {
             setPageNumber(pageNumber-1);
         }
     }
-    const changePageHandler = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>)=>{
-        const pagesNumbers = document.getElementsByTagName('span');
-        for(let i = 0 ; i < pagesNumbers.length ; i++)
+    const changePageHandler = (newPage:number)=>{
+        if (newPage !== pageNumber)
         {
-            pagesNumbers[i].classList.remove('_active_page_ltnrp_205');
+            setPageNumber(newPage);
         }
-        const target = e.target as HTMLSpanElement;
-        target.classList.add(style.active_page)
-        setPageNumber(Number(target.id));
     }
-    const openDoctorDetailsPageHanlder = (id:number)=>{navigate(`/m/doctor/${id}`)}
+    const openDoctorDetailsPageHandler = useCallback((id:number)=>{navigate(`/m/doctor/${id}`)},[navigate]);
+    const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>)=>{
+        setSearchValue(e.currentTarget.value);
+    }
 
 
 
 
-
-    const currentDoctors = doctors.slice((pageNumber - 1) * doctorsPerPage,pageNumber*doctorsPerPage);
+    const currentDoctors = filteredDoctors.slice((pageNumber - 1) * doctorsPerPage,pageNumber*doctorsPerPage);
 
     // ** Render
     const doctorDataRender = currentDoctors.map(doctor =>
-            <div className={style.doctor} key={doctor.id} id={`${doctor.id}`} onClick={()=>{openDoctorDetailsPageHanlder(doctor.id)}}>
+            <div className={style.doctor} key={doctor.id} id={`${doctor.id}`} onClick={()=>{openDoctorDetailsPageHandler(doctor.id)}}>
                 <div className={style.doctor_img}>
-                    <img src={doctorPhoto} alt="Doctor photo" />
+                    <img src={doctor.photo || noPhoto} alt="Doctor photo" />
                 </div>
                 <div className={style.doctor_data}>
                     <h2>{doctor.name}</h2>
@@ -77,41 +88,39 @@ export default function Consultation() {
             </div>
     )
     const pagesNumebrRender = ()=>{
-        const pageButtons = [];
-        for(let i = 1; i <= totalPages; i++)
-        {
-            if(totalPages > 6)
-            {
-                if(i <= 3)
-                {
-                    pageButtons.unshift(
-                        <span className={pageNumber === i ? style.active_page : ''} key={i} id={String(i)} onClick={(e)=>{changePageHandler(e)}}>{String(i)}</span>
-                    )
-                }
-                else if(i >= (totalPages - 2))
-                {
-                    pageButtons.unshift(
-                        <span className={pageNumber === i ? style.active_page : ''} key={i} id={String(i)} onClick={(e)=>{changePageHandler(e)}}>{String(i)}</span>
-                    )
-                }
-                else
-                {
-                    pageButtons.unshift(
-                        <span key={i}>...</span>
-                    )
-                }
-            }
-            else
-            {
-                pageButtons.unshift(
-                    <span className={pageNumber === i ? style.active_page : ''} key={i} id={String(i)} onClick={(e)=>{changePageHandler(e)}}>{String(i)}</span>
-                )
+        const elements = [];
+        if (totalPages <= 6) {
+            for (let i = 1; i <= totalPages; i++) {
+                elements.unshift(renderPageButton(i));
             }
         }
+        else 
+        {
+            elements.unshift(renderPageButton(1));
+            if (pageNumber > 3) elements.unshift(<span key="start-dots">...</span>);
+    
+            const start = Math.max(2, pageNumber - 1);
+            const end = Math.min(totalPages - 1, pageNumber + 1);
+            for (let i = start; i <= end; i++) 
+            {
+                elements.unshift(renderPageButton(i));
+            }
+    
+            if (pageNumber < totalPages - 2) elements.unshift(<span key="end-dots">...</span>);
+            elements.unshift(renderPageButton(totalPages));
+        }
+        return elements;
+    };
 
-        return pageButtons;
-    }
-
+    const renderPageButton = useCallback((page: number) => (
+        <span
+            key={page}
+            onClick={() => changePageHandler(page)}
+            className={pageNumber === page ? style.active_page : ''}
+        >
+            {page}
+        </span>
+    ),[pageNumber,changePageHandler])
 
 
 
@@ -138,33 +147,34 @@ export default function Consultation() {
 
 
 
+
+
+
     return (
         <>
-        {
-            isloading ? 
-                <Loading />
-            :
             <div className={style.consultation_container}>
-                <DoctorSearchInput />
+                <DoctorSearchInput searchValue={searchValue} inputChangeHandler={inputChangeHandler}/>
                 <SectionHeader title="تواصل مع طبيبك بسهولة واطمئن على صحتك." description="نوفر لك إمكانية الوصول إلى الأطباء المختصين لتلقي الاستشارات الطبية بسهولة من أي مكان، مع متابعة حالتك الصحية أولاً بأول."/>
-                <div className={style.doctors_container}>
-                    {doctorDataRender}
-                </div>
+                {
+                    isloading ? 
+                    <DoctorSkeleton />
+                    :
+                    <div className={style.doctors_container}>
+                        {doctorDataRender}
+                    </div>
+                }
                 <div className={style.page_number}>
-                    <div className={style.state_btn} onClick={nextPageHanlder}>
+                    <div className={style.state_btn} onClick={nextPageHandler}>
                         <img src={nextIcon} alt="Next icon" />
-                        التالي
                     </div>
                     <div className={style.page_number_btns}>
                         {pagesNumebrRender()}
                     </div>
-                    <div className={style.state_btn} onClick={prevPageHanlder}>
-                        السابق
+                    <div className={style.state_btn} onClick={prevPageHandler}>
                         <img src={backIcon} alt="Back icon" />
                     </div>
                 </div>
             </div>
-        }
         </>
     )
 }
