@@ -1,5 +1,5 @@
 // ** Assets
-import userPhoto from '../../../assets/landingPage/PatientReviews/PatientReview-1.png'
+import noPhoto from '../../../assets/main/consultation/noPhoto.png'
 // import silentIcon from '../../../assets/main/chat/silentIcon.svg'
 // ** Style
 import style from '../../../style/layouts/chatLayout.module.css'
@@ -14,6 +14,7 @@ interface IChatListItem{
     name: string,
     lastMessage: string,
     timesTamp: string,
+    photo: string,
     onClick: ()=> void
 }
 
@@ -21,13 +22,13 @@ interface IChatListItem{
 
 
 
-export default function ChatListItem({name,lastMessage,timesTamp,onClick}:IChatListItem) {
+export default function ChatListItem({photo,name,lastMessage,timesTamp,onClick}:IChatListItem) {
     return (
         <>
             <div className={style.chats_list_item} onClick={onClick}>
                 <div className={style.chats_list_item_data}>
                     <div className={style.chats_list_item_photo}>
-                        <img src={userPhoto} alt="User photo"/>
+                        <img src={photo || noPhoto} alt="User photo"/>
                     </div>
                     <div className={style.chats_list_item_content}>
                         <h2>{name}</h2>

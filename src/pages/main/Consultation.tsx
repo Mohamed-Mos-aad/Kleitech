@@ -59,12 +59,11 @@ export default function Consultation() {
             setPageNumber(pageNumber-1);
         }
     }
-    const changePageHandler = (newPage:number)=>{
-        if (newPage !== pageNumber)
-        {
+    const changePageHandler = useCallback((newPage: number) => {
+        if (newPage !== pageNumber) {
             setPageNumber(newPage);
         }
-    }
+    }, [pageNumber]);
     const openDoctorDetailsPageHandler = useCallback((id:number)=>{navigate(`/m/doctor/${id}`)},[navigate]);
     const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>)=>{
         setSearchValue(e.currentTarget.value);

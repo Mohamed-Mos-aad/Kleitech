@@ -22,9 +22,8 @@
 .doctor_details_container
 {
     width: 90%;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 72px;
+    display: flex;
+    justify-content: space-between;
     margin: auto;
     padding: 32px;
     border: solid 1px var(--main-color-800);
@@ -84,14 +83,25 @@
     align-items: center;
     gap: 16px;
 }
-.doctor_data ul li span,a
+.doctor_data ul li span
 {
     font-weight: 600;
     color: var(--main-color-700);
     text-decoration: none;
 }
+.doctor_data ul li button
+{
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--main-color-700);
+    text-decoration: none;
+    cursor: pointer;
+}
 .doctor_time_tables
 {
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,6 +113,22 @@
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 32px;
+}
+.doctor_time_tables button
+{
+    min-width: 56px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color-100);
+    border: none;
+    border-radius: 56px;
+    cursor: pointer;
+}
+.doctor_time_tables button:first-of-type
+{
+    transform: rotateZ(180deg);
 }
 .doctor_time_tables .tables .table
 {
@@ -121,7 +147,8 @@
     color: var(--main-color-700);
     line-height: 24px;
     text-align: center;
-    padding: 14px 0;
+    text-wrap: nowrap;
+    padding: 14px;
     border-top: solid 1px var(--main-color-700);
     transition: 0.3s;
     cursor: pointer;
@@ -157,11 +184,16 @@
 {
     .doctor_details_container
     {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 25px;
     }
     .doctor_details
     {
         flex-direction: column;
+    }
+    .doctor_time_tables
+    {
+        width: 100%;
     }
     .doctor_time_tables .tables
     {
@@ -173,6 +205,19 @@
 {
     .doctor_details_container
     {
+        flex-direction: column;
+        gap: 25px;
+    }
+    .doctor_details
+    {
+        flex-direction: column;
+    }
+    .doctor_time_tables
+    {
+        width: 100%;
+    }
+    .doctor_time_tables .tables
+    {
         grid-template-columns: 1fr;
     }
 }
@@ -181,7 +226,12 @@
 {
     .doctor_details_container
     {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 25px;
+    }
+    .doctor_time_tables
+    {
+        width: 100%;
     }
 }
 /* Large devices (desktops, 992px and up) */
@@ -189,7 +239,12 @@
 {
     .doctor_details_container
     {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 25px;
+    }
+    .doctor_time_tables
+    {
+        width: 100%;
     }
 }
 /* Extra large devices (large desktops, 1200px and up) */

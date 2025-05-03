@@ -61,7 +61,9 @@ export interface IDoctorsData{
     availability: {
         time: string,
         status: boolean
-    }[][]
+    }[][],
+    photo?: '',
+    isOnline?: '',
 }
 
 export interface IDoctorsSimpleData{

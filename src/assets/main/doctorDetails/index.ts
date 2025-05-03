@@ -1,0 +1,8 @@
+export { default as starIcon } from '../../../assets/main/doctorDetails/starIcon.svg'
+export { default as doctorIcon } from '../../../assets/main/doctorDetails/doctorIcon.svg'
+export { default as locationPinIcon } from '../../../assets/main/doctorDetails/locationPinIcon.svg'
+export { default as priceIcon } from '../../../assets/main/doctorDetails/priceIcon.svg'
+export { default as chatIcon } from '../../../assets/main/doctorDetails/chatIcon.svg'
+export { default as timerIcon } from '../../../assets/main/doctorDetails/timerIcon.svg'
+export { default as phoneIcon } from '../../../assets/main/doctorDetails/phoneIcon.svg'
+export { default as leftIcon } from '../../../assets/main/doctorDetails/leftIcon.svg'
