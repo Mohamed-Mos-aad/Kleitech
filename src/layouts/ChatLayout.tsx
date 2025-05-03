@@ -7,18 +7,23 @@ import sendIcon from '../assets/main/chat/sendIcon.svg'
 import studioIcon from '../assets/main/chat/studioIcon.svg'
 import attachFileIcon from '../assets/main/chat/attachFileIcon.svg'
 import micIcon from '../assets/main/chat/micIcon.svg'
+import noPhoto from '../assets/main/consultation/noPhoto.png'
 import voiceTest from '../assets/voice.mp3'
 // ** Style
 import style from '../style/layouts/chatLayout.module.css'
 // ** Hooks
 import { useEffect, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom';
 // ** Components
 import EmojyPicker from '../components/ui/EmojyPicker'
 import VoiceMessage from '../components/ui/chat/VoiceMessage'
 import TextMessage from '../components/ui/chat/TextMessage'
 import PhotoMessage from '../components/ui/chat/PhotoMessage'
 import ChatListItem from '../components/ui/chat/ChatListItem'
+// ** Api
 import { fetchMessages } from '../api/chatApi'
+
+
 
 // ** Interfaces
 interface IFindChat{
@@ -56,6 +61,12 @@ interface IFindChat{
 
 
 export default function ChatLayout() {
+    // ** Default 
+    const location = useLocation();
+    const doctorFromDetails = location.state?.doctor;
+
+
+
     // ** States
     const [chats,setChats] = useState<IFindChat[]>([]);
     const [displayedChats,setDisplayedChats] = useState<IFindChat[]>(chats);
@@ -190,7 +201,7 @@ export default function ChatLayout() {
             }
         }
     }
-    
+
 
 
 
@@ -198,7 +209,7 @@ export default function ChatLayout() {
 
     // ** Render
     const chatsListRender = displayedChats.map(chatItme =>
-        <ChatListItem name={chatItme.participants[0].name} lastMessage={chatItme.lastMessage.text} timesTamp={convertDateTypeHandler(chatItme.lastMessage.timestamp)} onClick={()=>{selectChatHandler(chatItme.chatId)}} key={chatItme.chatId}/>
+        <ChatListItem name={chatItme.participants[0].name} lastMessage={chatItme.lastMessage.text} photo={chatItme.participants[0].photo} timesTamp={convertDateTypeHandler(chatItme.lastMessage.timestamp)} onClick={()=>{selectChatHandler(chatItme.chatId)}} key={chatItme.chatId}/>
     )
     const chatMessagesRender = currentChat?.messages.slice().reverse().map(message =>
     {
@@ -232,6 +243,55 @@ export default function ChatLayout() {
                 const chatsData = await fetchMessages();
                 setChats(chatsData);
                 setDisplayedChats(chatsData);
+
+                if(doctorFromDetails)
+                {
+                    const existingChat = chatsData.find((chat:IFindChat)=> 
+                        chat.participants[0].userId === doctorFromDetails.id
+                    )
+
+                    console.log(doctorFromDetails)
+                    console.log(chatsData);
+
+                    if(existingChat)
+                    {
+                        setCurrentChat(existingChat);
+                        setChatSelected(true);
+                    }
+                    else
+                    {
+                        const newChat: IFindChat = {
+                            chatId: `chat${Date.now()}`,
+                            participants: [{
+                                userId: `doc${doctorFromDetails.id}`,
+                                name: doctorFromDetails.name,
+                                photo: doctorFromDetails.photo,
+                                role: doctorFromDetails.specialty,
+                                isOnline: false,
+                                lastSeen: doctorFromDetails.lastSeen,
+                            }, {
+                                userId: 'currentUserId',
+                                name: 'أنا',
+                                photo: '',
+                                role: 'patient',
+                                isOnline: true,
+                                lastSeen: new Date().toISOString(),
+                            }],
+                            messages: [],
+                            isArchived: false,
+                            lastMessage: {
+                                messageId: '',
+                                text: '',
+                                timestamp: new Date().toISOString(),
+                            }
+                        };
+
+                        setChats([newChat, ...chatsData]);
+                        setDisplayedChats([newChat, ...chatsData]);
+                        setCurrentChat(newChat  );
+                        setChatSelected(true);
+                    }
+                }
             }
             catch(error)
             {
@@ -239,7 +299,7 @@ export default function ChatLayout() {
             }
         }
         loadChat();
-    },[])
+    },[doctorFromDetails]);
 
     
     return (
@@ -262,7 +322,7 @@ export default function ChatLayout() {
                         <div className={style.chat}>
                             <div className={style.chat_header}>
                                 <div className={style.chat_photo}>
-                                    <img src={userPhoto} alt="User photo" />
+                                    <img src={currentChat?.participants[0].photo || noPhoto} alt="User photo" />
                                 </div>
                                 <div className={style.chat_title}>
                                     <h2>{currentChat?.participants[0].name}</h2>
