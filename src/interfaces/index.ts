@@ -67,5 +67,6 @@ export interface IDoctorsData{
 export interface IDoctorsSimpleData{
     id: number,
     name: string,
-    specialty: string
+    specialty: string,
+    photo?: string
 }
