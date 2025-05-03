@@ -2,6 +2,7 @@
 import style from '../../style/components/ui/booking.module.css'
 // ** Assets
 import userNameIcon from '../../assets/auth/formIcons/userNameIcon.svg'
+import userPhoneIcon from '../../assets/auth/formIcons/userPhoneIcon.svg'
 // ** Hooks
 import { useState } from 'react'
 // ** Other 
@@ -15,14 +16,16 @@ import { bookingValidation } from '../../validation'
 // ** Interface
 interface IBooking{
     setBookingOpened : React.Dispatch<React.SetStateAction<boolean>>
-    setBookingDoneOpened : React.Dispatch<React.SetStateAction<boolean>>
+    setBookingDoneOpened : React.Dispatch<React.SetStateAction<boolean>>,
+    saveBookingData: (userName: string, userPhone: string, bookingDate: string)=> void,
+    bookingDate: string
 }
 import { IBookingData } from '../../interfaces'
 
 
 
 
-export default function Booking({setBookingOpened,setBookingDoneOpened}:IBooking) {
+export default function Booking({setBookingOpened,setBookingDoneOpened,saveBookingData,bookingDate}:IBooking) {
     // ** Defaults
     const defaultBookingData:IBookingData = {
         userName: '',
@@ -62,7 +65,8 @@ export default function Booking({setBookingOpened,setBookingDoneOpened}:IBooking
             }
         })
     }
-    const bookingHanlder = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+    
+    const bookingHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault();
         const validationResults = bookingValidation(bookingData);
         if(Object.values(validationResults).some(message => message !== '')) {
@@ -70,6 +74,7 @@ export default function Booking({setBookingOpened,setBookingDoneOpened}:IBooking
             return;
         }
         
+        saveBookingData(bookingData.userName, bookingData.userPhone, bookingDate);
         setBookingOpened(false);
         setBookingDoneOpened(true);
     }
@@ -85,9 +90,9 @@ export default function Booking({setBookingOpened,setBookingDoneOpened}:IBooking
                     <h3>ادخل بيانات الحجز:</h3>
                     <form>
                         <InputElement type='text' id='userName' name='الإسم' error={bookingError.userName} img={{src:userNameIcon,alt:'userNameIcon'}} placeholder='ادخل الإسم بالكامل' value={bookingData.userName} onChange={inputChangeValueHandler}/>
-                        <InputElement type='text' id='userPhone' name='رقم الهاتف' error={bookingError.userPhone} img={{src:userNameIcon,alt:'userNameIcon'}} placeholder='ادخل رقم الهاتف' value={bookingData.userPhone} onChange={inputChangeValueHandler}/>
+                        <InputElement type='text' id='userPhone' name='رقم الهاتف' error={bookingError.userPhone} img={{src:userPhoneIcon,alt:'userPhoneIcon'}} placeholder='ادخل رقم الهاتف' value={bookingData.userPhone} onChange={inputChangeValueHandler}/>
                         <div className={style.form_btns}>
-                            <button onClick={(e)=>{bookingHanlder(e)}}>احجز</button>
+                            <button onClick={(e)=>{bookingHandler(e)}}>احجز</button>
                             <button onClick={() => setBookingOpened(false)}>الغاء</button>
                         </div>
                     </form>
