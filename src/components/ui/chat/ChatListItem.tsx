@@ -44,7 +44,7 @@ export default function ChatListItem({photo,name,lastMessage,timesTamp,onClick}:
                             <img src={silentIcon} alt="Silent icon" />
                         </div> */}
                     </div>
-                    <h4>{timesTamp}</h4>
+                    <h3>{timesTamp}</h3>
                 </div>
             </div>
         </>

@@ -72,3 +72,43 @@ export interface IDoctorsSimpleData{
     specialty: string,
     photo?: string
 }
+
+
+
+
+// ** Chat
+export interface IChat{
+    chatId: string;
+    participants: {
+        userId: string;
+        name: string;
+        photo: string;
+        role: string;
+        isOnline: boolean;
+        lastSeen: string;
+    }[];
+    messages: IMessage[];
+    isArchived: boolean;
+    lastMessage: {
+        messageId: string;
+        text: string;
+        timestamp: string
+    };
+}
+
+
+
+
+export interface IMessage {
+    messageId: string;
+    senderId: string;
+    receiverId: string;
+    timestamp: string;
+    status: string;
+    type: 'text' | 'voice' | 'file';
+    text?: string;
+    file?: File;
+    audioUrl?: string;
+    photoUrl?: string;
+    reactions: { userId: string; reaction: string }[];
+}

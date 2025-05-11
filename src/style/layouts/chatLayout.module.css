@@ -156,12 +156,12 @@
     font-weight: 700;
     color: white;
 }
-.chats_list_item_details h4
+.chats_list_item_details h3
 {
     white-space: nowrap;
     font-size: 14px;
     font-weight: 400;
-    color: #747881;
+    color: #55575D;
 }
 .chat_content
 {
@@ -173,7 +173,7 @@
 {
     font-size: 64px;
     font-weight: 500;
-    color: var(--gray-color-400);
+    color: var(--gray-color-600);
 }
 .chat_content .chat
 {

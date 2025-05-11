@@ -1,14 +1,3 @@
-// ** Assets
-import userPhoto from '../assets/landingPage/PatientReviews/PatientReview-1.png'
-import searchIcon from '../assets/main/chat/searchIcon.svg'
-import backIcon from '../assets/main/chat/backIcon.svg'
-import imojySolidIcon from '../assets/main/chat/imojySolidIcon.svg'
-import sendIcon from '../assets/main/chat/sendIcon.svg'
-import studioIcon from '../assets/main/chat/studioIcon.svg'
-import attachFileIcon from '../assets/main/chat/attachFileIcon.svg'
-import micIcon from '../assets/main/chat/micIcon.svg'
-import noPhoto from '../assets/main/consultation/noPhoto.png'
-import voiceTest from '../assets/voice.mp3'
 // ** Style
 import style from '../style/layouts/chatLayout.module.css'
 // ** Hooks
@@ -16,45 +5,14 @@ import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 // ** Components
 import EmojyPicker from '../components/ui/EmojyPicker'
-import VoiceMessage from '../components/ui/chat/VoiceMessage'
-import TextMessage from '../components/ui/chat/TextMessage'
-import PhotoMessage from '../components/ui/chat/PhotoMessage'
-import ChatListItem from '../components/ui/chat/ChatListItem'
 // ** Api
 import { fetchMessages } from '../api/chatApi'
-
-
-
+import ChatList from '../components/chat/ChatList'
 // ** Interfaces
-interface IFindChat{
-    chatId: string;
-    participants: {
-        userId: string;
-        name: string;
-        photo: string;
-        role: string;
-        isOnline: boolean;
-        lastSeen: string;
-    }[];
-    messages: {
-        messageId: string;
-        senderId: string;
-        receiverId: string;
-        text?: string | undefined,
-        audioUrl?: string | undefined,
-        photoUrl?: string | undefined,
-        timestamp: string;
-        status: string;
-        type: string;
-        reactions: { userId: string; reaction: string }[];
-    }[];
-    isArchived: boolean;
-    lastMessage: {
-        messageId: string;
-        text: string;
-        timestamp: string
-    };
-}
+import { IChat, IMessage } from '../interfaces'
+import ChatHeader from '../components/chat/ChatHeader'
+import ChatFooter from '../components/chat/ChatFooter';
+import ChatMessages from '../components/chat/ChatMessages';
 
 
 
@@ -68,124 +26,49 @@ export default function ChatLayout() {
 
 
     // ** States
-    const [chats,setChats] = useState<IFindChat[]>([]);
-    const [displayedChats,setDisplayedChats] = useState<IFindChat[]>(chats);
+    const [chats,setChats] = useState<IChat[]>([]);
+    const [displayedChats,setDisplayedChats] = useState<IChat[]>(chats);
     const [chatSelected,setChatSelected] = useState<boolean>(false);
-    const [currentChat,setCurrentChat] = useState<IFindChat|undefined>();
+    const [currentChat,setCurrentChat] = useState<IChat|undefined>();
     const [emojysComponentOpened,setEmojysComponentOpened] = useState<boolean>(false);
-    const [recordStarted,setRecordStarted] = useState<boolean>(false);
-
 
 
 
     // ** Refs
-    const audioPlayBackRef = useRef<HTMLAudioElement>(null);
-    const imgUploadRef = useRef<HTMLInputElement | null>(null);
-    const fileUploadRef = useRef<HTMLInputElement | null>(null);
+    const messageInputRef = useRef<HTMLInputElement>(null);
 
 
 
 
-
-    const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
 
     // ** Handler
-    const convertDateTypeHandler = (date:string)=>{
-        const newDateType = new Date(date).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-        return newDateType;
-    }
-    const chatsSearchHandler = (e: React.FormEvent<HTMLInputElement>)=>{
-        const searchValue = e.currentTarget.value;
-        const searchResult = chats.filter(chat => chat.participants[0].name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
-        setDisplayedChats(searchResult);
-    }
     const selectChatHandler = (id:string)=>{
         setChatSelected(true);
         const findChat = displayedChats.find(chat => chat.chatId === id);
         setCurrentChat(findChat);
         openChatMobilesToggleHandler();
     }
-    const sendMessageHandler = ()=>{
-        const messageInput = document.getElementById('messageInput') as HTMLInputElement;
-        if(messageInput)
+    const sendMessageHandler = (message:IMessage)=>{
+        if(message)
         {
-            const newMessage = {
-                messageId: `msg${Number(currentChat?.messages.length)+1}`,
-                senderId: `${currentChat?.participants[1].userId}`,
-                receiverId: `${currentChat?.participants[0].userId}`,
-                text: messageInput.value,
-                timestamp: new Date().toISOString(),
-                status: "delivered",
-                type: "text",
-                reactions: []
-            }
-
             setCurrentChat((prev)=> {
                 if(!prev) return
 
                 return {
                     ...prev,
-                    messages: [...prev.messages,newMessage]
+                    messages: [...prev.messages,message]
                 }
             })
-
-
-            messageInput.value = '';
             setEmojysComponentOpened(false);
         }
     }
     const emojyComponentStateToggleHandler = ()=>{setEmojysComponentOpened(!emojysComponentOpened)};
     const addEmojiHandler = (emoji:string)=>{
-        const messageInput = document.getElementById('messageInput') as HTMLInputElement;
-        if(messageInput)
+        if(messageInputRef.current)
         {
-            messageInput.value += emoji;
+            messageInputRef.current.value += emoji;
         }
     }
-    const fileUploadHandler = ()=>{
-        fileUploadRef?.current?.click();
-    }
-    const imgUploadHandler = ()=>{
-        imgUploadRef?.current?.click();
-    }
-    const startRecordHandler = async () => {
-        if (recordStarted) {
-            // Stop recording
-            if (mediaRecorder) {
-                mediaRecorder.stop();
-                setRecordStarted(false);
-            }
-            return;
-        }
-    
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-            const recorder = new MediaRecorder(stream);
-            const audioChunks: BlobPart[] = [];
-    
-            recorder.ondataavailable = (event: BlobEvent) => {
-                audioChunks.push(event.data);
-            };
-    
-            recorder.onstop = () => {
-                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-                const audioUrl = URL.createObjectURL(audioBlob);
-    
-                
-                if (audioPlayBackRef.current) {
-                    audioPlayBackRef.current.src = audioUrl;
-                }
-    
-                stream.getTracks().forEach(track => track.stop());
-            };
-    
-            recorder.start();
-            setMediaRecorder(recorder);
-            setRecordStarted(true);
-        } catch (error) {
-            console.error("Error accessing the microphone", error);
-        }
-    };
     const openChatMobilesToggleHandler = ()=>{
         const chatsList = document.getElementById('chats_list');
         if(chatsList && window.innerWidth < 767.98)
@@ -202,41 +85,11 @@ export default function ChatLayout() {
         }
     }
 
-
-
-
-
-
-    // ** Render
-    const chatsListRender = displayedChats.map(chatItme =>
-        <ChatListItem name={chatItme.participants[0].name} lastMessage={chatItme.lastMessage.text} photo={chatItme.participants[0].photo} timesTamp={convertDateTypeHandler(chatItme.lastMessage.timestamp)} onClick={()=>{selectChatHandler(chatItme.chatId)}} key={chatItme.chatId}/>
-    )
-    const chatMessagesRender = currentChat?.messages.slice().reverse().map(message =>
-    {
-        if(message.type === 'text')
-        {
-            return(
-                <TextMessage senderId={message.senderId} timestamp={convertDateTypeHandler(message.timestamp)} text={message.text} key={message.messageId}/>
-            )
-        }
-        else if(message.type === 'voice')
-        {
-            return(<VoiceMessage senderId={message.senderId} timestamp={convertDateTypeHandler(message.timestamp)} voiceUrl={voiceTest} key={message.messageId}/>)
-        }
-        else
-        {
-            return(<PhotoMessage senderId={message.senderId} timestamp={convertDateTypeHandler(message.timestamp)} photoUrl={userPhoto} key={message.messageId}/>)
-        }
-    }
-
-    )
-
-
     
 
 
 
-
+    // ** UseEffect
     useEffect(()=>{
         const loadChat = async ()=>{
             try{
@@ -246,12 +99,9 @@ export default function ChatLayout() {
 
                 if(doctorFromDetails)
                 {
-                    const existingChat = chatsData.find((chat:IFindChat)=> 
+                    const existingChat = chatsData.find((chat:IChat)=> 
                         chat.participants[0].userId === doctorFromDetails.id
                     )
-
-                    console.log(doctorFromDetails)
-                    console.log(chatsData);
 
                     if(existingChat)
                     {
@@ -260,7 +110,7 @@ export default function ChatLayout() {
                     }
                     else
                     {
-                        const newChat: IFindChat = {
+                        const newChat: IChat = {
                             chatId: `chat${Date.now()}`,
                             participants: [{
                                 userId: `doc${doctorFromDetails.id}`,
@@ -301,60 +151,24 @@ export default function ChatLayout() {
         loadChat();
     },[doctorFromDetails]);
 
-    
+
+
     return (
         <>
             <div className={style.chats_container}>
-                <div className={style.chats_list_container} id='chats_list'>
-                    <div className={style.search}>
-                        <input type="text" placeholder='بحث' onInput={(e)=>{chatsSearchHandler(e)}}/>
-                        <img src={searchIcon} alt="Search icon" />
-                    </div>
-                    <div className={style.chats_list}>
-                        {chatsListRender}
-                    </div>
-                </div>
+                <ChatList chats={chats} displayedChats={displayedChats} selectChatHandler={selectChatHandler} setDisplayedChats={setDisplayedChats}/>
                 <div className={style.chat_content}>
                     {
                         !chatSelected ? 
                         <h1>اختر شات للبدأ</h1> 
                         :
                         <div className={style.chat}>
-                            <div className={style.chat_header}>
-                                <div className={style.chat_photo}>
-                                    <img src={currentChat?.participants[0].photo || noPhoto} alt="User photo" />
-                                </div>
-                                <div className={style.chat_title}>
-                                    <h2>{currentChat?.participants[0].name}</h2>
-                                    <h3 className={currentChat?.participants[0].isOnline ? `${style.active}` : ''}>{currentChat?.participants[0].isOnline ? 'متصل' : 'غير متصل'}</h3>
-                                </div>
-                                <div className={style.back_btn}>
-                                    <button>
-                                        <img src={backIcon} alt="Back icon" onClick={openChatMobilesToggleHandler}/>
-                                    </button>
-                                </div>
-                            </div>
-                            <div className={style.chat_messages_content}>
-                                {chatMessagesRender}
-                            </div>
-                            <div className={style.chat_footer}>
-                                <div className={style.send_input}>
-                                    <input type="text" placeholder='اكتب رسالتك' id='messageInput'/>
-                                    <div className={style.imojy}>
-                                        <img src={imojySolidIcon} alt="Imojy solid icon" onClick={emojyComponentStateToggleHandler}/>
-                                    </div>
-                                    <div className={style.message_media}>
-                                        <img src={micIcon} onClick={startRecordHandler} className={recordStarted? `${style.delete_record}`: ''} alt="Mic icon" />
-                                        <input type="file" ref={fileUploadRef} style={{display:'none'}} accept='.pdf'/> 
-                                        <img src={attachFileIcon} alt="Attach File icon" onClick={fileUploadHandler} />
-                                        <input type="file" ref={imgUploadRef} style={{display:'none'}} accept='.jpg, .jpeg, .png, .gif'/> 
-                                        <img src={studioIcon} alt="Studio icon" onClick={imgUploadHandler}/>
-                                    </div>
-                                </div>
-                                <button onClick={sendMessageHandler}>
-                                    <img src={sendIcon} alt="Send icon" />
-                                </button>
-                            </div>
+                            <ChatHeader currentChat={currentChat} openChatMobilesToggleHandler={openChatMobilesToggleHandler}/>
+                            <ChatMessages currentChat={currentChat}/>
+                            {
+                                currentChat && 
+                                <ChatFooter emojyComponentStateToggleHandler={emojyComponentStateToggleHandler} sendMessageHandler={sendMessageHandler} messageInputRef={messageInputRef} chatLenght={Number(currentChat?.messages.length)} receiverId={currentChat?.participants[0].userId} senderId={currentChat?.participants[1].userId}/>
+                            }
                             {
                                 emojysComponentOpened && 
                                 <EmojyPicker addEmojiHandler={addEmojiHandler}/>
