@@ -1,0 +1,192 @@
+/* Start Variables */
+:root
+{
+    --main-color-100: #E0F2FE;
+    --main-color-200: #B9E6FE;
+    --main-color-700: #026AA2;
+    --main-color-800: #00598D;
+    --gray-color-100: #F6F6F6;
+    --gray-color-400: #AFAFAF;
+    --gray-color-500: #808080;
+    --gray-color-600: #636363;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-100: #FDE8E8;
+    --red-color-500: #F05252;
+    --green-color-400: #31C48D;
+    --chat-1-color: #E0F0FF;
+    --chat-2-color: #E9EAED;
+}
+/* End Variables */
+
+
+
+/* Start DashBoard NavBar */
+.dashboard_bavbar_container
+{
+    width: 20%;
+    height: 100dvh;
+    background-color: white;
+    transition: 0.5s;
+    position: relative;
+}
+.navbar_closed
+{
+    width: 0px !important;
+}
+.dashboard_bavbar_container nav
+{
+    overflow: hidden;
+}
+.dashboard_bavbar_container nav .nav_container
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding: 32px 40px;
+}
+.mb_menu
+{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.dashboard_bavbar_container nav .menu ul
+{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style-type: none;
+    overflow: hidden;
+}
+.dashboard_bavbar_container nav .menu ul li
+{
+    display: flex;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--gray-color-500);
+    text-wrap: nowrap;
+    cursor: pointer;
+}
+.dashboard_bavbar_container nav .menu ul li.active
+{
+    background-color: var(--main-color-700);
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+}
+.dashboard_bavbar_container nav .menu ul li img
+{
+    filter: brightness(0) saturate(100%) invert(28%) sepia(61%) saturate(1722%) hue-rotate(175deg) brightness(94%) contrast(98%);
+}
+.dashboard_bavbar_container nav .menu ul li.active img
+{
+    filter: brightness(0) saturate(100%) invert(100%) brightness(100%);
+}
+.dashboard_bavbar_container button
+{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%,-50%);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color-700);
+    border: none;
+    border-radius: 32px;
+    cursor: pointer;
+}
+.dashboard_bavbar_container button img
+{
+    transform: rotate(180deg);
+    filter: brightness(0) saturate(100%) invert(100%) brightness(100%);
+    transition: 0.5s;
+}
+.dashboard_bavbar_container.navbar_closed button
+{
+    transform: translate(-100%,-50%);
+}
+.dashboard_bavbar_container.navbar_closed button img
+{
+    transform: rotate(0);
+}
+/* End DashBoard NavBar */
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .dashboard_bavbar_container
+    {
+        width: 100%;
+        position: fixed;
+    }
+    .dashboard_bavbar_container nav .logo
+    {
+        display: flex;
+        justify-content: space-between;
+    }
+    .dashboard_bavbar_container nav .menu
+    {
+        height: 100dvh;
+    }
+    .mb_menu
+    {
+        display: flex;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    .dashboard_bavbar_container
+    {
+        width: 100%;
+        position: fixed;
+    }
+    .dashboard_bavbar_container nav .logo
+    {
+        display: flex;
+        justify-content: space-between;
+    }
+    .dashboard_bavbar_container nav .menu
+    {
+        height: 100dvh;
+    }
+    .mb_menu
+    {
+        display: flex;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    .dashboard_bavbar_container
+    {
+        width: 30%;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+    .dashboard_bavbar_container
+    {
+        width: 25%;
+    }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */

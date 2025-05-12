@@ -9,7 +9,7 @@ interface IUserLoginState {
 const initialState: IUserLoginState = {
     email: null,
     password: null,
-    loggedIn: true,
+    loggedIn: false,
 };
 
 const userLoginSlice = createSlice({

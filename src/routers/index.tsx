@@ -1,7 +1,12 @@
-// ** Elements
+// ** Layouts
 import LandingPageLayout from "../layouts/LandingPageLayout";
-import LandingPage from "../pages/landing/LandingPage";
 import AuthLayout from "../layouts/AuthLayout";
+import MainLayout from "../layouts/MainLayout";
+import ChatLayout from "../layouts/ChatLayout";
+import DashBoardLayout from "../layouts/DashBoardLayout";
+
+// ** Elements
+import LandingPage from "../pages/landing/LandingPage";
 import Welcome from "../pages/auth/Welcome";
 import SignIn from "../pages/auth/SignIn";
 import SignUp from './../pages/auth/SignUp';
@@ -9,16 +14,16 @@ import ForgetPassword from "../pages/auth/ForgetPassword";
 import Otp from "../pages/auth/Otp";
 import NewPassword from "../pages/auth/NewPassword";
 import Done from "../pages/auth/Done";
-import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/main/Home";
 import Advices from "../pages/main/Advices";
 import Consultation from "../pages/main/Consultation";
 import DoctorDetails from "../pages/main/DoctorDetails";
 import BookingDetails from "../pages/main/BookingDetails";
-import ChatLayout from "../layouts/ChatLayout";
 import Alarm from "../pages/main/Alarm";
 import Profile from "../pages/main/Profile";
 import ChangePassword from "../pages/auth/ChangePassword";
+import HomeDashboard from './../pages/dashboard/HomeDashboard';
+import Doctors from "../pages/dashboard/Doctors";
 
 // ** Hooks && Tools
 import { Route, Routes } from "react-router-dom";
@@ -55,6 +60,10 @@ export default function Routers() {
                     <Route path="profile" element={<Profile />}/>
                 </Route>
                 <Route path="/chats" element={<ProtectMainRutes><ChatLayout /></ProtectMainRutes>}/>
+                <Route path="/dashboard" element={<DashBoardLayout />}>
+                    <Route index element={<HomeDashboard/>}/>
+                    <Route path="doctors" element={<Doctors/>}/>
+                </Route>
             </Routes>
         </>
     )
