@@ -1,50 +1,123 @@
-# React + TypeScript + Vite
+# 💧 Kleitech – Smart Kidney Care Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Kleitech** is a full-featured web application built as a graduation project with the mission of enhancing the healthcare experience for kidney patients. It provides AI-powered medical image analysis, smart scheduling, personalized dietary advice, and seamless patient-doctor interaction — all through a responsive and accessible interface.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## Expanding the ESLint configuration
+> Coming Soon...
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 📚 Table of Contents
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- [✨ Features](#-features)
+- [🛠 Tech Stack](#-tech-stack)
+- [⚙️ Installation](#️-installation)
+- [📁 Folder Structure](#-folder-structure)
+- [🖼️ Screenshots](#️-screenshots)
+- [👥 Team](#-team)
+- [📄 License](#-license)
+- [📬 Contact](#-contact)
+
+---
+
+## ✨ Features
+
+- 🧠 **AI Image Processing**  
+  Upload and analyze medical images (e.g., ultrasound, CT scans) using an AI model.
+
+- 🧾 **Medical Records Dashboard**  
+  View organized lab reports, treatment schedules, and prescriptions in one place.
+
+- 🥗 **Health & Diet Recommendations**  
+  Get daily tips based on your condition and dietary requirements.
+
+- 📅 **Appointment Booking System**  
+  Schedule consultations with specialized nephrologists directly from the app.
+
+- 🔔 **Smart Reminders**  
+  Get notified about upcoming dialysis sessions, appointments, and medication.
+
+
+---
+
+## 🛠 Tech Stack
+
+| Frontend           | Tooling & Services     |
+|--------------------|-------------------------|
+| React + TypeScript | Vite, Firebase          |
+| Redux Toolkit      | GitHub Actions (CI/CD) |
+| React Router       | ESLint, Prettier     |
+
+---
+
+## ⚙️ Installation
+
+Clone and run the project locally:
+
+```bash
+git clone https://github.com/mohamed-mos-aad/graduation-project
+cd graduation-project
+npm install
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Then visit: [http://localhost:5173](http://localhost:5173)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+---
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## 📁 Folder Structure
+
 ```
+graduation-project/
+│
+├── public/             # Static assets
+├── src/
+│   ├── assets/         # Images and icons
+│   ├── components/     # Reusable UI components
+│   ├── pages/          # Application pages
+│   ├── redux/          # State management (Redux Toolkit)
+│   ├── utils/          # Helper functions
+│   └── App.tsx         # Root component
+│
+├── .eslintrc.js        # Code linting rules
+├── vite.config.ts      # Vite dev server config
+├── package.json        # Project metadata and dependencies
+└── README.md           # You are here
+```
+
+---
+
+## 🖼️ Screenshots
+
+> Screenshots and demo videos coming soon!
+
+---
+
+## 👥 Team
+
+- 👨‍💻 **Mohamed Ahmed** – Frontend Developer & Project Lead  
+  [LinkedIn](https://www.linkedin.com/in/mohamed-mos-aad/) | [GitHub](https://github.com/Mohamed-Mos-aad)
+
+- 🎨 **Amira El-Ezaby** – UI/UX Designer & Product Manager
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.  
+See the [LICENSE](./LICENSE) file for more information.
+
+---
+
+## 📬 Contact
+
+Got questions or want to collaborate?
+
+📧 **mohamedmosaad1030@gmail.com**
+
+---
+
+> ⭐ If you like this project, consider starring it on GitHub!
