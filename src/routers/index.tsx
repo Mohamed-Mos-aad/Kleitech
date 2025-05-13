@@ -28,6 +28,7 @@ import Doctors from "../pages/dashboard/Doctors";
 // ** Hooks && Tools
 import { Route, Routes } from "react-router-dom";
 import { ProtectDoneRoute, ProtectMainRutes, ProtectOtpRoute } from "./ProtectedRoutes";
+import Patients from "../pages/dashboard/Patients";
 
 
 
@@ -63,6 +64,7 @@ export default function Routers() {
                 <Route path="/dashboard" element={<DashBoardLayout />}>
                     <Route index element={<HomeDashboard/>}/>
                     <Route path="doctors" element={<Doctors/>}/>
+                    <Route path="patients" element={<Patients/>}/>
                 </Route>
             </Routes>
         </>
