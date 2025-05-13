@@ -28,6 +28,7 @@
     min-height: 100dvh;
     display: flex;
     background-color: var(--gray-color-100);
+    position: relative;
 }
 /* End DashBoard Layout */
 

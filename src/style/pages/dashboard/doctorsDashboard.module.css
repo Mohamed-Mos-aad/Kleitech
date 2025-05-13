@@ -1,0 +1,361 @@
+/* Start Variables */
+:root
+{
+    --main-color-100: #E0F2FE;
+    --main-color-200: #B9E6FE;
+    --main-color-700: #026AA2;
+    --main-color-800: #00598D;
+    --gray-color-100: #F6F6F6;
+    --gray-color-200: #EBEBEB;
+    --gray-color-400: #AFAFAF;
+    --gray-color-500: #808080;
+    --gray-color-600: #636363;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-100: #FDE8E8;
+    --red-color-500: #F05252;
+    --green-color-400: #31C48D;
+    --chat-1-color: #E0F0FF;
+    --chat-2-color: #E9EAED;
+    --text-50: #676767;
+    --text-100: #1C1C1C;
+}
+/* End Variables */
+
+
+
+/* Start Doctors DashBoard Page */
+.dashboard_doctors_container
+{
+    width: 100%;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 32px 24px;
+}
+.dashboard_doctors_container .header
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+.dashboard_doctors_container .search
+{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+.search_container
+{
+    width: 75%;
+    position: relative;
+}
+.dashboard_doctors_container .search input
+{
+    width: 100%;
+    background-color: transparent;
+    border: solid 1px var(--main-color-700);
+    border-radius: 8px;
+    padding: 8px 48px;
+    font-size: 16px;
+}
+.dashboard_doctors_container .search input::placeholder
+{
+    color: var(--main-color-700);
+}
+.dashboard_doctors_container .search input:focus
+{
+    outline: none;
+}
+.dashboard_doctors_container .search img
+{
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+}
+.dashboard_doctors_container .header button
+{
+    width: min-content;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--main-color-700);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+.dashboard_doctors_container .header button img
+{
+    width: 20px;
+}
+.dashboard_doctors_container .header button h2
+{
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    text-wrap: nowrap;
+}
+.dashboard_doctors_container .table_container
+{
+    width: 100%;
+    height: calc(100% - 32px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 32px 100px;
+}
+.table_title
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.table_title h1
+{
+    font-size: 21px;
+    font-weight: 500;
+    color: var(--main-color-700);
+}
+.table_title button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.dashboard_doctors_container .table_container table
+{
+    table-layout: fixed;
+}
+.dashboard_doctors_container .table_container table thead tr
+{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    padding: 12px 0;
+    border-bottom: solid 1px var(--gray-color-200);
+}
+.dashboard_doctors_container .table_container table thead tr th
+{
+    font-size: 20px;
+    font-weight: 400;
+    text-align: start;
+}
+.dashboard_doctors_container .table_container table tbody tr
+{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    padding: 12px 0;
+    border-bottom: solid 1px var(--gray-color-200);
+    text-align: start;
+}
+.dashboard_doctors_container .table_container table tbody tr:last-of-type
+{
+    border-bottom: none;
+}
+.dashboard_doctors_container .table_container table tbody tr td:last-of-type
+{
+    display: flex;
+    justify-content: end;
+    gap: 24px;
+}
+.dashboard_doctors_container .table_container table tbody tr td button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.dashboard_doctors_container .add_doctor_container
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(40, 40, 40, 0.4);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999999;
+}
+.dashboard_doctors_container .add_doctor_container .add_doctor
+{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 48px 96px;
+}
+.dashboard_doctors_container .add_doctor_container .add_doctor h3
+{
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--main-color-700);
+}
+.dashboard_doctors_container .add_doctor_container .add_doctor .data_form
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.dashboard_doctors_container .add_doctor_container .add_doctor button
+{
+    width: 100%;
+    background-color: var(--main-color-700);
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    cursor: pointer;
+}
+/* End Doctors DashBoard Page */
+
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .search_container
+    {
+        width: 100%;
+    }
+    .dashboard_doctors_container .header button h2
+    {
+        display: none;
+    }
+    .dashboard_doctors_container .table_container
+    {
+        padding: 16px 24px;
+    }
+    .table_title h1
+    {
+        font-size: 18px;
+    }
+    .dashboard_doctors_container .table_container table thead
+    {
+        display: none;
+    }
+    .dashboard_doctors_container .table_container table tbody tr
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .dashboard_doctors_container .table_container table tbody tr td
+    {
+        padding: 8px 0;
+    }
+    .dashboard_doctors_container .table_container table tbody tr td:last-of-type
+    {
+        justify-content: center;
+    }
+    .dashboard_doctors_container .add_doctor_container .add_doctor
+    {
+        width: 95%;
+        gap: 16px;
+        padding: 32px 16px;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    .search_container
+    {
+        width: 100%;
+    }
+    .dashboard_doctors_container .table_container
+    {
+        padding: 16px 24px;
+    }
+    .table_title h1
+    {
+        font-size: 18px;
+    }
+    .dashboard_doctors_container .table_container table thead
+    {
+        display: none;
+    }
+    .dashboard_doctors_container .table_container table tbody tr
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .dashboard_doctors_container .table_container table tbody tr td
+    {
+        padding: 8px 0;
+    }
+    .dashboard_doctors_container .table_container table tbody tr td:last-of-type
+    {
+        justify-content: center;
+    }
+    .dashboard_doctors_container .add_doctor_container .add_doctor
+    {
+        width: 75%;
+        gap: 16px;
+        padding: 32px 16px;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    .dashboard_doctors_container .table_container
+    {
+        padding: 32px;
+    }
+    .dashboard_doctors_container .table_container table thead
+    {
+        display: none;
+    }
+    .dashboard_doctors_container .table_container table tbody tr
+    {
+        grid-template-columns: repeat(2,1fr);
+        gap: 16px;
+    }
+    .dashboard_doctors_container .table_container table tbody tr td:last-of-type
+    {
+        grid-column: span 2;
+        justify-content: center;
+    }
+    .dashboard_doctors_container .add_doctor_container .add_doctor
+    {
+        width: 65%;
+        gap: 16px;
+        padding: 32px;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+    .dashboard_doctors_container .table_container
+    {
+        padding: 32px;
+    }
+    .dashboard_doctors_container .add_doctor_container .add_doctor
+    {
+        width: 60%;
+        gap: 16px;
+        padding: 32px;
+    }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */
