@@ -1,0 +1,296 @@
+/* Start Variables */
+:root
+{
+    --main-color-100: #E0F2FE;
+    --main-color-200: #B9E6FE;
+    --main-color-700: #026AA2;
+    --main-color-800: #00598D;
+    --gray-color-100: #F6F6F6;
+    --gray-color-200: #EBEBEB;
+    --gray-color-400: #AFAFAF;
+    --gray-color-500: #808080;
+    --gray-color-600: #636363;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-100: #FDE8E8;
+    --red-color-500: #F05252;
+    --green-color-400: #31C48D;
+    --chat-1-color: #E0F0FF;
+    --chat-2-color: #E9EAED;
+    --text-50: #676767;
+    --text-100: #1C1C1C;
+}
+/* End Variables */
+
+
+
+/* Start Home DashBoard Page */
+.home_dashboard_container
+{
+    width: 100%;
+    padding: 32px 24px;
+}
+.home_dashboard_data
+{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.home_dashboard_data .search
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.search_container
+{
+    width: 50%;
+    position: relative;
+}
+.home_dashboard_data .search input
+{
+    width: 100%;
+    background-color: transparent;
+    border: solid 1px var(--main-color-700);
+    border-radius: 8px;
+    padding: 16px 48px;
+    font-size: 16px;
+}
+.home_dashboard_data .search input::placeholder
+{
+    color: var(--main-color-700);
+}
+.home_dashboard_data .search input:focus
+{
+    outline: none;
+}
+.home_dashboard_data .search img
+{
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+}
+.home_dashboard_data .cards
+{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 80px;
+}
+.home_dashboard_data .cards .card
+{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+}
+.home_dashboard_data .cards .card .card_title h2
+{
+    text-align: start;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text-50);
+}
+.home_dashboard_data .cards .card .card_data
+{
+    display: flex;
+    justify-content: space-between;
+}
+.home_dashboard_data .cards .card .card_data h3
+{
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--text-100);
+}
+.home_dashboard_data .table_container
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 32px 100px;
+}
+.table_title
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.table_title h1
+{
+    font-size: 21px;
+    font-weight: 500;
+    color: var(--main-color-700);
+}
+.table_title button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.home_dashboard_data .table_container table thead tr
+{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    padding: 12px 0;
+    border-bottom: solid 1px var(--gray-color-200);
+}
+.home_dashboard_data .table_container table thead tr th
+{
+    font-size: 20px;
+    font-weight: 400;
+}
+.home_dashboard_data .table_container table tbody tr
+{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    padding: 12px 0;
+    border-bottom: solid 1px var(--gray-color-200);
+}
+.home_dashboard_data .table_container table tbody tr:last-of-type
+{
+    border-bottom: none;
+}
+.home_dashboard_data .table_container table tbody tr td:last-of-type
+{
+    display: flex;
+    justify-content: end;
+    gap: 24px;
+}
+.home_dashboard_data .table_container table tbody tr td button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+/* End Home DashBoard Page */
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .search_container
+    {
+        width: 100%;
+    }
+    .home_dashboard_data .cards
+    {
+        grid-template-columns: repeat(1,1fr);
+        gap: 32px;
+    }
+    .home_dashboard_data .table_container
+    {
+        padding: 16px 24px;
+    }
+    .table_title h1
+    {
+        font-size: 18px;
+    }
+    .home_dashboard_data .table_container table thead
+    {
+        display: none;
+    }
+    .home_dashboard_data .table_container table tbody tr
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .home_dashboard_data .table_container table tbody tr td
+    {
+        padding: 8px 0;
+    }
+    .home_dashboard_data .table_container table tbody tr td:last-of-type
+    {
+        justify-content: center;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    .search_container
+    {
+        width: 75%;
+    }
+    .home_dashboard_data .cards
+    {
+        grid-template-columns: repeat(2,1fr);
+        gap: 32px;
+    }
+    .home_dashboard_data .table_container
+    {
+        padding: 16px 24px;
+    }
+    .table_title h1
+    {
+        font-size: 18px;
+    }
+    .home_dashboard_data .table_container table thead
+    {
+        display: none;
+    }
+    .home_dashboard_data .table_container table tbody tr
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .home_dashboard_data .table_container table tbody tr td
+    {
+        padding: 8px 0;
+    }
+    .home_dashboard_data .table_container table tbody tr td:last-of-type
+    {
+        justify-content: center;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    .search_container
+    {
+        width: 75%;
+    }
+    .home_dashboard_data .cards
+    {
+        gap: 32px;
+    }
+        .home_dashboard_data .table_container
+    {
+        padding: 32px;
+    }
+    .home_dashboard_data .table_container table thead
+    {
+        display: none;
+    }
+    .home_dashboard_data .table_container table tbody tr
+    {
+        grid-template-columns: repeat(2,1fr);
+        gap: 16px;
+    }
+    .home_dashboard_data .table_container table tbody tr td:last-of-type
+    {
+        grid-column: span 2;
+        justify-content: center;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */

@@ -131,6 +131,7 @@
     {
         width: 100%;
         position: fixed;
+        z-index: 999999999999999999;
     }
     .dashboard_bavbar_container nav .logo
     {
@@ -153,6 +154,7 @@
     {
         width: 100%;
         position: fixed;
+        z-index: 999999999999999999;
     }
     .dashboard_bavbar_container nav .logo
     {
