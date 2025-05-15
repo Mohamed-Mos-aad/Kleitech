@@ -11,12 +11,31 @@ import halfStarIcon from '../../../assets/landingPage/aboutUs/halfStarIcon.svg'
 
 
 
-
 // ** InterFaces
 interface ISection{
     sectionId: string
 }
+
+
+
 export default function AboutUs({sectionId}:ISection) {
+    // ** clientsPhotos
+    const clientsPhotos = [
+        { src: client1Photo, alt: "Photo of a happy client #1" },
+        { src: client2Photo, alt: "Photo of a happy client #2" },
+        { src: client3Photo, alt: "Photo of a happy client #3" },
+        { src: client4Photo, alt: "Photo of a happy client #4" },
+    ];
+
+
+
+    // ** Render
+    const renderClientsPhotos = clientsPhotos.map(photo => (
+        <img src={photo.src} alt={photo.alt} key={photo.src}/>
+    ))
+
+
+
     return (
         <>
             <section className={`${style.section} ${style.section_bg}`} id={sectionId}>
@@ -26,10 +45,7 @@ export default function AboutUs({sectionId}:ISection) {
                             <img src={mainAboutUsPhoto} alt="Main about us photo" />
                             <div className={style.about_us_simple_rate}>
                                 <div className={style.simple_rate_head}>
-                                    <img src={client4Photo} alt="Client 4 photo" />
-                                    <img src={client3Photo} alt="Client 3 photo" />
-                                    <img src={client2Photo} alt="Client 2 photo" />
-                                    <img src={client1Photo} alt="Client 1 photo" />
+                                    {renderClientsPhotos}
                                     <h4><span>+</span>2400</h4>
                                 </div>
                                 <h5>Happy Customers</h5>

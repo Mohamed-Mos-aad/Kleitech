@@ -13,8 +13,8 @@
 
 
 
-/* Start Footer Section */
-.section
+/* Start .footer_data Section */
+footer
 {
     width: 100%;
 }
@@ -60,19 +60,19 @@
     font-weight: 400;
     color: var(--gray-color-700);
 }
-footer
+.footer_data
 {
     width: 100%;
     display: grid;
     grid-template-columns: 5fr 1fr;
     padding: 16px 0;
 }
-footer p
+.footer_data p
 {
     font-size: 18px;
     font-weight: 500;
 }
-footer p span
+.footer_data p span
 {
     font-size: 18px;
     font-weight: 700;
@@ -94,7 +94,7 @@ footer p span
     width: 32px;
     cursor: pointer;
 }
-/* End Footer Section */
+/* End .footer_data Section */
 
 
 
@@ -112,17 +112,17 @@ footer p span
         width: 100%;
         font-size: 18px;
     }
-    footer
+    .footer_data
     {
         grid-template-columns: 1fr;
         gap: 25px;
     }
-    footer p
+    .footer_data p
     {
         text-align: center;
         font-size: 14px;
     }
-    footer p span
+    .footer_data p span
     {
         font-size: 14px;
     }
@@ -147,17 +147,17 @@ footer p span
         width: 100%;
         font-size: 18px;
     }
-    footer
+    .footer_data
     {
         grid-template-columns: 1fr;
         gap: 25px;
     }
-    footer p
+    .footer_data p
     {
         text-align: center;
         font-size: 14px;
     }
-    footer p span
+    .footer_data p span
     {
         font-size: 14px;
     }
@@ -190,11 +190,11 @@ footer p span
         width: 85%;
         font-size: 18px;
     }
-    footer p
+    .footer_data p
     {
         font-size: 12px;
     }
-    footer p span
+    .footer_data p span
     {
         font-size: 12px;
     }

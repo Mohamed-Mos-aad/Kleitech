@@ -1,10 +1,9 @@
-// ** Style
-import SectionHeader from '../../../components/landing/SectionHeader'
-import style from '../../../style/pages/landing/sections/benefit.module.css'
 // ** Assets
 import doctorImage from '../../../assets/landingPage/benefitImage.png'
-
-
+// ** Style
+import style from '../../../style/pages/landing/sections/benefit.module.css'
+// ** Components
+import SectionHeader from '../../../components/landing/SectionHeader'
 
 
 
@@ -15,9 +14,41 @@ interface ISection{
 
 
 
-
-
 export default function Benefit({sectionId}:ISection) {
+    // ** States
+    const borderSpans = new Array(20).fill(null);
+    const benefitsData = [
+        {
+            id: 1,
+            title: 'ارفع صورة الأشعة:',
+            description: 'قم بتحميل صورة الأشعة الخاصة بك عبر منصتنا بكل سهولة. بمجرد رفع الصورة، سيتم تحليلها وتقديم تقرير مبدئي حول حالتك الصحية',
+        },
+        {
+            id: 2,
+            title: 'احصل على تقرير مبدئي:',
+            description: 'بعد رفع الصورة، سيقوم النظام بتوفير تقرير مبدئي شامل يعرض النتائج المستخلصة من الأشعة. سيساعدك هذا التقرير في فهم حالتك الصحية بشكل سريع ودقيق.',
+        },
+        {
+            id: 3,
+            title: 'تواصل مع الأطباء:',
+            description: 'عند الحصول على التقرير، يمكنك التواصل مع الأطباء المتخصصين في حالات الكلى للحصول على استشارات إضافية. يتيح لك التطبيق التفاعل مع الأطباء لتوضيح أي تفاصيل أو استفسارات لديك بشأن حالتك الصحية.',
+        }
+    ];
+
+
+
+    // ** Render
+    const renderBenefitsData = benefitsData.map(data => (
+        <div className={style.benefit} key={data.id}>
+            <span>{data.id}</span>
+            <h1>{data.title}</h1>
+            <p>{data.description}</p>
+        </div>
+    ))
+    const renderBorderSpans = borderSpans.map((_, index) => (
+        <span key={index}></span>
+    ));
+
     return (
         <>
             <section className={style.section} id={sectionId}>
@@ -28,42 +59,9 @@ export default function Benefit({sectionId}:ISection) {
                             <img src={doctorImage} alt="Doctor image" />
                         </div>
                         <div className={style.benefits}>
-                            <div className={style.benefit}>
-                                <span>1</span>
-                                <h1>ارفع صورة الأشعة:</h1>
-                                <p>قم بتحميل صورة الأشعة الخاصة بك عبر منصتنا بكل سهولة. بمجرد رفع الصورة، سيتم تحليلها وتقديم تقرير مبدئي حول حالتك الصحية</p>
-                            </div>
-                            <div className={style.benefit}>
-                                <span>2</span>
-                                <h1>احصل على تقرير مبدئي:</h1>
-                                <p>بعد رفع الصورة، سيقوم النظام بتوفير تقرير مبدئي شامل يعرض النتائج المستخلصة من الأشعة. سيساعدك هذا التقرير في فهم حالتك الصحية بشكل سريع ودقيق.</p>
-                            </div>
-                            <div className={style.benefit}>
-                                <span>3</span>
-                                <h1>تواصل مع الأطباء:</h1>
-                                <p>عند الحصول على التقرير، يمكنك التواصل مع الأطباء المتخصصين في حالات الكلى للحصول على استشارات إضافية. يتيح لك التطبيق التفاعل مع الأطباء لتوضيح أي تفاصيل أو استفسارات لديك بشأن حالتك الصحية.</p>
-                            </div>
+                            {renderBenefitsData}
                             <div className={style.border_line}>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                                {renderBorderSpans}
                             </div>
                         </div>
                     </div>
