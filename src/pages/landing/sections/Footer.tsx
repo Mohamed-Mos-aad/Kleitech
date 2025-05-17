@@ -29,7 +29,7 @@ export default function Footer({sectionId}:ISection) {
 
     // ** Render
     const renderSocialIcons = socialIcons.map(social =>(
-        <a href={social.href} target="_blank" rel="noopener noreferrer" className={style.social_item}>
+        <a href={social.href} target="_blank" rel="noopener noreferrer" className={style.social_item} key={social.alt}>
             <img src={social.src} alt={social.alt} aria-label={social.alt} />
         </a>
     ))
