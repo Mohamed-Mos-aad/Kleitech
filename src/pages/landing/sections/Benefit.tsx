@@ -4,6 +4,8 @@ import doctorImage from '../../../assets/landingPage/benefitImage.png'
 import style from '../../../style/pages/landing/sections/benefit.module.css'
 // ** Components
 import SectionHeader from '../../../components/landing/SectionHeader'
+// ** Hooks && Tools
+import React from 'react'
 
 
 
@@ -14,7 +16,7 @@ interface ISection{
 
 
 
-export default function Benefit({sectionId}:ISection) {
+function Benefit({sectionId}:ISection) {
     // ** States
     const borderSpans = new Array(20).fill(null);
     const benefitsData = [
@@ -49,6 +51,8 @@ export default function Benefit({sectionId}:ISection) {
         <span key={index}></span>
     ));
 
+
+
     return (
         <>
             <section className={style.section} id={sectionId}>
@@ -56,7 +60,7 @@ export default function Benefit({sectionId}:ISection) {
                     <SectionHeader title='استفد من خدماتنا بسهولة' description='اتبع خطوات بسيطة للحصول على الدعم الطبي والتوجيه الصحي من خلال منصتنا، حيث نقدم لك جميع الأدوات اللازمة لمتابعة حالتك الصحية وتحقيق أفضل النتائج'/>
                     <div className={style.benefits_content}>
                         <div className={style.benefit_photo}>
-                            <img src={doctorImage} alt="Doctor image" />
+                            <img src={doctorImage} alt="Doctor image" loading="lazy"/>
                         </div>
                         <div className={style.benefits}>
                             {renderBenefitsData}
@@ -70,3 +74,4 @@ export default function Benefit({sectionId}:ISection) {
         </>
     )
 }
+export default React.memo(Benefit);

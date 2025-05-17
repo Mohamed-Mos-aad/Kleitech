@@ -6,6 +6,8 @@ import patient4 from '../../../assets/landingPage/PatientReviews/PatientReview-4
 import SectionHeader from '../../../components/landing/SectionHeader'
 // ** Style
 import style from '../../../style/pages/landing/sections/PatientReviews.module.css'
+// ** Hooks && Tools
+import React from 'react'
 
 
 
@@ -16,7 +18,7 @@ interface ISection{
 
 
 
-export default function PatientReviews({sectionId}:ISection){
+function PatientReviews({sectionId}:ISection){
     // ** States
     const reviewStats = [
         {count: '+50', type: 'افضل المتخصصين'},
@@ -42,7 +44,7 @@ export default function PatientReviews({sectionId}:ISection){
     ))
     const renderpatientReviews = patientReviews.map(review => (
         <div key={review.name}>
-            <img src= {review.src} alt={review.alt} />
+            <img src= {review.src} alt={review.alt} loading="lazy"/>
             <p>{review.comment}<br/>{review.name}</p>
         </div>
     ))
@@ -68,4 +70,4 @@ export default function PatientReviews({sectionId}:ISection){
         </>
     )
 }
-
+export default React.memo(PatientReviews);

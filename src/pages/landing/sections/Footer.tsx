@@ -6,6 +6,8 @@ import telegramIcon from '../../../assets/social icons/telegramIcon.svg'
 import twitterIcon from '../../../assets/social icons/twitterIcon.svg'
 // ** Style
 import style from '../../../style/pages/landing/sections/footer.module.css'
+// ** Hooks && Tools
+import React from 'react'
 
 
 
@@ -16,7 +18,7 @@ interface ISection{
 
 
 
-export default function Footer({sectionId}:ISection) {
+function Footer({sectionId}:ISection) {
     // ** States
     const socialIcons = [
         {src: facebookIcon, alt: "facebook icon", href: "https://facebook.com"},
@@ -30,7 +32,7 @@ export default function Footer({sectionId}:ISection) {
     // ** Render
     const renderSocialIcons = socialIcons.map(social =>(
         <a href={social.href} target="_blank" rel="noopener noreferrer" className={style.social_item} key={social.alt}>
-            <img src={social.src} alt={social.alt} aria-label={social.alt} />
+            <img src={social.src} alt={social.alt} aria-label={social.alt} loading="lazy"/>
         </a>
     ))
 
@@ -42,7 +44,7 @@ export default function Footer({sectionId}:ISection) {
                 <div className={style.section_container}>
                     <div className={style.section_content}>
                         <div className={style.logo}>
-                            <img src={logo} alt="App Logo" />
+                            <img src={logo} alt="App Logo" loading="lazy"/>
                             <h3>كليّتِك</h3>
                         </div>
                         <p>نحن نقدم حلولًا رقمية مبتكرة لدعم صحتك. اكتشف كيف يمكننا مساعدتك في متابعة حالتك الصحية بكل سهولة وراحة.</p>
@@ -58,3 +60,4 @@ export default function Footer({sectionId}:ISection) {
         </>
     )
 }
+export default React.memo(Footer);

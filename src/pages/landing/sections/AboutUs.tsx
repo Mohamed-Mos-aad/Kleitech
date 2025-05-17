@@ -8,6 +8,8 @@ import client3Photo from '../../../assets/landingPage/aboutUs/client3.png'
 import client4Photo from '../../../assets/landingPage/aboutUs/client4.png'
 import starIcon from '../../../assets/landingPage/aboutUs/starIcon.svg'
 import halfStarIcon from '../../../assets/landingPage/aboutUs/halfStarIcon.svg'
+// ** Hooks && Tools
+import React from 'react'
 
 
 
@@ -18,7 +20,7 @@ interface ISection{
 
 
 
-export default function AboutUs({sectionId}:ISection) {
+function AboutUs({sectionId}:ISection) {
     // ** clientsPhotos
     const clientsPhotos = [
         { src: client1Photo, alt: "Photo of a happy client #1" },
@@ -31,7 +33,7 @@ export default function AboutUs({sectionId}:ISection) {
 
     // ** Render
     const renderClientsPhotos = clientsPhotos.map(photo => (
-        <img src={photo.src} alt={photo.alt} key={photo.src}/>
+        <img src={photo.src} alt={photo.alt} key={photo.src} loading="lazy"/>
     ))
 
 
@@ -71,3 +73,4 @@ export default function AboutUs({sectionId}:ISection) {
         </>
     );
 }
+export default React.memo(AboutUs);

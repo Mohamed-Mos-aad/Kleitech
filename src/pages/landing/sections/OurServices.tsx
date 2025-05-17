@@ -7,6 +7,8 @@ import service4Img from '../../../assets/landingPage/services/service4.png'
 import style from '../../../style/pages/landing/sections/ourServices.module.css'
 // ** components 
 import SectionHeader from "../../../components/landing/SectionHeader";
+// ** Hooks && Tools
+import React from 'react'
 
 
 
@@ -17,7 +19,7 @@ interface ISection{
 
 
 
-export default function OurServices({sectionId}:ISection) {
+function OurServices({sectionId}:ISection) {
     // ** States
     const services = [
         {img: service1Img, alt: 'تقرير الأشعة', title: 'تقرير الأشعة: ', description: ' تحليل مبدئي لصورة الأشعة المرفوعة لتقييم الحالة الصحية.'},
@@ -32,7 +34,7 @@ export default function OurServices({sectionId}:ISection) {
     const renderServices = services.map(service => (
         <div className={style.service} key={service.title}>
             <div className={style.service_photo}>
-                <img src={service.img} alt={service.alt} />
+                <img src={service.img} alt={service.alt} loading="lazy"/>
             </div>
             <div className={style.service_content}>
                 <h2>{service.title}</h2>
@@ -56,3 +58,4 @@ export default function OurServices({sectionId}:ISection) {
         </>
     )
 }
+export default React.memo(OurServices);

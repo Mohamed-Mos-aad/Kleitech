@@ -45,7 +45,7 @@ export default function ContactUs({sectionId}:ISection) {
                             <button>إرسال الرساله</button>
                         </form>
                         <div className={style.contact_photo}>
-                            <img src={contactPhoto} alt="Contact photo" />
+                            <img src={contactPhoto} alt="Contact photo" loading="lazy"/>
                         </div>
                     </div>
                 </div>
