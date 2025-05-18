@@ -16,6 +16,7 @@
 /* Start Input Element Component */
 .form_input
 {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 8px;
