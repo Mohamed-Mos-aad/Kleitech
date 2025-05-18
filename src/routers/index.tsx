@@ -29,6 +29,7 @@ import Doctors from "../pages/dashboard/Doctors";
 import { Route, Routes } from "react-router-dom";
 import { ProtectDoneRoute, ProtectMainRutes, ProtectOtpRoute } from "./ProtectedRoutes";
 import Patients from "../pages/dashboard/Patients";
+import Suggestions from "../pages/main/Suggestions";
 
 
 
@@ -58,6 +59,7 @@ export default function Routers() {
                     <Route path="doctor/:id" element={<DoctorDetails />} />
                     <Route path="booking-details" element={<BookingDetails />} />
                     <Route path="alarm" element={<Alarm />} />
+                    <Route path="suggestions" element={<Suggestions />}/>
                     <Route path="profile" element={<Profile />}/>
                 </Route>
                 <Route path="/chats" element={<ProtectMainRutes><ChatLayout /></ProtectMainRutes>}/>

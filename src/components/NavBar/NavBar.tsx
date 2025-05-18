@@ -40,7 +40,7 @@ export default function NavBar() {
     const [navOpen,setNavOpen] = useState<boolean>(false);
     const [activeSection, setActiveSection] = useState<string>('');
     const [activePage,setActivePage] = useState<string>('')
-
+    const [listELementOpened,setListELementOpened] = useState<boolean>(false);
 
 
 
@@ -78,10 +78,14 @@ export default function NavBar() {
     };
     const changePageHandler = (e: React.MouseEvent<HTMLElement>)=>{
         const page = e.currentTarget.id;
+        setListELementOpened(false);
         navigate(`/m/${page}`);
         nabBarToggleHandler();
         setActivePage(page);
     } 
+    const ListElementToggleHandler = ()=>{
+        setListELementOpened(prev=> !prev);
+    }
 
 
 
@@ -165,7 +169,16 @@ export default function NavBar() {
                                 {renderMainNavBarSections}
                             </ul>
                             <div className={`${style.auth_btns} ${style.auth_btns_logged}`}>
-                                <button className={style.userLoggedIcon} id='profile' onClick={(e)=>{changePageHandler(e)}}><img src={settingIcon} alt="Setting icon" /></button>
+                                {
+                                    listELementOpened && 
+                                    <div className={style.list_element}>
+                                        <ul>
+                                            <li id='profile' onClick={(e)=>{changePageHandler(e)}}>الحساب الشخصي</li>
+                                            <li id='suggestions' onClick={(e)=>{changePageHandler(e)}}>الاقتراحات</li>
+                                        </ul>
+                                    </div>
+                                }
+                                <button className={style.userLoggedIcon} onClick={ListElementToggleHandler}><img src={settingIcon} alt="Setting icon" /></button>
                                 <button className={style.userLoggedIcon} onClick={(e)=>{logOutSubmitHandler(e)}}><img src={logOutIcon} alt="LogOut icon" /></button>
                             </div>
                         </div>
