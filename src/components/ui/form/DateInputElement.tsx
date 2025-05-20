@@ -1,7 +1,7 @@
+// ** Assets
+import {userDateIcon} from '../../../assets/icons/icons'
 // ** Style
 import style from '../../../style/pages/auth/signUp.module.css'
-// ** Assets
-import userDataIcon from '../../../assets/auth/formIcons/userDateIcon.svg'
 // ** Hooks & Tools
 import { useEffect, useRef, useState } from 'react';
 
@@ -154,7 +154,7 @@ export default function DateInputElement({error,onChange}:IDateInputElement) {
                             </div>
                         </div>
                     }
-                    <img src={userDataIcon} alt="User date icon"/>
+                    <img src={userDateIcon} alt="User date icon"/>
                 </div>
                 <span className={style.error}>{error}</span>
             </div>

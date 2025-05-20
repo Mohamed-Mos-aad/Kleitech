@@ -1,8 +1,7 @@
+// ** assets
+import {showPasswordIcon, hideasswordIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/components/ui/passwordInputElement.module.css'
-// ** assets
-import showPasswordIcon from '../../assets/auth/formIcons/showPasswordIcon.svg'
-import hideasswordIcon from '../../assets/auth/formIcons/hidePasswordIcon.svg'
 // ** Interfaces
 import { IInputElement } from './../../interfaces/index';
 import { useState } from 'react';

@@ -1,9 +1,9 @@
 // ** Assets
 import { starIcon, doctorIcon, locationPinIcon, priceIcon, chatIcon, timerIcon, phoneIcon } from '../../../assets/main/doctorDetails'
+import {patient1} from '../../../assets/images/images'
 // ** Style
 import style from '../../../style/pages/main/doctorDetails.module.css'
-// ** Other
-import doctorPhoto from '../../../assets/landingPage/PatientReviews/PatientReview-1.png'
+// ** Interfaces
 import { IDoctorsData } from './../../../interfaces/index';
 
 
@@ -21,7 +21,7 @@ export default function DoctorData({doctor,openChat}:IDoctorData) {
         <>
             <div className={style.doctor_details}>
                 <div className={style.doctor_photo}>
-                    <img src={doctorPhoto} alt={`صورة الدكتور ${doctor.name}`} />
+                    <img src={patient1} alt={`صورة الدكتور ${doctor.name}`} />
                 </div>
                 <div className={style.doctor_data}>
                     <div className={style.doctor_title}>

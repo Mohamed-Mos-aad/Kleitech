@@ -1,11 +1,10 @@
+// ** assets
+import contactPhoto from '../../../assets/images/landing/contactUs/contactUsPhoto.svg'
 // ** Style
 import style from '../../../style/pages/landing/sections/contactUs.module.css'
-// ** assets
-import contactPhoto from '../../../assets/landingPage/contactUsPhoto.svg'
+// ** Components
 import SectionHeader from '../../../components/landing/SectionHeader'
 import ContactUsForm from '../../../components/contactUsForm/ContactUsForm'
-// ** Components
-
 
 
 

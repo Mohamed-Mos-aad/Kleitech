@@ -1,17 +1,14 @@
 // ** Style
 import style from '../../style/pages/auth/signIn.module.css'
 // ** Assets
-import googleIcon from '../../assets/auth/socialIcons/googleIcon.svg'
-import facebookIcon from '../../assets/auth/socialIcons/facebookIcon.svg'
-import appleIcon from '../../assets/auth/socialIcons/appleIcon.svg'
-import userEmailIcon from '../../assets/auth/formIcons/userEmailIcon.svg'
-import userPasswordIcon from '../../assets/auth/formIcons/userPasswordIcon.svg'
+import {googleIcon, facebookIcon, appleIcon, userEmailIcon, userPasswordIcon} from '../../assets/icons/icons'
 // ** Hooks && Tools
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'
 // ** Components
 import PasswordInputElement from '../../components/ui/PasswordInputElement';
 import InputElement from '../../components/ui/InputElement'
+// ** Store
 import { loginUser } from '../../api/userApi'
 import { AppDispatch } from '../../app/store'
 import { useDispatch } from 'react-redux'

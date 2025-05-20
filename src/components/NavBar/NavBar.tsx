@@ -1,11 +1,8 @@
+// ** Assets
+import {navBarLogo,navBarMenuIcon, logOutIcon, settingIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/components/navbar/navbar.module.css'
-// ** Assets
-import logo from '../../assets/landingPage/landingPageLogo.svg'
-import navBarMenuIcon from '../../assets/navBar/navBarIcon.svg'
-import logOutIcon from '../../assets/navBar/logOutIcon.svg'
-import settingIcon from '../../assets/navBar/settingIcon.svg'
-// ** Hooks
+// ** Hooks && Tools
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react';
 // ** Store
@@ -49,7 +46,7 @@ export default function NavBar() {
     const signUpPageHandler = ()=>{navigate('/u/sign-up')};
     const signInPageHandler = ()=>{navigate('/u/sign-in')};
     const landingPageHandler = ()=>{navigate('/')}
-    const nabBarToggleHandler = ()=>{
+    const navBarToggleHandler = ()=>{
         const menuElement = menuRef.current;
         if(!navOpen && menuElement && window.innerWidth < 992)
         {
@@ -66,9 +63,9 @@ export default function NavBar() {
             const section = document.getElementById(sectionId);;
             if(section)
             {
-                section.scrollIntoView({behavior:'smooth'});
+                section.scrollIntoView({behavior:'smooth', block: 'start' });
                 setActiveSection(id);
-                nabBarToggleHandler();
+                navBarToggleHandler();
             }
         }
     const logOutSubmitHandler = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
@@ -80,7 +77,7 @@ export default function NavBar() {
         const page = e.currentTarget.id;
         setListELementOpened(false);
         navigate(`/m/${page}`);
-        nabBarToggleHandler();
+        navBarToggleHandler();
         setActivePage(page);
     } 
     const ListElementToggleHandler = ()=>{
@@ -158,10 +155,10 @@ export default function NavBar() {
             <nav className={style.navCompoent}>
                 <div className={style.nav_container}>
                     <div className={style.logo}>
-                        <img src={logo} alt="" onClick={landingPageHandler}/>
+                        <img src={navBarLogo} alt="" onClick={landingPageHandler}/>
                     </div>
                     <div className={style.mb_menu}>
-                        <img src={navBarMenuIcon} alt="Nav Bar Icon" onClick={nabBarToggleHandler}/>
+                        <img src={navBarMenuIcon} alt="Nav Bar Icon" onClick={navBarToggleHandler}/>
                     </div>
                     {userLogged ?
                         <div className={style.menu} ref={menuRef}>

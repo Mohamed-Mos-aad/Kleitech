@@ -1,11 +1,11 @@
 // ** Assets
-import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/auth/doneIcon.svg'
+import {logo} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/pages/auth/done.module.css'
 // ** Hooks && Tools
 import { RootState } from '../../app/store';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 

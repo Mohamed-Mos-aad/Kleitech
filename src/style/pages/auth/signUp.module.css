@@ -290,8 +290,10 @@ h2
     font-weight: 600;
     text-align: center;
 }
-.switch_auth h4 span
+.switch_auth h4 button
 {
+    background-color: transparent;
+    border: none;
     font-weight: 700;
     color: var(--main-color-700);
     text-decoration: underline;

@@ -1,8 +1,8 @@
+// ** Assets
+
+import {userNameIcon, userPhoneIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/components/ui/booking.module.css'
-// ** Assets
-import userNameIcon from '../../assets/auth/formIcons/userNameIcon.svg'
-import userPhoneIcon from '../../assets/auth/formIcons/userPhoneIcon.svg'
 // ** Hooks
 import { useState } from 'react'
 // ** Other 

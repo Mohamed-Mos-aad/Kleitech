@@ -1,8 +1,5 @@
 // ** Assets
-import service1Img from '../../../assets/landingPage/services/service1.png'
-import service2Img from '../../../assets/landingPage/services/service2.png'
-import service3Img from '../../../assets/landingPage/services/service3.png'
-import service4Img from '../../../assets/landingPage/services/service4.png'
+import {service1Img, service2Img, service3Img, service4Img} from '../../../assets/images/images'
 // ** Style
 import style from '../../../style/pages/landing/sections/ourServices.module.css'
 // ** components 

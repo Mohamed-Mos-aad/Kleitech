@@ -1,8 +1,8 @@
+// ** assets
+import {keyIcon, emailInputIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/pages/auth/forgetPassword.module.css'
-// ** assets
-import keyIcon from '../../assets/auth/forgetPasswordIcon.svg'
-import emailInputIcon from '../../assets/auth/formIcons/emailInputIcon.svg'
+// ** Hooks && Tools
 import { useNavigate } from 'react-router-dom';
 
 
