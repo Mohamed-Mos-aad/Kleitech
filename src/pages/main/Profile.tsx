@@ -1,17 +1,12 @@
 // ** Style
 import style from '../../style/pages/main/profile.module.css'
 // ** Assets
-import settingIcon from '../../assets/navBar/settingIcon.svg'
-import doctorPhoto from '../../assets/landingPage/PatientReviews/PatientReview-1.png'
-import editeIcon from '../../assets/main/profile/editeIcon.svg'
-import userNameIcon from '../../assets/auth/formIcons/userNameIcon.svg'
-import userPhoneIcon from '../../assets/auth/formIcons/userPhoneIcon.svg'
-import userIdIcon from '../../assets/auth/formIcons/userIdIcon.svg'
-import userEmailIcon from '../../assets/auth/formIcons/userEmailIcon.svg'
-import arrowUpandDownIcon from '../../assets/auth/formIcons/arrowsUpandDownIcon.svg'
-// ** Hooks
+import {settingIcon, editeIcon, userNameIcon, userPhoneIcon, userIdIcon, userEmailIcon, arrowUpandDownIcon} from '../../assets/icons/icons'
+import {patient1} from '../../assets/images/images'
+// ** Hooks && Tools
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+// ** Compontents
 import InputElement from '../../components/ui/InputElement'
 
 
@@ -45,7 +40,7 @@ export default function Profile() {
             <div className={style.profile_container}>
                 <section>
                     <div className={style.profile_img}>
-                        <img src={doctorPhoto} alt="" />
+                        <img src={patient1} alt="" />
                     </div>
                     <div className={style.user_short_data}>
                         <h1>محمد يوسف</h1>

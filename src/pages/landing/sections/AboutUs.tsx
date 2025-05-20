@@ -1,13 +1,8 @@
 // ** Style
 import style from '../../../style/pages/landing/sections/aboutUs.module.css'
 // ** assets
-import mainAboutUsPhoto from '../../../assets/landingPage/aboutUs/mainAboutPhoto.png'
-import client1Photo from '../../../assets/landingPage/aboutUs/client1.png'
-import client2Photo from '../../../assets/landingPage/aboutUs/client2.png'
-import client3Photo from '../../../assets/landingPage/aboutUs/client3.png'
-import client4Photo from '../../../assets/landingPage/aboutUs/client4.png'
-import starIcon from '../../../assets/landingPage/aboutUs/starIcon.svg'
-import halfStarIcon from '../../../assets/landingPage/aboutUs/halfStarIcon.svg'
+import {mainAboutUsPhoto, client1Photo, client2Photo, client3Photo, client4Photo} from '../../../assets/images/images'
+import {starIcon , halfStarIcon} from '../../../assets/icons/icons'
 // ** Hooks && Tools
 import React from 'react'
 

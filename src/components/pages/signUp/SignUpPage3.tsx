@@ -1,10 +1,11 @@
+// ** Assets
+import arrowUpandDownIcon from '../../../assets/icons/forms/arrowsUpandDownIcon.svg'
 // ** Style
 import style from '../../../style/pages/auth/signUp.module.css'
-// ** Assets
-import arrowUpandDownIcon from '../../../assets/auth/formIcons/arrowsUpandDownIcon.svg'
-// ** Hooks
+// ** Components
 import ListInputElement from '../../ui/form/ListInputElement';
 import DateInputElement from '../../ui/form/DateInputElement';
+
 
 
 interface ISignUpPage3{
@@ -27,6 +28,8 @@ interface ISignUpPage3{
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | { target: { id: string; value: string } }) => void;
     createAccountHandler: (e: React.FormEvent) => void;
 }
+
+
 
 export default function SignUpPage3({data,errors,onChange,createAccountHandler}:ISignUpPage3) {
     return (

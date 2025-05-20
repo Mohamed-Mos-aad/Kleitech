@@ -1,5 +1,5 @@
 // ** Assets
-import doctorImage from '../../../assets/landingPage/benefitImage.png'
+import {doctorImage} from '../../../assets/images/images'
 // ** Style
 import style from '../../../style/pages/landing/sections/benefit.module.css'
 // ** Components

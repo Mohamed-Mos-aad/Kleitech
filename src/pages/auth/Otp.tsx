@@ -1,12 +1,12 @@
 // ** Assets
-import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/auth/otpIcon.svg'
+import {logo} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/pages/auth/otp.module.css'
 // ** Hooks & Tools
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../app/store';
+import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 // ** Store
 import { setdonePage } from '../../app/slices/donePageSlice';

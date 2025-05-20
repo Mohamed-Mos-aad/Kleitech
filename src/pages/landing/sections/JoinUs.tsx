@@ -1,10 +1,10 @@
+// ** Assets
+import joinUsPhoto from '../../../assets/images/landing/joinUs/joinUsPhoto.png'
 // ** Style
 import style from '../../../style/pages/landing/sections/joinUs.module.css'
-// ** Assets
-import joinUsPhoto from '../../../assets/landingPage/joinUsPhoto.png'
-import { useNavigate } from 'react-router-dom'
 // ** Hooks && Tools
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 

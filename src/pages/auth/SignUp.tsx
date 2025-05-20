@@ -1,28 +1,21 @@
+// ** Assets
+import {arrowLeftIcon, arrowRightIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/pages/auth/signUp.module.css'
-
-// ** Assets
-import arrowLeftIcon from '../../assets/auth/arrow-left.svg'
-import arrowRightIcon from '../../assets/auth/arrow-right.svg'
-
 // ** Hooks && Tools
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'
 import { AppDispatch } from '../../app/store';
 import { useDispatch } from 'react-redux';
 import { setUserSignUpData } from '../../app/slices/userSignUpSlice';
-
 // ** Interfaces
 import { ISignUpData } from '../../interfaces'
-
 // ** Validation
 import { inputValidation } from '../../validation'
-
 // ** Components
 import SignUpPage1 from '../../components/pages/signUp/SignUpPage1'
 import SignUpPage2 from '../../components/pages/signUp/SignUpPage2';
 import SignUpPage3 from '../../components/pages/signUp/SignUpPage3';
-
 
 
 
@@ -54,18 +47,20 @@ export default function SignUp() {
     // ** Store
     const dispatch: AppDispatch = useDispatch();
 
-    
-    const navigate = useNavigate();
+
 
     // ** Navigation
+    const navigate = useNavigate();
     const goToSignIn = ()=>{navigate('/u/sign-in')};
     const goToOtp = ()=>{navigate('/u/otp')};
+
 
 
     // ** States
     const [currentStep,setCurrentStep] = useState<number>(SignUpSteps.STEP_1);
     const [userData,setUserData] = useState<ISignUpData>(defaultUserData);
     const [errors,setErrors] = useState<ISignUpData>(defaultUserData);
+
 
 
     // ** Handlers
@@ -114,7 +109,6 @@ export default function SignUp() {
 
 
 
-
     // ** Renders
     const renderCurrentStep = ()=>{
         const commonProps = {
@@ -131,17 +125,18 @@ export default function SignUp() {
     }
 
 
+    
     return (
         <>
             <div className={style.sign_up}>
                 {renderCurrentStep()}
                 <div className={style.sign_up_footer}>
-                    <div className={style.arrow_icon} onClick={(e)=>{changeStepHandler(e,true)}}>
-                        <img src={arrowRightIcon} alt="" />
+                    <div className={style.arrow_icon} onClick={(e)=>{changeStepHandler(e,true)}} aria-label="Next step">
+                        <img src={arrowRightIcon} alt="التالي"/>
                     </div>
                     <h3>صفحه {currentStep} من 3</h3>
-                    <div className={style.arrow_icon} onClick={(e)=>{changeStepHandler(e,false)}}>
-                        <img src={arrowLeftIcon} alt=""/>
+                    <div className={style.arrow_icon} onClick={(e)=>{changeStepHandler(e,false)}} aria-label="Prev step">
+                        <img src={arrowLeftIcon} alt="السابق"/>
                     </div>
                 </div>
             </div>

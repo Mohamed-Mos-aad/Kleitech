@@ -1,7 +1,8 @@
+// ** Assets
+import {arrowDownIcon} from '../../../assets/icons/icons'
 // ** Style
 import style from '../../../style/pages/auth/signUp.module.css'
-// ** Assets
-import arrowDownIcon from '../../../assets/auth/formIcons/downArrowIcon.svg'
+// ** Hooks && Tools
 import { useState } from 'react';
 
 

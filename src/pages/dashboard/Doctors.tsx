@@ -4,10 +4,8 @@ import addIcon from '../../assets/dashboard/doctors/addIcon.svg'
 import deleteIcon from '../../assets/dashboard/home/deleteIcon.svg'
 import editIcon from '../../assets/dashboard/home/editIcon.svg'
 // ** Assets
-import userNameIcon from '../../assets/auth/formIcons/userNameIcon.svg'
-import userEmailIcon from '../../assets/auth/formIcons/userEmailIcon.svg'
-import userIdIcon from '../../assets/auth/formIcons/userIdIcon.svg'
-import userPhoneIcon from '../../assets/auth/formIcons/userPhoneIcon.svg'
+import {userNameIcon, userEmailIcon, userIdIcon, userPhoneIcon} from '../../assets/icons/icons'
+
 // ** Style
 import style from '../../style/pages/dashboard/doctorsDashboard.module.css'
 // ** Hooks && Tools

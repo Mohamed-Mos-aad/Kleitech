@@ -1,6 +1,5 @@
 // ** Assets
-import logo from '../../assets/auth/lockIcon.svg'
-import passwordIcon from '../../assets/auth/formIcons/passwordInputIcon.svg'
+import {logo,userPasswordIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/pages/auth/newPassword.module.css'
 // ** Hooks
@@ -40,12 +39,12 @@ export default function NewPassword() {
                     <div className={style.form_input}>
                         <label htmlFor="">كلمه المرور</label>
                         <input type="email" name="" id="" placeholder='ادخل كلمه المرور'/>
-                        <img src={passwordIcon} alt="Email input icon" />
+                        <img src={userPasswordIcon} alt="Email input icon" />
                     </div>
                     <div className={style.form_input}>
                         <label htmlFor="">تأكيد كلمه المرور</label>
                         <input type="email" name="" id="" placeholder='تأكيد كلمه المرور'/>
-                        <img src={passwordIcon} alt="Email input icon" />
+                        <img src={userPasswordIcon} alt="Email input icon" />
                     </div>
                     <button onClick={donePageHandler}>تغير كلمه المرور</button>
                 </form>

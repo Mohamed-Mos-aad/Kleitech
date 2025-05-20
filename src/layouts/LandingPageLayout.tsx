@@ -8,6 +8,8 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
 
+
+
 export default function LandingPageLayout() {
     // ** Store
     const user = useSelector((state: RootState) => state.userLogin);
@@ -26,7 +28,6 @@ export default function LandingPageLayout() {
             navigate('/m')
         }
     },[user?.loggedIn,navigate])
-
 
 
 

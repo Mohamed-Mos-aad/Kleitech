@@ -1,9 +1,5 @@
 // ** Assets
-import logo from '../../../assets/landingPage/logo.svg'
-import facebookIcon from '../../../assets/social icons/facebookIcon.svg'
-import linkedInIcon from '../../../assets/social icons/linkedInIcon.svg'
-import telegramIcon from '../../../assets/social icons/telegramIcon.svg'
-import twitterIcon from '../../../assets/social icons/twitterIcon.svg'
+import {logo, facebookIcon, linkedInIcon, telegramIcon, twitterIcon} from '../../../assets/icons/icons'
 // ** Style
 import style from '../../../style/pages/landing/sections/footer.module.css'
 // ** Hooks && Tools

@@ -1,12 +1,8 @@
+// ** Assets
+import {googleIcon, facebookIcon, appleIcon, userEmailIcon, userPasswordIcon} from '../../../assets/icons/icons'
 // ** Style
 import style from '../../../style/pages/auth/signUp.module.css'
-// ** Assets
-import userEmailIcon from '../../../assets/auth/formIcons/userEmailIcon.svg'
-import userPasswordIcon from '../../../assets/auth/formIcons/userPasswordIcon.svg'
-import googleIcon from '../../../assets/auth/socialIcons/googleIcon.svg'
-import facebookIcon from '../../../assets/auth/socialIcons/facebookIcon.svg'
-import appleIcon from '../../../assets/auth/socialIcons/appleIcon.svg'
-// ** Other
+// ** Components
 import InputElement from '../../../components/ui/InputElement'
 import PasswordInputElement from '../../../components/ui/PasswordInputElement'
 
@@ -27,6 +23,8 @@ interface ISignUpPage2{
     onNext: (e: React.FormEvent) => void;
     goToSignIn: ()=> void;
 }
+
+
 
 export default function SignUpPage2({data,errors,onChange,onNext,goToSignIn}:ISignUpPage2) {
     return (
@@ -54,7 +52,7 @@ export default function SignUpPage2({data,errors,onChange,onNext,goToSignIn}:ISi
                     </div>
                 </div>
                 <div className={style.switch_auth}>
-                    <h4>هل لديك حساب؟ <span onClick={goToSignIn}>تسجيل الدخول</span></h4>
+                    <h4>هل لديك حساب؟ <button onClick={goToSignIn}>تسجيل الدخول</button></h4>
                 </div>
             </div>
         </>

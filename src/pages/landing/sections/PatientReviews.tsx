@@ -1,13 +1,11 @@
 // ** assets
-import patient1 from '../../../assets/landingPage/PatientReviews/PatientReview-1.png'
-import patient2 from '../../../assets/landingPage/PatientReviews/PatientReview-2.png'
-import patient3 from '../../../assets/landingPage/PatientReviews/PatientReview-3.png'
-import patient4 from '../../../assets/landingPage/PatientReviews/PatientReview-4.png'
-import SectionHeader from '../../../components/landing/SectionHeader'
+import {patient1, patient2, patient3, patient4} from '../../../assets/images/images.ts'
 // ** Style
 import style from '../../../style/pages/landing/sections/PatientReviews.module.css'
 // ** Hooks && Tools
 import React from 'react'
+// ** Compontent
+import SectionHeader from '../../../components/landing/SectionHeader'
 
 
 

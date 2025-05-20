@@ -1,13 +1,8 @@
 // ** Style
 import style from '../../../style/pages/auth/signUp.module.css'
 // ** Assets
-import userNameIcon from '../../../assets/auth/formIcons/userNameIcon.svg'
-import userIdIcon from '../../../assets/auth/formIcons/userIdIcon.svg'
-import userPhoneIcon from '../../../assets/auth/formIcons/userPhoneIcon.svg'
-import googleIcon from '../../../assets/auth/socialIcons/googleIcon.svg'
-import facebookIcon from '../../../assets/auth/socialIcons/facebookIcon.svg'
-import appleIcon from '../../../assets/auth/socialIcons/appleIcon.svg'
-// ** Other
+import {googleIcon, facebookIcon, appleIcon,userNameIcon, userIdIcon, userPhoneIcon} from '../../../assets/icons/icons'
+// ** Components
 import InputElement from '../../../components/ui/InputElement'
 
 
@@ -56,7 +51,7 @@ export default function SignUpPage1({data,errors,onChange,onNext,goToSignIn}:ISi
                     </div>
                 </div>
                 <div className={style.switch_auth}>
-                    <h4>هل لديك حساب؟ <span onClick={goToSignIn}>تسجيل الدخول</span></h4>
+                    <h4>هل لديك حساب؟ <button onClick={goToSignIn}>تسجيل الدخول</button></h4>
                 </div>
             </div>
         </>

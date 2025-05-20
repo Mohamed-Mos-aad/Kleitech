@@ -1,8 +1,7 @@
+// ** Assets
+import {userNameIcon, userEmailIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/pages/landing/sections/contactUs.module.css'
-// ** Assets
-import userNameIcon from '../../assets/auth/formIcons/userNameIcon.svg'
-import userEmailIcon from '../../assets/auth/formIcons/userEmailIcon.svg'
 // ** Component
 import InputElement from '../ui/InputElement'
 // ** Hooks && Tools
