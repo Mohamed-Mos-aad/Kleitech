@@ -1,13 +1,12 @@
 // ** Assets
-
 import {userNameIcon, userPhoneIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/components/ui/booking.module.css'
-// ** Hooks
+// ** Hooks && Tools
 import { useState } from 'react'
-// ** Other 
-import InputElement from '../../components/ui/InputElement'
 import { bookingValidation } from '../../validation'
+// ** Components 
+import InputElement from '../../components/ui/InputElement'
 
 
 

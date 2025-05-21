@@ -19,10 +19,10 @@ import userEmailIcon from '../icons/forms/userEmailIcon.svg'
 import userPasswordIcon from '../icons/forms/userPasswordIcon.svg'
 import showPasswordIcon from '../icons/forms/showPasswordIcon.svg'
 import hideasswordIcon from '../icons/forms/hidePasswordIcon.svg'
+import emailInputIcon from '../icons/forms/emailInputIcon.svg'
 
 
 import keyIcon from '../icons/auth/forgetPasswordIcon.svg'
-import emailInputIcon from '../icons/forms/emailInputIcon.svg'
 
 import arrowUpandDownIcon from '../icons/forms/arrowsUpandDownIcon.svg'
 import arrowLeftIcon from '../icons/auth/arrow-left.svg'
@@ -35,6 +35,21 @@ import navBarMenuIcon from '../icons/navbar/navBarIcon.svg'
 import logOutIcon from '../icons/navbar/logOutIcon.svg'
 
 import userDateIcon from '../icons/forms/userDateIcon.svg'
+
+import allowIcon from '../icons/main/allow&notAllow/allowIcon.svg'
+import notAllowIcon from '../icons/main/allow&notAllow/notAllowIcon.svg'
+
+import doctorIcon from '../icons/main/doctorDetails/doctorIcon.svg'
+import priceIcon from '../icons/main/doctorDetails/priceIcon.svg'
+import phoneIcon from '../icons/main/doctorDetails/phoneIcon.svg'
+import timerIcon from '../icons/main/doctorDetails/timerIcon.svg'
+import locationPinIcon from '../icons/main/doctorDetails/locationPinIcon.svg'
+import doneIcon from '../icons/main/doctorDetails/doneIcon.svg'
+import leftIcon from '../icons/main/doctorDetails/leftIcon.svg'
+import chatIcon from '../icons/main/doctorDetails/chatIcon.svg'
+
+import patientIcon from '../icons/main/booking/patientIcon.svg'
+import calendarIcon from '../icons/main/booking/calendarIcon.svg'
 
 
 
@@ -67,4 +82,16 @@ export {
     showPasswordIcon, 
     hideasswordIcon, 
     userDateIcon,
+    allowIcon, 
+    notAllowIcon, 
+    doctorIcon, 
+    patientIcon, 
+    priceIcon, 
+    phoneIcon, 
+    timerIcon, 
+    calendarIcon, 
+    locationPinIcon, 
+    doneIcon, 
+    leftIcon, 
+    chatIcon, 
 }

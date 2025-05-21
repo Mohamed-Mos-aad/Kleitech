@@ -14,14 +14,10 @@ import { landingPageSections, mainPages } from '../../data/navbar/navbarData'
 
 
 
-
-
 export default function NavBar() {
     // ** Store
     const dispatch: AppDispatch = useDispatch();
     const userLogged = useSelector((state: RootState) => state.userLogin.loggedIn);
-
-
 
 
 
@@ -32,13 +28,11 @@ export default function NavBar() {
 
 
 
-
     // ** States
     const [navOpen,setNavOpen] = useState<boolean>(false);
     const [activeSection, setActiveSection] = useState<string>('');
     const [activePage,setActivePage] = useState<string>('')
     const [listELementOpened,setListELementOpened] = useState<boolean>(false);
-
 
 
 
@@ -86,17 +80,12 @@ export default function NavBar() {
 
 
 
-
-
-
     // ** Store Handler 
     const handleLogOut = () => {
         dispatch(logout());
         localStorage.removeItem('kleitech_user');
         sessionStorage.removeItem('kleitech_user');
     };
-
-
 
 
 
@@ -108,13 +97,7 @@ export default function NavBar() {
         <li className={activePage === page.id? style.active_section : ''} id={page.id} onClick={(e)=>{changePageHandler(e)}} key={page.id}>{page.title}</li>
     )
 
-
-
-
-
-
-
-
+    
 
     // ** UseEffect    
     useEffect(()=>{

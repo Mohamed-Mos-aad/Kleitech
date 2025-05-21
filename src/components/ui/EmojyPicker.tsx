@@ -9,9 +9,8 @@ import animalsNatureIcon from '../../assets/ui/animals&NatureIcon.svg'
 import smileysEmotionIcon from '../../assets/ui/smileys&PeopleIcon.svg'
 // ** Style
 import style from '../../style/components/ui/emojyPicker.module.css'
-// ** Hooks
+// ** Hooks && Tools
 import { useState } from 'react'
-// ** Other
 import emoji from 'emoji.json'
 
 

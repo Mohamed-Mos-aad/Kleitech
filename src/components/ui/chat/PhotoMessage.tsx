@@ -9,8 +9,6 @@ import { useState } from 'react';
 
 
 
-
-
 // ** Interfaces
 interface IPhotoMessage{
     senderId: string,
@@ -20,16 +18,12 @@ interface IPhotoMessage{
 
 
 
-
 export default function PhotoMessage({senderId,timestamp,photoUrl}:IPhotoMessage) {
     // ** States
     const emojis = [emoji[151],emoji[349],emoji[355],emoji[7],emoji[85],emoji[57]].reverse();
     const [messageEmoji,setMessageEmoji] = useState('');
     const [messageEmojisContainerOpen,setMessageEmojisContainerOpen] = useState(false);
     const [messageOptionsContainerOpen,setMessageOptionsContainerOpen] = useState(false);
-
-
-
 
 
 
@@ -48,9 +42,7 @@ export default function PhotoMessage({senderId,timestamp,photoUrl}:IPhotoMessage
     }
 
 
-
-
-
+    
     return (
         <>
             <div className={`${style.message} ${senderId.includes('doc') ? style.receiver : '' }`}>

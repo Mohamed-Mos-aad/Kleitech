@@ -1,12 +1,6 @@
 // ** Assets
-import bookingPhoto from '../../assets/main/booking/bookingPhoto.svg'
-import doctorIcon from '../../assets/main/doctorDetails/doctorIcon.svg'
-import patientIcon from '../../assets/main/booking/patientIcon.svg'
-import priceIcon from '../../assets/main/doctorDetails/priceIcon.svg'
-import phoneIcon from '../../assets/main/doctorDetails/phoneIcon.svg'
-import timerIcon from '../../assets/main/doctorDetails/timerIcon.svg'
-import calendarIcon from '../../assets/main/booking/calendarIcon.svg'
-import locationPinIcon from '../../assets/main/doctorDetails/locationPinIcon.svg'
+import {bookingPhoto} from '../../assets/images/images'
+import {doctorIcon, patientIcon, priceIcon, phoneIcon, timerIcon, calendarIcon, locationPinIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/pages/main/bookingDetails.module.css'
 // ** Hooks && Tools

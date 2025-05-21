@@ -6,9 +6,6 @@ import style from '../../../style/layouts/chatLayout.module.css'
 
 
 
-
-
-
 // ** Interfaces
 interface IChatListItem{
     name: string,
@@ -17,8 +14,6 @@ interface IChatListItem{
     photo: string,
     onClick: ()=> void
 }
-
-
 
 
 

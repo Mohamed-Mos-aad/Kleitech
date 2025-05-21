@@ -1,15 +1,15 @@
 // ** Style
 import style from '../style/layouts/chatLayout.module.css'
-// ** Hooks
+// ** Hooks && Tools
 import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom';
-// ** Components
-import EmojyPicker from '../components/ui/EmojyPicker'
 // ** Api
 import { fetchMessages } from '../api/chatApi'
-import ChatList from '../components/chat/ChatList'
 // ** Interfaces
 import { IChat, IMessage } from '../interfaces'
+// ** Components
+import EmojyPicker from '../components/ui/EmojyPicker'
+import ChatList from '../components/chat/ChatList'
 import ChatHeader from '../components/chat/ChatHeader'
 import ChatFooter from '../components/chat/ChatFooter';
 import ChatMessages from '../components/chat/ChatMessages';

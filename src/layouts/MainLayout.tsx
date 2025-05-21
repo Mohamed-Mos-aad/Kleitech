@@ -1,5 +1,8 @@
+// ** Style
 import style from '../style/layouts/mainLayout.module.css'
+// ** Components
 import NavBar from "../components/navbar/NavBar";
+// ** Hooks && Tools
 import { Outlet } from "react-router-dom";
 
 

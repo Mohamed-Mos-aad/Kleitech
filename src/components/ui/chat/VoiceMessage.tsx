@@ -5,8 +5,9 @@ import messageReactIcon from '../../../assets/main/chat/messageReactIcon.svg'
 import messageOptionsIcon from '../../../assets/main/chat/messageOptionsIcon.svg'
 import trueIcon from '../../../assets/main/chat/trueIcon.svg'
 // ** Style
-import { useEffect, useRef, useState } from 'react';
 import style from '../../../style/components/ui/chat/message.module.css'
+// ** Hooks && Tools
+import { useEffect, useRef, useState } from 'react';
 import emoji from 'emoji.json';
 
 

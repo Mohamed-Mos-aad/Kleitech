@@ -8,6 +8,7 @@ import micIcon from '../../assets/main/chat/micIcon.svg'
 import style from '../../style/layouts/chatLayout.module.css'
 // ** Hooks && Tools
 import { useRef, useState } from 'react'
+// ** Interfaces
 import { IMessage } from '../../interfaces'
 
 

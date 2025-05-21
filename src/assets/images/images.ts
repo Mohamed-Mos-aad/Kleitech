@@ -21,6 +21,7 @@ import contactPhoto from '../images/landing/contactUs/contactUsPhoto.svg'
 
 import joinUsPhoto from '../images/landing/joinUs/joinUsPhoto.png'
 
+import bookingPhoto from '../images/main/booking/bookingPhoto.svg'
 
 
 export {
@@ -40,4 +41,5 @@ export {
     doctorImage, 
     contactPhoto, 
     joinUsPhoto, 
+    bookingPhoto, 
 }

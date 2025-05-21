@@ -1,6 +1,5 @@
 // ** Style
 import style from '../../style/layouts/chatLayout.module.css'
-// ** Hooks
 // ** Components
 import VoiceMessage from '../../components/ui/chat/VoiceMessage'
 import TextMessage from '../../components/ui/chat/TextMessage'
@@ -15,6 +14,9 @@ import { IChat } from '../../interfaces'
 interface IChatMessages{
     currentChat: IChat | undefined,
 }
+
+
+
 export default function ChatMessages({currentChat}:IChatMessages) {
     // ** Render
     const chatMessagesRender = currentChat?.messages.slice().reverse().map(message =>

@@ -2,6 +2,7 @@
 import style from '../style/layouts/dashboardlayout.module.css'
 // ** Pages && Components
 import NavBarDashBoard from "../components/navbar/NavBarDashBoard";
+// ** Hooks && Tools
 import { Outlet } from 'react-router-dom';
 
 
