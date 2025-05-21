@@ -1,11 +1,14 @@
+// ** assets 
+import {allowIcon, notAllowIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/pages/main/allowAndNotAllow.module.css'
-// ** assets 
-import allowIcon from '../../assets/main/allow&notAllow/allowIcon.svg'
-import notAllowIcon from '../../assets/main/allow&notAllow/notAllowIcon.svg'
+// ** Hooks && Tools
 import { useEffect, useState } from 'react';
+// ** Api
 import { fetchAdvices } from '../../api/advicesApi';
+// ** Interface
 import { IAdvices } from '../../interfaces';
+// ** Component
 import Loading from '../../components/ui/loading/Loading';
 
 

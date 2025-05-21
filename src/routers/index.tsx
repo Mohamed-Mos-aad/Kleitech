@@ -5,6 +5,12 @@ import MainLayout from "../layouts/MainLayout";
 import ChatLayout from "../layouts/ChatLayout";
 import DashBoardLayout from "../layouts/DashBoardLayout";
 
+
+// ** Hooks && Tools
+import { Route, Routes } from "react-router-dom";
+import { ProtectDoneRoute, ProtectMainRutes, ProtectOtpRoute } from "./ProtectedRoutes";
+
+
 // ** Elements
 import LandingPage from "../pages/landing/LandingPage";
 import Welcome from "../pages/auth/Welcome";
@@ -24,12 +30,9 @@ import Profile from "../pages/main/Profile";
 import ChangePassword from "../pages/auth/ChangePassword";
 import HomeDashboard from './../pages/dashboard/HomeDashboard';
 import Doctors from "../pages/dashboard/Doctors";
-
-// ** Hooks && Tools
-import { Route, Routes } from "react-router-dom";
-import { ProtectDoneRoute, ProtectMainRutes, ProtectOtpRoute } from "./ProtectedRoutes";
 import Patients from "../pages/dashboard/Patients";
 import Suggestions from "../pages/main/Suggestions";
+
 
 
 

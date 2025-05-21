@@ -7,11 +7,14 @@ import noPhoto from '../../assets/main/consultation/noPhoto.png'
 // ** Components
 import SectionHeader from "../../components/landing/SectionHeader";
 import DoctorSearchInput from '../../components/ui/DoctorSearchInput';
+import DoctorSkeleton from '../../components/ui/consultation/DoctorSkeleton';
+// ** Hooks && Tools
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+// ** Api
 import { fetchDoctors } from '../../api/doctorsApi';
+// ** Interfaces
 import { IDoctorsSimpleData } from '../../interfaces';
-import DoctorSkeleton from '../../components/ui/consultation/DoctorSkeleton';
 
 
 

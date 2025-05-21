@@ -1,7 +1,7 @@
 // ** Style
-import { useNavigate } from 'react-router-dom';
 import style from '../../style/pages/auth/welcome.module.css'
-
+// ** Hooks && Tools
+import { useNavigate } from 'react-router-dom';
 
 
 

@@ -9,6 +9,7 @@ import { IChat } from './../../interfaces/index';
 import { convertDateTypeHandler } from '../../utils/date';
 
 
+
 // ** InterFaces
 interface IChatList{
     chats: IChat[],
@@ -16,6 +17,8 @@ interface IChatList{
     setDisplayedChats: (searchResult:IChat[])=> void,
     selectChatHandler: (id:string)=> void
 }
+
+
 
 export default function ChatList({chats,displayedChats,setDisplayedChats,selectChatHandler}:IChatList) {
     // ** Handlers
@@ -26,10 +29,13 @@ export default function ChatList({chats,displayedChats,setDisplayedChats,selectC
     }
 
     
+    
     // ** Render
     const chatsListRender = displayedChats.map(chatItme =>
         <ChatListItem name={chatItme.participants[0].name} lastMessage={chatItme.lastMessage.text} photo={chatItme.participants[0].photo} timesTamp={convertDateTypeHandler(chatItme.lastMessage.timestamp)} onClick={()=>{selectChatHandler(chatItme.chatId)}} key={chatItme.chatId}/>
     )
+
+
 
     return (
         <>

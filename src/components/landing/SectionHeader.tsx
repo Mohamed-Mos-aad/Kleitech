@@ -3,14 +3,11 @@ import style from '../../style/components/landing/sectionHeader.module.css'
 
 
 
-
 // ** InterFaces
 interface ISectionHeader{
     title: string,
     description: string
 }
-
-
 
 
 

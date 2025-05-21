@@ -13,8 +13,10 @@ interface IChatHeader{
     currentChat: IChat | undefined,
     openChatMobilesToggleHandler: ()=> void,
 }
-export default function ChatHeader({currentChat,openChatMobilesToggleHandler}:IChatHeader) {
 
+
+
+export default function ChatHeader({currentChat,openChatMobilesToggleHandler}:IChatHeader) {
     return (
         <>
             <div className={style.chat_header}>

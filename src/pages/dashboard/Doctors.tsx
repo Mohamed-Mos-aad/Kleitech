@@ -3,14 +3,13 @@ import searchIcon from '../../assets/dashboard/home/searchIcon.svg'
 import addIcon from '../../assets/dashboard/doctors/addIcon.svg'
 import deleteIcon from '../../assets/dashboard/home/deleteIcon.svg'
 import editIcon from '../../assets/dashboard/home/editIcon.svg'
-// ** Assets
 import {userNameIcon, userEmailIcon, userIdIcon, userPhoneIcon} from '../../assets/icons/icons'
-
 // ** Style
 import style from '../../style/pages/dashboard/doctorsDashboard.module.css'
 // ** Hooks && Tools
 import { useEffect, useState } from 'react'
 import { doctorsData } from '../../data/examples/doctorsData'
+// ** Components
 import InputElement from '../../components/ui/InputElement'
 
 

@@ -1,6 +1,6 @@
 // ** Assets
 import { useNavigate } from 'react-router-dom'
-import doneIcon from '../../assets/main/doctorDetails/doneIcon.svg'
+import {doneIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/components/ui/BookingDone.module.css'
 // ** Hooks && Tools
