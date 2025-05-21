@@ -8,11 +8,42 @@ import deleteIcon from '../../assets/dashboard/home/deleteIcon.svg'
 import editIcon from '../../assets/dashboard/home/editIcon.svg'
 // ** Style
 import style from '../../style/pages/dashboard/homeDashboard.module.css'
+// ** Hooks && Tools
+import { useEffect, useState } from 'react'
+// ** Api
+import { fetchDashboardStats } from '../../api/dashboardApi'
 
 
 
 
 export default function HomeDashboard() {
+    const [dashboardStats,setDashboardStats] = useState({
+        doctors: 0,
+        patients: 0,
+        visitors: 0
+    })
+
+
+
+    useEffect(()=>{
+        const loadDashboardStats = async ()=>{
+            try{
+                const dashboardStatsData = await fetchDashboardStats();
+                setDashboardStats(dashboardStatsData)
+            }
+            catch(error){
+                console.log(error)
+            }
+            finally
+            {
+                // setIsLoading(false);
+            }
+        }
+        loadDashboardStats();
+    },[])
+
+    
+    
     return (
         <>
             <div className={style.home_dashboard_container}>
@@ -30,7 +61,7 @@ export default function HomeDashboard() {
                             </div>
                             <div className={style.card_data}>
                                 <img src={patientsIcon} alt="patients icon" />
-                                <h3>200</h3>
+                                <h3>{dashboardStats.patients}</h3>
                             </div>
                         </div>
                         <div className={style.card}>
@@ -39,7 +70,7 @@ export default function HomeDashboard() {
                             </div>
                             <div className={style.card_data}>
                                 <img src={doctorsIcon} alt="doctors icon" />
-                                <h3>100</h3>
+                                <h3>{dashboardStats.doctors}</h3>
                             </div>
                         </div>
                         <div className={style.card}>
@@ -48,7 +79,7 @@ export default function HomeDashboard() {
                             </div>
                             <div className={style.card_data}>
                                 <img src={visitorsIcon} alt="visitors icon" />
-                                <h3>250</h3>
+                                <h3>{dashboardStats.visitors}</h3>
                             </div>
                         </div>
                     </div>

@@ -8,31 +8,104 @@ import {userNameIcon, userEmailIcon, userIdIcon, userPhoneIcon} from '../../asse
 import style from '../../style/pages/dashboard/doctorsDashboard.module.css'
 // ** Hooks && Tools
 import { useEffect, useState } from 'react'
-import { doctorsData } from '../../data/examples/doctorsData'
 // ** Components
 import InputElement from '../../components/ui/InputElement'
+import { addDoctor, deleteDoctor, editeDoctor, fetchDashboardDoctors } from '../../api/dashboardApi'
 
 
 
 export default function Doctors() {
+    // ** Defaults
+    const defaultNewDoctor = {
+        id: 0,
+        name: '',
+        email: '',
+        nationalId: '',
+        phone: '',
+    }
     // ** States
     const [data,setData] = useState<{ id: number; name: string; phone: string; nationalId: string; email: string; }[]>([]);
     const [doctors,setDoctors] = useState<{ id: number; name: string; phone: string; nationalId: string; email: string; }[]>([]);
     const [addDoctorComponentOpened,setAddDoctorComponentOpened] = useState<boolean>(false);
-
+    const [editeDoctorComponentOpened,setEditeDoctorComponentOpened] = useState<boolean>(false);
+    const [newDoctor,setNewDoctor] = useState<{id: number, name: string, email: string, nationalId: string, phone: string,}>(defaultNewDoctor);
 
 
 
     // ** Handlers
     const searchHandler = (e: React.ChangeEvent<HTMLInputElement>)=>{
-        const searchValue = e.currentTarget.value;
-        const filteredData = data.filter(doctor => doctor.name.includes(searchValue));
+        const searchValue = e.currentTarget.value.toLowerCase();
+        const filteredData = data.filter(doctor =>
+            doctor.name.toLowerCase().includes(searchValue) ||
+            doctor.email.toLowerCase().includes(searchValue) ||
+            doctor.nationalId.includes(searchValue) || 
+            doctor.phone.includes(searchValue)
+        );
         setDoctors(filteredData);
     }
     const addDoctorToggleHandler = ()=>{
         setAddDoctorComponentOpened(prev => !prev);
     }
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>)=>{
+        const {id, value} = e.currentTarget;
+        setNewDoctor(prev => ({
+            ...prev,
+            [id]: value
+        }))
+    }
+    const adddoctorHandler = async ()=>{
+        try{
+            const res = await addDoctor(newDoctor);
+            setDoctors(prev => [newDoctor,...prev]);
+            setData(prev => [newDoctor,...prev]);
+            console.log(res);
+        }
+        catch(error){
+            console.log(error)
+        }
+        finally
+        {
+            setNewDoctor(defaultNewDoctor);
+            addDoctorToggleHandler();
+        }
+    }
+    const editeDoctorToggleHandler = (id:number)=>{
+        const selectedDoctor = doctors.find(doctor => doctor.id === id);
+        if(selectedDoctor)
+        {
+            setNewDoctor(selectedDoctor);
+            setEditeDoctorComponentOpened(prev => !prev);
+        }
+    }
+    const editedoctorHandler = async ()=>{
+        try{
+            const res = await editeDoctor(newDoctor,newDoctor.id);
+            console.log(res);
+        }
+        catch(error){
+            console.log(error)
+        }
+        finally
+        {
+            setNewDoctor(defaultNewDoctor);
+            setEditeDoctorComponentOpened(prev => !prev);
+        }
+    }
+    const deleteDoctorHandler =async (id:number)=>{
+        try{
+            const res = await deleteDoctor(id);
+            await console.log(res);
+        }
+        catch(error){
+            console.log(error)
+        }
+        finally
+        {
+            setNewDoctor(defaultNewDoctor);
+        }
+    }
 
+    
 
     // ** Renders
     const renderDoctorsData = doctors.map(doctor =>(
@@ -42,10 +115,10 @@ export default function Doctors() {
             <td>{doctor.nationalId}</td>
             <td>{doctor.email}</td>
             <td>
-                <button>
+                <button onClick={()=>{editeDoctorToggleHandler(doctor.id)}}>
                     <img src={editIcon} alt="edit icon" />
                 </button>
-                <button>
+                <button onClick={()=>{deleteDoctorHandler(doctor.id)}}>
                     <img src={deleteIcon} alt="delete icon" />
                 </button>
             </td>
@@ -59,8 +132,21 @@ export default function Doctors() {
 
     // ** UseEffet
     useEffect(()=>{
-        setData(doctorsData);
-        setDoctors(doctorsData);
+        const loadDashboardStats = async ()=>{
+            try{
+                const dashboardDoctorsData = await fetchDashboardDoctors();
+                setData(dashboardDoctorsData);
+                setDoctors(dashboardDoctorsData);
+            }
+            catch(error){
+                console.log(error)
+            }
+            finally
+            {
+                // setIsLoading(false);
+            }
+        }
+        loadDashboardStats();
     },[])
 
 
@@ -102,12 +188,27 @@ export default function Doctors() {
                         <div className={style.add_doctor}>
                             <h3>اضافه طبيب</h3>
                             <div className={style.data_form}>
-                                <InputElement error='' id='' img={{src:userNameIcon , alt: 'userName icon'}} name='الإسم' onChange={()=>{}} placeholder='ادخل الإسم بالكامل' type='text' value=''/>
-                                <InputElement error='' id='' img={{src:userEmailIcon , alt: 'userEmail icon'}} name='البريد الالكتروني' onChange={()=>{}} placeholder='ادخل البريد الالكتروني' type='text' value=''/>
-                                <InputElement error='' id='' img={{src:userIdIcon , alt: 'userId icon'}} name='الرقم القومي' onChange={()=>{}} placeholder='ادخل الرقم القومي' type='text' value=''/>
-                                <InputElement error='' id='' img={{src:userPhoneIcon , alt: 'userPhone icon'}} name='رقم الهاتف' onChange={()=>{}} placeholder='ادخل رقم الهاتف' type='text' value=''/>
+                                <InputElement error='' id='name' img={{src:userNameIcon , alt: 'userName icon'}} name='الإسم' onChange={(e)=>{onChangeHandler(e)}} placeholder='ادخل الإسم بالكامل' type='text' value={newDoctor.name}/>
+                                <InputElement error='' id='email' img={{src:userEmailIcon , alt: 'userEmail icon'}} name='البريد الالكتروني' onChange={(e)=>{onChangeHandler(e)}} placeholder='ادخل البريد الالكتروني' type='text' value={newDoctor.email}/>
+                                <InputElement error='' id='nationalId' img={{src:userIdIcon , alt: 'userId icon'}} name='الرقم القومي' onChange={(e)=>{onChangeHandler(e)}} placeholder='ادخل الرقم القومي' type='text' value={newDoctor.nationalId}/>
+                                <InputElement error='' id='phone' img={{src:userPhoneIcon , alt: 'userPhone icon'}} name='رقم الهاتف' onChange={(e)=>{onChangeHandler(e)}} placeholder='ادخل رقم الهاتف' type='text' value={newDoctor.phone}/>
                             </div>
-                            <button onClick={addDoctorToggleHandler}>اضافه</button>
+                            <button onClick={adddoctorHandler}>اضافه</button>
+                        </div>
+                    </div>
+                }
+                {
+                    editeDoctorComponentOpened && 
+                    <div className={style.add_doctor_container}>
+                        <div className={style.add_doctor}>
+                            <h3>تعديل البيانات</h3>
+                            <div className={style.data_form}>
+                                <InputElement error='' id='name' img={{src:userNameIcon , alt: 'userName icon'}} name='الإسم' onChange={(e)=>{onChangeHandler(e)}} placeholder='ادخل الإسم بالكامل' type='text' value={newDoctor.name}/>
+                                <InputElement error='' id='email' img={{src:userEmailIcon , alt: 'userEmail icon'}} name='البريد الالكتروني' onChange={(e)=>{onChangeHandler(e)}} placeholder='ادخل البريد الالكتروني' type='text' value={newDoctor.email}/>
+                                <InputElement error='' id='nationalId' img={{src:userIdIcon , alt: 'userId icon'}} name='الرقم القومي' onChange={(e)=>{onChangeHandler(e)}} placeholder='ادخل الرقم القومي' type='text' value={newDoctor.nationalId}/>
+                                <InputElement error='' id='phone' img={{src:userPhoneIcon , alt: 'userPhone icon'}} name='رقم الهاتف' onChange={(e)=>{onChangeHandler(e)}} placeholder='ادخل رقم الهاتف' type='text' value={newDoctor.phone}/>
+                            </div>
+                            <button onClick={editedoctorHandler}>تعديل</button>
                         </div>
                     </div>
                 }
