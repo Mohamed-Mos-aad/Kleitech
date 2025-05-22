@@ -42,116 +42,11 @@
     justify-content: center;
     gap: 24px;
 }
-.dashboard_patients_container .search
+.dashboard_patients_container .dashboard_search
 {
     width: 100%;
     display: flex;
     justify-content: center;
-}
-.search_container
-{
-    width: 50%;
-    position: relative;
-}
-.dashboard_patients_container .search input
-{
-    width: 100%;
-    background-color: transparent;
-    border: solid 1px var(--main-color-700);
-    border-radius: 8px;
-    padding: 8px 48px;
-    font-size: 16px;
-}
-.dashboard_patients_container .search input::placeholder
-{
-    color: var(--main-color-700);
-}
-.dashboard_patients_container .search input:focus
-{
-    outline: none;
-}
-.dashboard_patients_container .search img
-{
-    position: absolute;
-    top: 50%;
-    right: 16px;
-    transform: translateY(-50%);
-}
-.dashboard_patients_container .table_container
-{
-    width: 100%;
-    height: calc(100% - 32px);
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    background-color: white;
-    border-radius: 8px;
-    padding: 32px 100px;
-}
-.table_title
-{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.table_title h1
-{
-    font-size: 21px;
-    font-weight: 500;
-    color: var(--main-color-700);
-}
-.table_title button
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}
-.dashboard_patients_container .table_container table
-{
-    table-layout: fixed;
-}
-.dashboard_patients_container .table_container table thead tr
-{
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    padding: 12px 0;
-    border-bottom: solid 1px var(--gray-color-200);
-}
-.dashboard_patients_container .table_container table thead tr th
-{
-    font-size: 20px;
-    font-weight: 400;
-    text-align: start;
-}
-.dashboard_patients_container .table_container table tbody tr
-{
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    padding: 12px 0;
-    border-bottom: solid 1px var(--gray-color-200);
-    text-align: start;
-}
-.dashboard_patients_container .table_container table tbody tr:last-of-type
-{
-    border-bottom: none;
-}
-.dashboard_patients_container .table_container table tbody tr td:last-of-type
-{
-    display: flex;
-    justify-content: end;
-    gap: 24px;
-}
-.dashboard_patients_container .table_container table tbody tr td button
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
 }
 /* End Doctors DashBoard Page */
 
@@ -166,30 +61,6 @@
     {
         width: 100%;
     }
-    .dashboard_patients_container .table_container
-    {
-        padding: 16px 24px;
-    }
-    .table_title h1
-    {
-        font-size: 18px;
-    }
-    .dashboard_patients_container .table_container table thead
-    {
-        display: none;
-    }
-    .dashboard_patients_container .table_container table tbody tr
-    {
-        grid-template-columns: repeat(1,1fr);
-    }
-    .dashboard_patients_container .table_container table tbody tr td
-    {
-        padding: 8px 0;
-    }
-    .dashboard_patients_container .table_container table tbody tr td:last-of-type
-    {
-        justify-content: center;
-    }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) 
@@ -197,30 +68,6 @@
     .search_container
     {
         width: 100%;
-    }
-    .dashboard_patients_container .table_container
-    {
-        padding: 16px 24px;
-    }
-    .table_title h1
-    {
-        font-size: 18px;
-    }
-    .dashboard_patients_container .table_container table thead
-    {
-        display: none;
-    }
-    .dashboard_patients_container .table_container table tbody tr
-    {
-        grid-template-columns: repeat(1,1fr);
-    }
-    .dashboard_patients_container .table_container table tbody tr td
-    {
-        padding: 8px 0;
-    }
-    .dashboard_patients_container .table_container table tbody tr td:last-of-type
-    {
-        justify-content: center;
     }
 }
 /* Medium devices (tablets, 768px and up) */
@@ -230,32 +77,11 @@
     {
         width: 75%;
     }
-    .dashboard_patients_container .table_container
-    {
-        padding: 32px;
-    }
-    .dashboard_patients_container .table_container table thead
-    {
-        display: none;
-    }
-    .dashboard_patients_container .table_container table tbody tr
-    {
-        grid-template-columns: repeat(2,1fr);
-        gap: 16px;
-    }
-    .dashboard_patients_container .table_container table tbody tr td:last-of-type
-    {
-        grid-column: span 2;
-        justify-content: center;
-    }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) 
 {
-    .dashboard_patients_container .table_container
-    {
-        padding: 32px;
-    }
+    
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) 

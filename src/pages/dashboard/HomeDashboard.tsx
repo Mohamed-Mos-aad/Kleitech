@@ -96,7 +96,7 @@ export default function HomeDashboard() {
                                     <th>الاسم</th>
                                     <th>نتيجه الاشعه</th>
                                     <th>الهاتف </th>
-                                    <th>رقمالقومي</th>
+                                    <th>رقم القومي</th>
                                     <th></th>
                                 </tr>
                             </thead>
