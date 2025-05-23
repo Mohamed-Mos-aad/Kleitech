@@ -13,7 +13,14 @@ import { useEffect, useState } from 'react'
 
 
 
-export default function NavBarDashBoard() {
+// ** Interfaces
+interface INavBarDashboard{
+    logOutPopToggleHandler: ()=> void
+}
+
+
+
+export default function NavBarDashBoard({logOutPopToggleHandler}:INavBarDashboard) {
     // ** Default
     const navigate = useNavigate();
     const location = useLocation();
@@ -79,7 +86,7 @@ export default function NavBarDashBoard() {
                                     <img src={patientIcon} alt="patient icon" />
                                     المرضي
                                 </li>
-                                <li>
+                                <li onClick={logOutPopToggleHandler}>
                                     <img src={logOutIcon} alt="logOut icon" />
                                     تسجيل الخروج
                                 </li>

@@ -13,6 +13,7 @@
     --gray-color-900: #282828;
     --red-color-100: #FDE8E8;
     --red-color-500: #F05252;
+    --red-color-600: #E02424;
     --green-color-400: #31C48D;
     --chat-1-color: #E0F0FF;
     --chat-2-color: #E9EAED;
@@ -30,6 +31,55 @@
     background-color: var(--gray-color-100);
     position: relative;
 }
+.log_out_pop
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    z-index: 999999999999999999;
+    background-color: #28282866;
+    padding: 16px;
+}
+.log_out_pop .log_out_pop_container
+{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background-color: white;
+    border-radius: 16px;
+    padding: 16px;
+}
+.log_out_pop .log_out_pop_container .pop_title h1
+{
+    font-size: 16px;
+    font-weight: 500;
+}
+.log_out_pop .log_out_pop_container .pop_btns
+{
+    display: flex;
+    justify-content: end;
+    gap: 24px;
+    padding: 8px;
+}
+.log_out_pop .log_out_pop_container .pop_btns button
+{
+    background-color: transparent;
+    padding: 0 8px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--main-color-700);
+    cursor: pointer;
+}
+.log_out_pop .log_out_pop_container .pop_btns button:last-of-type
+{
+    color: var(--red-color-600);
+}
 /* End DashBoard Layout */
 
 
@@ -40,17 +90,27 @@
     .dashboard_layout_containder
     {
         flex-direction: column;
+    }    
+    .log_out_pop .log_out_pop_container
+    {
+        width: 100%;
     }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) 
 {
-
+    .log_out_pop .log_out_pop_container
+    {
+        width: 65%;
+    }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) 
 {
-
+    .log_out_pop .log_out_pop_container
+    {
+        width: 50%;
+    }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) 
