@@ -3,7 +3,7 @@ import style from '../style/layouts/dashboardlayout.module.css'
 // ** Pages && Components
 import NavBarDashBoard from "../components/navbar/NavBarDashBoard";
 // ** Hooks && Tools
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
@@ -11,6 +11,13 @@ import { useState } from 'react';
 
 
 export default function DashBoardLayout() {
+    // ** Navigation
+    const navigate = useNavigate();
+    const goToAuthPageHandler = ()=>{
+        navigate('../u/sign-in');
+    }
+
+
     // ** States
     const [logOutPopOpened,setLogOutPopOpened] = useState<boolean>(false);
 
@@ -21,7 +28,7 @@ export default function DashBoardLayout() {
         setLogOutPopOpened(prev => !prev);
     }
     const logOutHandler = ()=>{
-        console.log("تم تسجيل الخروج بنجاح");
+        goToAuthPageHandler();
         logOutPopToggleHandler();
     }
 

@@ -42,7 +42,7 @@ export const landingPageSections:ILandingPageSections[] = [
 ]
 
 // ** Main NavBar Data
-export const mainPages:IMainNavBarPages[] = [
+export const mainPagesPatientNavBar:IMainNavBarPages[] = [
     {
         id: '',
         title: 'الرئيسيه'
@@ -58,5 +58,16 @@ export const mainPages:IMainNavBarPages[] = [
     {
         id: 'alarm',
         title: 'التذكيرات'
+    }
+]
+
+export const mainPagesDoctorNavBar:IMainNavBarPages[] = [
+    {
+        id: '',
+        title: 'الرئيسيه'
+    },
+    {
+        id: 'chats',
+        title: 'المحادثات'
     }
 ]

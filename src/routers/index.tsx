@@ -8,7 +8,7 @@ import DashBoardLayout from "../layouts/DashBoardLayout";
 
 // ** Hooks && Tools
 import { Route, Routes } from "react-router-dom";
-import { ProtectDoneRoute, ProtectMainRutes, ProtectOtpRoute } from "./ProtectedRoutes";
+import { ProtectAuthRoutes, ProtectDashboardRoutes, ProtectDoneRoute, ProtectMainRoutes, ProtectOtpRoute } from "./ProtectedRoutes";
 
 
 // ** Elements
@@ -45,7 +45,7 @@ export default function Routers() {
                 <Route path="/" element={<LandingPageLayout/>}>
                     <Route index element={<LandingPage/>}/>
                 </Route>
-                <Route path="/u" element={<AuthLayout />}>
+                <Route path="/u" element={<ProtectAuthRoutes><AuthLayout /></ProtectAuthRoutes>}>
                     <Route index element={<Welcome />}/>
                     <Route path="sign-in" element={<SignIn />}/>
                     <Route path="sign-up" element={<SignUp />}/>
@@ -55,7 +55,7 @@ export default function Routers() {
                     <Route path="done" element={<ProtectDoneRoute><Done /></ProtectDoneRoute>} />
                     <Route path="change-password" element={<ChangePassword />}/>
                 </Route>
-                <Route path="/m" element={<ProtectMainRutes><MainLayout /></ProtectMainRutes>}>
+                <Route path="/m" element={<ProtectMainRoutes><MainLayout /></ProtectMainRoutes>}>
                     <Route index element={<Home/>}/>
                     <Route path="advices" element={<Advices />}/>
                     <Route path="consultation" element={<Consultation />} />
@@ -65,8 +65,8 @@ export default function Routers() {
                     <Route path="suggestions" element={<Suggestions />}/>
                     <Route path="profile" element={<Profile />}/>
                 </Route>
-                <Route path="/chats" element={<ProtectMainRutes><ChatLayout /></ProtectMainRutes>}/>
-                <Route path="/dashboard" element={<DashBoardLayout />}>
+                <Route path="/chats" element={<ProtectMainRoutes><ChatLayout /></ProtectMainRoutes>}/>
+                <Route path="/dashboard" element={<ProtectDashboardRoutes><DashBoardLayout /></ProtectDashboardRoutes>}>
                     <Route index element={<HomeDashboard/>}/>
                     <Route path="doctors" element={<Doctors/>}/>
                     <Route path="patients" element={<Patients/>}/>

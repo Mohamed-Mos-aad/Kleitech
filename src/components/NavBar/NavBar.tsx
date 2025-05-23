@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState, AppDispatch } from '../../app/store'
 import { logout, setUserLogin } from '../../app/slices/userSlice'
 // ** Data
-import { landingPageSections, mainPages } from '../../data/navbar/navbarData'
+import { landingPageSections, mainPagesDoctorNavBar, mainPagesPatientNavBar } from '../../data/navbar/navbarData'
 
 
 
@@ -18,7 +18,7 @@ export default function NavBar() {
     // ** Store
     const dispatch: AppDispatch = useDispatch();
     const userLogged = useSelector((state: RootState) => state.userLogin.loggedIn);
-
+    const role = useSelector((state: RootState) => state.userLogin.role);
 
 
     // ** Defaults
@@ -33,7 +33,7 @@ export default function NavBar() {
     const [activeSection, setActiveSection] = useState<string>('');
     const [activePage,setActivePage] = useState<string>('')
     const [listELementOpened,setListELementOpened] = useState<boolean>(false);
-
+    const navData = role === 'patient'? mainPagesPatientNavBar : mainPagesDoctorNavBar;
 
 
     // ** Handlers
@@ -93,7 +93,7 @@ export default function NavBar() {
     const renderLandingNavBarSections = landingPageSections.map(section =>
         <li className={activeSection === section.id ? style.active_section : ''} onClick={()=>{smoothScrollHandler(section.name,section.id)}} key={section.id}>{section.title}</li>
     )
-    const renderMainNavBarSections = mainPages.map(page =>
+    const renderMainNavBarSections = navData.map(page =>
         <li className={activePage === page.id? style.active_section : ''} id={page.id} onClick={(e)=>{changePageHandler(e)}} key={page.id}>{page.title}</li>
     )
 
