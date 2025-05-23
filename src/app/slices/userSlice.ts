@@ -4,12 +4,14 @@ interface IUserLoginState {
     email: string | null;
     password: string | null;
     loggedIn: boolean;
+    role: string
 }
 
 const initialState: IUserLoginState = {
     email: null,
     password: null,
     loggedIn: false,
+    role: ''
 };
 
 const userLoginSlice = createSlice({
