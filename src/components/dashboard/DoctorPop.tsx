@@ -8,7 +8,7 @@ import InputElement from '../../components/ui/InputElement'
 
 // ** Interfaces
 interface IDoctorData {
-    id: number;
+    id: string;
     name: string;
     email: string;
     nationalId: string;
@@ -23,17 +23,19 @@ interface IDoctorPop{
         title: string,
         handler: ()=> void
     },
+    doctorsId: string,
 }
 
 
 
-export default function DoctorPop({popTitle,doctorData,setDoctorData,buttonElement}:IDoctorPop) {
+export default function DoctorPop({popTitle,doctorData,setDoctorData,buttonElement,doctorsId}:IDoctorPop) {
     // ** Handlers
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>)=>{
         const {id, value} = e.currentTarget;
         setDoctorData({
             ...doctorData,
-            [id]: value
+            [id]: value,
+            id: doctorsId
         });
     }
 

@@ -1,0 +1,253 @@
+/* Start Variables */
+:root
+{
+    --main-color-100: #E0F2FE;
+    --main-color-200: #B9E6FE;
+    --main-color-700: #026AA2;
+    --main-color-800: #00598D;
+    --gray-color-400: #AFAFAF;
+    --gray-color-600: #636363;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-100: #FDE8E8;
+    --red-color-500: #F05252;
+    --green-color-400: #31C48D;
+    --chat-1-color: #E0F0FF;
+    --chat-2-color: #E9EAED;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Alarm Screen */
+.alarm
+{
+    width: 100%;
+    min-height: calc(100vh - 75px);
+    position: relative;
+}
+.alarm_navBar
+{
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    z-index: 999;
+}
+.add_btn button
+{
+    width: 56px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color-700);
+    border: none;
+    border-radius: 56px;
+    color: white;
+    cursor: pointer;
+    margin-top: 25px;
+}
+.add_btn button img
+{
+    width: 40%;
+}
+.alarm_type
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 25px;
+    list-style-type: none;
+}
+.alarm_type li img
+{
+    width: 40px;
+    cursor: pointer;
+}
+.alarm_type li img.active
+{
+    filter: brightness(0) saturate(100%) invert(28%) sepia(61%) saturate(1722%) hue-rotate(175deg) brightness(94%) contrast(98%);
+}
+.alarm_container
+{
+    width: 100%;
+    min-height: calc(100vh - 75px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form
+{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 8px;
+    padding: 32px 100px;
+    box-shadow: 0 2px 21px var(--main-color-100);
+}
+form h1
+{
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--main-color-700);
+    margin-bottom: -8px;
+}
+form .form_btns
+{
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+form .form_btns button
+{
+    width: 100%;
+    background-color: var(--main-color-700);
+    border: solid 2px var(--main-color-700);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+form .form_btns button:hover
+{
+    background-color: var(--main-color-700);
+    color: white;
+}
+form .form_btns button:last-of-type
+{
+    background-color: transparent;
+    color: var(--main-color-700);
+}
+.alarm_container table
+{
+    width: 100%;
+    min-height: calc(100vh - 75px);
+    display: flex;
+    justify-content: center;
+}
+.alarm_container table tbody
+{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.alarm_container table tr
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px var(--main-color-700);
+    border-radius: 8px;
+    padding: 24px 40px;
+    text-align: center;
+    position: relative;
+}
+.alarm_container table tr h2
+{
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--main-color-700);
+}
+.alarm_container table tr h3
+{
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gray-color-900);
+}
+.alarm_container table tr td:first-of-type
+{
+    position: absolute;
+    top: 16px;
+    left: 16px;
+}
+.alarm_container table tr button
+{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+/* End Alarm Screen */
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    form
+    {
+        width: 95%;
+        padding: 16px;
+    }
+    form h1
+    {
+        font-size: 26px;
+    }
+    .alarm_container table tbody .medicine_tr, 
+    .alarm_container table tbody .water_tr,
+    .alarm_container table tbody .xRay_tr 
+    {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    form
+    {
+        width: 70%;
+        padding: 16px 32px;
+    }
+    form h1
+    {
+        font-size: 26px;
+    }
+    .alarm_container table tbody .medicine_tr, 
+    .alarm_container table tbody .water_tr,
+    .alarm_container table tbody .xRay_tr 
+    {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    form
+    {
+        width: 60%;
+        padding: 16px 32px;
+    }
+    form h1
+    {
+        font-size: 28px;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+    form
+    {
+        width: 50%;
+        padding: 16px 32px;
+    }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */

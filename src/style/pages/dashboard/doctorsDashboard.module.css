@@ -149,6 +149,11 @@
     font-weight: 400;
     text-align: start;
 }
+.dashboard_table_container table tbody
+{
+    display: flex;
+    flex-direction: column-reverse;
+}
 .dashboard_table_container table tbody tr
 {
     display: grid;

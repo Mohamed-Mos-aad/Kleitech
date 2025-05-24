@@ -14,14 +14,16 @@ export function ProtectAuthRoutes({ children }: { children: JSX.Element })
 
 export function ProtectMainRoutes({ children }: { children: JSX.Element })
 {
-    const userData = JSON.parse(localStorage.getItem('kleitech_user') || sessionStorage.getItem('kleitech_user') || 'null');
-    return userData ?   children : <Navigate to="/u/sign-in" />;
+    // const userData = JSON.parse(localStorage.getItem('kleitech_user') || sessionStorage.getItem('kleitech_user') || 'null');
+    // return userData ?   children : <Navigate to="/u/sign-in" />;
+    return children
 }
 
 export function ProtectDashboardRoutes({ children }: { children: JSX.Element })
 {
-    const userData = JSON.parse(localStorage.getItem('kleitech_user') || sessionStorage.getItem('kleitech_user') || 'null');
-    return userData ?   children : <Navigate to="/u/sign-in" />;
+    // const userData = JSON.parse(localStorage.getItem('kleitech_user') || sessionStorage.getItem('kleitech_user') || 'null');
+    // return userData ?   children : <Navigate to="/u/sign-in" />;
+    return children
 }
 
 
