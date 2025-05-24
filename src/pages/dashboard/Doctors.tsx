@@ -16,7 +16,7 @@ import { addDoctor, deleteDoctor, editeDoctor, fetchDashboardDoctors } from '../
 
 // ** Interfaces
 interface IDoctorData {
-    id: number;
+    id: string;
     name: string;
     email: string;
     nationalId: string;
@@ -26,7 +26,7 @@ interface IDoctorData {
 export default function Doctors() {
     // ** Defaults
     const defaultNewDoctor:IDoctorData = {
-        id: 0,
+        id: "0",
         name: '',
         email: '',
         nationalId: '',
@@ -45,12 +45,16 @@ export default function Doctors() {
     const addDoctorToggleHandler = ()=>{
         setAddDoctorComponentOpened(prev => !prev);
     }
+    const updateData = async ()=>{
+        const updatedDoctors = await fetchDashboardDoctors();
+        setDoctors(updatedDoctors);
+        setData(updatedDoctors);
+    }
     const addDoctorHandler = async ()=>{
         try{
-            const res = await addDoctor(newDoctor);
-            setDoctors(prev => [newDoctor,...prev]);
-            setData(prev => [newDoctor,...prev]);
-            console.log(res);
+            const addedDoctor = await addDoctor(newDoctor);
+            setDoctors(prev => [...prev,addedDoctor]);
+            setData(prev => [...prev,addedDoctor]);
         }
         catch(error){
             console.log(error)
@@ -61,7 +65,7 @@ export default function Doctors() {
             addDoctorToggleHandler();
         }
     }
-    const editeDoctorToggleHandler = (id:number)=>{
+    const editeDoctorToggleHandler = (id:string)=>{
         const selectedDoctor = doctors.find(doctor => doctor.id === id);
         if(selectedDoctor)
         {
@@ -71,8 +75,8 @@ export default function Doctors() {
     }
     const editedoctorHandler = async ()=>{
         try{
-            const res = await editeDoctor(newDoctor,newDoctor.id);
-            console.log(res);
+            await editeDoctor(newDoctor,Number(newDoctor.id));
+            updateData();
         }
         catch(error){
             console.log(error)
@@ -83,10 +87,10 @@ export default function Doctors() {
             setEditeDoctorComponentOpened(prev => !prev);
         }
     }
-    const deleteDoctorHandler =async (id:number)=>{
+    const deleteDoctorHandler =async (id:string)=>{
         try{
-            const res = await deleteDoctor(id);
-            await console.log(res);
+            await deleteDoctor(Number(id));
+            updateData();
         }
         catch(error){
             console.log(error)
@@ -151,11 +155,11 @@ export default function Doctors() {
                 <DataTable renderData={renderDoctorsData}/>
                 {
                     addDoctorComponentOpened && 
-                    <DoctorPop popTitle='اضافه طبيب' doctorData={newDoctor} setDoctorData={setNewDoctor} buttonElement={{title: 'اضافه', handler: addDoctorHandler}}/>
+                    <DoctorPop popTitle='اضافه طبيب' doctorData={newDoctor} setDoctorData={setNewDoctor} buttonElement={{title: 'اضافه', handler: addDoctorHandler}} doctorsId={(data.length+ 1).toString()}/>
                 }
                 {
                     editeDoctorComponentOpened && 
-                    <DoctorPop popTitle='تعديل البيانات' doctorData={newDoctor} setDoctorData={setNewDoctor} buttonElement={{title: 'تعديل', handler: editedoctorHandler}}/>
+                    <DoctorPop popTitle='تعديل البيانات' doctorData={newDoctor} setDoctorData={setNewDoctor} buttonElement={{title: 'تعديل', handler: editedoctorHandler}} doctorsId={newDoctor.id}/>
                 }
             </div>
         </>

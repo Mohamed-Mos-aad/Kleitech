@@ -1,0 +1,796 @@
+{
+  "users": [
+    {
+      "id": "admin1",
+      "name": "Admin",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": "pat1",
+      "name": "Dina Samir",
+      "email": "dinak5197@gmail.com",
+      "password": "password123",
+      "role": "patient",
+      "national_id": "29874545432107",
+      "phone": "01122387655",
+      "weight": 65.4,
+      "height": 170.2,
+      "has_chronic_diseases": true,
+      "is_following_with_doctor": true,
+      "diagnosis_date": "2022-06-15",
+      "disease_stage": "Stage 1",
+      "latitude": 30.0444,
+      "longitude": 31.2357,
+      "address": "Cairo, Egypt"
+    },
+    {
+      "id": "doctor1",
+      "name": "دكتور أحمد علي",
+      "email": "ahmed.ali@example.com",
+      "password": "generated_password",
+      "role": "doctor",
+      "specialization": "استشاري أمراض الكلى",
+      "experience": "10 سنوات",
+      "address": "القاهرة: مدينة نصر",
+      "price": "٥٠٠ جنيه",
+      "rating": {
+        "avg_rating": 22,
+        "visitors_count": 50
+      },
+      "availability": [
+        [
+          {
+            "time": "3:00 PM",
+            "status": true
+          },
+          {
+            "time": "4:00 PM",
+            "status": false
+          },
+          {
+            "time": "5:00 PM",
+            "status": true
+          },
+          {
+            "time": "6:00 PM",
+            "status": true
+          },
+          {
+            "time": "7:00 PM",
+            "status": false
+          },
+          {
+            "time": "8:00 PM",
+            "status": true
+          }
+        ],
+        [
+          {
+            "time": "3:00 PM",
+            "status": false
+          },
+          {
+            "time": "4:00 PM",
+            "status": true
+          },
+          {
+            "time": "5:00 PM",
+            "status": true
+          },
+          {
+            "time": "6:00 PM",
+            "status": false
+          },
+          {
+            "time": "7:00 PM",
+            "status": true
+          },
+          {
+            "time": "8:00 PM",
+            "status": true
+          }
+        ],
+        [
+          {
+            "time": "3:00 PM",
+            "status": true
+          },
+          {
+            "time": "4:00 PM",
+            "status": false
+          },
+          {
+            "time": "5:00 PM",
+            "status": true
+          },
+          {
+            "time": "6:00 PM",
+            "status": true
+          },
+          {
+            "time": "7:00 PM",
+            "status": false
+          },
+          {
+            "time": "8:00 PM",
+            "status": true
+          }
+        ]
+      ]
+    },
+    {
+      "id": "doctor2",
+      "name": "دكتوره سارة محمود",
+      "email": "sara.mohamed@example.com",
+      "password": "generated_password_2",
+      "role": "doctor",
+      "specialization": "استشاري الطب النفسي",
+      "experience": "8 سنوات",
+      "address": "الإسكندرية: سموحة",
+      "price": "٣٥٠ جنيه",
+      "rating": {
+        "avg_rating": 19,
+        "visitors_count": 30
+      },
+      "availability": [
+        [
+          {
+            "time": "3:00 PM",
+            "status": true
+          },
+          {
+            "time": "4:00 PM",
+            "status": true
+          },
+          {
+            "time": "5:00 PM",
+            "status": false
+          },
+          {
+            "time": "6:00 PM",
+            "status": true
+          },
+          {
+            "time": "7:00 PM",
+            "status": false
+          },
+          {
+            "time": "8:00 PM",
+            "status": true
+          }
+        ],
+        [
+          {
+            "time": "3:00 PM",
+            "status": true
+          },
+          {
+            "time": "4:00 PM",
+            "status": true
+          },
+          {
+            "time": "5:00 PM",
+            "status": true
+          },
+          {
+            "time": "6:00 PM",
+            "status": false
+          },
+          {
+            "time": "7:00 PM",
+            "status": false
+          },
+          {
+            "time": "8:00 PM",
+            "status": true
+          }
+        ],
+        [
+          {
+            "time": "3:00 PM",
+            "status": false
+          },
+          {
+            "time": "4:00 PM",
+            "status": true
+          },
+          {
+            "time": "5:00 PM",
+            "status": true
+          },
+          {
+            "time": "6:00 PM",
+            "status": false
+          },
+          {
+            "time": "7:00 PM",
+            "status": true
+          },
+          {
+            "time": "8:00 PM",
+            "status": false
+          }
+        ]
+      ]
+    },
+    {
+      "id": "doctor3",
+      "name": "دكتور محمد سعيد",
+      "email": "mohamed.said@example.com",
+      "password": "generated_password_3",
+      "role": "doctor",
+      "specialization": "دكتور كلى",
+      "experience": "12 سنوات",
+      "address": "المنصورة",
+      "price": "٤٠٠ جنيه",
+      "rating": {
+        "avg_rating": 25,
+        "visitors_count": 45
+      },
+      "availability": [
+        [
+          {
+            "time": "3:00 PM",
+            "status": true
+          },
+          {
+            "time": "4:00 PM",
+            "status": true
+          },
+          {
+            "time": "5:00 PM",
+            "status": true
+          },
+          {
+            "time": "6:00 PM",
+            "status": true
+          },
+          {
+            "time": "7:00 PM",
+            "status": false
+          },
+          {
+            "time": "8:00 PM",
+            "status": true
+          }
+        ],
+        [
+          {
+            "time": "3:00 PM",
+            "status": false
+          },
+          {
+            "time": "4:00 PM",
+            "status": true
+          },
+          {
+            "time": "5:00 PM",
+            "status": true
+          },
+          {
+            "time": "6:00 PM",
+            "status": true
+          },
+          {
+            "time": "7:00 PM",
+            "status": false
+          },
+          {
+            "time": "8:00 PM",
+            "status": true
+          }
+        ],
+        [
+          {
+            "time": "3:00 PM",
+            "status": true
+          },
+          {
+            "time": "4:00 PM",
+            "status": true
+          },
+          {
+            "time": "5:00 PM",
+            "status": false
+          },
+          {
+            "time": "6:00 PM",
+            "status": true
+          },
+          {
+            "time": "7:00 PM",
+            "status": true
+          },
+          {
+            "time": "8:00 PM",
+            "status": false
+          }
+        ]
+      ]
+    },
+    {
+      "id": "doctor4",
+      "name": "دكتور هدى سعيد",
+      "email": "hoda.said@example.com",
+      "password": "generated_password_hoda",
+      "role": "doctor",
+      "specialization": "استشاري أمراض الكلى",
+      "experience": "10 سنوات",
+      "address": "القاهرة: مدينة نصر",
+      "price": "٥٠٠ جنيه",
+      "rating": {
+        "avg_rating": 22,
+        "visitors_count": 50
+      },
+      "availability": [
+        [
+          {
+            "time": "3:00 PM",
+            "status": true
+          },
+          {
+            "time": "4:00 PM",
+            "status": false
+          },
+          {
+            "time": "5:00 PM",
+            "status": true
+          },
+          {
+            "time": "6:00 PM",
+            "status": true
+          },
+          {
+            "time": "7:00 PM",
+            "status": false
+          },
+          {
+            "time": "8:00 PM",
+            "status": true
+          }
+        ],
+        [
+          {
+            "time": "3:00 PM",
+            "status": false
+          },
+          {
+            "time": "4:00 PM",
+            "status": true
+          },
+          {
+            "time": "5:00 PM",
+            "status": true
+          },
+          {
+            "time": "6:00 PM",
+            "status": false
+          },
+          {
+            "time": "7:00 PM",
+            "status": true
+          },
+          {
+            "time": "8:00 PM",
+            "status": true
+          }
+        ],
+        [
+          {
+            "time": "3:00 PM",
+            "status": true
+          },
+          {
+            "time": "4:00 PM",
+            "status": false
+          },
+          {
+            "time": "5:00 PM",
+            "status": true
+          },
+          {
+            "time": "6:00 PM",
+            "status": true
+          },
+          {
+            "time": "7:00 PM",
+            "status": false
+          },
+          {
+            "time": "8:00 PM",
+            "status": true
+          }
+        ]
+      ]
+    }
+  ],
+  "doctors": [
+    {
+      "id": "1",
+      "name": "دكتور هدى سعيد",
+      "phone": "01199887766",
+      "nationalId": "29509876543210",
+      "email": "hoda.said@example.com"
+    },
+    {
+      "id": "2",
+      "name": "دكتور كريم فهمي",
+      "phone": "01222334455",
+      "nationalId": "29401234567890",
+      "email": "karim.fahmy@example.com"
+    },
+    {
+      "id": "3",
+      "name": "دكتور سارة عز الدين",
+      "phone": "01098765432",
+      "nationalId": "29905012345678",
+      "email": "sara.ezz@example.com"
+    },
+    {
+      "id": "4",
+      "name": "دكتور أحمد عبد الله",
+      "phone": "01234567890",
+      "nationalId": "29712345678901",
+      "email": "ahmed.abdallah@example.com"
+    },
+    {
+      "id": "5",
+      "name": "دكتور ريم مصطفى",
+      "phone": "01111222333",
+      "nationalId": "30098765432109",
+      "email": "reem.moustafa@example.com"
+    },
+    {
+      "id": "6",
+      "name": "محمد أحمد محمد",
+      "email": "ma3268787@gmail.com",
+      "nationalId": "30308011202151",
+      "phone": "01069158744"
+    }
+  ],
+  "doctorsSimple": [
+    {
+      "id": 1,
+      "name": "أحمد علي",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 2,
+      "name": "سارة محمود",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 3,
+      "name": "محمد سعيد",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 4,
+      "name": "منى حسن",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 5,
+      "name": "خالد عبد الله",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 6,
+      "name": "نادية فاروق",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 7,
+      "name": "عمر يوسف",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 8,
+      "name": "ياسمين أحمد",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 9,
+      "name": "محمود سامي",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 10,
+      "name": "هدى إبراهيم",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 11,
+      "name": "سعيد وليد",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 12,
+      "name": "إيمان أشرف",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 13,
+      "name": "حسن عبد العزيز",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 14,
+      "name": "فاطمة لطفي",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 15,
+      "name": "محمود أسامة",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 16,
+      "name": "هالة نبيل",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 17,
+      "name": "وليد أشرف",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 18,
+      "name": "سارة شريف",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 19,
+      "name": "عادل فهمي",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 20,
+      "name": "ليلى فتحي",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 21,
+      "name": "عماد سمير",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 22,
+      "name": "شرين توفيق",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 23,
+      "name": "عبد الرحمن خالد",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 24,
+      "name": "جهاد محسن",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 25,
+      "name": "حسام فؤاد",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 26,
+      "name": "لمياء سليم",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 27,
+      "name": "حسام رجب",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 28,
+      "name": "فاطمة عبد الله",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 29,
+      "name": "علي كمال",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 30,
+      "name": "سمية شهاب",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 31,
+      "name": "هاني فرج",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 32,
+      "name": "غادة توفيق",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 33,
+      "name": "أسامة زكي",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 34,
+      "name": "رانيا نعيم",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 35,
+      "name": "حمدي هلال",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 36,
+      "name": "نجلاء سامي",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 37,
+      "name": "يوسف قاسم",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 38,
+      "name": "سمية مصطفى",
+      "specialty": "دكتور نفسي"
+    },
+    {
+      "id": 39,
+      "name": "كريم طارق",
+      "specialty": "دكتور كلى"
+    },
+    {
+      "id": 40,
+      "name": "رشا علي",
+      "specialty": "دكتور نفسي"
+    }
+  ],
+  "patients": [
+    {
+      "id": "pat1",
+      "name": "دينا سامي",
+      "phone": "01122387655",
+      "nationalId": "29874545432107",
+      "email": "dinak5197@gmail.com"
+    },
+    {
+      "id": "pat2",
+      "name": "محمد علي",
+      "phone": "01098765432",
+      "nationalId": "29765432109876",
+      "email": "mohamed.ali@example.com"
+    },
+    {
+      "id": "pat3",
+      "name": "سارة أحمد",
+      "phone": "01111222333",
+      "nationalId": "29987654321098",
+      "email": "sara.ahmed@example.com"
+    },
+    {
+      "id": "pat4",
+      "name": "علي محمود",
+      "phone": "01234567890",
+      "nationalId": "30012345678901",
+      "email": "ali.mohamed@example.com"
+    },
+    {
+      "id": "pat5",
+      "name": "منى يوسف",
+      "phone": "01065432109",
+      "nationalId": "29765498765432",
+      "email": "mona.yusuf@example.com"
+    },
+    {
+      "id": "pat6",
+      "name": "ليلى حسين",
+      "phone": "01199887766",
+      "nationalId": "29654321098765",
+      "email": "laila.hussein@example.com"
+    },
+    {
+      "id": "pat7",
+      "name": "حسن مصطفى",
+      "phone": "01222334455",
+      "nationalId": "29543210987654",
+      "email": "hassan.mostafa@example.com"
+    },
+    {
+      "id": "pat8",
+      "name": "نورا عبد الله",
+      "phone": "01098765432",
+      "nationalId": "29432109876543",
+      "email": "nora.abdullah@example.com"
+    }
+  ],
+  "allow": {
+    "food": [
+      "الخضروات الورقية مثل السبانخ.",
+      "التوت مثل التوت الأزرق.",
+      "الدهون الصحية مثل زيت الزيتون والأفوكادو.",
+      "السمك مثل السلمون والتونة.",
+      "الدجاج المشوي أو المسلوق.",
+      "المكسرات مثل اللوز والكاجو.",
+      "الحبوب الكاملة مثل الشوفان.",
+      "البقوليات مثل الفاصوليا والعدس.",
+      "الفواكه منخفضة البوتاسيوم مثل التفاح والعنب.",
+      "الحليب قليل الدسم أو البدائل النباتية مثل حليب اللوز.",
+      "الفواكه منخفضة البوتاسيوم مثل التفاح والعنب."
+    ],
+    "drinks": [
+      "شاي الأعشاب مثل شاي النعناع أو الكاموميل.",
+      "حليب جوز الهند غير المحلى.",
+      "شاي التوت البري أو شاي الفواكه الطبيعية.",
+      "ماء جوز الهند (بدون إضافات).",
+      "شاي الأخضر (بكميات معتدلة).",
+      "حليب جوز الهند غير المحلى.",
+      "حليب اللوز غير المحلى.",
+      "عصير التفاح الطبيعي (بدون سكر مضاف)."
+    ]
+  },
+  "notAllow": {
+    "food": [
+      "اللحوم المدخنة.",
+      "اللحوم الحمراء.",
+      "الأطعمة المقلية.",
+      "منتجات الألبان كاملة الدسم.",
+      "الأطعمة الغنية بالفوسفور مثل الجبن.",
+      "الأطعمة الغنية بالبوتاسيوم مثل الموز والبطاطس.",
+      "الأطعمة المعلبة أو المعالجة.",
+      "الفواكه الغنية بالبوتاسيوم مثل الموز والبرتقال.",
+      "الأطعمة الغنية بالملح مثل الوجبات السريعة.",
+      "الشوكولاتة (وخاصة الأنواع الغنية بالسكر).",
+      "المكملات الغذائية المحتوية على الفوسفور."
+    ],
+    "drinks": [
+      "المشروبات الغازية مثل الكولا.",
+      "عصير البرتقال (قد يحتوي على مستويات عالية من البوتاسيوم).",
+      "عصير الموز (غني بالبوتاسيوم).",
+      "القهوة (بكميات كبيرة، خاصة إذا كانت تحتوي على الكافيين).",
+      "المشروبات المحلاة بالسكريات الصناعية مثل مشروبات الدايت.",
+      "عصير الكرز (يحتوي على نسبة عالية من البوتاسيوم).",
+      "عصير الخوخ (يحتوي على نسبة عالية من البوتاسيوم).",
+      "عصير الفراولة (قد يحتوي على كميات عالية من البوتاسيوم)."
+    ]
+  },
+  "alarm": {
+    "session": [
+      {
+        "userId": "pat1",
+        "date": "2024-06-01",
+        "time": "12:00",
+        "repeatPerWeek": 3
+      }
+    ],
+    "water": [
+      {
+        "userId": "pat1",
+        "gender": "female",
+        "wakeUp": "08:00",
+        "sleep": "22:00",
+        "intervalHours": 2
+      }
+    ],
+    "medication": [
+      {
+        "userId": "pat1",
+        "medicine": "دواء الضغط",
+        "startTime": "09:00",
+        "repeats": 3,
+        "intervalMinutes": 240
+      }
+    ]
+  },
+  "stats": {
+    "doctors": 12,
+    "patients": 48,
+    "visitors": 152
+  }
+}

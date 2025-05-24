@@ -6,7 +6,7 @@ import style from '../../style/pages/dashboard/patientsDashboard.module.css'
 // ** Hooks && Tools
 import { useEffect, useState } from 'react'
 // ** Api
-import { doctorsData } from '../../data/examples/doctorsData'
+import { deletePatient, fetchDashboardPatients } from '../../api/dashboardApi'
 // ** Components
 import DataTable from '../../components/dashboard/DataTable'
 import SearchElement from '../../components/dashboard/SearchElement'
@@ -15,8 +15,26 @@ import SearchElement from '../../components/dashboard/SearchElement'
 
 export default function Patients() {
     // ** States
-    const [data,setData] = useState<{ id: number; name: string; phone: string; nationalId: string; email: string; }[]>([]);
-    const [patients,setPatients] = useState<{ id: number; name: string; phone: string; nationalId: string; email: string; }[]>([]);
+    const [data,setData] = useState<{ id: string; name: string; phone: string; nationalId: string; email: string; }[]>([]);
+    const [patients,setPatients] = useState<{ id: string; name: string; phone: string; nationalId: string; email: string; }[]>([]);
+
+
+
+    // ** Handlers
+    const updateData = async ()=>{
+        const updatedDoctors = await fetchDashboardPatients();
+        setPatients(updatedDoctors);
+        setData(updatedDoctors);
+    }
+    const deletePatientHandler =async (id:string)=>{
+        try{
+            await deletePatient(id);
+            updateData();
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
 
 
 
@@ -31,7 +49,7 @@ export default function Patients() {
                 <button>
                     <img src={blockIcon} alt="edit icon" />
                 </button>
-                <button>
+                <button onClick={()=>{deletePatientHandler(patient.id)}}>
                     <img src={deleteIcon} alt="delete icon" />
                 </button>
             </td>
@@ -42,8 +60,17 @@ export default function Patients() {
 
     // ** UseEffet
     useEffect(()=>{
-        setData(doctorsData);
-        setPatients(doctorsData);
+        const loadDashboardPatients = async ()=>{
+            try{
+                const dashboardPatientsData = await fetchDashboardPatients();
+                setData(dashboardPatientsData);
+                setPatients(dashboardPatientsData);
+            }
+            catch(error){
+                console.log(error)
+            }
+        }
+        loadDashboardPatients();
     },[])
 
 

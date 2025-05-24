@@ -8,14 +8,14 @@ import style from '../../style/pages/dashboard/doctorsDashboard.module.css'
 // ** Interfaces
 interface ISearchElement{
     data: {
-        id: number,
+        id: string,
         name: string,
         email: string,
         nationalId: string,
         phone: string
     }[],
     setResult: (result: {
-        id: number,
+        id: string,
         name: string,
         email: string,
         nationalId: string,
