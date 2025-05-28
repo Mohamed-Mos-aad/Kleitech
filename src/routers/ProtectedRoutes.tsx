@@ -4,26 +4,29 @@ import { RootState } from "../app/store";
 import { Navigate } from "react-router-dom";
 
 
+// ** GEt User Data
+function getUserData() {
+    return JSON.parse(localStorage.getItem('kleitech_user') || sessionStorage.getItem('kleitech_user') || 'null');
+}
 
 // ** Layouts
 export function ProtectAuthRoutes({ children }: { children: JSX.Element })
 {
-    const userData = JSON.parse(localStorage.getItem('kleitech_user') || sessionStorage.getItem('kleitech_user') || 'null');
+    const userData = getUserData();
     return userData ? <Navigate to="/m" /> : children;
 }
 
 export function ProtectMainRoutes({ children }: { children: JSX.Element })
 {
-    // const userData = JSON.parse(localStorage.getItem('kleitech_user') || sessionStorage.getItem('kleitech_user') || 'null');
-    // return userData ?   children : <Navigate to="/u/sign-in" />;
-    return children
+    const userData = getUserData();
+    return userData ?   children : <Navigate to="/u/sign-in" />;
 }
 
 export function ProtectDashboardRoutes({ children }: { children: JSX.Element })
 {
-    // const userData = JSON.parse(localStorage.getItem('kleitech_user') || sessionStorage.getItem('kleitech_user') || 'null');
-    // return userData ?   children : <Navigate to="/u/sign-in" />;
-    return children
+    const userData = getUserData();
+
+    return userData?.user?.role === "admin" ?   children : <Navigate to="/u/sign-in" />;
 }
 
 
@@ -32,9 +35,9 @@ export function ProtectDashboardRoutes({ children }: { children: JSX.Element })
 export function ProtectOtpRoute({ children }: { children: JSX.Element })
 {
     // ** Store
-    const userData = useSelector((state: RootState) => state.userSignUp);
+    const userData = useSelector((state: RootState) => state.otpEmail);
 
-    return userData.userEmail ? children : <Navigate to="/u/sign-up" />;
+    return userData.otpEmail ? children : <Navigate to="/u/sign-up" />;
 }
 
 export function ProtectDoneRoute({ children }: { children: JSX.Element })

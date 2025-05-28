@@ -3,12 +3,20 @@ import axios from "axios";
 // ** Interfaces
 import { ISignUpData } from "../interfaces";
 
+
+
+const storage = localStorage.getItem("kleitech_user") ? localStorage : sessionStorage;
+const userString = storage.getItem("kleitech_user");
+const token = userString ? JSON.parse(userString).token : null;
+
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+    baseURL: import.meta.env.VITE_LOCAL_SERVER_LARAVEL_API_URL,
     headers:{
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
     }
 })
+
 
 
 export const registerUser = async (userData: ISignUpData) => {
@@ -43,12 +51,36 @@ export const registerUser = async (userData: ISignUpData) => {
     }
 }
 
-
-
-
 export const loginUser = async (userData: {email: string, password: string}) => {
     try{
+        console.log(userData);
         const response = await api.post('/login', userData);
+        return response.data;
+    }
+    catch(error)
+    {
+        console.log(error);
+        throw error;
+    }
+}
+
+export const changePassword = async (userData: {current_password: string,new_password: string,new_password_confirmation: string}) => {
+    try{
+        console.log(userData);
+        const response = await api.post('/change-password', userData);
+        return response.data;
+    }
+    catch(error)
+    {
+        console.log(error);
+        throw error;
+    }
+}
+
+export const forgotPassword = async (userData: {email: string}) => {
+    try{
+        console.log(userData);
+        const response = await api.post('/change-password', userData);
         return response.data;
     }
     catch(error)

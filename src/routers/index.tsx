@@ -45,10 +45,10 @@ export default function Routers() {
                 <Route path="/" element={<LandingPageLayout/>}>
                     <Route index element={<LandingPage/>}/>
                 </Route>
-                <Route path="/u" element={<ProtectAuthRoutes><AuthLayout /></ProtectAuthRoutes>}>
-                    <Route index element={<Welcome />}/>
-                    <Route path="sign-in" element={<SignIn />}/>
-                    <Route path="sign-up" element={<SignUp />}/>
+                <Route path="/u" element={<AuthLayout />}>
+                    <Route index element={<ProtectAuthRoutes><Welcome /></ProtectAuthRoutes>}/>
+                    <Route path="sign-in" element={<ProtectAuthRoutes><SignIn /></ProtectAuthRoutes>}/>
+                    <Route path="sign-up" element={<ProtectAuthRoutes><SignUp /></ProtectAuthRoutes>}/>
                     <Route path="forget-password" element={<ForgetPassword />}/>
                     <Route path="otp" element={<ProtectOtpRoute><Otp /></ProtectOtpRoute>} />
                     <Route path="new-password" element={<NewPassword />}/>
