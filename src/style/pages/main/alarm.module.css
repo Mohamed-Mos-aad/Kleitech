@@ -81,7 +81,7 @@
     justify-content: center;
     align-items: center;
 }
-form
+.alarm_container form
 {
     width: 45%;
     display: flex;
@@ -91,20 +91,20 @@ form
     padding: 32px 100px;
     box-shadow: 0 2px 21px var(--main-color-100);
 }
-form h1
+.alarm_container form h1
 {
     font-size: 32px;
     font-weight: 600;
     color: var(--main-color-700);
     margin-bottom: -8px;
 }
-form .form_btns
+.alarm_container form .form_btns
 {
     display: flex;
     justify-content: space-between;
     gap: 24px;
 }
-form .form_btns button
+.alarm_container form .form_btns button
 {
     width: 100%;
     background-color: var(--main-color-700);
@@ -117,12 +117,12 @@ form .form_btns button
     cursor: pointer;
     transition: 0.3s;
 }
-form .form_btns button:hover
+.alarm_container form .form_btns button:hover
 {
     background-color: var(--main-color-700);
     color: white;
 }
-form .form_btns button:last-of-type
+.alarm_container form .form_btns button:last-of-type
 {
     background-color: transparent;
     color: var(--main-color-700);
@@ -184,12 +184,12 @@ form .form_btns button:last-of-type
 /* Extra small devices (phones, portrait) */
 @media (max-width: 575.98px) 
 {
-    form
+    .alarm_container form
     {
         width: 95%;
         padding: 16px;
     }
-    form h1
+    .alarm_container form h1
     {
         font-size: 26px;
     }
@@ -205,12 +205,12 @@ form .form_btns button:last-of-type
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) 
 {
-    form
+    .alarm_container form
     {
         width: 70%;
         padding: 16px 32px;
     }
-    form h1
+    .alarm_container form h1
     {
         font-size: 26px;
     }
@@ -226,12 +226,12 @@ form .form_btns button:last-of-type
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) 
 {
-    form
+    .alarm_container form
     {
         width: 60%;
         padding: 16px 32px;
     }
-    form h1
+    .alarm_container form h1
     {
         font-size: 28px;
     }
@@ -239,7 +239,7 @@ form .form_btns button:last-of-type
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) 
 {
-    form
+    .alarm_container form
     {
         width: 50%;
         padding: 16px 32px;

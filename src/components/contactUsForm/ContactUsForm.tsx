@@ -1,4 +1,5 @@
 // ** Assets
+import { addComment } from '../../api/comments/commentsApi'
 import {userNameIcon, userEmailIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/pages/landing/sections/contactUs.module.css'
@@ -41,18 +42,26 @@ export default function ContactUsForm() {
             }))
         }
     }
-    const sendMessage = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+    const sendMessage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault();
         if(message.userFirstName !== '' && message.userSecondName !== '' && message.userEmail !== '' && message.userMessage !== '')
         {
-            console.log(message);
-            setMessage({
-                userFirstName: '',
-                userSecondName: '',
-                userEmail: '',
-                userMessage: '',
-                userAgreeToTerms: false,
-            });
+            try{
+                const res = await addComment({f_name: message.userFirstName,l_name: message.userSecondName, email: message.userEmail,massage: message.userMessage})
+                console.log(res);
+            }
+            catch(error){
+                console.log(error)
+            }
+            finally{
+                setMessage({
+                    userFirstName: '',
+                    userSecondName: '',
+                    userEmail: '',
+                    userMessage: '',
+                    userAgreeToTerms: false,
+                });
+            }
         }        
     }
 

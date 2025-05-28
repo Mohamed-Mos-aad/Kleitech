@@ -46,7 +46,7 @@ export default function UploadPhoto({close,next,setXrayImageUrl}:IUploadPhoto) {
         }
     
         const formData = new FormData();
-        formData.append('image',photo);
+        formData.append('file',photo);
         const abortCtrl = new AbortController();
         
         setController(abortCtrl);
@@ -69,7 +69,7 @@ export default function UploadPhoto({close,next,setXrayImageUrl}:IUploadPhoto) {
                     setTimeRemaining(Math.round(estimatedTime));
                 }
             });
-            const data = res.data;
+            const data = res;
             setUploadedPhotoInfo({name: data.image.filename,size: (data.size / (1024 * 1024)).toFixed(2).toString()});
             setXrayImageUrl(data.url)
         }

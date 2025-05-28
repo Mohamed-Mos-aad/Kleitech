@@ -4,13 +4,25 @@ import axios, { AxiosProgressEvent } from "axios";
 
 export const uploadPhoto = async (formData:FormData,onUploadProgress?: (progressEvent: AxiosProgressEvent) => void,signal?: AbortSignal)=>{
 
-    const apiKey = import.meta.env.VITE_UPLOAD_PHOTO_API_KEY;
+const storage = localStorage.getItem("kleitech_user") ? localStorage : sessionStorage;
+const userString = storage.getItem("kleitech_user");
+const token = userString ? JSON.parse(userString).token : null;
 
+
+    const api = axios.create({
+        baseURL: import.meta.env.VITE_LOCAL_SERVER_LARAVEL_API_URL,
+        headers:{
+            // 'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${token}`,
+        }
+    })
 
     try{
-        const response = await axios.post(`https://api.imgbb.com/1/upload?key=${apiKey}`, formData,
+        console.log(storage);
+        const response = await api.post(`send-image`, formData,
             {onUploadProgress,signal}
         );
+        console.log('Upload successful:' +  response.data);
         return response.data
     }
     catch(error){

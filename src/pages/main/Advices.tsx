@@ -2,55 +2,18 @@
 import {allowIcon, notAllowIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/pages/main/allowAndNotAllow.module.css'
-// ** Hooks && Tools
-import { useEffect, useState } from 'react';
-// ** Api
-import { fetchAdvices } from '../../api/advicesApi';
-// ** Interface
-import { IAdvices } from '../../interfaces';
-// ** Component
-import Loading from '../../components/ui/loading/Loading';
+// ** Data
+import { advicesData } from '../../data/main/advices';
 
 
 
 
 export default function Advices() {
-    // ** States
-    const [advices,setAdvices] = useState<IAdvices>();
-    const [isloading,setIsLoading] = useState<boolean>(true);
-
-
-
-
-
-
-
     // ** Render
-    const allowFoodRender = advices?.allow.food.map((item,index) =><li key={index}>{item}</li>)
-    const allowDrinksRender = advices?.allow.drinks.map((item,index) =><li key={index}>{item}</li>)
-    const notAllowFoodRender = advices?.notAllow.food.map((item,index) =><li key={index}>{item}</li>)
-    const notAllowDrinksRender = advices?.notAllow.drinks.map((item,index) =><li key={index}>{item}</li>)
-    
-
-
-
-    useEffect(()=>{
-        const loadAdvices = async ()=>{
-            try{
-                const AllowingData = await fetchAdvices();
-                setAdvices(AllowingData)
-            }
-            catch(error){
-                console.log(error)
-            }
-            finally
-            {
-                setIsLoading(false);
-            }
-        }
-        loadAdvices();
-    },[])
-
+    const allowFoodRender = advicesData?.allow.food.map((item,index) =><li key={index}>{item}</li>)
+    const allowDrinksRender = advicesData?.allow.drinks.map((item,index) =><li key={index}>{item}</li>)
+    const notAllowFoodRender = advicesData?.notAllow.food.map((item,index) =><li key={index}>{item}</li>)
+    const notAllowDrinksRender = advicesData?.notAllow.drinks.map((item,index) =><li key={index}>{item}</li>)
 
 
 
@@ -58,10 +21,6 @@ export default function Advices() {
 
     return (
         <>
-        {
-            isloading ? 
-                <Loading />
-            :
             <div className={style.allow_not_allow}>
                 <div className={style.allowing_container}>
                     <div className={style.head_title}>
@@ -96,7 +55,6 @@ export default function Advices() {
                     </div>
                 </div>
             </div>
-        }
         </>
     )
 }
