@@ -27,10 +27,12 @@ import keyIcon from '../icons/auth/forgetPasswordIcon.svg'
 import arrowUpandDownIcon from '../icons/forms/arrowsUpandDownIcon.svg'
 import arrowLeftIcon from '../icons/auth/arrow-left.svg'
 import arrowRightIcon from '../icons/auth/arrow-right.svg'
+import otpIcon from '../icons/auth/otpIcon.svg'
+import lockIcon from '../icons/auth/lockIcon.svg'
 import arrowDownIcon from '../icons/forms/downArrowIcon.svg'
 
 import settingIcon from '../icons/navbar/settingIcon.svg'
-import editeIcon from '../icons/navbar/settingIcon.svg'
+import editeIcon from '../icons/navbar/editeIcon.svg'
 import navBarMenuIcon from '../icons/navbar/navBarIcon.svg'
 import logOutIcon from '../icons/navbar/logOutIcon.svg'
 
@@ -94,4 +96,6 @@ export {
     doneIcon, 
     leftIcon, 
     chatIcon, 
+    otpIcon,
+    lockIcon,
 }

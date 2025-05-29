@@ -53,7 +53,6 @@ export const registerUser = async (userData: ISignUpData) => {
 
 export const loginUser = async (userData: {email: string, password: string}) => {
     try{
-        console.log(userData);
         const response = await api.post('/login', userData);
         return response.data;
     }
@@ -66,7 +65,6 @@ export const loginUser = async (userData: {email: string, password: string}) => 
 
 export const changePassword = async (userData: {current_password: string,new_password: string,new_password_confirmation: string}) => {
     try{
-        console.log(userData);
         const response = await api.post('/change-password', userData);
         return response.data;
     }
@@ -79,7 +77,6 @@ export const changePassword = async (userData: {current_password: string,new_pas
 
 export const forgotPassword = async (userData: {email: string}) => {
     try{
-        console.log(userData);
         const response = await api.post('/change-password', userData);
         return response.data;
     }

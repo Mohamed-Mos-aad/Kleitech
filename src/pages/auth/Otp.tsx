@@ -1,5 +1,5 @@
 // ** Assets
-import {logo} from '../../assets/icons/icons'
+import {otpIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/pages/auth/otp.module.css'
 // ** Hooks & Tools
@@ -159,7 +159,7 @@ export default function Otp() {
         <>
             <div className={style.otp_container}>
                 <div className={style.icon}>
-                    <img src={logo} alt="Logo icon" />
+                    <img src={otpIcon} alt="Logo icon" />
                 </div>
                 <div className={style.content}>
                     <h2>التحقق من الكود</h2>
