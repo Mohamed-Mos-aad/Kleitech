@@ -1,5 +1,5 @@
 // ** Assets
-import {logo,userPasswordIcon} from '../../assets/icons/icons'
+import {lockIcon,userPasswordIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/pages/auth/changePassword.module.css'
 // ** Hooks && Tools
@@ -64,7 +64,7 @@ export default function ChangePassword() {
         <>
             <div className={style.new_password_container}>
                 <div className={style.icon}>
-                    <img src={logo} alt="Logo icon" />
+                    <img src={lockIcon} alt="Logo icon" />
                 </div>
                 <div className={style.content}>
                     <h2>تغير كلمه مرور جديده</h2>

@@ -35,9 +35,9 @@ export function ProtectDashboardRoutes({ children }: { children: JSX.Element })
 export function ProtectOtpRoute({ children }: { children: JSX.Element })
 {
     // ** Store
-    const userData = useSelector((state: RootState) => state.otpEmail);
+    const userData = useSelector((state: RootState) => state.userSignUp);
 
-    return userData.otpEmail ? children : <Navigate to="/u/sign-up" />;
+    return userData ? children : <Navigate to="/u/sign-up" />;
 }
 
 export function ProtectDoneRoute({ children }: { children: JSX.Element })
