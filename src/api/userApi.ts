@@ -54,6 +54,7 @@ export const registerUser = async (userData: ISignUpData) => {
 export const loginUser = async (userData: {email: string, password: string}) => {
     try{
         const response = await api.post('/login', userData);
+        console.log(response.data)
         return response.data;
     }
     catch(error)

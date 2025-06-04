@@ -12,7 +12,6 @@ const api = axios.create({
 export const fetchDashboardStats = async ()=>{
     try{
         const response = await api.get('/stats');
-        console.log(response.data)
         return response.data;
     }
     catch(error)
@@ -84,6 +83,7 @@ export const fetchDashboardPatients = async ()=>{
         console.log(error);
     }
 }
+
 export const deletePatient = async (id:string) => {
     try{
         const response = await api.delete(`/patients/${id}`);

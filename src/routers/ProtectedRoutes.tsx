@@ -19,7 +19,14 @@ export function ProtectAuthRoutes({ children }: { children: JSX.Element })
 export function ProtectMainRoutes({ children }: { children: JSX.Element })
 {
     const userData = getUserData();
-    return userData ?   children : <Navigate to="/u/sign-in" />;
+    if(userData)
+    {
+        return userData?.user?.role === "admin" ? <Navigate to="/dashboard" /> : children;
+    }
+    else
+    {
+        return <Navigate to="/u/sign-in" />;
+    }
 }
 
 export function ProtectDashboardRoutes({ children }: { children: JSX.Element })
