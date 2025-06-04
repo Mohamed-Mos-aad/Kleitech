@@ -1,17 +1,8 @@
 // ** Hooks && Tools
 import axios from "axios";
 
-
-
-const storage = localStorage.getItem("kleitech_user") ? localStorage : sessionStorage;
-const userString = storage.getItem("kleitech_user");
-const token = userString ? JSON.parse(userString).token : null;
-
 const api = axios.create({
     baseURL: import.meta.env.VITE_LOCAL_SERVER_LARAVEL_API_URL,
-    headers:{
-        Authorization: `Bearer ${token}`,
-    }
 })
 
 
