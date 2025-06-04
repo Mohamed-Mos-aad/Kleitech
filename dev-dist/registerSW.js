@@ -1,1 +1,0 @@
-if('serviceWorker' in navigator) navigator.serviceWorker.register('/Kleitech/dev-sw.js?dev-sw', { scope: '/Kleitech/', type: 'classic' })

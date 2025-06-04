@@ -452,202 +452,202 @@
   ],
   "doctorsSimple": [
     {
-      "id": 1,
+      "id": "1",
       "name": "أحمد علي",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "سارة محمود",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "محمد سعيد",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "منى حسن",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "خالد عبد الله",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "نادية فاروق",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "عمر يوسف",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "ياسمين أحمد",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "محمود سامي",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "هدى إبراهيم",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "سعيد وليد",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "إيمان أشرف",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "حسن عبد العزيز",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "فاطمة لطفي",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "محمود أسامة",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 16,
+      "id": "16",
       "name": "هالة نبيل",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 17,
+      "id": "17",
       "name": "وليد أشرف",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 18,
+      "id": "18",
       "name": "سارة شريف",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 19,
+      "id": "19",
       "name": "عادل فهمي",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 20,
+      "id": "20",
       "name": "ليلى فتحي",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 21,
+      "id": "21",
       "name": "عماد سمير",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 22,
+      "id": "22",
       "name": "شرين توفيق",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 23,
+      "id": "23",
       "name": "عبد الرحمن خالد",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 24,
+      "id": "24",
       "name": "جهاد محسن",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 25,
+      "id": "25",
       "name": "حسام فؤاد",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 26,
+      "id": "26",
       "name": "لمياء سليم",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 27,
+      "id": "27",
       "name": "حسام رجب",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 28,
+      "id": "28",
       "name": "فاطمة عبد الله",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 29,
+      "id": "29",
       "name": "علي كمال",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 30,
+      "id": "30",
       "name": "سمية شهاب",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 31,
+      "id": "31",
       "name": "هاني فرج",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 32,
+      "id": "32",
       "name": "غادة توفيق",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 33,
+      "id": "33",
       "name": "أسامة زكي",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 34,
+      "id": "34",
       "name": "رانيا نعيم",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 35,
+      "id": "35",
       "name": "حمدي هلال",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 36,
+      "id": "36",
       "name": "نجلاء سامي",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 37,
+      "id": "37",
       "name": "يوسف قاسم",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 38,
+      "id": "38",
       "name": "سمية مصطفى",
       "specialty": "دكتور نفسي"
     },
     {
-      "id": 39,
+      "id": "39",
       "name": "كريم طارق",
       "specialty": "دكتور كلى"
     },
     {
-      "id": 40,
+      "id": "40",
       "name": "رشا علي",
       "specialty": "دكتور نفسي"
     }
@@ -760,34 +760,93 @@
       "عصير الفراولة (قد يحتوي على كميات عالية من البوتاسيوم)."
     ]
   },
-  "alarm": {
-    "session": [
-      {
-        "userId": "pat1",
-        "date": "2024-06-01",
-        "time": "12:00",
-        "repeatPerWeek": 3
-      }
-    ],
-    "water": [
-      {
-        "userId": "pat1",
-        "gender": "female",
-        "wakeUp": "08:00",
-        "sleep": "22:00",
-        "intervalHours": 2
-      }
-    ],
-    "medication": [
-      {
-        "userId": "pat1",
-        "medicine": "دواء الضغط",
-        "startTime": "09:00",
-        "repeats": 3,
-        "intervalMinutes": 240
-      }
-    ]
-  },
+  "alarm": [
+    {
+      "type": "Medicine",
+      "name": "ثريميثوبريم",
+      "recurrence_count": 3,
+      "start_date": "5/2/2025",
+      "start_time": "5 مساءً",
+      "id": "4cb6"
+    },
+    {
+      "type": "Water",
+      "gender": "أنثى",
+      "wake_time": "8 صباحاً",
+      "sleep_time": "10 مساءً",
+      "reminder_interval": "ساعة",
+      "id": "db1f"
+    },
+    {
+      "type": "xRay",
+      "weekly_sessions": 2,
+      "next_session_date": "10/2/2025",
+      "session_time": "8 صباحاً",
+      "id": "2a30"
+    },
+    {
+      "type": "Medicine",
+      "name": "أسبرين",
+      "recurrence_count": 2,
+      "start_date": "6/2/2025",
+      "start_time": "6 مساءً",
+      "id": "f6d6"
+    },
+    {
+      "type": "Water",
+      "gender": "ذكر",
+      "wake_time": "7 صباحاً",
+      "sleep_time": "11 مساءً",
+      "reminder_interval": "ساعتان",
+      "id": "daac"
+    },
+    {
+      "type": "xRay",
+      "weekly_sessions": 1,
+      "next_session_date": "12/2/2025",
+      "session_time": "9 صباحاً",
+      "id": "2205"
+    },
+    {
+      "type": "Medicine",
+      "name": "باراسيتامول",
+      "recurrence_count": 4,
+      "start_date": "7/2/2025",
+      "start_time": "4 مساءً",
+      "id": "f1e8"
+    },
+    {
+      "type": "Water",
+      "gender": "أنثى",
+      "wake_time": "6 صباحاً",
+      "sleep_time": "9 مساءً",
+      "reminder_interval": "نصف ساعة",
+      "id": "828c"
+    },
+    {
+      "type": "xRay",
+      "weekly_sessions": 3,
+      "next_session_date": "15/2/2025",
+      "session_time": "10 صباحاً",
+      "id": "9412"
+    },
+    {
+      "type": "Medicine",
+      "name": "أموكسيسيلين",
+      "recurrence_count": 5,
+      "start_date": "8/2/2025",
+      "start_time": "7 مساءً",
+      "id": "966f"
+    },
+    {
+      "id": "7faf",
+      "type": "Water",
+      "gender": "ذكر",
+      "wake_time": "8",
+      "sleep_time": "12",
+      "reminder_interval": "2"
+    }
+  ],
   "stats": {
     "doctors": 12,
     "patients": 48,

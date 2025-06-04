@@ -53,6 +53,11 @@ import chatIcon from '../icons/main/doctorDetails/chatIcon.svg'
 import patientIcon from '../icons/main/booking/patientIcon.svg'
 import calendarIcon from '../icons/main/booking/calendarIcon.svg'
 
+import genderIcon from '../icons/main/alarm/genderIcon.svg'
+import clockIcon from '../icons/main/alarm/clockIcon.svg'
+import medicineIcon from '../icons/main/alarm/medicineIcon.svg'
+import repeatIcon from '../icons/main/alarm/repeatIcon.svg'
+
 
 
 export {
@@ -98,4 +103,8 @@ export {
     chatIcon, 
     otpIcon,
     lockIcon,
+    genderIcon,
+    clockIcon,
+    medicineIcon,
+    repeatIcon,
 }

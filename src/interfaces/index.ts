@@ -96,9 +96,6 @@ export interface IChat{
     };
 }
 
-
-
-
 export interface IMessage {
     messageId: string;
     senderId: string;
@@ -111,4 +108,23 @@ export interface IMessage {
     audioUrl?: string;
     photoUrl?: string;
     reactions: { userId: string; reaction: string }[];
+}
+
+
+
+// ** Alarm
+// ** Interfaces
+export interface IAlarmData{
+    type: "Medicine"| "Water"| "xRay",
+    name?: string,
+    recurrence_count?: number,
+    start_date?: string,
+    start_time?: string,
+    gender?: string,
+    wake_time?: string,
+    sleep_time?: string,
+    reminder_interval?: string,
+    weekly_sessions?: number,
+    next_session_date?: string,
+    session_time?: string,
 }
