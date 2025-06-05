@@ -32,14 +32,14 @@ export default function ChatList({chats,displayedChats,setDisplayedChats,selectC
     
     // ** Render
     const chatsListRender = displayedChats.map(chatItme =>
-        <ChatListItem name={chatItme.participants[0].name} lastMessage={chatItme.lastMessage.text} photo={chatItme.participants[0].photo} timesTamp={convertDateTypeHandler(chatItme.lastMessage.timestamp)} onClick={()=>{selectChatHandler(chatItme.chatId)}} key={chatItme.chatId}/>
+        <ChatListItem name={chatItme.participants[0].name} lastMessage={chatItme.lastMessage?.text || ''} photo={chatItme.participants[0].photo} timesTamp={convertDateTypeHandler(chatItme.lastMessage?.timestamp  || '')} onClick={()=>{selectChatHandler(chatItme.id)}} key={chatItme.id}/>
     )
 
 
 
     return (
         <>
-            <div className={style.chats_list_container} id='chats_list'>
+            <div className={style.chats_list_container}>
                 <div className={style.search}>
                     <input type="text" placeholder='بحث' onInput={(e)=>{chatsSearchHandler(e)}}/>
                     <img src={searchIcon} alt="Search icon" />

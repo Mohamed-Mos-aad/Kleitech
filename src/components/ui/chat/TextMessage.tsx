@@ -7,11 +7,14 @@ import style from '../../../style/components/ui/chat/message.module.css'
 // ** Hooks && Tools
 import emoji from 'emoji.json'
 import { useState } from 'react'
+import { deleteChat } from '../../../api/chat/chatApi'
 
 
 // ** Interfaces
 interface ITextMessage{
+    chatId:string,
     senderId: string,
+    messageId: string,
     text: string | undefined,
     timestamp: string
 }
@@ -20,7 +23,7 @@ interface ITextMessage{
 
 
 
-export default function TextMessage({senderId,timestamp,text}:ITextMessage) {
+export default function TextMessage({senderId,messageId,timestamp,text}:ITextMessage) {
     // ** States
     const emojis = [emoji[151],emoji[349],emoji[355],emoji[7],emoji[85],emoji[57]].reverse();
     const [messageEmoji,setMessageEmoji] = useState('');
@@ -44,6 +47,15 @@ export default function TextMessage({senderId,timestamp,text}:ITextMessage) {
     const messageOptionsContainerToggelHandler = ()=>{
         setMessageOptionsContainerOpen(!messageOptionsContainerOpen);
         setMessageEmojisContainerOpen(false);
+    }
+    const deleteMessage = async ()=>{
+        console.log(messageId);
+        try{
+            await deleteChat(messageId);
+        }
+        catch(error){
+            console.log(error)
+        }
     }
 
 
@@ -76,7 +88,7 @@ export default function TextMessage({senderId,timestamp,text}:ITextMessage) {
                                 <li>رد</li>
                                 <li>تعديل الرساله</li>
                                 <li>تثبيت في المحادثه</li>
-                                <li>مسج الرساله</li>
+                                <li onClick={deleteMessage}>مسج الرساله</li>
                             </ul>
                         </div>
                     }

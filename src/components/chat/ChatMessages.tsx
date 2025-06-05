@@ -24,7 +24,7 @@ export default function ChatMessages({currentChat}:IChatMessages) {
         if(message.type === 'text')
         {
             return(
-                <TextMessage senderId={message.senderId} timestamp={convertDateTypeHandler(message.timestamp)} text={message.text} key={message.messageId}/>
+                <TextMessage chatId={currentChat.id} senderId={message.senderId} messageId={message.messageId} timestamp={convertDateTypeHandler(message.timestamp)} text={message.text} key={message.messageId}/>
             )
         }
         else if (message.type === 'voice') {

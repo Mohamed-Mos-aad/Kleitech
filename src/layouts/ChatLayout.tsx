@@ -4,7 +4,7 @@ import style from '../style/layouts/chatLayout.module.css'
 import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 // ** Api
-import { fetchMessages } from '../api/chatApi'
+import { addChat, editeChat, fetchMessages } from '../api/chat/chatApi'
 // ** Interfaces
 import { IChat, IMessage } from '../interfaces'
 // ** Components
@@ -27,10 +27,11 @@ export default function ChatLayout() {
 
     // ** States
     const [chats,setChats] = useState<IChat[]>([]);
-    const [displayedChats,setDisplayedChats] = useState<IChat[]>(chats);
+    const [displayedChats,setDisplayedChats] = useState<IChat[]>([]);
     const [chatSelected,setChatSelected] = useState<boolean>(false);
     const [currentChat,setCurrentChat] = useState<IChat|undefined>();
     const [emojysComponentOpened,setEmojysComponentOpened] = useState<boolean>(false);
+    const [showChatList,setShowChatList] = useState<boolean>(true);
 
 
 
@@ -42,50 +43,83 @@ export default function ChatLayout() {
 
 
     // ** Handler
-    const selectChatHandler = (id:string)=>{
+    const selectChatHandler = (id: string) => {
         setChatSelected(true);
-        const findChat = displayedChats.find(chat => chat.chatId === id);
+        const findChat = displayedChats.find(chat => chat.id === id);
         setCurrentChat(findChat);
         openChatMobilesToggleHandler();
     }
-    const sendMessageHandler = (message:IMessage)=>{
-        if(message)
-        {
-            setCurrentChat((prev)=> {
-                if(!prev) return
 
-                return {
-                    ...prev,
-                    messages: [...prev.messages,message]
-                }
-            })
+    const sendMessageHandler = async (message:IMessage)=>{
+        if (!message || !currentChat) return;
+        
+        const updatedChat: IChat = {
+            ...currentChat,
+            messages: [...currentChat.messages, message],
+            lastMessage: {
+                messageId: message.messageId,
+                text: message.text || '',
+                timestamp: message.timestamp
+            }
+        }
+        setCurrentChat(updatedChat);
+
+        const updateChatsList = (prevChats: IChat[]) => {
+            const updatedChats = prevChats.map(chat => 
+                chat.id === currentChat.id ? updatedChat : chat
+            );
+
+            return updatedChats.sort((a, b) => 
+                new Date(b.lastMessage.timestamp).getTime() - 
+                new Date(a.lastMessage.timestamp).getTime()
+            );
+        };
+        setChats(updateChatsList);
+        setDisplayedChats(updateChatsList);
+
+
+        try{
+            await editeChat(updatedChat,currentChat.id)
+        }
+        catch(error){
+            console.log(error);
+            setCurrentChat(currentChat);
+            setChats(prevChats => prevChats.map(chat => 
+                chat.id === currentChat.id ? currentChat : chat
+            ));
+            setDisplayedChats(prevChats => prevChats.map(chat => 
+                chat.id === currentChat.id ? currentChat : chat
+            ));
+        }
+        finally{
             setEmojysComponentOpened(false);
         }
     }
+
     const emojyComponentStateToggleHandler = ()=>{setEmojysComponentOpened(!emojysComponentOpened)};
+    
     const addEmojiHandler = (emoji:string)=>{
         if(messageInputRef.current)
         {
             messageInputRef.current.value += emoji;
         }
     }
+    
     const openChatMobilesToggleHandler = ()=>{
-        const chatsList = document.getElementById('chats_list');
-        if(chatsList && window.innerWidth < 767.98)
+        if(window.innerWidth < 767.98)
         {
             if(!chatSelected)
             {
-                chatsList.style.display = 'none';
+                setShowChatList(false);
             }
             else
             {
-                chatsList.style.display = 'flex';
+                setShowChatList(true);
                 setChatSelected(false);
             }
         }
     }
 
-    
 
 
 
@@ -100,7 +134,7 @@ export default function ChatLayout() {
                 if(doctorFromDetails)
                 {
                     const existingChat = chatsData.find((chat:IChat)=> 
-                        chat.participants[0].userId === doctorFromDetails.id
+                        chat.participants.some(p => p.userId === `doc${doctorFromDetails.id}`)
                     )
 
                     if(existingChat)
@@ -110,8 +144,10 @@ export default function ChatLayout() {
                     }
                     else
                     {
+                        const chatId = `chat_${doctorFromDetails.id}_${Date.now()}`;
+
                         const newChat: IChat = {
-                            chatId: `chat${Date.now()}`,
+                            id: chatId,
                             participants: [{
                                 userId: `doc${doctorFromDetails.id}`,
                                 name: doctorFromDetails.name,
@@ -135,11 +171,16 @@ export default function ChatLayout() {
                                 timestamp: new Date().toISOString(),
                             }
                         };
-
-                        setChats([newChat, ...chatsData]);
-                        setDisplayedChats([newChat, ...chatsData]);
-                        setCurrentChat(newChat  );
-                        setChatSelected(true);
+                        try{
+                            await addChat(newChat);
+                            setChats([newChat, ...chatsData]);
+                            setDisplayedChats([newChat, ...chatsData]);
+                            setCurrentChat(newChat);
+                            setChatSelected(true);
+                        }
+                        catch(error){
+                        console.log(error)
+                        }
                     }
                 }
             }
@@ -156,7 +197,9 @@ export default function ChatLayout() {
     return (
         <>
             <div className={style.chats_container}>
-                <ChatList chats={chats} displayedChats={displayedChats} selectChatHandler={selectChatHandler} setDisplayedChats={setDisplayedChats}/>
+                {
+                    showChatList && <ChatList chats={chats} displayedChats={displayedChats} selectChatHandler={selectChatHandler} setDisplayedChats={setDisplayedChats}/>
+                }
                 <div className={style.chat_content}>
                     {
                         !chatSelected ? 
