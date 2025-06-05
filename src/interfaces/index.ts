@@ -77,8 +77,17 @@ export interface IDoctorsSimpleData{
 
 
 // ** Chat
+export interface Participant {
+    userId: string;
+    name: string;
+    photo: string;
+    role: string;
+    isOnline: boolean;
+    lastSeen: string;
+}
+
 export interface IChat{
-    chatId: string;
+    id: string;
     participants: {
         userId: string;
         name: string;

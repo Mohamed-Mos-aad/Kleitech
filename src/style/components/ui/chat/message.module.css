@@ -108,6 +108,10 @@
     gap: 8px;
     position: relative;
 }
+.message .message_options img
+{
+    padding: 0 4px;
+}
 .message.receiver .message_options
 {
     flex-direction: row-reverse;
@@ -134,7 +138,7 @@
 {
     position: absolute;
     bottom: calc(100% + 8px);
-    left: 0;
+    left: -50%;
     z-index: 100000000000;
 }
 .message .message_options_list ul
@@ -148,6 +152,7 @@
 .message .message_options_list ul li
 {
     padding: 8px 24px;
+    text-wrap: nowrap;
     cursor: pointer;
 }
 .message .message_options_list ul li:hover
