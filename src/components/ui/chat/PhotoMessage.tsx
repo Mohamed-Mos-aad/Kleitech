@@ -4,8 +4,13 @@ import messageOptionsIcon from '../../../assets/main/chat/messageOptionsIcon.svg
 import trueIcon from '../../../assets/main/chat/trueIcon.svg'
 // ** Style
 import style from '../../../style/components/ui/chat/message.module.css'
-import emoji from 'emoji.json';
+// ** Hooks && Tools
 import { useState } from 'react';
+// ** Components
+import EmojiPicker from './EmojiPicker';
+import OptionsList from './OptionsList';
+// ** Api
+import { deleteChat } from '../../../api/chat/chatApi';
 
 
 
@@ -13,14 +18,14 @@ import { useState } from 'react';
 interface IPhotoMessage{
     senderId: string,
     photoUrl: string | undefined,
-    timestamp: string
+    timestamp: string,
+    messageId: string,
 }
 
 
 
-export default function PhotoMessage({senderId,timestamp,photoUrl}:IPhotoMessage) {
+export default function PhotoMessage({senderId,timestamp,photoUrl,messageId}:IPhotoMessage) {
     // ** States
-    const emojis = [emoji[151],emoji[349],emoji[355],emoji[7],emoji[85],emoji[57]].reverse();
     const [messageEmoji,setMessageEmoji] = useState('');
     const [messageEmojisContainerOpen,setMessageEmojisContainerOpen] = useState(false);
     const [messageOptionsContainerOpen,setMessageOptionsContainerOpen] = useState(false);
@@ -40,7 +45,14 @@ export default function PhotoMessage({senderId,timestamp,photoUrl}:IPhotoMessage
         setMessageOptionsContainerOpen(!messageOptionsContainerOpen);
         setMessageEmojisContainerOpen(false);
     }
-
+    const deleteMessage = async ()=>{
+        try{
+            await deleteChat(messageId);
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
 
     
     return (
@@ -60,20 +72,11 @@ export default function PhotoMessage({senderId,timestamp,photoUrl}:IPhotoMessage
                     </div>
                     {
                         messageEmojisContainerOpen && 
-                        <div className={style.message_emojis}>
-                            {emojis.map(emoji => <div onClick={()=>{selectEmoji(emoji.char)}}> {emoji.char}</div>)}
-                        </div>
+                        <EmojiPicker onSelect={selectEmoji}/>
                     }
                     {
                         messageOptionsContainerOpen &&
-                        <div className={style.message_options_list}>
-                            <ul>
-                                <li>رد</li>
-                                <li>تعديل الرساله</li>
-                                <li>تثبيت في المحادثه</li>
-                                <li>مسج الرساله</li>
-                            </ul>
-                        </div>
+                        <OptionsList deleteMessage={deleteMessage}/>
                     }
                 </div>
                 <h3>{timestamp}</h3>

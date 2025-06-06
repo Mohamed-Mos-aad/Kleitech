@@ -24,25 +24,27 @@ export default function ChatMessages({currentChat}:IChatMessages) {
         if(message.type === 'text')
         {
             return(
-                <TextMessage chatId={currentChat.id} senderId={message.senderId} messageId={message.messageId} timestamp={convertDateTypeHandler(message.timestamp)} text={message.text} key={message.messageId}/>
+                <TextMessage key={message.messageId} senderId={message.senderId} messageId={message.messageId} timestamp={convertDateTypeHandler(message.timestamp)} text={message.text}/>
             )
         }
         else if (message.type === 'voice') {
             return (
                 <VoiceMessage
                     key={message.messageId}
+                    messageId={message.messageId}
                     senderId={message.senderId}
                     timestamp={convertDateTypeHandler(message.timestamp)}
                     voiceUrl={message.audioUrl}
                 />
             );
-        } else if (message.type === 'document') {
+        } else if (message.type === 'image') {
             return (
                 <PhotoMessage
                     key={message.messageId}
+                    messageId={message.messageId}
                     senderId={message.senderId}
                     timestamp={convertDateTypeHandler(message.timestamp)}
-                    photoUrl={message.file ? URL.createObjectURL(message.file) : message.file}
+                    photoUrl={message.photoUrl}
                 />
             );
         }
