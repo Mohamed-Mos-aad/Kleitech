@@ -50,6 +50,13 @@ export default function VoiceMessage({senderId,timestamp,voiceUrl}:IVoiceMessage
     const audioSliderHandler = (e: React.FormEvent<HTMLInputElement>) => {
         const value = e.currentTarget.value;
         setAudioPlayerProgress(Number(value));
+        const audio = audioPlayBackRef.current;
+
+        if (!audio || isNaN(Number(value))) return;
+        if (!isFinite(audio.duration) || audio.duration === 0) {
+            return;
+        }
+        
         if (audioSliderRef.current) 
         {
             audioSliderRef.current.style.background = `linear-gradient(to right, var(--main-color-200) ${value}%, #fff ${value}%)`;
@@ -127,22 +134,6 @@ export default function VoiceMessage({senderId,timestamp,voiceUrl}:IVoiceMessage
             }
         };
     }, [audioStartd, audioPlayBackRef]);
-    
-
-
-
-
-
-    useEffect(()=>{
-        const audioElement = audioPlayBackRef.current;
-        if (audioElement) {
-            audioElement.addEventListener('loadedmetadata', () => {
-                convertVoiceDurationHandler(audioElement.duration);
-            });
-        }
-    },[audioPlayBackRef])
-
-
 
 
 
@@ -151,9 +142,6 @@ export default function VoiceMessage({senderId,timestamp,voiceUrl}:IVoiceMessage
     const [messageEmoji,setMessageEmoji] = useState('');
     const [messageEmojisContainerOpen,setMessageEmojisContainerOpen] = useState(false);
     const [messageOptionsContainerOpen,setMessageOptionsContainerOpen] = useState(false);
-
-
-
 
 
 
@@ -171,7 +159,6 @@ export default function VoiceMessage({senderId,timestamp,voiceUrl}:IVoiceMessage
         setMessageEmojisContainerOpen(false);
     }
 
-    
 
 
     return (
@@ -180,7 +167,7 @@ export default function VoiceMessage({senderId,timestamp,voiceUrl}:IVoiceMessage
                 <div className={style.message_content}>
                     <div className={style.audio_player}>
                         <input type='range' ref={audioSliderRef} min={0} max={100} step={1} value={audioPlayerProgress} onChange={(e)=>{audioSliderHandler(e)}}/>
-                        <audio src={voiceUrl} ref={audioPlayBackRef} controls style={{display:'none'}}></audio>
+                        <audio src={voiceUrl} ref={audioPlayBackRef} preload="metadata" controls style={{display:'none'}}></audio>
                         <h5>{audioDuration.minutes < 10 ? '0'+audioDuration.minutes : audioDuration.minutes}:{audioDuration.seconds < 10 ? '0'+audioDuration.seconds : audioDuration.seconds}</h5>
                         <img src={audioStartd? pauseIcon : playIcon} alt=""  onClick={voiceRecordStateToggleHandler}/>
                         <div className={style.message_emoji}>{messageEmoji}</div>
