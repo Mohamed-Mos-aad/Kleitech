@@ -8,9 +8,11 @@ import trueIcon from '../../../assets/main/chat/trueIcon.svg'
 import style from '../../../style/components/ui/chat/message.module.css'
 // ** Hooks && Tools
 import { useEffect, useRef, useState } from 'react';
-import emoji from 'emoji.json';
-
-
+// ** Components
+import EmojiPicker from './EmojiPicker';
+import OptionsList from './OptionsList';
+// ** Api
+import { deleteChat } from '../../../api/chat/chatApi';
 
 
 
@@ -18,14 +20,15 @@ import emoji from 'emoji.json';
 interface IVoiceMessage{
     senderId: string,
     voiceUrl: string | undefined,
-    timestamp: string
+    timestamp: string,
+    messageId: string,
 }
 
 
 
 
 
-export default function VoiceMessage({senderId,timestamp,voiceUrl}:IVoiceMessage) {
+export default function VoiceMessage({senderId,timestamp,voiceUrl,messageId}:IVoiceMessage) {
     // ** States
     const [audioPlayerProgress,setAudioPlayerProgress] = useState(0);
     const [audioStartd,setAudioStarted] = useState<boolean>(false);
@@ -69,17 +72,17 @@ export default function VoiceMessage({senderId,timestamp,voiceUrl}:IVoiceMessage
         }
     };
 
-    const voiceRecordStateToggleHandler = ()=>{
-        if(!audioStartd)
-        {
-            audioPlayBackRef?.current?.play();
-        }
-        else
-        {
-            audioPlayBackRef?.current?.pause();
-        }
-        setAudioStarted(!audioStartd);
-    }
+    const voiceRecordStateToggleHandler = () => {
+        setAudioStarted(prev => {
+            if (!prev) {
+            audioPlayBackRef.current?.play();
+            } else {
+            audioPlayBackRef.current?.pause();
+            }
+            return !prev;
+        });
+    };
+
 
     const convertVoiceDurationHandler = (duration:number)=>{
         const minutes = Math.floor(duration / 60);
@@ -133,12 +136,11 @@ export default function VoiceMessage({senderId,timestamp,voiceUrl}:IVoiceMessage
                 cancelAnimationFrame(animationFrameId);
             }
         };
-    }, [audioStartd, audioPlayBackRef]);
+    }, [audioStartd]);
 
 
 
     // ** States
-    const emojis = [emoji[151],emoji[349],emoji[355],emoji[7],emoji[85],emoji[57]].reverse();
     const [messageEmoji,setMessageEmoji] = useState('');
     const [messageEmojisContainerOpen,setMessageEmojisContainerOpen] = useState(false);
     const [messageOptionsContainerOpen,setMessageOptionsContainerOpen] = useState(false);
@@ -158,7 +160,14 @@ export default function VoiceMessage({senderId,timestamp,voiceUrl}:IVoiceMessage
         setMessageOptionsContainerOpen(!messageOptionsContainerOpen);
         setMessageEmojisContainerOpen(false);
     }
-
+    const deleteMessage = async ()=>{
+        try{
+            await deleteChat(messageId);
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
 
 
     return (
@@ -181,20 +190,11 @@ export default function VoiceMessage({senderId,timestamp,voiceUrl}:IVoiceMessage
                     </div>
                     {
                         messageEmojisContainerOpen && 
-                        <div className={style.message_emojis}>
-                            {emojis.map(emoji => <div onClick={()=>{selectEmoji(emoji.char)}}> {emoji.char}</div>)}
-                        </div>
+                        <EmojiPicker onSelect={selectEmoji}/>
                     }
                     {
                         messageOptionsContainerOpen &&
-                        <div className={style.message_options_list}>
-                            <ul>
-                                <li>رد</li>
-                                <li>تعديل الرساله</li>
-                                <li>تثبيت في المحادثه</li>
-                                <li>مسج الرساله</li>
-                            </ul>
-                        </div>
+                        <OptionsList deleteMessage={deleteMessage}/>
                     }
                 </div>
                 <h3>{timestamp}</h3>

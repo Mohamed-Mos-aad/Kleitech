@@ -381,6 +381,9 @@
 {
     filter: brightness(0) saturate(100%) invert(55%) sepia(71%) saturate(1387%) hue-rotate(86deg) brightness(100%) contrast(104%);
 }
+.selected {
+    filter: invert(52%) sepia(94%) saturate(1468%) hue-rotate(83deg) brightness(104%) contrast(102%);
+}
 .chat_footer button
 {
     min-width: 50px;

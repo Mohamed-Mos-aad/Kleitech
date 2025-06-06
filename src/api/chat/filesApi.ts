@@ -9,6 +9,7 @@ export const uploadToCloudinary = async (file: File): Promise<string> => {
         body: formData,
     });
 
+
     if (!res.ok) {
         const errorData = await res.json();
         console.error('فشل في رفع الملف:', errorData);

@@ -33,7 +33,7 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
     const [recordStarted,setRecordStarted] = useState<boolean>(false);
     const [attachment, setAttachment] = useState<File | null>(null);
     const [recordingStatus,setRecordingStatus] = useState<'idle' | 'recording' | 'recorded'>('idle');
-
+    const [attachmentType, setAttachmentType] = useState<'image' | 'voice' | 'document' | null>(null);
 
     // ** Refs
     const imgUploadRef = useRef<HTMLInputElement | null>(null);
@@ -48,6 +48,14 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
     const imgUploadHandler = ()=>{
         imgUploadRef?.current?.click();
     }
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) {
+            const file = e.target.files[0];
+            console.log("Selected image:", file);
+            setAttachment(file);
+            setAttachmentType('image');
+        }
+    };
     const startRecordHandler = async () => {
         
         if (recordStarted) {
@@ -74,7 +82,7 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
             recorder.onstop = () => {
                 const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });    
                 stream.getTracks().forEach(track => track.stop());
-                setAttachment(new File([audioBlob], 'voice.wav'));
+                setAttachment(new File([audioBlob], 'voice.wav', { type: 'audio/wav' }));
             };
     
             recorder.start();
@@ -110,7 +118,6 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
                     fileName.endsWith('.mp3') ||
                     fileName.endsWith('.webm')
                 ) {
-                    console.log('audio')
                     try {
                         const audioUrl = await uploadToCloudinary(attachment);
                         message = {
@@ -125,14 +132,19 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
                     }
                 }
                 else if (fileName.endsWith('.jpg') || fileName.endsWith('.jpeg') || fileName.endsWith('.png') || fileName.endsWith('.gif')) {
-                    console.log('photo')
-                    message = {
-                        ...message,
-                        type: 'image',
-                        photoUrl: URL.createObjectURL(attachment)
-                    };
+                    try {
+                        const photoUrl = await uploadToCloudinary(attachment);
+                        message = {
+                            ...message,
+                            type: 'image',
+                            photoUrl: photoUrl,
+                        };
+                    } catch (error) {
+                        console.error('فشل في رفع الصوت إلى Cloudinary:', error);
+                        alert('فشل في رفع الملف. حاول مجددًا.');
+                        return;
+                    }
                 } else {
-                    console.log('document')
                     message = {
                         ...message,
                         type: 'document',
@@ -150,8 +162,11 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
 
 
             sendMessageHandler(message);
-            messageInputRef.current!.value = '';
+            if (messageInputRef.current) {
+                messageInputRef.current.value = '';
+            }
             setAttachment(null);
+            setAttachmentType(null);
             setRecordStarted(false);
             setRecordingStatus("idle");
         }
@@ -171,8 +186,8 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
                         <img src={micIcon} onClick={startRecordHandler} className={`${recordingStatus=== 'recording'? `${style.recording}`: ''} ${recordingStatus === 'recorded' ? style.recorded : ''}`} alt="Mic icon" />
                         <input type="file" ref={fileUploadRef} style={{display:'none'}} accept='.pdf'/> 
                         <img src={attachFileIcon} alt="Attach File icon" onClick={fileUploadHandler} />
-                        <input type="file" ref={imgUploadRef} style={{display:'none'}} accept='.jpg, .jpeg, .png, .gif'/> 
-                        <img src={studioIcon} alt="Studio icon" onClick={imgUploadHandler}/>
+                        <input type="file" ref={imgUploadRef} onChange={handleImageChange} style={{display:'none'}} accept='.jpg, .jpeg, .png, .gif'/> 
+                        <img src={studioIcon} alt="Studio icon" className={attachmentType === 'image' ? style.selected : ''} onClick={imgUploadHandler}/>
                     </div>
                 </div>
                 <button onClick={handleSendMessage}>
