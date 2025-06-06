@@ -373,9 +373,13 @@
     align-items: center;
     gap: 16px;
 }
-.chat_footer .send_input .delete_record
+.chat_footer .send_input .recording
 {
     filter: brightness(0) saturate(100%) invert(15%) sepia(96%) saturate(6895%) hue-rotate(359deg) brightness(94%) contrast(111%);
+}
+.chat_footer .send_input .recorded
+{
+    filter: brightness(0) saturate(100%) invert(55%) sepia(71%) saturate(1387%) hue-rotate(86deg) brightness(100%) contrast(104%);
 }
 .chat_footer button
 {
@@ -390,7 +394,6 @@
     cursor: pointer;
 }
 /* End Chats Screen */
-
 
 
 

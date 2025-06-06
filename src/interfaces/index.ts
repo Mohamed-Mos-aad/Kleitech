@@ -111,7 +111,7 @@ export interface IMessage {
     receiverId: string;
     timestamp: string;
     status: string;
-    type: 'text' | 'voice' | 'file';
+    type: 'text' | 'voice' | 'document' | 'image';
     text?: string;
     file?: File;
     audioUrl?: string;

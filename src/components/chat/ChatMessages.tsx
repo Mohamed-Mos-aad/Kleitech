@@ -33,10 +33,10 @@ export default function ChatMessages({currentChat}:IChatMessages) {
                     key={message.messageId}
                     senderId={message.senderId}
                     timestamp={convertDateTypeHandler(message.timestamp)}
-                    voiceUrl={message.file ? URL.createObjectURL(message.file) : message.file}
+                    voiceUrl={message.audioUrl}
                 />
             );
-        } else if (message.type === 'file') {
+        } else if (message.type === 'document') {
             return (
                 <PhotoMessage
                     key={message.messageId}

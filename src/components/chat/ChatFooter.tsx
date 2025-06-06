@@ -10,6 +10,7 @@ import style from '../../style/layouts/chatLayout.module.css'
 import { useRef, useState } from 'react'
 // ** Interfaces
 import { IMessage } from '../../interfaces'
+import { uploadToCloudinary } from '../../api/chat/filesApi'
 
 
 
@@ -31,10 +32,10 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
     const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
     const [recordStarted,setRecordStarted] = useState<boolean>(false);
     const [attachment, setAttachment] = useState<File | null>(null);
+    const [recordingStatus,setRecordingStatus] = useState<'idle' | 'recording' | 'recorded'>('idle');
 
 
     // ** Refs
-    const audioPlayBackRef = useRef<HTMLAudioElement>(null);
     const imgUploadRef = useRef<HTMLInputElement | null>(null);
     const fileUploadRef = useRef<HTMLInputElement | null>(null);
 
@@ -53,6 +54,7 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
             if (mediaRecorder) {
                 mediaRecorder.stop();
                 setRecordStarted(false);
+                setRecordingStatus('recorded');
             }
             return;
         }
@@ -70,15 +72,7 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
             };
     
             recorder.onstop = () => {
-                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-                const audioUrl = URL.createObjectURL(audioBlob);
-
-    
-                
-                if (audioPlayBackRef.current) {
-                    audioPlayBackRef.current.src = audioUrl;
-                }
-    
+                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });    
                 stream.getTracks().forEach(track => track.stop());
                 setAttachment(new File([audioBlob], 'voice.wav'));
             };
@@ -86,37 +80,80 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
             recorder.start();
             setMediaRecorder(recorder);
             setRecordStarted(true);
+            setRecordingStatus('recording');
         } catch (error) {
             console.error("Error accessing the microphone", error);
+            setRecordingStatus('idle');
         }
     };
 
 
-    const handleSendMessage = ()=>{
-        if (messageInputRef && messageInputRef.current || attachment)
+    const handleSendMessage = async ()=>{
+        if ((messageInputRef.current && messageInputRef.current.value.trim()) || attachment)
         {
-            const message:IMessage = {
+            let message:IMessage = {
                 messageId: `msg${chatLenght+1}`,
                 senderId: senderId,
                 receiverId: receiverId,
                 timestamp: new Date().toISOString(),
                 status: "delivered",
-                type: attachment ? 'file' : 'text',
+                type: 'text',
                 reactions: []
             };
-                
+            
 
             if (attachment) {
-                message.type = attachment.type.startsWith('audio') ? 'voice' : 'file';
-                message['file'] = attachment;
-            } else if (messageInputRef?.current?.value) {
-                message['text'] = messageInputRef.current.value;
+                const fileName = attachment.name.toLowerCase();
+                if (
+                    attachment.type.startsWith('audio/') ||
+                    fileName.endsWith('.wav') ||
+                    fileName.endsWith('.mp3') ||
+                    fileName.endsWith('.webm')
+                ) {
+                    console.log('audio')
+                    try {
+                        const audioUrl = await uploadToCloudinary(attachment);
+                        message = {
+                            ...message,
+                            type: 'voice',
+                            audioUrl: audioUrl
+                        };
+                    } catch (error) {
+                        console.error('فشل في رفع الصوت إلى Cloudinary:', error);
+                        alert('فشل في رفع الملف. حاول مجددًا.');
+                        return;
+                    }
+                }
+                else if (fileName.endsWith('.jpg') || fileName.endsWith('.jpeg') || fileName.endsWith('.png') || fileName.endsWith('.gif')) {
+                    console.log('photo')
+                    message = {
+                        ...message,
+                        type: 'image',
+                        photoUrl: URL.createObjectURL(attachment)
+                    };
+                } else {
+                    console.log('document')
+                    message = {
+                        ...message,
+                        type: 'document',
+                        file: attachment
+                    };
+                }
+            } 
+            else if (messageInputRef?.current?.value) {
+                message = {
+                    ...message,
+                    type: 'text',
+                    text: messageInputRef.current.value
+                };
             }
 
 
             sendMessageHandler(message);
             messageInputRef.current!.value = '';
             setAttachment(null);
+            setRecordStarted(false);
+            setRecordingStatus("idle");
         }
     }
 
@@ -131,7 +168,7 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
                         <img src={imojySolidIcon} alt="Imojy solid icon" onClick={emojyComponentStateToggleHandler}/>
                     </div>
                     <div className={style.message_media}>
-                        <img src={micIcon} onClick={startRecordHandler} className={recordStarted? `${style.delete_record}`: ''} alt="Mic icon" />
+                        <img src={micIcon} onClick={startRecordHandler} className={`${recordingStatus=== 'recording'? `${style.recording}`: ''} ${recordingStatus === 'recorded' ? style.recorded : ''}`} alt="Mic icon" />
                         <input type="file" ref={fileUploadRef} style={{display:'none'}} accept='.pdf'/> 
                         <img src={attachFileIcon} alt="Attach File icon" onClick={fileUploadHandler} />
                         <input type="file" ref={imgUploadRef} style={{display:'none'}} accept='.jpg, .jpeg, .png, .gif'/> 
