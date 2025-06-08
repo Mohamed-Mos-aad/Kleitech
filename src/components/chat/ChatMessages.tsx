@@ -24,7 +24,7 @@ export default function ChatMessages({currentChat}:IChatMessages) {
         if(message.type === 'text')
         {
             return(
-                <TextMessage key={message.messageId} senderId={message.senderId} messageId={message.messageId} timestamp={convertDateTypeHandler(message.timestamp)} text={message.text}/>
+                <TextMessage messages={currentChat.messages} message={message} key={message.messageId} senderId={message.senderId} messageId={message.messageId} timestamp={convertDateTypeHandler(message.timestamp)} text={message.text}/>
             )
         }
         else if (message.type === 'voice') {
@@ -48,7 +48,6 @@ export default function ChatMessages({currentChat}:IChatMessages) {
                 />
             );
         }
-    
         return null;
     });
 

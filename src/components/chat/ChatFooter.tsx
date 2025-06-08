@@ -7,10 +7,15 @@ import micIcon from '../../assets/main/chat/micIcon.svg'
 // ** Style
 import style from '../../style/layouts/chatLayout.module.css'
 // ** Hooks && Tools
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 // ** Interfaces
 import { IMessage } from '../../interfaces'
+// ** Api
 import { uploadToCloudinary } from '../../api/chat/filesApi'
+// ** Store
+import { AppDispatch, RootState } from '../../app/store'
+import { useDispatch, useSelector } from 'react-redux'
+import { setChatDataS } from '../../app/slices/chat/chatSlice'
 
 
 
@@ -22,18 +27,28 @@ interface IChatFooter{
     chatLenght: number,
     senderId: string,
     receiverId: string,
+    messages: IMessage[],
 }
 
 
 
 
-export default function ChatFooter({emojyComponentStateToggleHandler,sendMessageHandler,messageInputRef,chatLenght, receiverId, senderId}:IChatFooter) {
+export default function ChatFooter({emojyComponentStateToggleHandler,sendMessageHandler,messageInputRef,chatLenght, receiverId, senderId, messages}:IChatFooter) {
+    // ** Store
+    const dispatch: AppDispatch = useDispatch();
+    const chatDataS = useSelector((state: RootState) => state.chatDataS);
+
+
+
     // ** States
     const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
     const [recordStarted,setRecordStarted] = useState<boolean>(false);
     const [attachment, setAttachment] = useState<File | null>(null);
     const [recordingStatus,setRecordingStatus] = useState<'idle' | 'recording' | 'recorded'>('idle');
     const [attachmentType, setAttachmentType] = useState<'image' | 'voice' | 'document' | null>(null);
+    const [replayedMessage,setReplayedMessage] = useState<string | null>(null);
+
+
 
     // ** Refs
     const imgUploadRef = useRef<HTMLInputElement | null>(null);
@@ -94,8 +109,6 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
             setRecordingStatus('idle');
         }
     };
-
-
     const handleSendMessage = async ()=>{
         if ((messageInputRef.current && messageInputRef.current.value.trim()) || attachment)
         {
@@ -106,7 +119,9 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
                 timestamp: new Date().toISOString(),
                 status: "delivered",
                 type: 'text',
-                reactions: []
+                reactions: [],
+                isPinned: false,
+                isReplyTo: chatDataS.replayId,
             };
             
 
@@ -168,16 +183,29 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
             setAttachment(null);
             setAttachmentType(null);
             setRecordStarted(false);
+            dispatch(setChatDataS({replayId: null}));
             setRecordingStatus("idle");
         }
     }
 
 
+    useEffect(()=>{
+        const getMessage = messages.find(message => message.messageId === chatDataS.replayId);
+        setReplayedMessage(getMessage?.text || null);
+    },[chatDataS.replayId,messages])
 
     return (
         <>
             <div className={style.chat_footer}>
                 <div className={style.send_input}>
+                    {
+                        replayedMessage !== null ? 
+                            <div className={style.message_replaying}>
+                                <h5>{replayedMessage}</h5>
+                            </div>
+                        :
+                        ''
+                    }
                     <input type="text" placeholder='اكتب رسالتك' ref={messageInputRef} onKeyDown={(e) => {if (e.key === 'Enter') handleSendMessage()}}/>
                     <div className={style.imojy}>
                         <img src={imojySolidIcon} alt="Imojy solid icon" onClick={emojyComponentStateToggleHandler}/>
