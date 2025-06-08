@@ -196,6 +196,21 @@
     border-bottom: solid 1px var(--main-color-200);
     position: relative;
 }
+.chat_header .pin_message
+{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 55;
+    width: 100%;
+    background-color: #f3b6b6;
+    padding: 8px 16px;
+    border-radius: 0 0 4px 4px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #868686;
+    text-align: start;
+}
 .chat_header .chat_photo
 {
     display: flex;

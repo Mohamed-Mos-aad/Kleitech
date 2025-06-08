@@ -5,6 +5,9 @@ import noPhoto from '../../assets/main/consultation/noPhoto.png'
 import style from '../../style/layouts/chatLayout.module.css'
 // ** Interface
 import { IChat } from '../../interfaces'
+import { useSelector } from 'react-redux';
+import { RootState } from '../../app/store';
+import { useEffect, useState } from 'react';
 
 
 
@@ -17,9 +20,36 @@ interface IChatHeader{
 
 
 export default function ChatHeader({currentChat,openChatMobilesToggleHandler}:IChatHeader) {
+    // ** Store 
+    const chatDataS = useSelector((state: RootState) => state.chatDataS);
+
+
+
+    // ** States
+    const [pinMessage,setPinMessage] = useState<string | null>(null);
+
+
+
+    // ** UseEffect
+    useEffect(()=>{
+        if(currentChat)
+        {
+            const getMessage = currentChat.messages.find(message => message.messageId === chatDataS.pinId || message.isPinned);
+            setPinMessage(getMessage?.text || null);
+        }
+    },[currentChat,chatDataS.pinId])
+
+
+
     return (
         <>
             <div className={style.chat_header}>
+                {
+                    pinMessage && 
+                    <div className={style.pin_message}>
+                        {pinMessage}
+                    </div>
+                }
                 <div className={style.chat_photo}>
                     <img src={currentChat?.participants[0].photo || noPhoto} alt="User photo" />
                 </div>
@@ -28,8 +58,8 @@ export default function ChatHeader({currentChat,openChatMobilesToggleHandler}:IC
                     <h3 className={currentChat?.participants[0].isOnline ? `${style.active}` : ''}>{currentChat?.participants[0].isOnline ? 'متصل' : 'غير متصل'}</h3>
                 </div>
                 <div className={style.back_btn}>
-                    <button>
-                        <img src={backIcon} alt="Back icon" onClick={openChatMobilesToggleHandler}/>
+                    <button onClick={openChatMobilesToggleHandler}>
+                        <img src={backIcon} alt="Back icon"/>
                     </button>
                 </div>
             </div>

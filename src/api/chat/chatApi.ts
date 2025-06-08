@@ -1,7 +1,7 @@
 // ** Hooks && Tools
 import axios from "axios";
 // ** Interfaces
-import { IChat} from "../../interfaces";
+import { IChat, IMessage} from "../../interfaces";
 
 const api = axios.create({
     baseURL: import.meta.env.VITE_LOCAL_SERVER_API_URL,
@@ -36,7 +36,8 @@ export const addChat = async (chatData:IChat) => {
     }
 }
 
-export const editeChat = async (chatData:IChat,id:string) => {
+export const sendMessage = async (chatData:IChat,id:string) => {
+    console.log('messagesended')
     try{
         const response = await api.put(`/chats/${id}`, chatData);
         return response.data;
@@ -48,7 +49,34 @@ export const editeChat = async (chatData:IChat,id:string) => {
     }
 }
 
+export const editeMessage = async (message:IMessage,id:string) => {
+    console.log('messageedited')
+    try{
+        const response = await api.put(`/chats/messages/${id}`, message);
+        return response.data;
+    }
+    catch(error)
+    {
+        console.log(error);
+        throw error;
+    }
+}
+
+export const pinMessage = async (message:IMessage,id:string) => {
+    console.log('messageepined')
+    try{
+        const response = await api.put(`/chats/messages/${id}`, message);
+        return response.data;
+    }
+    catch(error)
+    {
+        console.log(error);
+        throw error;
+    }
+}
+
 export const deleteChat = async (id:string) => {
+    console.log('messagedeleted')
     try{
         const response = await api.delete(`/chats/${id}`);
         return response.data;

@@ -7,6 +7,7 @@ import donePageSlice from './slices/donePageSlice';
 import bookingDetailsSlice from './slices/bookingDetails';
 import otpEmailSlice from './slices/auth/otpSlice';
 import chatDataSlice from './slices/chat/chatSlice';
+import homeAiSlice from './slices/main/homeAiSlice';
 
 
 
@@ -18,7 +19,8 @@ const store = configureStore({
         donePage: donePageSlice.reducer,
         BookingDetails: bookingDetailsSlice.reducer,
         otpEmail: otpEmailSlice.reducer,
-        chatDataS: chatDataSlice.reducer
+        chatDataS: chatDataSlice.reducer,
+        homeAi: homeAiSlice.reducer
     },
 })
 

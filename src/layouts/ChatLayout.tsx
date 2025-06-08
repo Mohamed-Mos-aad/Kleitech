@@ -4,7 +4,7 @@ import style from '../style/layouts/chatLayout.module.css'
 import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 // ** Api
-import { addChat, editeChat, fetchMessages } from '../api/chat/chatApi'
+import { addChat, sendMessage, fetchMessages, editeMessage } from '../api/chat/chatApi'
 // ** Interfaces
 import { IChat, IMessage } from '../interfaces'
 // ** Components
@@ -49,7 +49,6 @@ export default function ChatLayout() {
         setCurrentChat(findChat);
         openChatMobilesToggleHandler();
     }
-
     const sendMessageHandler = async (message:IMessage)=>{
         if (!message || !currentChat) return;
         
@@ -79,7 +78,7 @@ export default function ChatLayout() {
 
 
         try{
-            await editeChat(updatedChat,currentChat.id)
+            await sendMessage(updatedChat,currentChat.id)
         }
         catch(error){
             console.log(error);
@@ -95,16 +94,27 @@ export default function ChatLayout() {
             setEmojysComponentOpened(false);
         }
     }
-
+    const editMessageHandler = async (message: IMessage) =>{
+        if(currentChat)
+        {
+            try{
+                await editeMessage(message,currentChat.id)
+            }
+            catch(error){
+                console.log(error);
+            }
+            finally{
+                setEmojysComponentOpened(false);
+            }
+        }
+    }
     const emojyComponentStateToggleHandler = ()=>{setEmojysComponentOpened(!emojysComponentOpened)};
-    
     const addEmojiHandler = (emoji:string)=>{
         if(messageInputRef.current)
         {
             messageInputRef.current.value += emoji;
         }
     }
-    
     const openChatMobilesToggleHandler = ()=>{
         if(window.innerWidth < 767.98)
         {
@@ -210,7 +220,7 @@ export default function ChatLayout() {
                             <ChatMessages currentChat={currentChat}/>
                             {
                                 currentChat && 
-                                <ChatFooter messages={currentChat.messages} emojyComponentStateToggleHandler={emojyComponentStateToggleHandler} sendMessageHandler={sendMessageHandler} messageInputRef={messageInputRef} chatLenght={Number(currentChat?.messages.length)} receiverId={currentChat?.participants[0].userId} senderId={currentChat?.participants[1].userId}/>
+                                <ChatFooter messages={currentChat.messages} emojyComponentStateToggleHandler={emojyComponentStateToggleHandler} sendMessageHandler={sendMessageHandler} editMessageHandler={editMessageHandler} messageInputRef={messageInputRef} chatLenght={Number(currentChat?.messages.length)} receiverId={currentChat?.participants[0].userId} senderId={currentChat?.participants[1].userId}/>
                             }
                             {
                                 emojysComponentOpened && 
