@@ -11,6 +11,9 @@ import EmojiPicker from './EmojiPicker';
 import OptionsList from './OptionsList';
 // ** Api
 import { deleteChat } from '../../../api/chat/chatApi';
+import { AppDispatch } from '../../../app/store';
+import { useDispatch } from 'react-redux';
+import { setChatDataS } from '../../../app/slices/chat/chatSlice';
 
 
 
@@ -25,6 +28,11 @@ interface IPhotoMessage{
 
 
 export default function PhotoMessage({senderId,timestamp,photoUrl,messageId}:IPhotoMessage) {
+    // ** Store
+    const dispatch: AppDispatch = useDispatch();
+    
+    
+    
     // ** States
     const [messageEmoji,setMessageEmoji] = useState('');
     const [messageEmojisContainerOpen,setMessageEmojisContainerOpen] = useState(false);
@@ -44,12 +52,19 @@ export default function PhotoMessage({senderId,timestamp,photoUrl,messageId}:IPh
     const messageOptionsContainerToggelHandler = ()=>{
         setMessageOptionsContainerOpen(!messageOptionsContainerOpen);
         setMessageEmojisContainerOpen(false);
+    }    
+    const replayMessage = ()=>{
+        dispatch(setChatDataS({replayId: messageId, editeId: null, pinId: null}));
+        messageOptionsContainerToggelHandler();
     }
-    
     const editeMessage = ()=>{
-        
-    } 
-
+        dispatch(setChatDataS({replayId: null , editeId: messageId, pinId: null}));
+        messageOptionsContainerToggelHandler();
+    }
+    const pinMessage = ()=>{
+        dispatch(setChatDataS({replayId: null , editeId: null, pinId: messageId}));
+        messageOptionsContainerToggelHandler();
+    }
     const deleteMessage = async ()=>{
         try{
             await deleteChat(messageId);
@@ -57,6 +72,7 @@ export default function PhotoMessage({senderId,timestamp,photoUrl,messageId}:IPh
         catch(error){
             console.log(error)
         }
+        messageOptionsContainerToggelHandler();
     }
 
     
@@ -81,7 +97,8 @@ export default function PhotoMessage({senderId,timestamp,photoUrl,messageId}:IPh
                     }
                     {
                         messageOptionsContainerOpen &&
-                        <OptionsList editeMessage={editeMessage} deleteMessage={deleteMessage}/>
+                        <OptionsList deleteMessage={deleteMessage} editeMessage={editeMessage} pinMessage={pinMessage} replayMessage={replayMessage}/>
+
                     }
                 </div>
                 <h3>{timestamp}</h3>
