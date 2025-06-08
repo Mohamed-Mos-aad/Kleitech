@@ -117,6 +117,8 @@ export interface IMessage {
     audioUrl?: string;
     photoUrl?: string;
     reactions: { userId: string; reaction: string }[];
+    isPinned: boolean;
+    isReplyTo: null | string;
 }
 
 

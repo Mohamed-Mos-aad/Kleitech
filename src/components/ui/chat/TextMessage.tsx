@@ -5,12 +5,16 @@ import trueIcon from '../../../assets/main/chat/trueIcon.svg'
 // ** Style
 import style from '../../../style/components/ui/chat/message.module.css'
 // ** Hooks && Tools
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 // ** Api
 import { deleteChat } from '../../../api/chat/chatApi'
 // ** Components
 import EmojiPicker from './EmojiPicker'
 import OptionsList from './OptionsList'
+import { AppDispatch } from '../../../app/store'
+import { useDispatch } from 'react-redux'
+import { setChatDataS } from '../../../app/slices/chat/chatSlice'
+import { IMessage } from '../../../interfaces'
 
 
 // ** Interfaces
@@ -18,18 +22,24 @@ interface ITextMessage{
     senderId: string,
     messageId: string,
     text: string | undefined,
-    timestamp: string
+    timestamp: string,
+    messages: IMessage[],
+    message: IMessage,
 }
 
 
 
 
 
-export default function TextMessage({senderId,messageId,timestamp,text}:ITextMessage) {
+export default function TextMessage({messages, message, senderId,messageId,timestamp,text}:ITextMessage) {
+    // ** Store
+    const dispatch: AppDispatch = useDispatch();
+
     // ** States
     const [messageEmoji,setMessageEmoji] = useState('');
     const [messageEmojisContainerOpen,setMessageEmojisContainerOpen] = useState(false);
     const [messageOptionsContainerOpen,setMessageOptionsContainerOpen] = useState(false);
+    const [replayedMessage,setReplayedMessage] = useState<string | null>(null);
 
 
 
@@ -49,6 +59,11 @@ export default function TextMessage({senderId,messageId,timestamp,text}:ITextMes
         setMessageOptionsContainerOpen(!messageOptionsContainerOpen);
         setMessageEmojisContainerOpen(false);
     }
+    const replayMessage = ()=>{
+        console.log(messageId);
+        dispatch(setChatDataS({replayId: messageId}));
+        messageOptionsContainerToggelHandler();
+    }
     const deleteMessage = async ()=>{
         try{
             await deleteChat(messageId);
@@ -56,13 +71,28 @@ export default function TextMessage({senderId,messageId,timestamp,text}:ITextMes
         catch(error){
             console.log(error)
         }
+        messageOptionsContainerToggelHandler();
     }
+
+
+    useEffect(() => {
+        if(message.isReplyTo !== null)
+        {
+            const getMessage = messages.find(msg => msg.messageId.trim() === message.isReplyTo?.trim());
+            setReplayedMessage(getMessage?.text || null);
+        }
+    }, [message.isReplyTo, messages, message]);
 
 
 
     return (
         <>
             <div className={`${style.message} ${senderId.includes('doc') ? style.receiver : '' }`}>
+                {replayedMessage && (
+                    <div className={style.message_replay}>
+                        <h5>{replayedMessage}</h5>
+                    </div>
+                )}
                 <div className={style.message_content}>
                     <h2>
                         {text}
@@ -81,7 +111,7 @@ export default function TextMessage({senderId,messageId,timestamp,text}:ITextMes
                     }
                     {
                         messageOptionsContainerOpen &&
-                        <OptionsList deleteMessage={deleteMessage}/>
+                        <OptionsList deleteMessage={deleteMessage} replayMessage={replayMessage}/>
                     }
                 </div>
                 <h3>{timestamp}</h3>

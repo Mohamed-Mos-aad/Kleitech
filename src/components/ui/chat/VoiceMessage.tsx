@@ -94,8 +94,6 @@ export default function VoiceMessage({senderId,timestamp,voiceUrl,messageId}:IVo
     }
 
 
-
-
     useEffect(() => {
         const audioElement = audioPlayBackRef.current;
         let animationFrameId: number | null = null;
@@ -169,6 +167,11 @@ export default function VoiceMessage({senderId,timestamp,voiceUrl,messageId}:IVo
         }
     }
 
+    const editeMessage = ()=>{
+        
+    } 
+
+
 
     return (
         <>
@@ -194,7 +197,7 @@ export default function VoiceMessage({senderId,timestamp,voiceUrl,messageId}:IVo
                     }
                     {
                         messageOptionsContainerOpen &&
-                        <OptionsList deleteMessage={deleteMessage}/>
+                        <OptionsList editeMessage={editeMessage} deleteMessage={deleteMessage}/>
                     }
                 </div>
                 <h3>{timestamp}</h3>

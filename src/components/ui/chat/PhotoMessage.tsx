@@ -45,6 +45,11 @@ export default function PhotoMessage({senderId,timestamp,photoUrl,messageId}:IPh
         setMessageOptionsContainerOpen(!messageOptionsContainerOpen);
         setMessageEmojisContainerOpen(false);
     }
+    
+    const editeMessage = ()=>{
+        
+    } 
+
     const deleteMessage = async ()=>{
         try{
             await deleteChat(messageId);
@@ -76,7 +81,7 @@ export default function PhotoMessage({senderId,timestamp,photoUrl,messageId}:IPh
                     }
                     {
                         messageOptionsContainerOpen &&
-                        <OptionsList deleteMessage={deleteMessage}/>
+                        <OptionsList editeMessage={editeMessage} deleteMessage={deleteMessage}/>
                     }
                 </div>
                 <h3>{timestamp}</h3>

@@ -210,7 +210,7 @@ export default function ChatLayout() {
                             <ChatMessages currentChat={currentChat}/>
                             {
                                 currentChat && 
-                                <ChatFooter emojyComponentStateToggleHandler={emojyComponentStateToggleHandler} sendMessageHandler={sendMessageHandler} messageInputRef={messageInputRef} chatLenght={Number(currentChat?.messages.length)} receiverId={currentChat?.participants[0].userId} senderId={currentChat?.participants[1].userId}/>
+                                <ChatFooter messages={currentChat.messages} emojyComponentStateToggleHandler={emojyComponentStateToggleHandler} sendMessageHandler={sendMessageHandler} messageInputRef={messageInputRef} chatLenght={Number(currentChat?.messages.length)} receiverId={currentChat?.participants[0].userId} senderId={currentChat?.participants[1].userId}/>
                             }
                             {
                                 emojysComponentOpened && 
