@@ -441,73 +441,8 @@
           "reactions": [],
           "isPinned": false,
           "isReplyTo": null
-        },
-        {
-          "messageId": "msg3",
-          "senderId": "pat1",
-          "receiverId": "doc1",
-          "timestamp": "2025-06-07T19:41:46.429Z",
-          "status": "delivered",
-          "type": "text",
-          "reactions": [],
-          "isPinned": false,
-          "isReplyTo": "msg2",
-          "text": "دكتوررررررر ؟؟؟؟؟؟؟؟"
-        },
-        {
-          "messageId": "msg4",
-          "senderId": "pat1",
-          "receiverId": "doc1",
-          "timestamp": "2025-06-07T19:54:41.249Z",
-          "status": "delivered",
-          "type": "text",
-          "reactions": [],
-          "isPinned": false,
-          "isReplyTo": "msg3",
-          "text": "مش بترد عليا ليه طيب"
-        },
-        {
-          "messageId": "msg5",
-          "senderId": "pat1",
-          "receiverId": "doc1",
-          "timestamp": "2025-06-07T19:56:48.793Z",
-          "status": "delivered",
-          "type": "text",
-          "reactions": [],
-          "isPinned": false,
-          "isReplyTo": null,
-          "text": "السلام عليييكم"
-        },
-        {
-          "messageId": "msg6",
-          "senderId": "pat1",
-          "receiverId": "doc1",
-          "timestamp": "2025-06-08T11:30:49.308Z",
-          "status": "delivered",
-          "type": "text",
-          "reactions": [],
-          "isPinned": false,
-          "isReplyTo": null,
-          "text": "دكتور"
-        },
-        {
-          "messageId": "msg7",
-          "senderId": "pat1",
-          "receiverId": "doc1",
-          "timestamp": "2025-06-08T11:31:00.851Z",
-          "status": "delivered",
-          "type": "text",
-          "reactions": [],
-          "isPinned": false,
-          "isReplyTo": "msg6",
-          "text": "؟؟؟؟؟؟؟؟؟؟؟؟؟"
         }
-      ],
-      "lastMessage": {
-        "messageId": "msg7",
-        "text": "؟؟؟؟؟؟؟؟؟؟؟؟؟",
-        "timestamp": "2025-06-08T11:31:00.851Z"
-      }
+      ]
     },
     {
       "id": "chat2",

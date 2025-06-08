@@ -60,8 +60,15 @@ export default function TextMessage({messages, message, senderId,messageId,times
         setMessageEmojisContainerOpen(false);
     }
     const replayMessage = ()=>{
-        console.log(messageId);
-        dispatch(setChatDataS({replayId: messageId}));
+        dispatch(setChatDataS({replayId: messageId, editeId: null, pinId: null}));
+        messageOptionsContainerToggelHandler();
+    }
+    const editeMessage = ()=>{
+        dispatch(setChatDataS({replayId: null , editeId: messageId, pinId: null}));
+        messageOptionsContainerToggelHandler();
+    }
+    const pinMessage = ()=>{
+        dispatch(setChatDataS({replayId: null , editeId: null, pinId: messageId}));
         messageOptionsContainerToggelHandler();
     }
     const deleteMessage = async ()=>{
@@ -111,7 +118,7 @@ export default function TextMessage({messages, message, senderId,messageId,times
                     }
                     {
                         messageOptionsContainerOpen &&
-                        <OptionsList deleteMessage={deleteMessage} replayMessage={replayMessage}/>
+                        <OptionsList deleteMessage={deleteMessage} editeMessage={editeMessage} pinMessage={pinMessage} replayMessage={replayMessage}/>
                     }
                 </div>
                 <h3>{timestamp}</h3>

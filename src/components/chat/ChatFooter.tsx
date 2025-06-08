@@ -23,6 +23,7 @@ import { setChatDataS } from '../../app/slices/chat/chatSlice'
 interface IChatFooter{
     emojyComponentStateToggleHandler: ()=> void,
     sendMessageHandler: (message: IMessage) => void,
+    editMessageHandler: (message: IMessage) => void,
     messageInputRef: React.RefObject<HTMLInputElement>,
     chatLenght: number,
     senderId: string,
@@ -33,7 +34,7 @@ interface IChatFooter{
 
 
 
-export default function ChatFooter({emojyComponentStateToggleHandler,sendMessageHandler,messageInputRef,chatLenght, receiverId, senderId, messages}:IChatFooter) {
+export default function ChatFooter({emojyComponentStateToggleHandler,sendMessageHandler, editMessageHandler, messageInputRef,chatLenght, receiverId, senderId, messages}:IChatFooter) {
     // ** Store
     const dispatch: AppDispatch = useDispatch();
     const chatDataS = useSelector((state: RootState) => state.chatDataS);
@@ -47,8 +48,7 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
     const [recordingStatus,setRecordingStatus] = useState<'idle' | 'recording' | 'recorded'>('idle');
     const [attachmentType, setAttachmentType] = useState<'image' | 'voice' | 'document' | null>(null);
     const [replayedMessage,setReplayedMessage] = useState<string | null>(null);
-
-
+    const [editMessageMode,setEditMessageMode] = useState<boolean>(false);
 
     // ** Refs
     const imgUploadRef = useRef<HTMLInputElement | null>(null);
@@ -183,16 +183,58 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
             setAttachment(null);
             setAttachmentType(null);
             setRecordStarted(false);
-            dispatch(setChatDataS({replayId: null}));
+            dispatch(setChatDataS({replayId: null,editeId: null, pinId: null}));
             setRecordingStatus("idle");
         }
     }
+    const handleEditMessage = ()=>{
+        if ((messageInputRef.current && messageInputRef.current.value.trim())){
+            let message:IMessage = {
+                messageId: `msg${chatLenght+1}`,
+                senderId: senderId,
+                receiverId: receiverId,
+                timestamp: new Date().toISOString(),
+                status: "delivered",
+                type: 'text',
+                reactions: [],
+                isPinned: false,
+                isReplyTo: chatDataS.replayId,
+            };
+            if (messageInputRef?.current?.value) {
+                message = {
+                    ...message,
+                    type: 'text',
+                    text: messageInputRef.current.value
+                };
+            }
+
+
+            editMessageHandler(message);
+            if (messageInputRef.current) {
+                messageInputRef.current.value = '';
+            }
+            dispatch(setChatDataS({replayId: null,editeId: null, pinId: null}));
+            setEditMessageMode(false);
+        }
+    }
+
 
 
     useEffect(()=>{
         const getMessage = messages.find(message => message.messageId === chatDataS.replayId);
         setReplayedMessage(getMessage?.text || null);
     },[chatDataS.replayId,messages])
+    useEffect(() => {
+        if (chatDataS.editeId && messageInputRef.current) {
+            const getMessage = messages.find(message => message.messageId === chatDataS.editeId);
+            if (getMessage && getMessage.text !== undefined) {
+                messageInputRef.current.value = getMessage.text;
+                setEditMessageMode(true);
+            }
+        }
+    }, [chatDataS.editeId, messageInputRef, messages]);
+
+
 
     return (
         <>
@@ -218,7 +260,7 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
                         <img src={studioIcon} alt="Studio icon" className={attachmentType === 'image' ? style.selected : ''} onClick={imgUploadHandler}/>
                     </div>
                 </div>
-                <button onClick={handleSendMessage}>
+                <button onClick={editMessageMode ? handleEditMessage: handleSendMessage}>
                     <img src={sendIcon} alt="Send icon" />
                 </button>
             </div>

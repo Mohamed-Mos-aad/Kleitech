@@ -7,7 +7,12 @@ import photoIcon from '../../../assets/main/home/image.svg'
 import deleteIcon from '../../../assets/main/home/deleteIcon.svg'
 // ** Hooks && Tools
 import { useRef, useState } from 'react'
-import { uploadPhoto } from '../../../api/uploadPhotoApi'
+// ** Api
+import { clsPhoto } from '../../../api/main/aiApi'
+// ** Store
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../../../app/store'
+import { setHomeAi } from '../../../app/slices/main/homeAiSlice'
 
 
 
@@ -19,6 +24,12 @@ interface IUploadPhoto{
 }
 
 export default function UploadPhoto({close,next,setXrayImageUrl}:IUploadPhoto) {
+    // ** Store
+    const dispatch: AppDispatch = useDispatch();
+
+
+
+
     // ** Default 
     const startTimeRef = useRef<number>(Date.now());
 
@@ -57,7 +68,7 @@ export default function UploadPhoto({close,next,setXrayImageUrl}:IUploadPhoto) {
         startTimeRef.current = Date.now();
 
         try{
-            const res = await uploadPhoto(formData, (progressEvent) => {
+            const res = await clsPhoto(formData, (progressEvent) => {
                 if (progressEvent.total) {
                     const percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);
                     setProgress(percent);
@@ -69,9 +80,12 @@ export default function UploadPhoto({close,next,setXrayImageUrl}:IUploadPhoto) {
                     setTimeRemaining(Math.round(estimatedTime));
                 }
             });
-            const data = res;
-            setUploadedPhotoInfo({name: data.image.filename,size: (data.size / (1024 * 1024)).toFixed(2).toString()});
-            setXrayImageUrl(data.url)
+            const data:{ResultIs: string} = res;
+            console.log(data);
+            setUploadedPhotoInfo({name: photo.name,size: (photo.size / (1024 * 1024)).toFixed(2).toString()});
+            const imageUrl = URL.createObjectURL(photo);
+            setXrayImageUrl(imageUrl);
+            dispatch(setHomeAi({ ResultIs: data.ResultIs }));
         }
         catch(error){
             console.log(error);

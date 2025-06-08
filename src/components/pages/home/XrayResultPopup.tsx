@@ -3,8 +3,10 @@ import style from '../../../style/pages/main/home.module.css'
 // ** assets
 import downloadIcon from '../../../assets/main/home/downloadIcon.svg'
 import shareIcon from '../../../assets/main/home/shareIcon.svg'
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../app/store';
 
 
 // ** Interface
@@ -12,8 +14,16 @@ interface IResult{
     xrayImageUrl: string,
 }
 export default function XrayResultPopup({xrayImageUrl}:IResult) {
+    // ** Store
+    const homeAi = useSelector((state: RootState) => state.homeAi);
+
+
+
+    // ** States
+    const [result,setResult] = useState<string>('')
     // ** Ref
     const resultRef = useRef<HTMLDivElement | null>(null);
+
 
 
     // ** Handlers
@@ -54,6 +64,28 @@ export default function XrayResultPopup({xrayImageUrl}:IResult) {
 
 
 
+    // ** UseEffect
+    useEffect(() => {
+        switch (homeAi.ResultIs) {
+            case 'Normal':
+            setResult('لا يوجد أمراض');
+            break;
+            case 'Cyst':
+            setResult('يوجد كيس دهني');
+            break;
+            case 'Stone':
+            setResult('يوجد حصي');
+            break;
+            case 'يوجد ورم':
+            setResult(homeAi.ResultIs);
+            break;
+            default:
+            setResult('نتيجة غير معروفة');
+        }
+    }, [homeAi.ResultIs]);
+
+
+    
     return (
         <>
             <div className={style.popUp_component}>
@@ -63,7 +95,7 @@ export default function XrayResultPopup({xrayImageUrl}:IResult) {
                         <div className={style.xray_photo}>
                             <img src={xrayImageUrl} alt="صورة الأشعة الخاصة بالمريض" />
                         </div>
-                        <h3>يوجد ورم</h3>
+                        <h3>{result}</h3>
                     </div>
                     <div className={`${style.popUp_btns} ${style.result}`}>
                         <button onClick={downloadHandler}>
