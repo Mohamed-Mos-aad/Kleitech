@@ -4,7 +4,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import userSignUpSlice from './slices/userSignUpSlice';
 import userLoginSlice from './slices/userSlice';
 import donePageSlice from './slices/donePageSlice';
-import bookingDetailsSlice from './slices/bookingDetails';
+import bookingDetailsSlice from './slices/bookingDetailsSlice';
 import otpEmailSlice from './slices/auth/otpSlice';
 import chatDataSlice from './slices/chat/chatSlice';
 import homeAiSlice from './slices/main/homeAiSlice';

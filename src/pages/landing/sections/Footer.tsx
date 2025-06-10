@@ -1,5 +1,7 @@
 // ** Assets
 import {logo, facebookIcon, linkedInIcon, telegramIcon, twitterIcon} from '../../../assets/icons/icons'
+// ** Texts
+import { footerTexts } from '../../../constants/texts/landing/footerText';
 // ** Style
 import style from '../../../style/pages/landing/sections/footer.module.css'
 // ** Hooks && Tools
@@ -41,12 +43,12 @@ function Footer({sectionId}:ISection) {
                     <div className={style.section_content}>
                         <div className={style.logo}>
                             <img src={logo} alt="App Logo" loading="lazy"/>
-                            <h3>كليّتِك</h3>
+                            <h3>{footerTexts.ar.logo.logoTitle}</h3>
                         </div>
-                        <p>نحن نقدم حلولًا رقمية مبتكرة لدعم صحتك. اكتشف كيف يمكننا مساعدتك في متابعة حالتك الصحية بكل سهولة وراحة.</p>
+                        <p>{footerTexts.ar.logo.logoDescription}</p>
                     </div>
                     <div className={style.footer_data}>
-                        <p>©2024 <span>كليّتِك</span> جميع الحقوق محفوظة تم تصميم وتطوير هذه المنصة لتقديم أفضل دعم صحي ورعاية للمستخدمين.</p>
+                        <p>©2024 <span>كليّتِك</span> {footerTexts.ar.footerData.description}</p>
                         <div className={style.social}>
                             {renderSocialIcons}
                         </div>

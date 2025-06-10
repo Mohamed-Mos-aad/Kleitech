@@ -1,21 +1,27 @@
-export const uploadToCloudinary = async (file: File): Promise<string> => {
+// ** Hooks && Tools
+import axios from "axios";
+
+
+
+// ** Api
+const api = axios.create({
+    baseURL: import.meta.env.VITE_UPLOAD_Files_API_KEY
+})
+
+
+
+// ** Upload File
+export const uploadToCloudinary = async (file: File) => {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('upload_preset', 'Kleitech');
     formData.append('cloud_name', 'dmmjv26he');
-
-    const res = await fetch(`https://api.cloudinary.com/v1_1/dmmjv26he/upload`,  {
-        method: 'POST',
-        body: formData,
-    });
-
-
-    if (!res.ok) {
-        const errorData = await res.json();
-        console.error('فشل في رفع الملف:', errorData);
-        throw new Error('حدث خطأ أثناء رفع الصوت إلى Cloudinary');
+    try{
+        const response = await api.post('/upload',formData);
+        return response.data.secure_url;
     }
-
-    const data = await res.json();
-    return data.secure_url;
+    catch(error)
+    {
+        console.log(error);
+    }
 };

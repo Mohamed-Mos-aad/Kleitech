@@ -9,9 +9,17 @@ import PatientReviews from "./sections/PatientReviews";
 
 
 
+// ** Interfaces
+interface ISection{
+    component: React.FC<{ sectionId: string }>;
+    id: string;
+}
+
+
+
 export default function LandingPage() {
     // ** Sections Config
-    const sections = [
+    const sections:ISection[] = [
         {component: AboutUs, id:'about-us'},
         {component: JoinUs, id:'join-us'},
         {component: Benefit, id:'benefit'},
@@ -25,14 +33,10 @@ export default function LandingPage() {
 
     // ** Render
     const renderSections = sections.map(({ component: Component, id })=> (
-        <Component sectionId={id} key={id}/>
+        <Component sectionId={id} key={`landing-section-${id}`}/>
     ))
 
 
 
-    return (
-        <>
-            {renderSections}
-        </>
-    )
+    return renderSections;
 }

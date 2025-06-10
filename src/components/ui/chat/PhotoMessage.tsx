@@ -10,7 +10,7 @@ import { useState } from 'react';
 import EmojiPicker from './EmojiPicker';
 import OptionsList from './OptionsList';
 // ** Api
-import { deleteChat } from '../../../api/chat/chatApi';
+import { deleteMessage } from '../../../api/chat/chatApi';
 import { AppDispatch } from '../../../app/store';
 import { useDispatch } from 'react-redux';
 import { setChatDataS } from '../../../app/slices/chat/chatSlice';
@@ -65,9 +65,9 @@ export default function PhotoMessage({senderId,timestamp,photoUrl,messageId}:IPh
         dispatch(setChatDataS({replayId: null , editeId: null, pinId: messageId}));
         messageOptionsContainerToggelHandler();
     }
-    const deleteMessage = async ()=>{
+    const deleteMessageHandler = async ()=>{
         try{
-            await deleteChat(messageId);
+            await deleteMessage(messageId);
         }
         catch(error){
             console.log(error)
@@ -97,7 +97,7 @@ export default function PhotoMessage({senderId,timestamp,photoUrl,messageId}:IPh
                     }
                     {
                         messageOptionsContainerOpen &&
-                        <OptionsList deleteMessage={deleteMessage} editeMessage={editeMessage} pinMessage={pinMessage} replayMessage={replayMessage}/>
+                        <OptionsList deleteMessage={deleteMessageHandler} editeMessage={editeMessage} pinMessage={pinMessage} replayMessage={replayMessage}/>
 
                     }
                 </div>

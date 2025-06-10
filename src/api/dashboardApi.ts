@@ -1,5 +1,9 @@
+// ** Hooks && Tools
 import axios from "axios";
 
+
+
+// ** Api
 const api = axios.create({
     baseURL: import.meta.env.VITE_LOCAL_SERVER_API_URL,
     headers:{
@@ -8,7 +12,8 @@ const api = axios.create({
 })
 
 
-// ** Stats
+
+// ** Get Stats
 export const fetchDashboardStats = async ()=>{
     try{
         const response = await api.get('/stats');
@@ -19,10 +24,7 @@ export const fetchDashboardStats = async ()=>{
         console.log(error);
     }
 }
-
-
-
-// ** Doctors
+// ** Get Doctors
 export const fetchDashboardDoctors = async ()=>{
     try{
         const response = await api.get('/doctors');
@@ -33,7 +35,7 @@ export const fetchDashboardDoctors = async ()=>{
         console.log(error);
     }
 }
-
+// ** Add Doctor
 export const addDoctor = async (doctorData: {name: string, email: string, nationalId: string, phone: string}) => {
     try{
         const response = await api.post('/doctors', doctorData);
@@ -45,7 +47,7 @@ export const addDoctor = async (doctorData: {name: string, email: string, nation
         throw error;
     }
 }
-
+// ** Edit Doctor
 export const editeDoctor = async (doctorData: {name: string, email: string, nationalId: string, phone: string},id:number) => {
     try{
         const response = await api.put(`/doctors/${id}`, doctorData);
@@ -57,7 +59,7 @@ export const editeDoctor = async (doctorData: {name: string, email: string, nati
         throw error;
     }
 }
-
+// ** Delete Doctor
 export const deleteDoctor = async (id:number) => {
     try{
         const response = await api.delete(`/doctors/${id}`);
@@ -69,10 +71,7 @@ export const deleteDoctor = async (id:number) => {
         throw error;
     }
 }
-
-
-
-// ** Patients
+// ** Get Patients
 export const fetchDashboardPatients = async ()=>{
     try{
         const response = await api.get('/patients');
@@ -83,7 +82,7 @@ export const fetchDashboardPatients = async ()=>{
         console.log(error);
     }
 }
-
+// ** Delete Patients
 export const deletePatient = async (id:string) => {
     try{
         const response = await api.delete(`/patients/${id}`);
