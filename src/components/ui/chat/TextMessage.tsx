@@ -7,7 +7,7 @@ import style from '../../../style/components/ui/chat/message.module.css'
 // ** Hooks && Tools
 import { useEffect, useState } from 'react'
 // ** Api
-import { deleteChat } from '../../../api/chat/chatApi'
+import { deleteMessage } from '../../../api/chat/chatApi'
 // ** Components
 import EmojiPicker from './EmojiPicker'
 import OptionsList from './OptionsList'
@@ -71,9 +71,9 @@ export default function TextMessage({messages, message, senderId,messageId,times
         dispatch(setChatDataS({replayId: null , editeId: null, pinId: messageId}));
         messageOptionsContainerToggelHandler();
     }
-    const deleteMessage = async ()=>{
+    const deleteMessageHandler = async ()=>{
         try{
-            await deleteChat(messageId);
+            await deleteMessage(messageId);
         }
         catch(error){
             console.log(error)
@@ -118,7 +118,7 @@ export default function TextMessage({messages, message, senderId,messageId,times
                     }
                     {
                         messageOptionsContainerOpen &&
-                        <OptionsList deleteMessage={deleteMessage} editeMessage={editeMessage} pinMessage={pinMessage} replayMessage={replayMessage}/>
+                        <OptionsList deleteMessage={deleteMessageHandler} editeMessage={editeMessage} pinMessage={pinMessage} replayMessage={replayMessage}/>
                     }
                 </div>
                 <h3>{timestamp}</h3>

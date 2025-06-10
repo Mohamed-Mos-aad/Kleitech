@@ -1,5 +1,7 @@
 // ** Assets
 import joinUsPhoto from '../../../assets/images/landing/joinUs/joinUsPhoto.png'
+// ** Texts
+import { joinUsTexts } from '../../../constants/texts/landing/joinUsTexts'
 // ** Style
 import style from '../../../style/pages/landing/sections/joinUs.module.css'
 // ** Hooks && Tools
@@ -35,8 +37,8 @@ function JoinUs({sectionId}:ISection) {
                     </div>
                     <div className={style.section_content}>
                         <div>
-                            <h2>رفع الصورة لتحليل فوري ودعم مباشر:</h2>
-                            <p>يمكنك رفع صورة الأشعة الطبية الخاصة بك والحصول على تقرير سريع حول حالتك الصحية. يساعدك هذا التحليل في فهم حالة الكلى بشكل أفضل وتحديد الخطوات المناسبة. إذا كنت ترغب في استشارات إضافية ودعم مستمر، يمكنك إنشاء حساب للحصول هذه الخدمات.</p>
+                            <h2>{joinUsTexts.ar.title}</h2>
+                            <p>{joinUsTexts.ar.description}</p>
                         </div>
                         <button onClick={openWelcomeAuthPageHandler} aria-label="انضم لنا">انضم لنا</button>
                     </div>

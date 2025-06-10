@@ -6,7 +6,7 @@ import style from '../../style/components/ui/BookingDone.module.css'
 // ** Hooks && Tools
 import { AppDispatch } from '../../app/store';
 import { useDispatch } from 'react-redux';
-import { setBookingDetails } from '../../app/slices/bookingDetails';
+import { setBookingDetails } from '../../app/slices/bookingDetailsSlice';
 
 
 
