@@ -5,17 +5,18 @@ import style from '../../style/pages/auth/signUp.module.css'
 // ** Hooks && Tools
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'
-import { AppDispatch } from '../../app/store';
 import { useDispatch } from 'react-redux';
+// ** Store
+import { AppDispatch } from '../../app/store';
 import { setUserSignUpData } from '../../app/slices/userSignUpSlice';
 // ** Interfaces
 import { ISignUpData } from '../../interfaces'
 // ** Validation
 import { inputValidation } from '../../validation'
 // ** Components
-import SignUpPage1 from '../../components/pages/signUp/SignUpPage1'
-import SignUpPage2 from '../../components/pages/signUp/SignUpPage2';
-import SignUpPage3 from '../../components/pages/signUp/SignUpPage3';
+import SignUpPage1 from '../../components/pages/auth/signUp/SignUpPage1'
+import SignUpPage2 from '../../components/pages/auth/signUp/SignUpPage2';
+import SignUpPage3 from '../../components/pages/auth/signUp/SignUpPage3';
 
 
 
@@ -51,7 +52,6 @@ export default function SignUp() {
 
     // ** Navigation
     const navigate = useNavigate();
-    const goToSignIn = ()=>{navigate('/u/sign-in')};
     const goToOtp = ()=>{navigate('/u/otp')};
 
 
@@ -65,9 +65,9 @@ export default function SignUp() {
 
     // ** Handlers
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | { target: { id: string; value: string } }) => {
-        const {id,value} = e.target as HTMLInputElement;
-        setErrors((prev)=>({...prev,[id]: '' }))
-        setUserData((prev)=>({...prev,[id]: value }))
+        const {name,value} = e.target as HTMLInputElement;
+        setErrors((prev)=>({...prev,[name]: '' }))
+        setUserData((prev)=>({...prev,[name]: value }))
     }
     const changeStepHandler = (e :React.FormEvent,forward:boolean) => {
         e.preventDefault();
@@ -118,8 +118,8 @@ export default function SignUp() {
         }
         switch(currentStep)
         {
-            case 1 : return <SignUpPage1 {...commonProps} onNext={(e)=>{changeStepHandler(e,true)}} goToSignIn={goToSignIn}/>;
-            case 2 : return <SignUpPage2 {...commonProps} onNext={(e)=>{changeStepHandler(e,true)}} goToSignIn={goToSignIn}/>;
+            case 1 : return <SignUpPage1 {...commonProps} onNext={(e)=>{changeStepHandler(e,true)}}/>;
+            case 2 : return <SignUpPage2 {...commonProps} onNext={(e)=>{changeStepHandler(e,true)}}/>;
             case 3 : return <SignUpPage3 {...commonProps} createAccountHandler={createAccountHandler}/>;
         }
     }
@@ -134,7 +134,7 @@ export default function SignUp() {
                     <div className={style.arrow_icon} onClick={(e)=>{changeStepHandler(e,true)}} aria-label="Next step">
                         <img src={arrowRightIcon} alt="التالي"/>
                     </div>
-                    <h3>صفحه {currentStep} من 3</h3>
+                    <h1>صفحه {currentStep} من 3</h1>
                     <div className={style.arrow_icon} onClick={(e)=>{changeStepHandler(e,false)}} aria-label="Prev step">
                         <img src={arrowLeftIcon} alt="السابق"/>
                     </div>

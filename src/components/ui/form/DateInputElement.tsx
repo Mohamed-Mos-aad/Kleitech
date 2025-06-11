@@ -47,7 +47,8 @@ export default function DateInputElement({error,onChange}:IDateInputElement) {
         const event = {
             target: {
                 id: 'userDate',
-                value: newDate
+                value: newDate,
+                name: 'userDate'
             }
         }
         onChange(event);

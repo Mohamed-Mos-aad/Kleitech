@@ -11,7 +11,9 @@ interface IDoctorData {
     id: string;
     name: string;
     email: string;
-    nationalId: string;
+    password: string;
+    national_id: string;
+    specialty: string;
     phone: string;
 }
 
@@ -49,7 +51,7 @@ export default function DoctorPop({popTitle,doctorData,setDoctorData,buttonEleme
                     <div className={style.data_form}>
                         <InputElement error='' id='name' img={{src:userNameIcon , alt: 'userName icon'}} name='الإسم' onChange={(e)=>{onChangeHandler(e)}} placeholder='ادخل الإسم بالكامل' type='text' value={doctorData.name}/>
                         <InputElement error='' id='email' img={{src:userEmailIcon , alt: 'userEmail icon'}} name='البريد الالكتروني' onChange={(e)=>{onChangeHandler(e)}} placeholder='ادخل البريد الالكتروني' type='text' value={doctorData.email}/>
-                        <InputElement error='' id='nationalId' img={{src:userIdIcon , alt: 'userId icon'}} name='الرقم القومي' onChange={(e)=>{onChangeHandler(e)}} placeholder='ادخل الرقم القومي' type='text' value={doctorData.nationalId}/>
+                        <InputElement error='' id='national_id' img={{src:userIdIcon , alt: 'userId icon'}} name='الرقم القومي' onChange={(e)=>{onChangeHandler(e)}} placeholder='ادخل الرقم القومي' type='text' value={doctorData.national_id}/>
                         <InputElement error='' id='phone' img={{src:userPhoneIcon , alt: 'userPhone icon'}} name='رقم الهاتف' onChange={(e)=>{onChangeHandler(e)}} placeholder='ادخل رقم الهاتف' type='text' value={doctorData.phone}/>
                     </div>
                     <button onClick={buttonElement.handler}>{buttonElement.title}</button>

@@ -3,20 +3,32 @@ import axios from "axios";
 
 
 
+// ** Local Storage
+const storage = localStorage.getItem("kleitech_user") ? localStorage : sessionStorage;
+const userString = storage.getItem("kleitech_user");
+const token = userString ? JSON.parse(userString).token : null;
+
+
 // ** Api
-const api = axios.create({
+const staticApi = axios.create({
     baseURL: import.meta.env.VITE_LOCAL_SERVER_API_URL,
     headers:{
         'Content-Type': 'application/json',
     }
 })
 
-
+const api = axios.create({
+    baseURL: import.meta.env.VITE_LOCAL_SERVER_LARAVEL_API_URL,
+    headers:{
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+    }
+})
 
 // ** Get Stats
 export const fetchDashboardStats = async ()=>{
     try{
-        const response = await api.get('/stats');
+        const response = await staticApi.get('/stats');
         return response.data;
     }
     catch(error)
@@ -27,7 +39,8 @@ export const fetchDashboardStats = async ()=>{
 // ** Get Doctors
 export const fetchDashboardDoctors = async ()=>{
     try{
-        const response = await api.get('/doctors');
+        const response = await api.get('/all-doctors');
+        console.log(response.data)
         return response.data;
     }
     catch(error)
@@ -36,7 +49,8 @@ export const fetchDashboardDoctors = async ()=>{
     }
 }
 // ** Add Doctor
-export const addDoctor = async (doctorData: {name: string, email: string, nationalId: string, phone: string}) => {
+export const addDoctor = async (doctorData: {name: string, email: string,password: string, national_id: string, specialty: string, phone: string}) => {
+    console.log(doctorData);
     try{
         const response = await api.post('/doctors', doctorData);
         return response.data;
@@ -48,7 +62,8 @@ export const addDoctor = async (doctorData: {name: string, email: string, nation
     }
 }
 // ** Edit Doctor
-export const editeDoctor = async (doctorData: {name: string, email: string, nationalId: string, phone: string},id:number) => {
+export const editeDoctor = async (doctorData: {name: string, email: string, national_id: string, phone: string},id:number) => {
+    console.log("TOKEN =>", token);
     try{
         const response = await api.put(`/doctors/${id}`, doctorData);
         return response.data;

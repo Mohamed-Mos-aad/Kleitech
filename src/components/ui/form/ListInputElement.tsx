@@ -29,7 +29,8 @@ export default function ListInputElement({error,onChange}:IListInputElement) {
         const event = {
             target: {
                 id: 'userState',
-                value: value
+                value: value,
+                name: 'userState',
             }
         }
         onChange(event);

@@ -1,10 +1,10 @@
 // ** Assets
-import arrowUpandDownIcon from '../../../assets/icons/forms/arrowsUpandDownIcon.svg'
+import arrowUpandDownIcon from '../../../../assets/icons/forms/arrowsUpandDownIcon.svg'
 // ** Style
-import style from '../../../style/pages/auth/signUp.module.css'
+import style from '../../../../style/pages/auth/signUp.module.css'
 // ** Components
-import ListInputElement from '../../ui/form/ListInputElement';
-import DateInputElement from '../../ui/form/DateInputElement';
+import ListInputElement from '../../../ui/form/ListInputElement';
+import DateInputElement from '../../../ui/form/DateInputElement';
 
 
 
@@ -40,12 +40,12 @@ export default function SignUpPage3({data,errors,onChange,createAccountHandler}:
                             <h4>هل تعاني من امراض مزمنه؟</h4>
                             <div className={style.radios}>
                                 <div className={style.form_input_radio}>
-                                    <input type="radio" name="hasIllnesses" id='hasIllnesses' checked={data.hasIllnesses === 'true'} value={'true'} onChange={onChange}/>
-                                    <label htmlFor="hasIllnesses">نعم</label>
+                                    <input type="radio" name="hasIllnesses" id='hasIllnessesYes' checked={data.hasIllnesses === 'true'} value={'true'} onChange={onChange}/>
+                                    <label htmlFor="hasIllnessesYes">نعم</label>
                                 </div>
                                 <div className={style.form_input_radio}>
-                                    <input type="radio" name="hasIllnesses" id='hasIllnesses' checked={data.hasIllnesses === 'false'} value={'false'} onChange={onChange}/>
-                                    <label htmlFor="noIllnesses">لا</label>
+                                    <input type="radio" name="hasIllnesses" id='hasIllnessesNo' checked={data.hasIllnesses === 'false'} value={'false'} onChange={onChange}/>
+                                    <label htmlFor="hasIllnessesNo">لا</label>
                                 </div>
                                 <span className={style.error}>{errors.hasIllnesses}</span>
                             </div>
@@ -54,7 +54,7 @@ export default function SignUpPage3({data,errors,onChange,createAccountHandler}:
                         <div className={style.form_input}>
                             <label htmlFor="userWeight">الوزن</label>
                             <div className={style.input_element}>
-                                <input type="text" value={data.userWeight} placeholder="ادخل وزنك" id='userWeight' onChange={onChange}/>
+                                <input type="text" name='userWeight' value={data.userWeight} placeholder="ادخل وزنك" id='userWeight' onChange={onChange}/>
                                 <img src={arrowUpandDownIcon} alt="User weight icon" />
                             </div>
                             <span className={style.error}>{errors.userWeight}</span>
@@ -62,7 +62,7 @@ export default function SignUpPage3({data,errors,onChange,createAccountHandler}:
                         <div className={style.form_input}>
                             <label htmlFor="userHeight">الطول</label>
                             <div className={style.input_element}>
-                                <input type="text" value={data.userHeight} placeholder="ادخل طولك" id='userHeight' onChange={onChange}/>
+                                <input type="text" name='userHeight' value={data.userHeight} placeholder="ادخل طولك" id='userHeight' onChange={onChange}/>
                                 <img src={arrowUpandDownIcon} alt="User height icon" />
                             </div>
                             <span className={style.error}>{errors.userHeight}</span>
@@ -72,12 +72,12 @@ export default function SignUpPage3({data,errors,onChange,createAccountHandler}:
                         <h4>هل تتابع مع طبيب؟</h4>
                         <div className={style.radios}>
                             <div className={style.form_input_radio}>
-                                <input type="radio" name="hasDoctor" id='hasDoctor' checked={data.hasDoctor === 'true'} value={'true'} onChange={onChange}/>
-                                <label htmlFor="hasDoctor">نعم</label>
+                                <input type="radio" name="hasDoctor" id='hasDoctorYes' checked={data.hasDoctor === 'true'} value={'true'} onChange={onChange}/>
+                                <label htmlFor="hasDoctorYes">نعم</label>
                             </div>
                             <div className={style.form_input_radio}>
-                                <input type="radio" name="hasDoctor" id='hasDoctor' checked={data.hasDoctor === 'false'} value={'false'} onChange={onChange}/>
-                                <label htmlFor="noDoctor">لا</label>
+                                <input type="radio" name="hasDoctor" id='hasDoctorNo' checked={data.hasDoctor === 'false'} value={'false'} onChange={onChange}/>
+                                <label htmlFor="hasDoctorNo">لا</label>
                             </div>
                             <span className={style.error}>{errors.hasDoctor}</span>
                         </div>

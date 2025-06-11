@@ -7,8 +7,6 @@ import { Outlet } from "react-router-dom";
 
 
 
-
-
 export default function AuthLayout() {
     return (
         <>
@@ -16,7 +14,7 @@ export default function AuthLayout() {
                 <Outlet />
                 <div className={style.logo}>
                     <img src={logo} alt="شعار كليّتِك" loading="lazy"/>
-                    <h1>كليّتِك</h1>
+                    <h1 aria-label="شعار كليّتِك">كليّتِك</h1>
                     <span>
                         <img src={arrowDownIcon} alt="Arrow down icon" loading="lazy"/>
                     </span>

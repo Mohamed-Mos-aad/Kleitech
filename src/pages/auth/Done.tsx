@@ -14,10 +14,13 @@ export default function Done() {
     const actionType = useSelector((state: RootState) => state.donePage.actionType);
     
 
+    
     // ** Defaults
     const navigate = useNavigate();
     // ** Navigation
     const goTosignIn = ()=>{navigate('/u/sign-in')};
+
+
 
     const doneActions:Record<string, { title: string; message: string }> = {
         signUp :{
@@ -29,8 +32,6 @@ export default function Done() {
             message: 'لقد تم تعير كلمه المرور بنجاح انقر لتسجيل الدخول'
         }
     }
-
-
     const actionContent = doneActions[actionType] || {
         title: 'عملية ناجحة',
         message: 'تمت العملية بنجاح، انقر لتسجيل الدخول',

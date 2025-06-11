@@ -12,8 +12,6 @@ import { changePassword } from '../../api/userApi';
 
 
 
-
-
 export default function ChangePassword() {
     // ** Defaults
     const navigate = useNavigate();
@@ -31,6 +29,7 @@ export default function ChangePassword() {
         new_password: '',
         new_password_confirmation: ''
     });
+
 
 
     // ** Handlers
@@ -55,8 +54,6 @@ export default function ChangePassword() {
             donePageHandler();
         }
     }
-
-
 
 
     

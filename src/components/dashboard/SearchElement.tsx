@@ -11,14 +11,18 @@ interface ISearchElement{
         id: string,
         name: string,
         email: string,
-        nationalId: string,
+        password: string,
+        national_id: string,
+        specialty: string,
         phone: string
     }[],
     setResult: (result: {
         id: string,
         name: string,
         email: string,
-        nationalId: string,
+        password: string,
+        national_id: string,
+        specialty: string,
         phone: string
     }[])=> void 
 }
@@ -31,7 +35,7 @@ export default function SearchElement({data,setResult}:ISearchElement) {
         const filteredData = data.filter(doctor =>
             doctor.name.toLowerCase().includes(searchValue) ||
             doctor.email.toLowerCase().includes(searchValue) ||
-            doctor.nationalId.includes(searchValue) || 
+            doctor.national_id.includes(searchValue) || 
             doctor.phone.includes(searchValue)
         );
         setResult(filteredData);

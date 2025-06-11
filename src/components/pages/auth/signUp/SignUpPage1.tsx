@@ -1,10 +1,11 @@
 // ** Style
-import style from '../../../style/pages/auth/signUp.module.css'
+import style from '../../../../style/pages/auth/signUp.module.css'
 // ** Assets
-import {googleIcon, facebookIcon, appleIcon,userNameIcon, userIdIcon, userPhoneIcon} from '../../../assets/icons/icons'
+import {userNameIcon, userIdIcon, userPhoneIcon} from '../../../../assets/icons/icons'
 // ** Components
-import InputElement from '../../../components/ui/InputElement'
-
+import InputElement from '../../../ui/InputElement'
+import PlatformsAuth from '../PlatformsAuth';
+import SwitchAuth from '../SwitchAuth';
 
 
 
@@ -22,10 +23,11 @@ interface ISignUpPage1{
     };
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onNext: (e: React.FormEvent) => void;
-    goToSignIn: ()=> void;
 }
 
-export default function SignUpPage1({data,errors,onChange,onNext,goToSignIn}:ISignUpPage1) {
+
+
+export default function SignUpPage1({data,errors,onChange,onNext}:ISignUpPage1) {
     return (
         <>
             <div className={style.sign_up_container}>
@@ -39,20 +41,8 @@ export default function SignUpPage1({data,errors,onChange,onNext,goToSignIn}:ISi
                     </div>
                 </form>
                 <h3><span></span>او إنشاء حساب باستخدام<span></span></h3>
-                <div className={style.platforms}>
-                    <div className={style.platform_item}>
-                        <img src={appleIcon} alt="Aplle Platform Icon" />
-                    </div>
-                    <div className={style.platform_item}>
-                        <img src={facebookIcon} alt="Facebook Platform Icon" />
-                    </div>
-                    <div className={style.platform_item}>
-                        <img src={googleIcon} alt="Google Platform Icon" />
-                    </div>
-                </div>
-                <div className={style.switch_auth}>
-                    <h4>هل لديك حساب؟ <button onClick={goToSignIn}>تسجيل الدخول</button></h4>
-                </div>
+                <PlatformsAuth />
+                <SwitchAuth currentAuthState="signUp"/>
             </div>
         </>
     )

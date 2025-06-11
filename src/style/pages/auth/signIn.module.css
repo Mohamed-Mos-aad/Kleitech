@@ -16,7 +16,7 @@
 /* Start Sign In Screen */
 .sign_in_container
 {
-    width: 75%;
+    width: 60%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -24,7 +24,7 @@
     gap: 24px;
     margin: 0 auto;
 }
-h2
+h1
 {
     font-size: 28px;
     font-weight: 500;
@@ -38,37 +38,12 @@ h2
     justify-content: center;
     gap: 16px;
 }
-.sign_in_form .form_row
-{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-.sign_in_form .form_row label
-{
-    font-size: 16px;
-    font-weight: 500;
-}
-.sign_in_form .form_row input
-{
-    font-size: 16px;
-    font-weight: 400;
-    padding: 12px;
-    border: solid 1px  var(--gray-color-400);
-    border-radius: 8px;
-}
-.sign_in_form .form_row input:focus
-{
-    outline: solid 1px  var(--main-color-700);
-    border: solid 1px  var(--main-color-700);
-}
 .sign_in_form .form_footer
 {
     display: flex;
     align-items: center;
     gap: 8px;
     position: relative;
-    margin-top: -16px;
 }
 .sign_in_form .form_footer label
 {
@@ -81,14 +56,17 @@ h2
 {
     cursor: pointer;
 }
-.sign_in_form .form_footer a
+.sign_in_form .form_footer button
 {
     position: absolute;
     left: 0;
+    background-color: transparent;
+    border: none;
     font-size: 16px;
     font-weight: 600;
     color: var(--gray-color-900);
     text-decoration: none;
+    cursor: pointer;
 }
 .sign_in_form .form_btn button
 {
@@ -103,11 +81,12 @@ h2
     margin: 16px 0;
     cursor: pointer;
 }
-.sign_in_form h5
+.sign_in_form h2
 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
     font-size: 18px;
     font-weight: 400;
     text-align: center;
@@ -115,39 +94,89 @@ h2
     text-decoration: none;
     opacity: 50%;
 }
-.sign_in_form h5 span
+.sign_in_form h2::after
 {
-    width: 30%;
+    content: '';
+    width: 25%;
     height: 1px;
     border-top: solid 1px var(--gray-color-400);
 }
-.sign_in_container .platforms
+.sign_in_form h2::before
 {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 16px;
-}
-.sign_in_container .platforms .platform_item
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: solid 1px var(--main-color-700);
-    border-radius: 4px;
-    padding: 16px 24px;
-    cursor: pointer;
-}
-.switch_auth h4
-{
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-}
-.switch_auth h4 span
-{
-    font-weight: 700;
-    color: var(--main-color-700);
-    text-decoration: underline;
-    cursor: pointer;
+    content: '';
+    width: 25%;
+    height: 1px;
+    border-top: solid 1px var(--gray-color-400);
 }
 /* End Sign In Screen */
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .sign_in_container
+    {
+        width: 90%;
+    }
+    .sign_in_form h2
+    {
+        font-size: 16px;
+        font-weight: 400;
+    }
+    .sign_in_form h2::after
+    {
+        width: 15%;
+    }
+    .sign_in_form h2::before
+    {
+        width: 15%;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    .sign_in_container
+    {
+        width: 70%;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    .sign_in_container
+    {
+        width: 80%;
+    }
+    .sign_in_form h2::after
+    {
+        width: 15%;
+    }
+    .sign_in_form h2::before
+    {
+        width: 15%;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+    .sign_in_container
+    {
+        width: 70%;
+    }
+    .sign_in_form h2::after
+    {
+        width: 20%;
+    }
+    .sign_in_form h2::before
+    {
+        width: 20%;
+    }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */

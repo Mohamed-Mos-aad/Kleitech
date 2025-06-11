@@ -10,9 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 // ** Store
 import { setdonePage } from '../../app/slices/donePageSlice';
+// ** Api
 import { registerUser } from '../../api/userApi';
-
-
 
 
 
@@ -26,8 +25,10 @@ export default function Otp() {
     const navigate = useNavigate();
 
 
+
     // ** Navigation
     const goToDonePage = ()=>{navigate('/u/done')};
+
 
 
     // ** States
@@ -37,6 +38,7 @@ export default function Otp() {
     const [codeWrong,setCodeWrong] = useState(false);
     const [otpCode,setOtpCode] = useState('');
     const [resendAllowed, setResendAllowed] = useState(false);
+
 
 
     // ** Handlers
@@ -115,10 +117,12 @@ export default function Otp() {
     }
 
 
+
     // ** Render
     const renderInput = userInput.map((value,index)=>(
         <input type="tel" maxLength={1} id={`${index+1}`} className={codeWrong ? style.wrong_code : ''} value={value} key={index} onChange={(e)=>{inputChangeHandler(e)}}/>
     ))
+
 
 
     // ** UseEffect
@@ -127,8 +131,8 @@ export default function Otp() {
         if (!emailSent) return;
         const timerId = setInterval(()=>{
             setTimer(prev=>{
-                const totalSeconds = prev.minutes * 60 + prev.seconds - 1;
-                if (totalSeconds <= 0) {
+                const totalSeconds = prev.minutes * 60 + prev.seconds;
+                if (totalSeconds <= 1) {
                     clearInterval(timerId);
                     return { minutes: 0, seconds: 0 };
                 }
@@ -141,7 +145,6 @@ export default function Otp() {
         },1000);
         return () => clearInterval(timerId);
     },[emailSent])
-
     // Resend
     useEffect(() => {
         if (!emailSent) return;

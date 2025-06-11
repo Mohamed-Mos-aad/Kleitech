@@ -11,18 +11,16 @@ import { setdonePage } from '../../app/slices/donePageSlice';
 
 
 
-
 export default function NewPassword() {
     // ** Store
     const dispatch: AppDispatch = useDispatch();
     // ** Defaults
     const navigate = useNavigate();
     const donePageHandler = ()=>{navigate('/u/done')};
-
-
     dispatch(setdonePage('passwordReset'));
 
     
+
     return (
         <>
             <div className={style.new_password_container}>

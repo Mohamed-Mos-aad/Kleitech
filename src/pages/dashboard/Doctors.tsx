@@ -19,7 +19,9 @@ interface IDoctorData {
     id: string;
     name: string;
     email: string;
-    nationalId: string;
+    password: string;
+    national_id: string;
+    specialty: string;
     phone: string;
 }
 
@@ -29,7 +31,9 @@ export default function Doctors() {
         id: "0",
         name: '',
         email: '',
-        nationalId: '',
+        password: '123456789',
+        national_id: '',
+        specialty: 'باطنة',
         phone: '',
     }
     // ** States
@@ -74,6 +78,7 @@ export default function Doctors() {
         }
     }
     const editedoctorHandler = async ()=>{
+        console.log(newDoctor.id);
         try{
             await editeDoctor(newDoctor,Number(newDoctor.id));
             updateData();
@@ -108,7 +113,7 @@ export default function Doctors() {
         <tr key={doctor.id}>
             <td>{doctor.name}</td>
             <td>{doctor.phone}</td>
-            <td>{doctor.nationalId}</td>
+            <td>{doctor.national_id}</td>
             <td>{doctor.email}</td>
             <td>
                 <button onClick={()=>{editeDoctorToggleHandler(doctor.id)}}>
