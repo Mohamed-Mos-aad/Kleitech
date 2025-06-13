@@ -82,7 +82,7 @@ export default function PhotoMessage({senderId,timestamp,photoUrl,messageId}:IPh
                 <div className={style.message_content}>
                     <div className={style.photo_container}>
                         <img src={photoUrl} alt={photoUrl} />
-                        <div className={style.message_emoji}>{messageEmoji}</div>
+                        <div className={style.message_emoji} onClick={messageEmojisContainerToggelHandler}>{messageEmoji}</div>
                         <div className={style.message_state}>
                             <img src={trueIcon} alt="True icon" />
                         </div>

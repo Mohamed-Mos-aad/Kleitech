@@ -198,7 +198,7 @@ export default function VoiceMessage({senderId,timestamp,voiceUrl,messageId}:IVo
                         <audio src={voiceUrl} ref={audioPlayBackRef} preload="metadata" controls style={{display:'none'}}></audio>
                         <h5>{audioDuration.minutes < 10 ? '0'+audioDuration.minutes : audioDuration.minutes}:{audioDuration.seconds < 10 ? '0'+audioDuration.seconds : audioDuration.seconds}</h5>
                         <img src={audioStartd? pauseIcon : playIcon} alt=""  onClick={voiceRecordStateToggleHandler}/>
-                        <div className={style.message_emoji}>{messageEmoji}</div>
+                        <div className={style.message_emoji} onClick={messageEmojisContainerToggelHandler}>{messageEmoji}</div>
                         <div className={style.message_state}>
                             <img src={trueIcon} alt="True icon" />
                         </div>

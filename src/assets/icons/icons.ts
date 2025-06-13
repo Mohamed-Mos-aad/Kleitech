@@ -58,6 +58,9 @@ import clockIcon from '../icons/main/alarm/clockIcon.svg'
 import medicineIcon from '../icons/main/alarm/medicineIcon.svg'
 import repeatIcon from '../icons/main/alarm/repeatIcon.svg'
 
+import errorIcon from '../icons/ui/messagePop/errorIcon.svg'
+import successIcon from '../icons/ui/messagePop/successIcon.svg'
+import loadingIcon from '../icons/ui/messagePop/loadingIcon.svg'
 
 
 export {
@@ -107,4 +110,7 @@ export {
     clockIcon,
     medicineIcon,
     repeatIcon,
+    errorIcon,
+    successIcon,
+    loadingIcon,
 }

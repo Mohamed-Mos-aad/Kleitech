@@ -19,9 +19,9 @@ interface IDoctorData {
     id: string;
     name: string;
     email: string;
-    password: string;
+    password?: string;
     national_id: string;
-    specialty: string;
+    specialty?: string;
     phone: string;
 }
 

@@ -16,6 +16,7 @@ import { uploadToCloudinary } from '../../api/chat/filesApi'
 import { AppDispatch, RootState } from '../../app/store'
 import { useDispatch, useSelector } from 'react-redux'
 import { setChatDataS } from '../../app/slices/chat/chatSlice'
+import { useMessagePop } from '../../hooks/useMessagePop'
 
 
 
@@ -39,6 +40,11 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
     const dispatch: AppDispatch = useDispatch();
     const chatDataS = useSelector((state: RootState) => state.chatDataS);
 
+
+
+    // ** Default
+    const { showMessage } = useMessagePop();
+    
 
 
     // ** States
@@ -134,6 +140,7 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
                     fileName.endsWith('.webm')
                 ) {
                     try {
+                        showMessage({state:'loading', content: 'جاري الرفع والارسال'});
                         const audioUrl = await uploadToCloudinary(attachment);
                         message = {
                             ...message,
@@ -148,6 +155,7 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
                 }
                 else if (fileName.endsWith('.jpg') || fileName.endsWith('.jpeg') || fileName.endsWith('.png') || fileName.endsWith('.gif')) {
                     try {
+                        showMessage({state:'loading', content: 'جاري الرفع والارسال'});
                         const photoUrl = await uploadToCloudinary(attachment);
                         message = {
                             ...message,

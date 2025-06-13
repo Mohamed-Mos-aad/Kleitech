@@ -2,24 +2,77 @@
 import {lockIcon,userPasswordIcon} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/pages/auth/newPassword.module.css'
-// ** Hooks
+// ** Hooks && Tools
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 // ** Store
-import { AppDispatch } from '../../app/store';
-import { useDispatch } from 'react-redux';
+import { AppDispatch, RootState } from '../../app/store';
+import { useDispatch, useSelector } from 'react-redux';
 import { setdonePage } from '../../app/slices/donePageSlice';
+// ** Components
+import PasswordInputElement from '../../components/ui/PasswordInputElement';
+// ** Api
+import { resetPassword } from '../../api/auth/authApi';
 
 
 
 export default function NewPassword() {
     // ** Store
     const dispatch: AppDispatch = useDispatch();
+    const userEmail = useSelector((state: RootState) => state.otpEmail);
+
+
+
     // ** Defaults
     const navigate = useNavigate();
     const donePageHandler = ()=>{navigate('/u/done')};
     dispatch(setdonePage('passwordReset'));
 
+
+
+    // ** States
+    const [data,setData] = useState({
+        email: userEmail.otpEmail,
+        password: '',
+        password_confirmation: ''
+    })
+    const [errors,setErrors] = useState({
+        password: '',
+        password_confirmation: ''
+    });
     
+
+
+    // ** Handler
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | { target: { id: string; value: string } }) => {
+        const {id,value} = e.target as HTMLInputElement;
+        setErrors((prev)=>({...prev,[id]: '' }))
+        setData((prev)=>({...prev,[id]: value }))
+    }
+    const resetPasswordHandler = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+        e.preventDefault();
+        try{
+            if(userEmail.otpEmail)
+            {
+                await resetPassword({email: data.email || '', password: data.password, password_confirmation: data.password_confirmation});
+                donePageHandler();
+            }
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+    
+
+
+    useEffect(()=>{
+        if(!userEmail.otpEmail)
+        {
+            navigate('/u');
+        }
+    },[userEmail.otpEmail,navigate])
+
+
 
     return (
         <>
@@ -34,17 +87,9 @@ export default function NewPassword() {
                     </p>
                 </div>
                 <form>
-                    <div className={style.form_input}>
-                        <label htmlFor="">كلمه المرور</label>
-                        <input type="email" name="" id="" placeholder='ادخل كلمه المرور'/>
-                        <img src={userPasswordIcon} alt="Email input icon" />
-                    </div>
-                    <div className={style.form_input}>
-                        <label htmlFor="">تأكيد كلمه المرور</label>
-                        <input type="email" name="" id="" placeholder='تأكيد كلمه المرور'/>
-                        <img src={userPasswordIcon} alt="Email input icon" />
-                    </div>
-                    <button onClick={donePageHandler}>تغير كلمه المرور</button>
+                    <PasswordInputElement id='password' name='كلمه المرور القديمه' type='password' value={data.password} placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.password} onChange={handleInputChange}/>
+                    <PasswordInputElement id='password_confirmation' name='كلمه المرور القديمه' type='password' value={data.password_confirmation} placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.password_confirmation} onChange={handleInputChange}/>
+                    <button onClick={(e)=>{resetPasswordHandler(e)}}>تغير كلمه المرور</button>
                 </form>
             </div>
         </>

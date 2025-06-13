@@ -2,18 +2,26 @@
 import style from '../../../style/pages/main/home.module.css'
 // ** assets
 import downloadIcon from '../../../assets/main/home/downloadIcon.svg'
+import closeIcon from '../../../assets/main/closeIcon.svg'
 import shareIcon from '../../../assets/main/home/shareIcon.svg'
+// ** Hooks && Tools
 import { useEffect, useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
+// ** Store
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
+
 
 
 // ** Interface
 interface IResult{
     xrayImageUrl: string,
+    closePop: ()=> void
 }
-export default function XrayResultPopup({xrayImageUrl}:IResult) {
+
+
+
+export default function XrayResultPopup({xrayImageUrl,closePop}:IResult) {
     // ** Store
     const homeAi = useSelector((state: RootState) => state.homeAi);
 
@@ -76,8 +84,8 @@ export default function XrayResultPopup({xrayImageUrl}:IResult) {
             case 'Stone':
             setResult('يوجد حصي');
             break;
-            case 'يوجد ورم':
-            setResult(homeAi.ResultIs);
+            case 'Tumor':
+            setResult('يوجد ورم');
             break;
             default:
             setResult('نتيجة غير معروفة');
@@ -90,6 +98,9 @@ export default function XrayResultPopup({xrayImageUrl}:IResult) {
         <>
             <div className={style.popUp_component}>
                 <div className={`${style.popUp_container} ${style.result}`}>
+                    <button className={style.closeBtn} onClick={closePop}>
+                        <img src={closeIcon} alt="close icon" />
+                    </button>
                     <div className={style.result_container} ref={resultRef}>
                         <h2>نتيجه الاشعه</h2>
                         <div className={style.xray_photo}>

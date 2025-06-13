@@ -5,3 +5,7 @@
     box-sizing: border-box;
     font-family: "Cairo", serif;
 }
+.app
+{
+    position: relative;
+}

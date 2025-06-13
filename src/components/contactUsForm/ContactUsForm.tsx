@@ -7,11 +7,17 @@ import style from '../../style/pages/landing/sections/contactUs.module.css'
 import InputElement from '../ui/InputElement'
 // ** Hooks && Tools
 import { useState } from 'react'
+import { useMessagePop } from '../../hooks/useMessagePop'
 
 
 
 
 export default function ContactUsForm() {
+    // ** Default
+    const { showMessage } = useMessagePop();
+
+
+
     // ** States
     const [message,setMessage] = useState({
         userFirstName: '',
@@ -54,13 +60,7 @@ export default function ContactUsForm() {
         if(message.userFirstName !== '' && message.userSecondName !== '' && message.userEmail !== '' && message.userMessage !== '')
         {
             try{
-                const res = await addComment({f_name: message.userFirstName,l_name: message.userSecondName, email: message.userEmail,massage: message.userMessage})
-                console.log(res);
-            }
-            catch(error){
-                console.log(error)
-            }
-            finally{
+                await addComment({f_name: message.userFirstName,l_name: message.userSecondName, email: message.userEmail,massage: message.userMessage})
                 setMessage({
                     userFirstName: '',
                     userSecondName: '',
@@ -75,6 +75,11 @@ export default function ContactUsForm() {
                     userMessage: '',
                     userAgreeToTerms: false,
                 });
+                showMessage({state:'success', content: 'تم الارسال بنجاح'});
+            }
+            catch(error){
+                console.log(error);
+                showMessage({state:'error', content: 'فشل الارسال, جرب مره اخري'});
             }
         }
         else
