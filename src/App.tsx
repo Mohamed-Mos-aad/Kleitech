@@ -1,9 +1,12 @@
-import { useEffect } from 'react';
+// ** Style
 import './App.css'
+// ** Hooks && Tools
+import { useEffect } from 'react';
 import Routers from './routers'
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './app/store';
 import { setUserLogin } from './app/slices/userSlice';
+import MessagePop from './components/ui/messagePop';
 
 function App() {
   // ** Store
@@ -19,7 +22,10 @@ function App() {
 
   return (
     <>
+    <div className="app">
       <Routers />
+      <MessagePop />
+    </div>
     </>
   )
 }

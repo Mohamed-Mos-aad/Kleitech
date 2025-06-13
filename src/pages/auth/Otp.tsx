@@ -19,6 +19,7 @@ export default function Otp() {
     // ** Store
     const dispatch: AppDispatch = useDispatch();
     const userData = useSelector((state: RootState) => state.userSignUp);
+    const otpEmail = useSelector((state: RootState) => state.otpEmail);
 
 
 
@@ -28,6 +29,7 @@ export default function Otp() {
 
     // ** Navigation
     const goToDonePage = ()=>{navigate('/u/done')};
+    const goResetPasswordPage = ()=>{navigate('/u/reset-password')};
 
 
 
@@ -48,12 +50,13 @@ export default function Otp() {
         return code;
     }
     const sendEmailHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+        console.log(otpEmail);
         e.preventDefault();
         setUserInput(Array(6).fill(''));
         const code = generateOtpCodeHandler();
         emailjs.send("service_e75s08c","template_aw2uz9z",{
             passcode: code,
-            email: userData.userEmail,
+            email: userData.userEmail || otpEmail.otpEmail,
             },'3PaUw5fPoj59Hzt83');
         setEmailSent(true);
     }
@@ -104,7 +107,14 @@ export default function Otp() {
         if(codeInput === otpCode)
         {
             setCodeWrong(false);
-            userRegisterHandler();
+            if(otpEmail)
+            {
+                goResetPasswordPage();
+            }
+            else
+            {
+                userRegisterHandler();   
+            }
         }
         else
         {

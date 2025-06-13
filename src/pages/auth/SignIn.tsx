@@ -5,6 +5,7 @@ import {userEmailIcon, userPasswordIcon} from '../../assets/icons/icons'
 // ** Hooks && Tools
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'
+import { useMessagePop } from '../../hooks/useMessagePop';
 // ** Components
 import PasswordInputElement from '../../components/ui/PasswordInputElement';
 import InputElement from '../../components/ui/InputElement'
@@ -35,6 +36,7 @@ export default function SignIn() {
 
     // ** Default
     const navigate = useNavigate();
+    const { showMessage } = useMessagePop();
 
 
 
@@ -79,6 +81,7 @@ export default function SignIn() {
         }
 
         try{
+            showMessage({state:'loading', content: 'جاري تسجيل الدخول'});
             const res = await loginUser(userData);
             if (res&& res.token && res.user)
             {
@@ -92,8 +95,9 @@ export default function SignIn() {
             }
         }
         catch(error){
-            console.log(error)
+            console.log(error);
             setErrors((prev)=>({...prev,email: 'البريد الالكتروني أو كلمة المرور غير صحيحة' }));
+            showMessage({state:'error', content: 'فشل تسجيل الدخول'});
         }
     }
     const toggleRememberMeHandler = ()=>{

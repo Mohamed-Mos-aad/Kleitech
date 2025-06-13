@@ -99,6 +99,7 @@
     background-color: white;
     padding: 24px;
     border-radius: 12px;
+    position: relative;
 }
 .upload_title
 {
@@ -318,6 +319,15 @@
     flex-direction: column;
     align-items: center;
     gap: 16px;
+}
+.popUp_container .closeBtn
+{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 .popUp_container h2
 {

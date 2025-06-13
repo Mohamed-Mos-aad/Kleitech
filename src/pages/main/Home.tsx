@@ -24,6 +24,10 @@ export default function Home() {
     // ** Handlers
     const toggleUpload = ()=>{setIsUploadVisible(prev => !prev)};
     const showResult = ()=>{setIsResultVisible(true)};
+    const closePop = ()=>{
+        setIsUploadVisible(false);
+        setIsResultVisible(false);
+    };
 
 
 
@@ -50,7 +54,7 @@ export default function Home() {
                 }
                 {
                     isResultVisible && xrayImageUrl &&
-                    <XrayResultPopup xrayImageUrl={xrayImageUrl}/>
+                    <XrayResultPopup xrayImageUrl={xrayImageUrl} closePop={closePop}/>
                 }
             </div>
         </>

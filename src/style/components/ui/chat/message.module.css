@@ -88,15 +88,18 @@
 {
     width: fit-content;
     position: absolute;
-    bottom: calc(100% + 4px);
-    left: 0%;
+    bottom: 50%;
+    left: -38px;
+    z-index: 99;
+    transform: translateY(50%);
     padding: 0 4px;
     background-color: var(--chat-2-color);
     border-radius: 12px;
+    cursor: pointer;
 }
 .message.receiver .message_emoji
 {
-    right: 0%;
+    right: -38px;
 }
 .message h3
 {

@@ -1,0 +1,65 @@
+/* Start Variables */
+:root
+{
+    --main-color-100: #E0F2FE;
+    --main-color-200: #B9E6FE;
+    --main-color-700: #026AA2;
+    --main-color-800: #00598D;
+    --gray-color-400: #AFAFAF;
+    --gray-color-600: #636363;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-100: #FDE8E8;
+    --red-color-500: #F05252;
+    --green-color-400: #31C48D;
+    --chat-1-color: #E0F0FF;
+    --chat-2-color: #E9EAED;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Message Pop Component */
+.message_pop
+{
+    position: fixed;
+    top: 24%;
+    right: 24px;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    background-color: white;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateX(calc(100% + 24px));
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+.message_pop.show
+{
+    opacity: 1;
+    transform: translateX(0);
+}
+.message_pop.hide
+{
+    opacity: 0;
+    transform: translateX(calc(100% + 24px));
+}
+.error
+{
+    filter: brightness(0) saturate(100%) invert(19%) sepia(99%) saturate(7327%) hue-rotate(1deg) brightness(99%) contrast(115%);
+}
+.success
+{
+    filter: brightness(0) saturate(100%) invert(76%) sepia(82%) saturate(5027%) hue-rotate(76deg) brightness(119%) contrast(134%);
+}
+.loading
+{
+    filter: brightness(0) saturate(100%) invert(22%) sepia(94%) saturate(2366%) hue-rotate(184deg) brightness(88%) contrast(98%);
+}
+/* End Message Pop Component */

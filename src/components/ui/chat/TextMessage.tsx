@@ -103,7 +103,7 @@ export default function TextMessage({messages, message, senderId,messageId,times
                 <div className={style.message_content}>
                     <h2>
                         {text}
-                        <div className={style.message_emoji}>{messageEmoji}</div>
+                        <div className={style.message_emoji} onClick={messageEmojisContainerToggelHandler}>{messageEmoji}</div>
                         <div className={style.message_state}>
                             <img src={trueIcon} alt="True icon" />
                         </div>

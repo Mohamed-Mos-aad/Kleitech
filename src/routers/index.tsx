@@ -51,7 +51,7 @@ export default function Routers() {
                     <Route path="sign-up" element={<ProtectAuthRoutes><SignUp /></ProtectAuthRoutes>}/>
                     <Route path="forget-password" element={<ForgetPassword />}/>
                     <Route path="otp" element={<ProtectOtpRoute><Otp /></ProtectOtpRoute>} />
-                    <Route path="new-password" element={<NewPassword />}/>
+                    <Route path="reset-password" element={<NewPassword />}/>
                     <Route path="done" element={<ProtectDoneRoute><Done /></ProtectDoneRoute>} />
                     <Route path="change-password" element={<ChangePassword />}/>
                 </Route>

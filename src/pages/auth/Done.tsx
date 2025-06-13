@@ -3,9 +3,10 @@ import {logo} from '../../assets/icons/icons'
 // ** Style
 import style from '../../style/pages/auth/done.module.css'
 // ** Hooks && Tools
-import { RootState } from '../../app/store';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+// ** Store
+import { RootState } from '../../app/store';
 
 
 
@@ -18,7 +19,10 @@ export default function Done() {
     // ** Defaults
     const navigate = useNavigate();
     // ** Navigation
-    const goTosignIn = ()=>{navigate('/u/sign-in')};
+    const goTosignIn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+        e.preventDefault();
+        navigate('/u/sign-in')
+    };
 
 
 
@@ -50,7 +54,7 @@ export default function Done() {
                     <p>{actionContent.message}</p>
                 </div>
                 <form>
-                    <button onClick={goTosignIn}>تسجيل الدخول</button>
+                    <button onClick={(e)=>{goTosignIn(e)}}>تسجيل الدخول</button>
                 </form>
             </div>
         </>

@@ -15,8 +15,8 @@ import SearchElement from '../../components/dashboard/SearchElement'
 
 export default function Patients() {
     // ** States
-    const [data,setData] = useState<{ id: string; name: string; phone: string; nationalId: string; email: string; }[]>([]);
-    const [patients,setPatients] = useState<{ id: string; name: string; phone: string; nationalId: string; email: string; }[]>([]);
+    const [data,setData] = useState<{ id: string; name: string; phone: string; national_id: string; email: string; }[]>([]);
+    const [patients,setPatients] = useState<{ id: string; name: string; phone: string; national_id: string; email: string; }[]>([]);
 
 
 
@@ -43,7 +43,7 @@ export default function Patients() {
         <tr key={patient.id}>
             <td>{patient.name}</td>
             <td>{patient.phone}</td>
-            <td>{patient.nationalId}</td>
+            <td>{patient.national_id}</td>
             <td>{patient.email}</td>
             <td>
                 <button>

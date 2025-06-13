@@ -8,6 +8,7 @@ import bookingDetailsSlice from './slices/bookingDetailsSlice';
 import otpEmailSlice from './slices/auth/otpSlice';
 import chatDataSlice from './slices/chat/chatSlice';
 import homeAiSlice from './slices/main/homeAiSlice';
+import messagePopSlice from './slices/ui/messagePopSlice';
 
 
 
@@ -20,7 +21,8 @@ const store = configureStore({
         BookingDetails: bookingDetailsSlice.reducer,
         otpEmail: otpEmailSlice.reducer,
         chatDataS: chatDataSlice.reducer,
-        homeAi: homeAiSlice.reducer
+        homeAi: homeAiSlice.reducer,
+        messagePop: messagePopSlice.reducer
     },
 })
 

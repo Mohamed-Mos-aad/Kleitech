@@ -49,7 +49,7 @@ export const fetchDashboardDoctors = async ()=>{
     }
 }
 // ** Add Doctor
-export const addDoctor = async (doctorData: {name: string, email: string,password: string, national_id: string, specialty: string, phone: string}) => {
+export const addDoctor = async (doctorData: {name: string, email: string,password?: string, national_id: string, specialty?: string, phone: string}) => {
     console.log(doctorData);
     try{
         const response = await api.post('/doctors', doctorData);
@@ -89,7 +89,8 @@ export const deleteDoctor = async (id:number) => {
 // ** Get Patients
 export const fetchDashboardPatients = async ()=>{
     try{
-        const response = await api.get('/patients');
+        const response = await api.get('/all-patients');
+        console.log(response.data);
         return response.data;
     }
     catch(error)

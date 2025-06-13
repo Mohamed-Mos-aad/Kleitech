@@ -11,18 +11,18 @@ interface ISearchElement{
         id: string,
         name: string,
         email: string,
-        password: string,
+        password?: string,
         national_id: string,
-        specialty: string,
+        specialty?: string,
         phone: string
     }[],
     setResult: (result: {
         id: string,
         name: string,
         email: string,
-        password: string,
+        password?: string,
         national_id: string,
-        specialty: string,
+        specialty?: string,
         phone: string
     }[])=> void 
 }
