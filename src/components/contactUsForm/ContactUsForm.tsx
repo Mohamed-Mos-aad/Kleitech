@@ -60,13 +60,14 @@ export default function ContactUsForm() {
         if(message.userFirstName !== '' && message.userSecondName !== '' && message.userEmail !== '' && message.userMessage !== '')
         {
             try{
-                await addComment({f_name: message.userFirstName,l_name: message.userSecondName, email: message.userEmail,massage: message.userMessage})
+                showMessage({state:'loading', content: 'جاري الارسال'});
+                await addComment({user_id: 1,f_name: message.userFirstName,l_name: message.userSecondName, email: message.userEmail,massage: message.userMessage})
                 setMessage({
                     userFirstName: '',
                     userSecondName: '',
                     userEmail: '',
                     userMessage: '',
-                    userAgreeToTerms: false,
+                    userAgreeToTerms: false,    
                 });
                 setMessageErrors({
                     userFirstName: '',
@@ -78,7 +79,7 @@ export default function ContactUsForm() {
                 showMessage({state:'success', content: 'تم الارسال بنجاح'});
             }
             catch(error){
-                console.log(error);
+                console.log(error.response?.data);
                 showMessage({state:'error', content: 'فشل الارسال, جرب مره اخري'});
             }
         }

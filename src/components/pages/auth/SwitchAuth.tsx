@@ -27,7 +27,12 @@ export default function SwitchAuth({currentAuthState}:ISwitchAuth) {
     return (
         <>
             <div className={style.switch_auth}>
-                <h1>ليس لديك حساب؟ <span onClick={currentAuthState === 'signIn' ? goToSignUpPage : goToSignInPage}>إنشاء حساب</span></h1>
+                {
+                    currentAuthState === 'signIn' ? 
+                        <h1>ليس لديك حساب؟ <span onClick={goToSignUpPage}>إنشاء حساب</span></h1>
+                        :
+                        <h1>لديك حساب؟ <span onClick={goToSignInPage}>تسجيل دخول</span></h1>
+                }
             </div>
         </>
     )
