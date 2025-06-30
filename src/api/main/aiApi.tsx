@@ -16,7 +16,6 @@ export const clsPhoto = async (formData:FormData,onUploadProgress?: (progressEve
         const response = await api.post(`/upload-image`, formData,
             {onUploadProgress,signal}
         );
-        console.log('Upload successful:' +  response.data);
         return response.data
     }
     catch(error){
@@ -29,7 +28,6 @@ export const detPhoto = async (formData:FormData,onUploadProgress?: (progressEve
         const response = await api.post(`/predict`, formData,
             {onUploadProgress,signal}
         );
-        console.log('Upload successful:' +  response.data);
         return response.data
     }
     catch(error){

@@ -81,7 +81,6 @@ export default function UploadPhoto({close,next,setXrayImageUrl}:IUploadPhoto) {
                 }
             });
             const data:{ResultIs: string} = res;
-            console.log(data);
             setUploadedPhotoInfo({name: photo.name,size: (photo.size / (1024 * 1024)).toFixed(2).toString()});
             const imageUrl = URL.createObjectURL(photo);
             setXrayImageUrl(imageUrl);

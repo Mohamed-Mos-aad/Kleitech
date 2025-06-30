@@ -6,7 +6,7 @@ import Routers from './routers'
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './app/store';
 import { setUserLogin } from './app/slices/userSlice';
-import MessagePop from './components/ui/messagePop';
+import MessagePop from './components/ui/MessagePop';
 
 function App() {
   // ** Store

@@ -16,10 +16,7 @@ import InputElement from '../../components/ui/InputElement'
 export default function Profile() {
     // ** Default
     const navigate = useNavigate();
-
-
-
-
+    const user = JSON.parse(localStorage.getItem('kleitech_user') || sessionStorage.getItem('kleitech_user') || 'null')
 
     // ** States
     const [settingOpened,setSettingOpened] = useState<boolean>(false);
@@ -43,7 +40,7 @@ export default function Profile() {
                         <img src={patient1} alt="" />
                     </div>
                     <div className={style.user_short_data}>
-                        <h1>محمد يوسف</h1>
+                        <h1>{user.user.name}</h1>
                         <p>القاهره,الدقهليه,المنصوره </p>
                     </div>
                     <div className={style.setting_btn}>
@@ -111,7 +108,7 @@ export default function Profile() {
                                     </li>
                                     <li>
                                         <h3>البريد الالكتروني</h3>
-                                        <p>mohamedyousef178@gmail.com</p>
+                                        <p>user.user.email</p>
                                     </li>
                                     <li>
                                         <h3>الوزن</h3>

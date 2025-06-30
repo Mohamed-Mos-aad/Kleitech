@@ -35,7 +35,7 @@ export const getSpecialComment = async (id:string) => {
     }
 }
 // ** Add Comment
-export const addComment = async (userData: {f_name: string,l_name: string,email: string,massage: string}) => {
+export const addComment = async (userData: {user_id: number ,f_name: string,l_name: string,email: string,massage: string}) => {
     try{
         const response = await api.post('/comments', userData);
         return response.data;
