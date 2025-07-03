@@ -6,8 +6,6 @@ import trueIcon from '../../../assets/main/chat/trueIcon.svg'
 import style from '../../../style/components/ui/chat/message.module.css'
 // ** Hooks && Tools
 import { useEffect, useState } from 'react'
-// ** Api
-import { deleteMessage } from '../../../api/chat/chatApi'
 // ** Components
 import EmojiPicker from './EmojiPicker'
 import OptionsList from './OptionsList'
@@ -25,13 +23,15 @@ interface ITextMessage{
     timestamp: string,
     messages: IMessage[],
     message: IMessage,
+    deleteCurrentMessageHandler: ()=> void,
+    pinCurrentMessageHandler: ()=> void,
 }
 
 
 
 
 
-export default function TextMessage({messages, message, senderId,messageId,timestamp,text}:ITextMessage) {
+export default function TextMessage({messages, message, senderId,messageId,timestamp,text,deleteCurrentMessageHandler,pinCurrentMessageHandler}:ITextMessage) {
     // ** Store
     const dispatch: AppDispatch = useDispatch();
 
@@ -69,15 +69,11 @@ export default function TextMessage({messages, message, senderId,messageId,times
     }
     const pinMessage = ()=>{
         dispatch(setChatDataS({replayId: null , editeId: null, pinId: messageId}));
+        pinCurrentMessageHandler();
         messageOptionsContainerToggelHandler();
     }
-    const deleteMessageHandler = async ()=>{
-        try{
-            await deleteMessage(messageId);
-        }
-        catch(error){
-            console.log(error)
-        }
+    const deleteMessageHandler = ()=>{
+        deleteCurrentMessageHandler();
         messageOptionsContainerToggelHandler();
     }
 

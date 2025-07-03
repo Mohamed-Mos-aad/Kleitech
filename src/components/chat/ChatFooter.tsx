@@ -44,6 +44,7 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
 
     // ** Default
     const { showMessage } = useMessagePop();
+    const messagesArray:IMessage[] = Array.isArray(messages) ? messages : Object.values(messages || {});
     
 
 
@@ -119,7 +120,7 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
         if ((messageInputRef.current && messageInputRef.current.value.trim()) || attachment)
         {
             let message:IMessage = {
-                messageId: `msg${chatLenght+1}`,
+                messageId: `msg_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`,
                 senderId: senderId,
                 receiverId: receiverId,
                 timestamp: new Date().toISOString(),
@@ -229,18 +230,18 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
 
 
     useEffect(()=>{
-        const getMessage = messages.find(message => message.messageId === chatDataS.replayId);
+        const getMessage = messagesArray.find(message => message.messageId === chatDataS.replayId);
         setReplayedMessage(getMessage?.text || null);
-    },[chatDataS.replayId,messages])
+    },[chatDataS.replayId,messagesArray])
     useEffect(() => {
         if (chatDataS.editeId && messageInputRef.current) {
-            const getMessage = messages.find(message => message.messageId === chatDataS.editeId);
+            const getMessage = messagesArray.find(message => message.messageId === chatDataS.editeId);
             if (getMessage && getMessage.text !== undefined) {
                 messageInputRef.current.value = getMessage.text;
                 setEditMessageMode(true);
             }
         }
-    }, [chatDataS.editeId, messageInputRef, messages]);
+    }, [chatDataS.editeId, messageInputRef, messagesArray]);
 
 
 

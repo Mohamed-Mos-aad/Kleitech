@@ -69,7 +69,7 @@ export default function XrayResultPopup({xrayImageUrl,closePop}:IResult) {
         }
     }
     const detcHandler = async ()=>{
-
+        console.log('work');
     }
 
 
@@ -109,7 +109,7 @@ export default function XrayResultPopup({xrayImageUrl,closePop}:IResult) {
                         <div className={style.xray_photo}>
                             <img src={xrayImageUrl} alt="صورة الأشعة الخاصة بالمريض" />
                             <div className={style.detection}>
-                                <img src={dectectionIcon} alt="dectection icon"/>
+                                <img src={dectectionIcon} alt="dectection icon" onClick={detcHandler}/>
                             </div>
                         </div>
                         <h3>{result}</h3>

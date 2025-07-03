@@ -17,6 +17,7 @@ import { inputValidation } from '../../validation'
 import SignUpPage1 from '../../components/pages/auth/signUp/SignUpPage1'
 import SignUpPage2 from '../../components/pages/auth/signUp/SignUpPage2';
 import SignUpPage3 from '../../components/pages/auth/signUp/SignUpPage3';
+import { setOtpEmail } from '../../app/slices/auth/otpSlice';
 
 
 
@@ -104,6 +105,7 @@ export default function SignUp() {
             return;
         }
         dispatch(setUserSignUpData(userData));
+        dispatch(setOtpEmail({ otpEmail: userData.userEmail, purpose: 'signUp' }));
         goToOtp();
     }
 

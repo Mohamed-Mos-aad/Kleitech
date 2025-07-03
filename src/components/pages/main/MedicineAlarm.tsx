@@ -62,10 +62,10 @@ export default function MedicineAlarm({setAlarmPopOpened}:IAlarmComponent) {
         <>
             <form className={style.form}>
                 <h1>التذكير بمواعيد العلاج</h1>
-                <InputElement name='اسم الدواء' error='' id='name' img={{src: medicineIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.name ?? ""} placeholder='ادخل اسم الدواء'/>
-                <InputElement name='عدد المرات التكرار' error='' id='recurrence_count' img={{src: repeatIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.recurrence_count?.toString() ?? ""} placeholder='ادخل عدد المرات'/>
-                <InputElement name='الفتره الزمنيه' error='' id='start_date' img={{src: calendarIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.start_date ?? ""} placeholder='اختر الفتره'/>
-                <InputElement name='تناول الدواء ابتداءاً من الساعه ' error='' id='start_time' img={{src: clockIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.start_time ?? ""} placeholder='اكتب الوقت'/>
+                <InputElement labelText='اسم الدواء' error='' id='name' name='name' img={{src: medicineIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.name ?? ""} placeholder='ادخل اسم الدواء'/>
+                <InputElement labelText='عدد المرات التكرار' error='' id='recurrence_count' name='recurrence_count' img={{src: repeatIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.recurrence_count?.toString() ?? ""} placeholder='ادخل عدد المرات'/>
+                <InputElement labelText='الفتره الزمنيه' error='' id='start_date' name='start_date' img={{src: calendarIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.start_date ?? ""} placeholder='اختر الفتره'/>
+                <InputElement labelText='تناول الدواء ابتداءاً من الساعه ' error='' id='start_time' name='start_time' img={{src: clockIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.start_time ?? ""} placeholder='اكتب الوقت'/>
                 <div className={style.form_btns}>
                     <button onClick={(e)=>{addAlarmHandler(e)}}>تذكير</button>     
                     <button onClick={(e)=>{closeFormHandler(e)}}>الغاء</button>

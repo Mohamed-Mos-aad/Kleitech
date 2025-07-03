@@ -52,9 +52,9 @@ export default function NewPassword() {
     const resetPasswordHandler = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault();
         try{
-            if(userEmail.otpEmail)
+            if(userEmail.otpEmail && data.email)
             {
-                await resetPassword({email: data.email || '', password: data.password, password_confirmation: data.password_confirmation});
+                await resetPassword({email: data.email, password: data.password, password_confirmation: data.password_confirmation});
                 donePageHandler();
             }
         }
@@ -87,8 +87,8 @@ export default function NewPassword() {
                     </p>
                 </div>
                 <form>
-                    <PasswordInputElement id='password' name='كلمه المرور القديمه' type='password' value={data.password} placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.password} onChange={handleInputChange}/>
-                    <PasswordInputElement id='password_confirmation' name='كلمه المرور القديمه' type='password' value={data.password_confirmation} placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.password_confirmation} onChange={handleInputChange}/>
+                    <PasswordInputElement id='password' name='password' labelText='كلمه المرور الجديدة' type='password' value={data.password} placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.password} onChange={handleInputChange}/>
+                    <PasswordInputElement id='password_confirmation' name='password_confirmation' labelText='كلمه المرور الجديدة' type='password' value={data.password_confirmation} placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.password_confirmation} onChange={handleInputChange}/>
                     <button onClick={(e)=>{resetPasswordHandler(e)}}>تغير كلمه المرور</button>
                 </form>
             </div>

@@ -33,9 +33,9 @@ export default function SignUpPage1({data,errors,onChange,onNext}:ISignUpPage1) 
             <div className={style.sign_up_container}>
                 <h2>إنشاء حساب جديد</h2>
                 <form className={style.sign_up_form}>
-                    <InputElement id='userName' name='الإسم' type='text' value={data.userName} placeholder='ادخل الإسم بالكامل' img= {{src:userNameIcon,alt:"User Name Icon"}} error={errors.userName} onChange={onChange}/>
-                    <InputElement id='userId' name='الرقم القومي' type='text' value={data.userId} placeholder='ادخل الرقم القومي' img= {{src:userIdIcon,alt:"User Id Icon"}} error={errors.userId} onChange={onChange}/>
-                    <InputElement id='userPhone' name='رقم الهاتف' type='text' value={data.userPhone} placeholder='ادخل رقم الهاتف' img= {{src:userPhoneIcon,alt:"User Phone Icon"}} error={errors.userPhone} onChange={onChange}/>
+                    <InputElement id='userName' name='userName' labelText='الإسم' type='text' value={data.userName} placeholder='ادخل الإسم بالكامل' img= {{src:userNameIcon,alt:"User Name Icon"}} error={errors.userName} onChange={onChange}/>
+                    <InputElement id='userId' name='userId' labelText='الرقم القومي' type='text' value={data.userId} placeholder='ادخل الرقم القومي' img= {{src:userIdIcon,alt:"User Id Icon"}} error={errors.userId} onChange={onChange}/>
+                    <InputElement id='userPhone' name='userPhone' labelText='رقم الهاتف' type='text' value={data.userPhone} placeholder='ادخل رقم الهاتف' img= {{src:userPhoneIcon,alt:"User Phone Icon"}} error={errors.userPhone} onChange={onChange}/>
                     <div className={style.form_btn}>
                         <button onClick={onNext}>التالي</button>
                     </div>

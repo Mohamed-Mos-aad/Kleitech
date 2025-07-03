@@ -17,6 +17,10 @@ import { useDispatch } from 'react-redux'
 import { setUserLogin } from '../../app/slices/userSlice'
 // ** Api
 import { loginUser } from '../../api/userApi'
+// ** Firebase
+import { auth } from '../../firebase/firebase-config';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+
 
 
 
@@ -81,7 +85,7 @@ export default function SignIn() {
         }
 
         try{
-            showMessage({state:'loading', content: 'جاري تسجيل الدخول'});
+            showMessage({state:'loading', content: 'جاري تسجيل الدخول'});            
             const res = await loginUser(userData);
             if (res&& res.token && res.user)
             {
@@ -90,6 +94,17 @@ export default function SignIn() {
                     token: res.token,
                     user: res.user
                 }));
+                try {
+                    await signInWithEmailAndPassword(auth, userData.email, userData.password);
+                }
+                catch (firebaseError: any) {
+                    if (firebaseError.code === "auth/user-not-found" || firebaseError.code === "auth/invalid-credential") {
+                        await createUserWithEmailAndPassword(auth, userData.email, userData.password);
+                    } else {
+                        console.error(firebaseError);
+                        throw new Error("فشل تسجيل الدخول على فايربيز");
+                    }
+                }
                 dispatch(setUserLogin({ ...res.user, token: res.token, loggedIn: true }));
                 goToHomePage();
             }
@@ -115,8 +130,8 @@ export default function SignIn() {
             <div className={style.sign_in_container}>
                 <h1>تسجيل الدخول</h1>
                 <form className={style.sign_in_form}>
-                    <InputElement id='email' name='البريد الالكتروني' type='email' value={userData.email} placeholder='ادخل البريد الالكتروني' img= {{src:userEmailIcon,alt:"User Email Icon"}} error={errors.email} onChange={handleInputChange}/>
-                    <PasswordInputElement id='password' name='كلمه المرور' type='password' value={userData.password} placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.password} onChange={handleInputChange}/>
+                    <InputElement id='email' name='email' labelText='البريد الالكتروني' type='email' value={userData.email} placeholder='ادخل البريد الالكتروني' img= {{src:userEmailIcon,alt:"User Email Icon"}} error={errors.email} onChange={handleInputChange}/>
+                    <PasswordInputElement id='password' name='password' labelText='كلمه المرور' type='password' value={userData.password} placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.password} onChange={handleInputChange}/>
                     <div className={style.form_footer}>
                         <input id='rememberMe' type="checkbox" onChange={toggleRememberMeHandler}/>
                         <label htmlFor="rememberMe">تذكرني</label>

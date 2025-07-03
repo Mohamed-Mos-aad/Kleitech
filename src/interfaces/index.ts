@@ -1,5 +1,6 @@
 // ** Input Element
 export interface IInputElement{
+    labelText: string,
     id: string,
     name: string,
     type: string,

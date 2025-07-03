@@ -70,9 +70,9 @@ export default function ChangePassword() {
                     </p>
                 </div>
                 <form>
-                    <PasswordInputElement id='current_password' name='كلمه المرور القديمه' type='password' value={data.current_password} placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.current_password} onChange={handleInputChange}/>
-                    <PasswordInputElement id='new_password' name='كلمه المرور الجديده' type='password' value={data.new_password} placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.new_password} onChange={handleInputChange}/>
-                    <PasswordInputElement id='new_password_confirmation' name='تأكيد كلمه المرور الجديده' type='password' value={data.new_password_confirmation} placeholder='تأكيد كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.new_password_confirmation} onChange={handleInputChange}/>
+                    <PasswordInputElement id='current_password' name='current_password' labelText='كلمه المرور القديمه' type='password' value={data.current_password} placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.current_password} onChange={handleInputChange}/>
+                    <PasswordInputElement id='new_password' name='new_password' labelText='كلمه المرور الجديده' type='password' value={data.new_password} placeholder='ادخل كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.new_password} onChange={handleInputChange}/>
+                    <PasswordInputElement id='new_password_confirmation' name='new_password_confirmation' labelText='تأكيد كلمه المرور الجديده' type='password' value={data.new_password_confirmation} placeholder='تأكيد كلمه المرور' img= {{src:userPasswordIcon,alt:"User password icon"}} error={errors.new_password_confirmation} onChange={handleInputChange}/>
                     <span onClick={forgetPasswordHandler}>هل نسيت كلمه المرور؟</span>
                     <button onClick={(e)=>{changePasswordHandler(e)}}>تغير كلمه المرور</button>
                 </form>

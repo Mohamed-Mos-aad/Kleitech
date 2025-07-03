@@ -62,9 +62,9 @@ export default function XRayAlarm({setAlarmPopOpened}:IAlarmComponent) {
         <>
             <form className={style.form}>
                 <h1>التذكير بمواعيد الجلسات</h1>
-                <InputElement name='عدد الجلسات اسبوعياً' error='' id='weekly_sessions' img={{src: repeatIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.weekly_sessions?.toString() ?? ''} placeholder='اختر العدد'/>
-                <InputElement name='معاد الجلسه القادم' error='' id='next_session_date' img={{src: calendarIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.next_session_date ?? ''} placeholder='اكتب التاريخ'/>
-                <InputElement name='في تمام الساعه' error='' id='session_time' img={{src: clockIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.session_time ?? ''} placeholder='اكتب الساعه'/>
+                <InputElement labelText='عدد الجلسات اسبوعياً' error='' id='weekly_sessions' name='weekly_sessions' img={{src: repeatIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.weekly_sessions?.toString() ?? ''} placeholder='اختر العدد'/>
+                <InputElement labelText='معاد الجلسه القادم' error='' id='next_session_date' name='next_session_date' img={{src: calendarIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.next_session_date ?? ''} placeholder='اكتب التاريخ'/>
+                <InputElement labelText='في تمام الساعه' error='' id='session_time' name='session_time' img={{src: clockIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.session_time ?? ''} placeholder='اكتب الساعه'/>
                 <div className={style.form_btns}>
                     <button onClick={(e)=>{addAlarmHandler(e)}}>تذكير</button>     
                     <button onClick={(e)=>{closeFormHandler(e)}}>الغاء</button>

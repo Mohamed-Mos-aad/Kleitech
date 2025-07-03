@@ -4,7 +4,7 @@ import noPhoto from '../../assets/main/consultation/noPhoto.png'
 // ** Style
 import style from '../../style/layouts/chatLayout.module.css'
 // ** Interface
-import { IChat } from '../../interfaces'
+import { IChat, IMessage } from '../../interfaces'
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 import { useEffect, useState } from 'react';
@@ -27,6 +27,7 @@ export default function ChatHeader({currentChat,openChatMobilesToggleHandler}:IC
 
     // ** States
     const [pinMessage,setPinMessage] = useState<string | null>(null);
+    const messagesArray:IMessage[] = Array.isArray(currentChat?.messages) ? currentChat.messages : Object.values(currentChat?.messages || {});
 
 
 
@@ -34,10 +35,10 @@ export default function ChatHeader({currentChat,openChatMobilesToggleHandler}:IC
     useEffect(()=>{
         if(currentChat)
         {
-            const getMessage = currentChat.messages.find(message => message.messageId === chatDataS.pinId || message.isPinned);
+            const getMessage = messagesArray.find(message => message.messageId === chatDataS.pinId || message.isPinned);
             setPinMessage(getMessage?.text || null);
         }
-    },[currentChat,chatDataS.pinId])
+    },[currentChat,messagesArray,chatDataS.pinId])
 
 
 

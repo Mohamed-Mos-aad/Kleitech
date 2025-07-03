@@ -56,10 +56,10 @@ export default function WaterAlarm({setAlarmPopOpened}:IAlarmComponent) {
         <>
             <form className={style.form}>
                 <h1>التذكير بمواعيد المياه</h1>
-                <InputElement name='النوع' error='' id='gender' img={{src: genderIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.gender ?? ''} placeholder='اختر النوع'/>
-                <InputElement name='معاد الاستيقاظ' error='' id='wake_time' img={{src: clockIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.wake_time ?? ''} placeholder='اكتب الوقت'/>
-                <InputElement name='معاد النوم' error='' id='sleep_time' img={{src: clockIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.sleep_time ?? ''} placeholder='اكتب الوقت'/>
-                <InputElement name='التذكير كل' error='' id='reminder_interval' img={{src: clockIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.reminder_interval ?? ''} placeholder='اختر الوقت'/>
+                <InputElement labelText='النوع' error='' id='gender' name='gender' img={{src: genderIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.gender ?? ''} placeholder='اختر النوع'/>
+                <InputElement labelText='معاد الاستيقاظ' error='' id='wake_time' name='wake_time' img={{src: clockIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.wake_time ?? ''} placeholder='اكتب الوقت'/>
+                <InputElement labelText='معاد النوم' error='' id='sleep_time' name='sleep_time' img={{src: clockIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.sleep_time ?? ''} placeholder='اكتب الوقت'/>
+                <InputElement labelText='التذكير كل' error='' id='reminder_interval' name='reminder_interval' img={{src: clockIcon, alt:''}} onChange={(e)=>{inputChangeHandler(e)}} type='text' value={data.reminder_interval ?? ''} placeholder='اختر الوقت'/>
                 <div className={style.form_btns}>
                     <button onClick={(e)=>{addAlarmHandler(e)}}>تذكير</button>     
                     <button onClick={(e)=>{closeFormHandler(e)}}>الغاء</button>

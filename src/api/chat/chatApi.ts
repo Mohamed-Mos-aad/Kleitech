@@ -1,92 +1,90 @@
-// ** Hooks && Tools
-import axios from "axios";
+// ** Firebase
+import { getDatabase, ref, set, push, onValue, update, remove, get } from 'firebase/database';
 // ** Interfaces
-import { IChat, IMessage} from "../../interfaces";
-
-
-
-// ** Api
-const api = axios.create({
-    baseURL: import.meta.env.VITE_LOCAL_SERVER_API_URL,
-    headers:{
-        'Content-Type': 'application/json',
-    }
-})
-
+import { IChat, IMessage } from '../../interfaces';
 
 
 // ** Get chats
-export const fetchMessages = async ()=>{
-    try{
-        const response = await api.get('/chats');
-        return response.data;
-    }
-    catch(error)
-    {
-        console.log(error);
-    }
-}
+export const fetchMessages = async (currentUserId:string): Promise<IChat[]> => {
+    const db = getDatabase();
+    const userChatsSnap = await get(ref(db, `users/${currentUserId}/chats`));
+    const chatIdsObj = userChatsSnap.val();
+    
+    if (!chatIdsObj) return [];
+
+    const chatIds = Object.keys(chatIdsObj);
+
+    const chats = await Promise.all(
+            chatIds.map(async (chatId) => {
+                const chatSnap = await get(ref(db, `chats/${chatId}`));
+                return {
+                    id: chatId,
+                    ...chatSnap.val()
+                };
+            })
+        );
+
+    return chats;
+};
+
 // ** New Chat
-export const addChat = async (chatData:IChat) => {
-    try{
-        const response = await api.post('/chats', chatData);
-        return response.data;
+export const addChat = async (chat: IChat) => {
+    const db = getDatabase();
+    await set(ref(db, `chats/${chat.id}`), chat);
+
+    for (const participant of chat.participants) {
+        await set(ref(db, `users/${participant.userId}/chats/${chat.id}`), true);
     }
-    catch(error)
-    {
-        console.log(error);
-        throw error;
-    }
-}
+};
+
 // ** Send Message
-export const sendMessage = async (chatData:IChat,id:string) => {
-    console.log('messagesended')
-    try{
-        const response = await api.put(`/chats/${id}`, chatData);
-        return response.data;
-    }
-    catch(error)
-    {
-        console.log(error);
-        throw error;
-    }
-}
+export const sendMessage = async (message: IMessage, chatId: string) => {
+    const db = getDatabase();
+    const messageRef = ref(db, `chats/${chatId}/messages`);
+    await push(messageRef, message);
+};
+
 // ** Edit Message
-export const editeMessage = async (message:IMessage,id:string) => {
-    console.log('messageedited')
-    try{
-        const response = await api.put(`/chats/messages/${id}`, message);
-        return response.data;
-    }
-    catch(error)
-    {
-        console.log(error);
-        throw error;
-    }
-}
-// ** Pin Message
-export const pinMessage = async (message:IMessage,id:string) => {
-    console.log('messageepined')
-    try{
-        const response = await api.put(`/chats/messages/${id}`, message);
-        return response.data;
-    }
-    catch(error)
-    {
-        console.log(error);
-        throw error;
-    }
-}
+export const editeMessage = async (message: IMessage, chatId: string) => {
+    const db = getDatabase();
+    const chatRef = ref(db, `chats/${chatId}/messages`);
+    onValue(chatRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+            const messageKey = Object.keys(data).find(key => data[key].messageId === message.messageId);
+            if (messageKey) {
+                update(ref(db, `chats/${chatId}/messages/${messageKey}`), message);
+            }
+        }
+    }, { onlyOnce: true });
+};
+
 // ** Delete Message
-export const deleteMessage = async (id:string) => {
-    console.log('messagedeleted')
-    try{
-        const response = await api.delete(`/chats/${id}`);
-        return response.data;
-    }
-    catch(error)
-    {
-        console.log(error);
-        throw error;
-    }
-}
+export const deleteMessage = async (chatId: string, messageId: string) => {
+    const db = getDatabase();
+    const chatRef = ref(db, `chats/${chatId}/messages`);
+    onValue(chatRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+            const messageKey = Object.keys(data).find(key => data[key].messageId === messageId);
+            if (messageKey) {
+                remove(ref(db, `chats/${chatId}/messages/${messageKey}`));
+            }
+        }
+    }, { onlyOnce: true });
+};
+
+// ** Pin Message
+export const pinMessage = async (chatId: string, messageId: string, isPinned: boolean) => {
+    const db = getDatabase();
+    const chatRef = ref(db, `chats/${chatId}/messages`);
+    onValue(chatRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+            const messageKey = Object.keys(data).find(key => data[key].messageId === messageId);
+            if (messageKey) {
+                update(ref(db, `chats/${chatId}/messages/${messageKey}`), { isPinned });
+            }
+        }
+    }, { onlyOnce: true });
+};
