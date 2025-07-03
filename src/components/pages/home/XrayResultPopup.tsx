@@ -91,8 +91,6 @@ export default function XrayResultPopup({xrayImageUrl,closePop}:IResult) {
             default:
             setResult('نتيجة غير معروفة');
         }
-
-        console.log(homeAi.ResultIs);
     }, [homeAi.ResultIs]);
 
 

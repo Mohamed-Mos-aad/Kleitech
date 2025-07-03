@@ -23,6 +23,10 @@ export default function Done() {
         e.preventDefault();
         navigate('/u/sign-in')
     };
+    const goToHomePage = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+        e.preventDefault();
+        navigate('/m')
+    };
 
 
 
@@ -31,10 +35,14 @@ export default function Done() {
             title: 'تأكيد التسجيل',
             message: 'لقد تم تسجيل حسابك بنجاح انقر لتسجيل الدخول'
         },
-        passwordResetSignUp : {
+        passwordReset : {
             title: 'اعاده تعين كلمه المرور',
             message: 'لقد تم تعير كلمه المرور بنجاح انقر لتسجيل الدخول'
-        }
+        },
+        passwordChange: {
+            title: 'اعاده تعين كلمه المرور',
+            message: 'لقد تم تعير كلمه المرور بنجاح'
+        },
     }
     const actionContent = doneActions[actionType] || {
         title: 'عملية ناجحة',
@@ -54,7 +62,12 @@ export default function Done() {
                     <p>{actionContent.message}</p>
                 </div>
                 <form>
-                    <button onClick={(e)=>{goTosignIn(e)}}>تسجيل الدخول</button>
+                    {
+                        actionType === 'passwordChange' ? 
+                            <button onClick={(e)=>{goToHomePage(e)}}>الصفحة الرئيسية</button>
+                            :
+                            <button onClick={(e)=>{goTosignIn(e)}}>تسجيل الدخول</button>
+                    }
                 </form>
             </div>
         </>

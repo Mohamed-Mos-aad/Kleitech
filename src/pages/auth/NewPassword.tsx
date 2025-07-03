@@ -13,6 +13,10 @@ import { setdonePage } from '../../app/slices/donePageSlice';
 import PasswordInputElement from '../../components/ui/PasswordInputElement';
 // ** Api
 import { resetPassword } from '../../api/auth/authApi';
+// ** Firebase
+import { changeFirebasePassword } from '../../firebase/firebaseApis';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase/firebase-config';
 
 
 
@@ -34,7 +38,8 @@ export default function NewPassword() {
     const [data,setData] = useState({
         email: userEmail.otpEmail,
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+        token: userEmail.token
     })
     const [errors,setErrors] = useState({
         password: '',
@@ -54,7 +59,9 @@ export default function NewPassword() {
         try{
             if(userEmail.otpEmail && data.email)
             {
-                await resetPassword({email: data.email, password: data.password, password_confirmation: data.password_confirmation});
+                await resetPassword({email: data.email, password: data.password, password_confirmation: data.password_confirmation,token: data.token?? ''});
+                await signInWithEmailAndPassword(auth, data.email, data.password);
+                await changeFirebasePassword(data.password)
                 donePageHandler();
             }
         }

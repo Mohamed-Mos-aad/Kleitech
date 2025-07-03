@@ -59,7 +59,6 @@ export const registerUser = async (userData: ISignUpData) => {
 export const loginUser = async (userData: {email: string, password: string}) => {
     try{
         const response = await api.post('/login', userData);
-        console.log(response.data)
         return response.data;
     }
     catch(error)
@@ -71,7 +70,15 @@ export const loginUser = async (userData: {email: string, password: string}) => 
 // ** Change Password
 export const changePassword = async (userData: {current_password: string,new_password: string,new_password_confirmation: string}) => {
     try{
-        const response = await api.post('/change-password', userData);
+        const storage = localStorage.getItem("kleitech_user") ? localStorage : sessionStorage;
+        const userString = storage.getItem("kleitech_user");
+        const token = userString ? JSON.parse(userString).token : null;
+            
+        const response = await api.post('/change-password', userData, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
         return response.data;
     }
     catch(error)
@@ -80,8 +87,33 @@ export const changePassword = async (userData: {current_password: string,new_pas
         throw error;
     }
 }
+
+// ** Forget Password
+export const forgetPassword = async (userData: {email: string}) => {
+    try{
+        const response = await api.post('/forgot-password', userData);
+        return response.data;
+    }
+    catch(error)
+    {
+        console.log(error);
+        throw error;
+    }
+}
+// ** Verify Reset Code
+export const verifyResetCode = async (userData: {email: string,token: string}) => {
+    try{
+        const response = await api.post('/verify-reset-code', userData);
+        return response.data.status;
+    }
+    catch(error)
+    {
+        console.log(error);
+        throw error;
+    }
+}
 // ** Reset Password
-export const resetPassword = async (userData: {email: string,password: string,password_confirmation: string}) => {
+export const resetPassword = async (userData: {email: string,password: string,password_confirmation: string,token:string}) => {
     try{
         const response = await api.post('/reset-password', userData);
         return response.data;
