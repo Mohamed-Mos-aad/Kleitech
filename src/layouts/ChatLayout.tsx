@@ -2,17 +2,23 @@
 import style from '../style/layouts/chatLayout.module.css'
 // ** Hooks && Tools
 import { useEffect, useRef, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 // ** Api
-import { addChat, sendMessage, fetchMessages, editeMessage } from '../api/chat/chatApi'
+import { addChat, sendMessage, editeMessage, fetchMessages } from '../api/chat/chatApi'
+import { getDatabase, onValue, ref, set } from 'firebase/database';
+
 // ** Interfaces
-import { IChat, IMessage } from '../interfaces'
+import { IChat, IDoctorsData, IMessage } from '../interfaces'
 // ** Components
 import EmojyPicker from '../components/ui/EmojyPicker'
 import ChatList from '../components/chat/ChatList'
 import ChatHeader from '../components/chat/ChatHeader'
 import ChatFooter from '../components/chat/ChatFooter';
 import ChatMessages from '../components/chat/ChatMessages';
+// ** Api
+import { fetchDoctors } from '../api/doctorsApi';
+// ** Firebase
+import { onAuthStateChanged, getAuth } from "firebase/auth";
 
 
 
@@ -20,8 +26,8 @@ import ChatMessages from '../components/chat/ChatMessages';
 
 export default function ChatLayout() {
     // ** Default 
-    const location = useLocation();
-    const doctorFromDetails = location.state?.doctor;
+    const { id } = useParams();
+    const navigate = useNavigate();
 
 
 
@@ -46,15 +52,17 @@ export default function ChatLayout() {
     const selectChatHandler = (id: string) => {
         setChatSelected(true);
         const findChat = displayedChats.find(chat => chat.id === id);
+        navigate(`/chats/${id}`);
         setCurrentChat(findChat);
         openChatMobilesToggleHandler();
     }
     const sendMessageHandler = async (message:IMessage)=>{
         if (!message || !currentChat) return;
         
+        const messagesArray:IMessage[] = Array.isArray(currentChat.messages)? currentChat.messages: Object.values(currentChat.messages);
         const updatedChat: IChat = {
             ...currentChat,
-            messages: [...currentChat.messages, message],
+            messages: [...messagesArray, message],
             lastMessage: {
                 messageId: message.messageId,
                 text: message.text || '',
@@ -78,7 +86,7 @@ export default function ChatLayout() {
 
 
         try{
-            await sendMessage(updatedChat,currentChat.id)
+            await sendMessage(message,currentChat.id)
         }
         catch(error){
             console.log(error);
@@ -132,48 +140,66 @@ export default function ChatLayout() {
 
 
 
-
-    // ** UseEffect
     useEffect(()=>{
-        const loadChat = async ()=>{
-            try{
-                const chatsData = await fetchMessages();
-                setChats(chatsData);
-                setDisplayedChats(chatsData);
+        const auth = getAuth();
 
-                if(doctorFromDetails)
-                {
-                    const existingChat = chatsData.find((chat:IChat)=> 
-                        chat.participants.some(p => p.userId === `doc${doctorFromDetails.id}`)
-                    )
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                const currentUserId = user.uid;
 
-                    if(existingChat)
-                    {
+                const fetchedChats = await fetchMessages(currentUserId);
+                const sortedChats = fetchedChats.sort((a, b) =>
+                    new Date(b.lastMessage.timestamp).getTime() - new Date(a.lastMessage.timestamp).getTime()
+                );
+                setChats(sortedChats);
+                setDisplayedChats(sortedChats);
+
+                const response = await fetchDoctors();
+                const doctorsData: IDoctorsData[] = response.doctors;
+                const doctor = doctorsData.find(doc => doc.id.toString() === id);
+
+                if (doctor) {
+                    const existingChat = fetchedChats.find(chat =>
+                        chat.participants.some(p => p.userId === `doc${doctor.id}`)
+                    );
+
+                    if (existingChat) {
                         setCurrentChat(existingChat);
                         setChatSelected(true);
-                    }
-                    else
-                    {
-                        const chatId = `chat_${doctorFromDetails.id}_${Date.now()}`;
-
+                    } else {
+                        const chatId = `${doctor.id}`;
                         const newChat: IChat = {
                             id: chatId,
-                            participants: [{
-                                userId: `doc${doctorFromDetails.id}`,
-                                name: doctorFromDetails.name,
-                                photo: doctorFromDetails.photo,
-                                role: doctorFromDetails.specialty,
-                                isOnline: false,
-                                lastSeen: doctorFromDetails.lastSeen,
-                            }, {
-                                userId: 'currentUserId',
-                                name: 'أنا',
-                                photo: '',
-                                role: 'patient',
-                                isOnline: true,
-                                lastSeen: new Date().toISOString(),
+                            participants: [
+                                {
+                                    userId: `doc${doctor.id}`,
+                                    name: doctor.name,
+                                    photo: doctor.photo ?? '',
+                                    role: doctor.specialty,
+                                    isOnline: false,
+                                    lastSeen: '',
+                                },
+                                {
+                                    userId: currentUserId,
+                                    name: 'أنا',
+                                    photo: '',
+                                    role: 'patient',
+                                    isOnline: true,
+                                    lastSeen: new Date().toISOString(),
+                                },
+                            ],
+                            messages: [{
+                                messageId: '__init__',
+                                senderId: '',
+                                receiverId: '',
+                                text: '',
+                                timestamp: '',
+                                status: '',
+                                type: 'text',
+                                reactions: [],
+                                isPinned: false,
+                                isReplyTo: null
                             }],
-                            messages: [],
                             isArchived: false,
                             lastMessage: {
                                 messageId: '',
@@ -181,26 +207,83 @@ export default function ChatLayout() {
                                 timestamp: new Date().toISOString(),
                             }
                         };
-                        try{
-                            await addChat(newChat);
-                            setChats([newChat, ...chatsData]);
-                            setDisplayedChats([newChat, ...chatsData]);
-                            setCurrentChat(newChat);
-                            setChatSelected(true);
-                        }
-                        catch(error){
-                        console.log(error)
-                        }
+
+                        await addChat(newChat);
+
+                        const db = getDatabase();
+                        await Promise.all([
+                            set(ref(db, `users/${currentUserId}/chats/${chatId}`), true),
+                            set(ref(db, `users/doc${doctor.id}/chats/${chatId}`), true)
+                        ]);
+
+                        const cleanedChat = { ...newChat, messages: [] };
+                        setChats([cleanedChat, ...fetchedChats]);
+                        setDisplayedChats([cleanedChat, ...fetchedChats]);
+                        setCurrentChat(cleanedChat);
+                        setChatSelected(true);
                     }
                 }
+            } else {
+                console.warn("❌ No user logged in");
             }
-            catch(error)
-            {
-                console.log(error);
-            }
-        }
-        loadChat();
-    },[doctorFromDetails]);
+        });
+
+        return () => unsubscribe();
+    }, [id]);
+
+
+
+    useEffect(() => {
+        if (!currentChat?.id) return;
+
+        const db = getDatabase();
+        const messagesRef = ref(db, `chats/${currentChat.id}/messages`);
+
+        const unsubscribe = onValue(messagesRef, (snapshot) => {
+            const data = snapshot.val();
+            const messages:IMessage[] = data ? Object.values(data) as IMessage[] : [];
+            const lastMessage = messages.length > 0 ? messages[messages.length - 1] : undefined;
+            
+
+            
+            setCurrentChat(prevChat => {
+                if (!prevChat) return undefined;
+                return {
+                    ...prevChat,
+                    messages: messages,
+                    lastMessage: lastMessage ? {
+                    messageId: lastMessage.messageId,
+                    text: lastMessage.type === 'text' ? lastMessage.text || '' 
+                        : lastMessage.type === 'image' ? '📷 صورة'
+                        : lastMessage.type === 'voice' ? '🎤 تسجيل صوتي'
+                        : '',
+                    timestamp: lastMessage.timestamp
+                } : prevChat.lastMessage,
+                };
+            });
+            setDisplayedChats(prevChats => {
+                return prevChats.map(chat => {
+                    if (chat.id === currentChat.id) {
+                        return {
+                            ...chat,
+                            messages: messages,
+                            lastMessage: lastMessage ? {
+                                messageId: lastMessage.messageId,
+                                text: lastMessage.type === 'text' ? lastMessage.text || ''
+                                    : lastMessage.type === 'image' ? '📷 صورة'
+                                    : lastMessage.type === 'voice' ? '🎤 تسجيل صوتي'
+                                    : '',
+                                timestamp: lastMessage.timestamp
+                            } : chat.lastMessage
+                        };
+                    }
+                    return chat;
+                });
+});
+        });
+
+        return () => unsubscribe();
+    }, [currentChat?.id]);
 
 
 
@@ -220,7 +303,7 @@ export default function ChatLayout() {
                             <ChatMessages currentChat={currentChat}/>
                             {
                                 currentChat && 
-                                <ChatFooter messages={currentChat.messages} emojyComponentStateToggleHandler={emojyComponentStateToggleHandler} sendMessageHandler={sendMessageHandler} editMessageHandler={editMessageHandler} messageInputRef={messageInputRef} chatLenght={Number(currentChat?.messages.length)} receiverId={currentChat?.participants[0].userId} senderId={currentChat?.participants[1].userId}/>
+                                <ChatFooter messages={currentChat.messages} emojyComponentStateToggleHandler={emojyComponentStateToggleHandler} sendMessageHandler={sendMessageHandler} editMessageHandler={editMessageHandler} messageInputRef={messageInputRef} chatLenght={currentChat?.messages.length || 0} receiverId={currentChat?.participants[0].userId} senderId={currentChat?.participants[1].userId}/>
                             }
                             {
                                 emojysComponentOpened && 

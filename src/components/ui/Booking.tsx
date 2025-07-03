@@ -88,8 +88,8 @@ export default function Booking({setBookingOpened,setBookingDoneOpened,saveBooki
                 <div className={style.booking_container}>
                     <h3>ادخل بيانات الحجز:</h3>
                     <form>
-                        <InputElement type='text' id='userName' name='الإسم' error={bookingError.userName} img={{src:userNameIcon,alt:'userNameIcon'}} placeholder='ادخل الإسم بالكامل' value={bookingData.userName} onChange={inputChangeValueHandler}/>
-                        <InputElement type='text' id='userPhone' name='رقم الهاتف' error={bookingError.userPhone} img={{src:userPhoneIcon,alt:'userPhoneIcon'}} placeholder='ادخل رقم الهاتف' value={bookingData.userPhone} onChange={inputChangeValueHandler}/>
+                        <InputElement type='text' id='userName' name='userName' labelText='الإسم' error={bookingError.userName} img={{src:userNameIcon,alt:'userNameIcon'}} placeholder='ادخل الإسم بالكامل' value={bookingData.userName} onChange={inputChangeValueHandler}/>
+                        <InputElement type='text' id='userPhone' name='userPhone' labelText='رقم الهاتف' error={bookingError.userPhone} img={{src:userPhoneIcon,alt:'userPhoneIcon'}} placeholder='ادخل رقم الهاتف' value={bookingData.userPhone} onChange={inputChangeValueHandler}/>
                         <div className={style.form_btns}>
                             <button onClick={(e)=>{bookingHandler(e)}}>احجز</button>
                             <button onClick={() => setBookingOpened(false)}>الغاء</button>

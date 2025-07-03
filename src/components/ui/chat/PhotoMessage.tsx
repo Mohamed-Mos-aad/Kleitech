@@ -10,7 +10,6 @@ import { useState } from 'react';
 import EmojiPicker from './EmojiPicker';
 import OptionsList from './OptionsList';
 // ** Api
-import { deleteMessage } from '../../../api/chat/chatApi';
 import { AppDispatch } from '../../../app/store';
 import { useDispatch } from 'react-redux';
 import { setChatDataS } from '../../../app/slices/chat/chatSlice';
@@ -23,11 +22,13 @@ interface IPhotoMessage{
     photoUrl: string | undefined,
     timestamp: string,
     messageId: string,
+    deleteCurrentMessageHandler: ()=> void,
+    pinCurrentMessageHandler: ()=> void,
 }
 
 
 
-export default function PhotoMessage({senderId,timestamp,photoUrl,messageId}:IPhotoMessage) {
+export default function PhotoMessage({senderId,timestamp,photoUrl,messageId,deleteCurrentMessageHandler,pinCurrentMessageHandler}:IPhotoMessage) {
     // ** Store
     const dispatch: AppDispatch = useDispatch();
     
@@ -63,15 +64,11 @@ export default function PhotoMessage({senderId,timestamp,photoUrl,messageId}:IPh
     }
     const pinMessage = ()=>{
         dispatch(setChatDataS({replayId: null , editeId: null, pinId: messageId}));
+        pinCurrentMessageHandler();
         messageOptionsContainerToggelHandler();
     }
-    const deleteMessageHandler = async ()=>{
-        try{
-            await deleteMessage(messageId);
-        }
-        catch(error){
-            console.log(error)
-        }
+    const deleteMessageHandler = ()=>{
+        deleteCurrentMessageHandler();
         messageOptionsContainerToggelHandler();
     }
 

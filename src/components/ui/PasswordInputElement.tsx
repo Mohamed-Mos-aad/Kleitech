@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 
 
-export default function PasswordInputElement({id,name,type,value,placeholder,img,error,onChange}:IInputElement) {
+export default function PasswordInputElement({labelText,id,name,type,value,placeholder,img,error,onChange}:IInputElement) {
     // States
     const [passwordHidden,setPasswordHidden] = useState<boolean>(false);
 
@@ -29,9 +29,9 @@ export default function PasswordInputElement({id,name,type,value,placeholder,img
     return (
         <>
             <div className={style.form_input}>
-                <label htmlFor={id}>{name}</label>
+                <label htmlFor={id}>{labelText}</label>
                 <div className={style.input_element}>
-                    <input type={passwordHidden? 'text' : type} value={value} placeholder={placeholder} id={id} onChange={onChange}/>
+                    <input type={passwordHidden? 'text' : type} value={value} name={name} placeholder={placeholder} id={id} onChange={onChange}/>
                     <img className={style.input_icon} src={img.src} alt={img.alt} />
                     <img className={style.password_state} src={passwordHidden? hideasswordIcon : showPasswordIcon} alt="Show password icon" onClick={passwordInputStateToggleHandler}/>
                 </div>

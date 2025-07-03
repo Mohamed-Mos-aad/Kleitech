@@ -12,6 +12,9 @@ import emailjs from '@emailjs/browser';
 import { setdonePage } from '../../app/slices/donePageSlice';
 // ** Api
 import { registerUser } from '../../api/userApi';
+// ** Firebase
+import { auth } from '../../firebase/firebase-config';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 
 
@@ -20,7 +23,6 @@ export default function Otp() {
     const dispatch: AppDispatch = useDispatch();
     const userData = useSelector((state: RootState) => state.userSignUp);
     const otpEmail = useSelector((state: RootState) => state.otpEmail);
-
 
 
     const navigate = useNavigate();
@@ -88,8 +90,10 @@ export default function Otp() {
     const userRegisterHandler = async ()=>{
         try{
             await registerUser(userData);
+            await createUserWithEmailAndPassword(auth, userData.userEmail, userData.userPassword);
             dispatch(setdonePage('signUp'));
             goToDonePage();
+            console.log('done');
         }
         catch (error){
             console.error("Registration failed:", error);
@@ -107,7 +111,7 @@ export default function Otp() {
         if(codeInput === otpCode)
         {
             setCodeWrong(false);
-            if(otpEmail)
+            if(otpEmail.purpose === 'resetPassword' && otpEmail)
             {
                 goResetPasswordPage();
             }

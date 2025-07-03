@@ -61,22 +61,22 @@ export default function Profile() {
                         <div className={style.user_data}>
                             <ul>
                                 <li>
-                                    <InputElement type='text' id='' img={{src: userNameIcon,alt:'UserName icon'}} name='الإسم'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={1}/>
+                                    <InputElement type='text' id='' name='' img={{src: userNameIcon,alt:'UserName icon'}} labelText='الإسم'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={1}/>
                                 </li>
                                 <li>
-                                    <InputElement type='text' id='' img={{src: userPhoneIcon,alt:'UserPhone icon'}} name='رقم الهاتف'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={2}/>
+                                    <InputElement type='text' id='' name='' img={{src: userPhoneIcon,alt:'UserPhone icon'}} labelText='رقم الهاتف'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={2}/>
                                 </li>
                                 <li>
-                                    <InputElement type='text' id='' img={{src: userIdIcon,alt:'UserId icon'}} name='الرقم القومي'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={3}/>
+                                    <InputElement type='text' id='' name='' img={{src: userIdIcon,alt:'UserId icon'}} labelText='الرقم القومي'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={3}/>
                                 </li>
                                 <li>
-                                    <InputElement type='text' id='' img={{src: userEmailIcon,alt:'UserEmail icon'}} name='البريد الالكتروني'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={4}/>
+                                    <InputElement type='text' id='' name='' img={{src: userEmailIcon,alt:'UserEmail icon'}} labelText='البريد الالكتروني'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={4}/>
                                 </li>
                                 <li>
-                                    <InputElement type='text' id='' img={{src: arrowUpandDownIcon,alt:'arrowUpandDown icon'}} name='الوزن'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={5}/>
+                                    <InputElement type='text' id='' name='' img={{src: arrowUpandDownIcon,alt:'arrowUpandDown icon'}} labelText='الوزن'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={5}/>
                                 </li>
                                 <li>
-                                    <InputElement type='text' id='' img={{src: arrowUpandDownIcon,alt:'arrowUpandDown icon'}} name='الطول'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={6}/>
+                                    <InputElement type='text' id='' name='' img={{src: arrowUpandDownIcon,alt:'arrowUpandDown icon'}} labelText='الطول'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={6}/>
                                 </li>
                             </ul>
                         </div>

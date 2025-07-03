@@ -79,7 +79,7 @@ export default function ContactUsForm() {
                 showMessage({state:'success', content: 'تم الارسال بنجاح'});
             }
             catch(error){
-                console.log(error.response?.data);
+                console.log(error);
                 showMessage({state:'error', content: 'فشل الارسال, جرب مره اخري'});
             }
         }
@@ -130,10 +130,10 @@ export default function ContactUsForm() {
         <>
             <form className={style.contact_us_form}>
                 <div className={style.form_row}>
-                    <InputElement error={messageErrors.userFirstName} id='userFirstName' img={{src: userNameIcon, alt: 'user name icon'}} name='الاسم الاول' onChange={(e)=>{onchangeHandler(e)}} placeholder='ادخل الإسم  الاول' type='text' value={message.userFirstName}/>
-                    <InputElement error={messageErrors.userSecondName} id='userSecondName' img={{src: userNameIcon, alt: 'user name icon'}} name='الاسم الثاني' onChange={(e)=>{onchangeHandler(e)}} placeholder='ادخل الإسم  الثاني' type='text' value={message.userSecondName}/>
+                    <InputElement error={messageErrors.userFirstName} id='userFirstName' name='userFirstName' img={{src: userNameIcon, alt: 'user name icon'}} labelText='الاسم الاول' onChange={(e)=>{onchangeHandler(e)}} placeholder='ادخل الإسم  الاول' type='text' value={message.userFirstName}/>
+                    <InputElement error={messageErrors.userSecondName} id='userSecondName' name='userSecondName' img={{src: userNameIcon, alt: 'user name icon'}} labelText='الاسم الثاني' onChange={(e)=>{onchangeHandler(e)}} placeholder='ادخل الإسم  الثاني' type='text' value={message.userSecondName}/>
                 </div>
-                    <InputElement error={messageErrors.userEmail} id='userEmail' img={{src: userEmailIcon, alt: 'user email icon'}} name='البريد الالكتروني' onChange={(e)=>{onchangeHandler(e)}} placeholder='ادخل البريد الالكتروني' type='email' value={message.userEmail}/>
+                    <InputElement error={messageErrors.userEmail} id='userEmail' name='userEmail' img={{src: userEmailIcon, alt: 'user email icon'}} labelText='البريد الالكتروني' onChange={(e)=>{onchangeHandler(e)}} placeholder='ادخل البريد الالكتروني' type='email' value={message.userEmail}/>
                 <div className={style.form_input}>
                     <label htmlFor="message">الرساله</label>
                     <textarea name="" id="userMessage" placeholder='اكتب رسالتك' onChange={(e)=>{onchangeHandler(e)}} value={message.userMessage}></textarea>

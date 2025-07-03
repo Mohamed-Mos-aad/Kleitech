@@ -65,7 +65,7 @@ export default function Routers() {
                     <Route path="suggestions" element={<Suggestions />}/>
                     <Route path="profile" element={<Profile />}/>
                 </Route>
-                <Route path="/chats" element={<ProtectMainRoutes><ChatLayout /></ProtectMainRoutes>}/>
+                <Route path="/chats/:id" element={<ProtectMainRoutes><ChatLayout /></ProtectMainRoutes>}/>
                 <Route path="/dashboard" element={<ProtectDashboardRoutes><DashBoardLayout /></ProtectDashboardRoutes>}>
                     <Route index element={<HomeDashboard/>}/>
                     <Route path="doctors" element={<Doctors/>}/>

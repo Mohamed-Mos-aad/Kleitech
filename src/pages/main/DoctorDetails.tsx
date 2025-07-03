@@ -44,7 +44,7 @@
     };
     const handleChatOpen = async (id: number | undefined) => {
       if (id && doctor) {
-        navigate("/chats", { state: { doctor: doctor } });
+        navigate(`/chats/${doctor.id}`);
       }
     };
     const saveBookingDataHandler = (

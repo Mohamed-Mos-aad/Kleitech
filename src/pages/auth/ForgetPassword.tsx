@@ -40,7 +40,7 @@ export default function ForgetPassword() {
     }
     const forgetPasswordHandler = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault();
-        dispatch(setOtpEmail({otpEmail: data.email}));
+        dispatch(setOtpEmail({ otpEmail: data.email, purpose: 'resetPassword' }));
         otpPageHandler();
     }
 
@@ -58,7 +58,7 @@ export default function ForgetPassword() {
                     المرور الخاصة بك</p>
                 </div>
                 <form>
-                    <InputElement error={errors.email} id='email' img={{src: emailInputIcon, alt:"Email input icon" }} name='البريد الالكتروني' onChange={handleInputChange} placeholder='ادخل البريد الالكتروني' type='email' value={data.email}/>
+                    <InputElement error={errors.email} id='email' name='email' img={{src: emailInputIcon, alt:"Email input icon" }} labelText='البريد الالكتروني' onChange={handleInputChange} placeholder='ادخل البريد الالكتروني' type='email' value={data.email}/>
                     <button onClick={(e)=>{forgetPasswordHandler(e)}}>إرسال رمز التأكيد</button>
                 </form>
             </div>
