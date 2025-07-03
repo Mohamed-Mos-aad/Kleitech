@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface IOtpData{
     otpEmail: string | null,
     purpose: 'signUp' | 'resetPassword' | null;
+    token: string | null,
 }
 
 const initialState:IOtpData = {
     otpEmail: null,
-    purpose: null
+    purpose: null,
+    token: null
 }
 
 const otpEmailSlice = createSlice({

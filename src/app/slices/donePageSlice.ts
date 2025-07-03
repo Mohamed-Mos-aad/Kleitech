@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IDonePageState {
-    actionType: string;
+    actionType: 'signUp' | 'passwordReset' | 'passwordChange' | string;
 }
 const initialState:IDonePageState = {
     actionType: ''

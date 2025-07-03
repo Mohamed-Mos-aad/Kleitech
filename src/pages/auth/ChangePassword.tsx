@@ -9,13 +9,18 @@ import { useState } from 'react';
 import PasswordInputElement from '../../components/ui/PasswordInputElement';
 // ** Api
 import { changePassword } from '../../api/userApi';
+import { changeFirebasePassword } from '../../firebase/firebaseApis';
+import { setdonePage } from '../../app/slices/donePageSlice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../app/store';
 
 
 
 export default function ChangePassword() {
     // ** Defaults
+    const dispatch: AppDispatch = useDispatch();
     const navigate = useNavigate();
-    const donePageHandler = ()=>{navigate('/u/forget-password')};
+    const donePageHandler = ()=>{navigate('/u/done')};
     const forgetPasswordHandler = ()=>{navigate('/u/forget-password')}
 
 
@@ -42,6 +47,9 @@ export default function ChangePassword() {
         e.preventDefault();
         try{
             await changePassword({current_password: data.current_password,new_password: data.new_password, new_password_confirmation: data.new_password_confirmation})
+            await changeFirebasePassword(data.new_password);
+            dispatch(setdonePage('passwordChange'));
+            donePageHandler();
         }
         catch(error){
             console.log(error)
@@ -51,7 +59,6 @@ export default function ChangePassword() {
                 new_password: '',
                 new_password_confirmation: ''
             });
-            donePageHandler();
         }
     }
 

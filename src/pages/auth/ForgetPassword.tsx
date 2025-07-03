@@ -40,7 +40,7 @@ export default function ForgetPassword() {
     }
     const forgetPasswordHandler = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault();
-        dispatch(setOtpEmail({ otpEmail: data.email, purpose: 'resetPassword' }));
+        dispatch(setOtpEmail({ otpEmail: data.email, purpose: 'resetPassword'}));
         otpPageHandler();
     }
 
