@@ -14,7 +14,7 @@ const token = userString ? JSON.parse(userString).token : null;
 
 // ** Api
 const api = axios.create({
-    baseURL: import.meta.env.VITE_LOCAL_SERVER_LARAVEL_API_URL,
+    baseURL: import.meta.env.VITE_BACKEND_API_URL,
     headers:{
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -87,7 +87,6 @@ export const changePassword = async (userData: {current_password: string,new_pas
         throw error;
     }
 }
-
 // ** Forget Password
 export const forgetPassword = async (userData: {email: string}) => {
     try{
@@ -116,6 +115,35 @@ export const verifyResetCode = async (userData: {email: string,token: string}) =
 export const resetPassword = async (userData: {email: string,password: string,password_confirmation: string,token:string}) => {
     try{
         const response = await api.post('/reset-password', userData);
+        return response.data;
+    }
+    catch(error)
+    {
+        console.log(error);
+        throw error;
+    }
+}
+// ** Update Profile
+export const updateUserProfile = async (userData: {
+    name: string;
+    phone: string;
+    email: string;
+    weight: number | string;
+    height: number | string;
+    has_chronic_diseases?: boolean;
+}) => {
+    try{
+        const storage = localStorage.getItem("kleitech_user") ? localStorage : sessionStorage;
+        const userString = storage.getItem("kleitech_user");
+        const user = userString ? JSON.parse(userString) : null;
+        const token = user?.token;
+        const userId = user?.user?.id;
+
+        const response = await api.put(`/patients/${userId}`, userData, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
         return response.data;
     }
     catch(error)

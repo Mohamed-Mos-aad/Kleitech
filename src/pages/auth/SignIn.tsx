@@ -16,10 +16,11 @@ import { AppDispatch } from '../../app/store'
 import { useDispatch } from 'react-redux'
 import { setUserLogin } from '../../app/slices/userSlice'
 // ** Api
-import { loginUser } from '../../api/userApi'
+import { loginUser } from '../../api/auth/authApi';
 // ** Firebase
 import { auth } from '../../firebase/firebase-config';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { FirebaseError } from 'firebase/app';
 
 
 
@@ -95,14 +96,19 @@ export default function SignIn() {
                     user: res.user
                 }));
                 try {
-                    await signInWithEmailAndPassword(auth, userData.email, userData.password);
+                    await signInWithEmailAndPassword(auth, userData.email, userData.email);
                 }
-                catch (firebaseError: any) {
-                    if (firebaseError.code === "auth/user-not-found" || firebaseError.code === "auth/invalid-credential") {
-                        await createUserWithEmailAndPassword(auth, userData.email, userData.password);
-                    } else {
-                        console.error(firebaseError);
-                        throw new Error("فشل تسجيل الدخول على فايربيز");
+                catch (firebaseError: unknown) {
+                    if (firebaseError instanceof FirebaseError) {
+                        if (firebaseError.code === "auth/user-not-found" || firebaseError.code === "auth/invalid-credential") {
+                            await createUserWithEmailAndPassword(auth, userData.email, userData.email);
+                        } else {
+                            console.error(firebaseError);
+                            throw new Error("فشل تسجيل الدخول على فايربيز");
+                        }   
+                    }
+                    else {
+                        console.error('Unexpected error:', firebaseError);
                     }
                 }
                 dispatch(setUserLogin({ ...res.user, token: res.token, loggedIn: true }));

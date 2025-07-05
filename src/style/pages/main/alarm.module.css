@@ -137,6 +137,7 @@
 .alarm_container table tbody
 {
     width: 90%;
+    padding-bottom: 24px;
     display: flex;
     flex-direction: column;
     gap: 24px;

@@ -11,7 +11,9 @@ export interface IInputElement{
         alt: string
     },
     error: string,
-    onChange: (e: React.ChangeEvent<HTMLInputElement>)=> void
+    readOnly?: boolean,
+    onChange: (e: React.ChangeEvent<HTMLInputElement>)=> void,
+    onClick?: ()=> void
 }
 
 
@@ -125,18 +127,18 @@ export interface IMessage {
 
 
 // ** Alarm
-// ** Interfaces
 export interface IAlarmData{
-    type: "Medicine"| "Water"| "xRay",
-    name?: string,
-    recurrence_count?: number,
-    start_date?: string,
-    start_time?: string,
+    id?: string,
+    type?: string,
+    medicine_name?: string,
+    dose_count?: number,
+    period?: string,
+    time?: string,
     gender?: string,
-    wake_time?: string,
+    wake_up_time?: string,
     sleep_time?: string,
-    reminder_interval?: string,
-    weekly_sessions?: number,
-    next_session_date?: string,
+    reminder_every?: string,
+    sessions_per_week?: number,
+    start_date?: string,
     session_time?: string,
 }

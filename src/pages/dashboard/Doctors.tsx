@@ -57,16 +57,13 @@ export default function Doctors() {
     const addDoctorHandler = async ()=>{
         try{
             const addedDoctor = await addDoctor(newDoctor);
-            setDoctors(prev => [...prev,addedDoctor]);
+            await updateData();
             setData(prev => [...prev,addedDoctor]);
+            setNewDoctor(defaultNewDoctor);
+            addDoctorToggleHandler();
         }
         catch(error){
             console.log(error)
-        }
-        finally
-        {
-            setNewDoctor(defaultNewDoctor);
-            addDoctorToggleHandler();
         }
     }
     const editeDoctorToggleHandler = (id:string)=>{

@@ -8,8 +8,7 @@ import { useState } from 'react';
 // ** Components
 import PasswordInputElement from '../../components/ui/PasswordInputElement';
 // ** Api
-import { changePassword } from '../../api/userApi';
-import { changeFirebasePassword } from '../../firebase/firebaseApis';
+import { changePassword } from '../../api/auth/authApi';
 import { setdonePage } from '../../app/slices/donePageSlice';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../app/store';
@@ -46,8 +45,7 @@ export default function ChangePassword() {
     const changePasswordHandler = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault();
         try{
-            await changePassword({current_password: data.current_password,new_password: data.new_password, new_password_confirmation: data.new_password_confirmation})
-            await changeFirebasePassword(data.new_password);
+            await changePassword({current_password: data.current_password,new_password: data.new_password, new_password_confirmation: data.new_password_confirmation});
             dispatch(setdonePage('passwordChange'));
             donePageHandler();
         }

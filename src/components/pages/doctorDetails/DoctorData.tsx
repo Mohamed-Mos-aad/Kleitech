@@ -8,7 +8,7 @@ import {
   timerIcon,
   phoneIcon,
 } from "../../../assets/icons/icons";
-import { patient1 } from "../../../assets/images/images";
+import noPhoto from '../../../assets/main/consultation/noPhoto.png'
 // ** Style
 import style from "../../../style/pages/main/doctorDetails.module.css";
 // ** Interfaces
@@ -26,7 +26,7 @@ export default function DoctorData({ doctor, openChat }: IDoctorData) {
     <>
       <div className={style.doctor_details}>
         <div className={style.doctor_photo}>
-          <img src={patient1} alt={`صورة الدكتور ${doctor.name}`} />
+          <img src={doctor.photo || noPhoto} alt={`صورة الدكتور ${doctor.name}`} />
         </div>
         <div className={style.doctor_data}>
           <div className={style.doctor_title}>

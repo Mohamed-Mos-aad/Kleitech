@@ -2,10 +2,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
 interface IHomeAiSlice{
-    ResultIs: string,
+    classification_result: string,
 }
 const initialState:IHomeAiSlice = {
-    ResultIs: ''
+    classification_result: ''
 }
 
 const homeAiSlice = createSlice({

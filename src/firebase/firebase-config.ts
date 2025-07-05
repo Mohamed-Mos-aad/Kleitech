@@ -1,10 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-
-
+const apiKey = import.meta.env.VITE_FIREBASE_API;
 const firebaseConfig = {
-    apiKey: "AIzaSyCKwe6--dPydu_z_gB1N-fF9tPhdIrhKG8",
+    apiKey: apiKey,
     authDomain: "kleitech-chat.firebaseapp.com",
     databaseURL: "https://kleitech-chat-default-rtdb.firebaseio.com",
     projectId: "kleitech-chat",

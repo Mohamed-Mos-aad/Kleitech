@@ -1,7 +1,7 @@
 // ** Assets
 import {userDateIcon} from '../../../assets/icons/icons'
 // ** Style
-import style from '../../../style/pages/auth/signUp.module.css'
+import style from '../../../style/components/ui/form/dateInputElement.module.css'
 // ** Hooks & Tools
 import { useEffect, useRef, useState } from 'react';
 
@@ -9,6 +9,9 @@ import { useEffect, useRef, useState } from 'react';
 
 // ** Interface
 interface IDateInputElement{
+    placeholder: string,
+    labelText: string,
+    inputId: string,
     error: string,
     onChange: ({ target }: { target: { id: string; value: string } }) => void;
 }
@@ -26,7 +29,7 @@ const initialDate = {
 
 
 
-export default function DateInputElement({error,onChange}:IDateInputElement) {
+export default function DateInputElement({inputId,labelText,placeholder,error,onChange}:IDateInputElement) {
     // ** States
     const [calendarOpened,setCalendarOpened] = useState(false);
     const [userDate, setUserDate] = useState('');
@@ -46,9 +49,9 @@ export default function DateInputElement({error,onChange}:IDateInputElement) {
         setCalendarOpened(false);
         const event = {
             target: {
-                id: 'userDate',
+                id: inputId,
                 value: newDate,
-                name: 'userDate'
+                name: inputId
             }
         }
         onChange(event);
@@ -115,9 +118,9 @@ export default function DateInputElement({error,onChange}:IDateInputElement) {
     return (
         <>
             <div className={style.form_date_input}>
-                <label htmlFor="userDate">تاريخ التشخيص</label>
+                <label htmlFor={inputId}>{labelText}</label>
                 <div className={style.input_element} ref={calendarRef}>
-                    <input type="text" value={userDate} placeholder='التاريخ' readOnly onClick={toggleHandler}/>
+                    <input type="text" value={userDate} placeholder={placeholder} readOnly onClick={toggleHandler}/>
                     {
                         calendarOpened &&
                         <div className={style.calendar}>

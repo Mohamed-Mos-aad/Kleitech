@@ -103,17 +103,15 @@ export default function ChatLayout() {
         }
     }
     const editMessageHandler = async (message: IMessage) =>{
-        if(currentChat)
-        {
-            try{
-                await editeMessage(message,currentChat.id)
-            }
-            catch(error){
-                console.log(error);
-            }
-            finally{
-                setEmojysComponentOpened(false);
-            }
+        if (!currentChat) return;
+        try{
+            await editeMessage(message,currentChat.id)
+        }
+        catch(error){
+            console.log(error);
+        }
+        finally{
+            setEmojysComponentOpened(false);
         }
     }
     const emojyComponentStateToggleHandler = ()=>{setEmojysComponentOpened(!emojysComponentOpened)};
