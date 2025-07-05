@@ -5,7 +5,7 @@ import axios from "axios";
 
 // ** Api
 const api = axios.create({
-    baseURL: import.meta.env.VITE_LOCAL_SERVER_LARAVEL_API_URL,
+    baseURL: import.meta.env.VITE_BACKEND_API_URL,
 })
 
 

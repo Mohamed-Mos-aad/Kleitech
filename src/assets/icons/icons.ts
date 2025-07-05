@@ -61,7 +61,6 @@ import repeatIcon from '../icons/main/alarm/repeatIcon.svg'
 import errorIcon from '../icons/ui/messagePop/errorIcon.svg'
 import successIcon from '../icons/ui/messagePop/successIcon.svg'
 import loadingIcon from '../icons/ui/messagePop/loadingIcon.svg'
-import dectectionIcon from '../icons/main/home/detactionIcon.svg'
 
 
 export {
@@ -114,5 +113,4 @@ export {
     errorIcon,
     successIcon,
     loadingIcon,
-    dectectionIcon
 }

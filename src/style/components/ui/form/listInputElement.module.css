@@ -1,0 +1,71 @@
+/* Start Variables */
+:root
+{
+    --main-color-700: #026AA2;
+    --gray-color-400: #AFAFAF;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-500: #F05252;
+}
+/* End Variables */
+
+
+
+
+/* Start List Input Element */
+.input_element
+{
+    width: 100%;
+    position: relative;
+}
+.input_element input
+{
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 48px 12px 12px;
+    border: solid 1px  var(--gray-color-400);
+    border-radius: 8px;
+}
+.input_element input:focus
+{
+    outline: solid 1px  var(--main-color-700);
+    border: solid 1px  var(--main-color-700);
+}
+.input_element img
+{
+    width: 16px;
+    position: absolute;
+    right: 16px;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+.form_list_input
+{
+    position: relative;
+}
+.input_element input
+{
+    cursor: pointer;
+}
+.input_element ul
+{
+    position: absolute;
+    bottom: 0;
+    z-index: 9999999;
+    width: 100%;
+    list-style-type: none;
+    background-color: white;
+    border: solid 1px  var(--gray-color-400);
+    border-radius: 8px;
+}
+.input_element ul li
+{
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 48px 12px 12px;
+    cursor: pointer;
+}
+/* End List Input Element */

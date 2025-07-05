@@ -1,5 +1,7 @@
 // ** Assets
 import arrowUpandDownIcon from '../../../../assets/icons/forms/arrowsUpandDownIcon.svg'
+// ** Assets
+import {arrowDownIcon} from '../../../../assets/icons/icons'
 // ** Style
 import style from '../../../../style/pages/auth/signUp.module.css'
 // ** Components
@@ -32,6 +34,11 @@ interface ISignUpPage3{
 
 
 export default function SignUpPage3({data,errors,onChange,createAccountHandler}:ISignUpPage3) {
+    // ** Default 
+    const userStateValues = ['خفيفة جدًا', 'خفيفة', 'متوسطة', 'شديدة', 'الفشل الكلوي'];
+
+
+
     return (
         <>
             <div className={style.sign_up_container}>
@@ -82,8 +89,8 @@ export default function SignUpPage3({data,errors,onChange,createAccountHandler}:
                             <span className={style.error}>{errors.hasDoctor}</span>
                         </div>
                     </div>
-                    <DateInputElement error={errors.userDate} onChange={onChange}/>
-                    <ListInputElement error={errors.userState} onChange={onChange}/>
+                    <DateInputElement inputId='userDate' labelText='تاريخ التشخيص' placeholder='التاريخ' error={errors.userDate} onChange={onChange}/>
+                    <ListInputElement labelText='المرحله الحاليه من المرض' placeholder='حالتك' inputId='userState' listImg={arrowDownIcon} values={userStateValues} error={errors.userState} onChange={onChange}/>
                     <div className={style.form_btn}>
                         <button onClick={createAccountHandler}>إنشاء الحساب</button>
                     </div>

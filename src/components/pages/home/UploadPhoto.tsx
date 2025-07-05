@@ -80,11 +80,17 @@ export default function UploadPhoto({close,next,setXrayImageUrl}:IUploadPhoto) {
                     setTimeRemaining(Math.round(estimatedTime));
                 }
             });
-            const data:{ResultIs: string} = res;
+
             setUploadedPhotoInfo({name: photo.name,size: (photo.size / (1024 * 1024)).toFixed(2).toString()});
-            const imageUrl = URL.createObjectURL(photo);
-            setXrayImageUrl(imageUrl);
-            dispatch(setHomeAi({ ResultIs: data.ResultIs }));
+            if (typeof res === 'object' && 'imageUrl' in res && 'classification_result' in res) {
+                setXrayImageUrl(res.imageUrl);
+                dispatch(setHomeAi({ classification_result: res.classification_result }));
+            }
+            else if (res?.classification_result) {
+                const imageUrl = URL.createObjectURL(photo);
+                setXrayImageUrl(imageUrl);
+                dispatch(setHomeAi({ classification_result: res.classification_result }));
+            }
         }
         catch(error){
             console.log(error);

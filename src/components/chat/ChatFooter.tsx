@@ -35,7 +35,7 @@ interface IChatFooter{
 
 
 
-export default function ChatFooter({emojyComponentStateToggleHandler,sendMessageHandler, editMessageHandler, messageInputRef,chatLenght, receiverId, senderId, messages}:IChatFooter) {
+export default function ChatFooter({emojyComponentStateToggleHandler,sendMessageHandler, editMessageHandler, messageInputRef,receiverId, senderId, messages}:IChatFooter) {
     // ** Store
     const dispatch: AppDispatch = useDispatch();
     const chatDataS = useSelector((state: RootState) => state.chatDataS);
@@ -65,7 +65,8 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
 
     // ** Handlers
     const fileUploadHandler = ()=>{
-        fileUploadRef?.current?.click();
+        // fileUploadRef?.current?.click();
+        showMessage({state:'error' , content: 'غير متوفر حاليا'});
     }
     const imgUploadHandler = ()=>{
         imgUploadRef?.current?.click();
@@ -197,28 +198,16 @@ export default function ChatFooter({emojyComponentStateToggleHandler,sendMessage
         }
     }
     const handleEditMessage = ()=>{
-        if ((messageInputRef.current && messageInputRef.current.value.trim())){
-            let message:IMessage = {
-                messageId: `msg${chatLenght+1}`,
-                senderId: senderId,
-                receiverId: receiverId,
-                timestamp: new Date().toISOString(),
-                status: "delivered",
-                type: 'text',
-                reactions: [],
-                isPinned: false,
-                isReplyTo: chatDataS.replayId,
+        if ((messageInputRef.current && messageInputRef.current.value.trim() && chatDataS.editeId)){
+            const originalMessage = messages.find(msg => msg.messageId === chatDataS.editeId);
+            if (!originalMessage) return;
+            const updatedMessage: IMessage = {
+                ...originalMessage,
+                text: messageInputRef.current.value,
             };
-            if (messageInputRef?.current?.value) {
-                message = {
-                    ...message,
-                    type: 'text',
-                    text: messageInputRef.current.value
-                };
-            }
 
 
-            editMessageHandler(message);
+            editMessageHandler(updatedMessage);
             if (messageInputRef.current) {
                 messageInputRef.current.value = '';
             }

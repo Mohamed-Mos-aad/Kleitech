@@ -5,7 +5,7 @@ import axios from "axios"
 
 // ** Api
 const api = axios.create({
-    baseURL: import.meta.env.VITE_STATIC_API_URL,
+    baseURL: import.meta.env.VITE_Mock_API_URL,
     headers:{
         'Content-Type': 'application/json',
     }

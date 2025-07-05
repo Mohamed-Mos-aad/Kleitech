@@ -10,15 +10,8 @@ const token = userString ? JSON.parse(userString).token : null;
 
 
 // ** Api
-const staticApi = axios.create({
-    baseURL: import.meta.env.VITE_LOCAL_SERVER_API_URL,
-    headers:{
-        'Content-Type': 'application/json',
-    }
-})
-
 const api = axios.create({
-    baseURL: import.meta.env.VITE_LOCAL_SERVER_LARAVEL_API_URL,
+    baseURL: import.meta.env.VITE_BACKEND_API_URL,
     headers:{
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -28,7 +21,7 @@ const api = axios.create({
 // ** Get Stats
 export const fetchDashboardStats = async ()=>{
     try{
-        const response = await staticApi.get('/stats');
+        const response = await api.get('/stats');
         return response.data;
     }
     catch(error)
@@ -65,7 +58,13 @@ export const addDoctor = async (doctorData: {name: string, email: string,passwor
 export const editeDoctor = async (doctorData: {name: string, email: string, national_id: string, phone: string},id:number) => {
     console.log("TOKEN =>", token);
     try{
-        const response = await api.put(`/doctors/${id}`, doctorData);
+        const response = await api.put(`/doctors/${id}`, doctorData,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            });
         return response.data;
     }
     catch(error)

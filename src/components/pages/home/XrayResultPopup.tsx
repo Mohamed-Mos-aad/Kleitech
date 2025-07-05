@@ -4,7 +4,6 @@ import style from '../../../style/pages/main/home.module.css'
 import downloadIcon from '../../../assets/main/home/downloadIcon.svg'
 import closeIcon from '../../../assets/main/closeIcon.svg'
 import shareIcon from '../../../assets/main/home/shareIcon.svg'
-import {dectectionIcon} from '../../../assets/icons/icons' 
 // ** Hooks && Tools
 import { useEffect, useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
@@ -68,14 +67,12 @@ export default function XrayResultPopup({xrayImageUrl,closePop}:IResult) {
             })
         }
     }
-    const detcHandler = async ()=>{
-        console.log('work');
-    }
+
 
 
     // ** UseEffect
     useEffect(() => {
-        switch (homeAi.ResultIs) {
+        switch (homeAi.classification_result) {
             case 'Normal':
             setResult('لا يوجد أمراض');
             break;
@@ -91,7 +88,7 @@ export default function XrayResultPopup({xrayImageUrl,closePop}:IResult) {
             default:
             setResult('نتيجة غير معروفة');
         }
-    }, [homeAi.ResultIs]);
+    }, [homeAi.classification_result]);
 
 
     
@@ -106,9 +103,6 @@ export default function XrayResultPopup({xrayImageUrl,closePop}:IResult) {
                         <h2>نتيجه الاشعه</h2>
                         <div className={style.xray_photo}>
                             <img src={xrayImageUrl} alt="صورة الأشعة الخاصة بالمريض" />
-                            <div className={style.detection}>
-                                <img src={dectectionIcon} alt="dectection icon" onClick={detcHandler}/>
-                            </div>
                         </div>
                         <h3>{result}</h3>
                     </div>

@@ -3,7 +3,7 @@
   // ** Style
   import style from "../../style/pages/main/doctorDetails.module.css";
   // ** Hooks && Tools
-  import { useNavigate, useParams } from "react-router-dom";
+  import { useParams } from "react-router-dom";
   import { useEffect, useState } from "react";
   // ** Components
   import Booking from "../../components/ui/Booking";
@@ -19,7 +19,8 @@
   export default function DoctorDetails() {
     // Defaults
     const { id } = useParams();
-    const navigate = useNavigate();
+
+
 
     // ** States
     const [doctor, setDoctor] = useState<IDoctorsData>();
@@ -44,7 +45,10 @@
     };
     const handleChatOpen = async (id: number | undefined) => {
       if (id && doctor) {
-        navigate(`/chats/${doctor.id}`);
+        const newWindow = window.open('', '_blank');
+        if (newWindow) {
+            newWindow.location.href = `#/chats/${doctor.id}`;
+        }
       }
     };
     const saveBookingDataHandler = (

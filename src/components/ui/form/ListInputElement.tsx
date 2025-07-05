@@ -1,22 +1,25 @@
-// ** Assets
-import {arrowDownIcon} from '../../../assets/icons/icons'
 // ** Style
-import style from '../../../style/pages/auth/signUp.module.css'
+import style from '../../../style/components/ui/form/listInputElement.module.css'
 // ** Hooks && Tools
 import { useState } from 'react';
 
 
 
 interface IListInputElement{
+    listImg: string,
+    labelText: string,
+    placeholder: string,
     error: string,
+    values: string[],
+    inputId: string,
     onChange: ({ target }: { target: { id: string; value: string } }) => void;
 }
 
 
-export default function ListInputElement({error,onChange}:IListInputElement) {
+export default function ListInputElement({labelText,placeholder,inputId,error,values,onChange,listImg}:IListInputElement) {
     // ** States
     const [listOpened,setListOpened] = useState(false);
-    const [userState, setUserState] = useState('');
+    const [userValue, setUserValue] = useState('');
 
 
 
@@ -24,13 +27,13 @@ export default function ListInputElement({error,onChange}:IListInputElement) {
     // ** Handlers
     const toggleHandler = ()=>{setListOpened(!listOpened)};
     const selectHandler = (value:string) => {
-        setUserState(value);
+        setUserValue(value);
         setListOpened(false);
         const event = {
             target: {
-                id: 'userState',
+                id: inputId,
                 value: value,
-                name: 'userState',
+                name: inputId,
             }
         }
         onChange(event);
@@ -39,23 +42,25 @@ export default function ListInputElement({error,onChange}:IListInputElement) {
 
 
 
+    // ** Renders
+    const listItemsRender = values.map(item =>
+        <li onClick={()=>{selectHandler(item)}} key={item}>{item}</li>
+    )
+
+
     return (
         <>
             <div className={style.form_list_input}>
-                <label htmlFor="userState">المرحله الحاليه من المرض</label>
+                <label htmlFor="userValue">{labelText}</label>
                 <div className={style.input_element}>
-                    <input type="text" value={userState} placeholder='حالتك' readOnly onClick={toggleHandler}/>
+                    <input type="text" value={userValue} placeholder={placeholder} readOnly onClick={toggleHandler}/>
                     {
                         listOpened &&
                         <ul>
-                            <li onClick={()=>{selectHandler('خفيفة جدًا')}}>خفيفة جدًا</li>
-                            <li onClick={()=>{selectHandler('خفيفة')}}>خفيفة</li>
-                            <li onClick={()=>{selectHandler('متوسطة')}}>متوسطة</li>
-                            <li onClick={()=>{selectHandler('شديدة')}}>شديدة</li>
-                            <li onClick={()=>{selectHandler('الفشل الكلوي')}}>الفشل الكلوي</li>
+                            {listItemsRender}
                         </ul>
                     }
-                    <img src={arrowDownIcon} alt="User state icon" />
+                    <img src={listImg} alt="List input icon" />
                 </div>
                 <span className={style.error}>{error}</span>
             </div>

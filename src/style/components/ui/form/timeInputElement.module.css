@@ -1,0 +1,54 @@
+/* Start Variables */
+:root
+{
+    --main-color-700: #026AA2;
+    --gray-color-400: #AFAFAF;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+}
+/* End Variables */
+
+
+
+
+
+/* Start Time Input Element */
+.time_input_element
+{
+    position: relative;
+}
+.time_list
+{
+    position: absolute;
+    top: 100%;
+    z-index: 100000;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    padding: 8px;
+    border: solid 1px var(--gray-color-400);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.time_list ul
+{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    list-style-type: none;
+    overflow-y: scroll;
+}
+.time_list ul::-webkit-scrollbar
+{
+    display: none;
+}
+.time_list ul li
+{
+    padding: 2px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+/* End Time Input Element */

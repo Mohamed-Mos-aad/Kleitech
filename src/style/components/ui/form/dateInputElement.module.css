@@ -1,0 +1,106 @@
+/* Start Variables */
+:root
+{
+    --main-color-700: #026AA2;
+    --gray-color-400: #AFAFAF;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-500: #F05252;
+}
+/* End Variables */
+
+
+
+
+/* Start Date Input Element */
+.input_element
+{
+    width: 100%;
+    position: relative;
+}
+.input_element input
+{
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 48px 12px 12px;
+    border: solid 1px  var(--gray-color-400);
+    border-radius: 8px;
+}
+.input_element input:focus
+{
+    outline: solid 1px  var(--main-color-700);
+    border: solid 1px  var(--main-color-700);
+}
+.input_element img
+{
+    width: 16px;
+    position: absolute;
+    right: 16px;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+.form_date_input
+{
+    position: relative;
+}
+.form_date_input .input_element input
+{
+    cursor: pointer;
+}
+.form_date_input .input_element .calendar
+{
+    position: absolute;
+    bottom: 0;
+    z-index: 9999999;
+    width: 100%;
+    background-color: white;
+    border: solid 1px  var(--gray-color-400);
+    border-radius: 8px;
+    padding: 8px;
+}
+.calendar .calendar_option
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.calendar .calendar_option span
+{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.calendar .calendar_option h1
+{
+    font-size: 18px;
+    font-weight: 500;
+}
+.calendar .calendar_data ul
+{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    justify-items: center;
+    list-style-type: none;
+}
+.calendar .calendar_data ul li
+{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.calendar .calendar_data ul li.selected
+{
+    color: white;
+    background-color: var(--main-color-700);
+}
+/* End Date Input Element */

@@ -2,12 +2,13 @@
 import style from '../../style/pages/main/profile.module.css'
 // ** Assets
 import {settingIcon, editeIcon, userNameIcon, userPhoneIcon, userIdIcon, userEmailIcon, arrowUpandDownIcon} from '../../assets/icons/icons'
-import {patient1} from '../../assets/images/images'
+import noPhoto from '../../assets/main/consultation/noPhoto.png'
 // ** Hooks && Tools
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 // ** Compontents
 import InputElement from '../../components/ui/InputElement'
+import { updateUserProfile } from './../../api/auth/authApi';
 
 
 
@@ -18,17 +19,49 @@ export default function Profile() {
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem('kleitech_user') || sessionStorage.getItem('kleitech_user') || 'null')
 
+
+    
     // ** States
     const [settingOpened,setSettingOpened] = useState<boolean>(false);
     const [editeOpened,setEditeOpened] = useState<boolean>(false);
+    const [editedUser, setEditedUser] = useState({
+        name: user.user.name || '',
+        phone: user.user.phone || '',
+        national_id: user.user.national_id || '',
+        email: user.user.email || '',
+        weight: user.user.weight || '',
+        height: user.user.height || ''
+    });
 
 
 
     // ** Handlers
     const settingToggelHandler = ()=>{setSettingOpened(!settingOpened)};
     const changePasswordPageHandler = ()=>{navigate('/u/change-password')}
-    const editingToggelHanlder = ()=>{setEditeOpened(!editeOpened)};
-
+    const updateUserProfileHandler =  async () => {
+        try {
+            await updateUserProfile({
+                name: editedUser.name,
+                email: user.user.email,
+                phone: editedUser.phone,
+                height: Number(editedUser.height),
+                weight: Number(editedUser.weight),
+                has_chronic_diseases: user.user.has_chronic_diseases
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    const editingToggelHanlder = ()=>{
+        setEditeOpened(!editeOpened);
+    }
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setEditedUser(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
 
 
 
@@ -37,7 +70,7 @@ export default function Profile() {
             <div className={style.profile_container}>
                 <section>
                     <div className={style.profile_img}>
-                        <img src={patient1} alt="" />
+                        <img src={user.user.photo || noPhoto} alt="" />
                     </div>
                     <div className={style.user_short_data}>
                         <h1>{user.user.name}</h1>
@@ -61,26 +94,87 @@ export default function Profile() {
                         <div className={style.user_data}>
                             <ul>
                                 <li>
-                                    <InputElement type='text' id='' name='' img={{src: userNameIcon,alt:'UserName icon'}} labelText='الإسم'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={1}/>
+                                    <InputElement
+                                        type='text'
+                                        id='name'
+                                        name='name'
+                                        img={{ src: userNameIcon, alt: 'UserName icon' }}
+                                        labelText='الإسم'
+                                        value={editedUser.name}
+                                        error=''
+                                        onChange={handleInputChange}
+                                        placeholder='اكتب اسمك'
+                                    />
                                 </li>
                                 <li>
-                                    <InputElement type='text' id='' name='' img={{src: userPhoneIcon,alt:'UserPhone icon'}} labelText='رقم الهاتف'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={2}/>
+                                    <InputElement
+                                        type='text'
+                                        id='phone'
+                                        name='phone'
+                                        img={{ src: userPhoneIcon, alt: 'UserPhone icon' }}
+                                        labelText='رقم الهاتف'
+                                        value={editedUser.phone}
+                                        error=''
+                                        onChange={handleInputChange}
+                                        placeholder='اكتب رقمك'
+                                    />
                                 </li>
                                 <li>
-                                    <InputElement type='text' id='' name='' img={{src: userIdIcon,alt:'UserId icon'}} labelText='الرقم القومي'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={3}/>
+                                    <InputElement
+                                        type='text'
+                                        id='national_id'
+                                        name='national_id'
+                                        img={{ src: userIdIcon, alt: 'UserId icon' }}
+                                        labelText='الرقم القومي'
+                                        value={editedUser.national_id}
+                                        error=''
+                                        onChange={handleInputChange}
+                                        placeholder='الرقم القومي'
+                                    />
                                 </li>
                                 <li>
-                                    <InputElement type='text' id='' name='' img={{src: userEmailIcon,alt:'UserEmail icon'}} labelText='البريد الالكتروني'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={4}/>
+                                    <InputElement
+                                        type='text'
+                                        id='email'
+                                        name='email'
+                                        readOnly={true}
+                                        img={{ src: userEmailIcon, alt: 'UserEmail icon' }}
+                                        labelText='البريد الالكتروني'
+                                        value={editedUser.email}
+                                        error=''
+                                        onChange={handleInputChange}
+                                        placeholder='اكتب بريدك'
+                                    />
                                 </li>
                                 <li>
-                                    <InputElement type='text' id='' name='' img={{src: arrowUpandDownIcon,alt:'arrowUpandDown icon'}} labelText='الوزن'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={5}/>
+                                    <InputElement
+                                        type='text'
+                                        id='weight'
+                                        name='weight'
+                                        img={{ src: arrowUpandDownIcon, alt: 'Weight icon' }}
+                                        labelText='الوزن'
+                                        value={editedUser.weight}
+                                        error=''
+                                        onChange={handleInputChange}
+                                        placeholder='اكتب وزنك'
+                                    />
                                 </li>
                                 <li>
-                                    <InputElement type='text' id='' name='' img={{src: arrowUpandDownIcon,alt:'arrowUpandDown icon'}} labelText='الطول'  value='' error=''  onChange={()=>{console.log('work')}} placeholder='' key={6}/>
+                                    <InputElement
+                                        type='text'
+                                        id='height'
+                                        name='height'
+                                        img={{ src: arrowUpandDownIcon, alt: 'Height icon' }}
+                                        labelText='الطول'
+                                        value={editedUser.height}
+                                        error=''
+                                        onChange={handleInputChange}
+                                        placeholder='اكتب طولك'
+                                    />
                                 </li>
                             </ul>
                         </div>
-                        <button onClick={editingToggelHanlder}>حفظ التغيرات</button>
+                        <button onClick={updateUserProfileHandler}>حفظ التغيرات</button>
                     </section>
                     :
                     <>
@@ -96,27 +190,27 @@ export default function Profile() {
                                 <ul>
                                     <li>
                                         <h3>الإسم</h3>
-                                        <p>محمد يوسف ابراهيم احمد</p>
+                                        <p>{user.user.name}</p>
                                     </li>
                                     <li>
                                         <h3>رقم الهاتف</h3>
-                                        <p>01283529923</p>
+                                        <p>{user.user.phone}</p>
                                     </li>
                                     <li>
                                         <h3>الرقم القومي</h3>
-                                        <p>30208051102202</p>
+                                        <p>{user.user.national_id}</p>
                                     </li>
                                     <li>
                                         <h3>البريد الالكتروني</h3>
-                                        <p>user.user.email</p>
+                                        <p>{user.user.email}</p>
                                     </li>
                                     <li>
                                         <h3>الوزن</h3>
-                                        <p>82</p>
+                                        <p>{user.user.weight}</p>
                                     </li>
                                     <li>
                                         <h3>الطول</h3>
-                                        <p>190</p>
+                                        <p>{user.user.height}</p>
                                     </li>
                                 </ul>
                             </div>
