@@ -5,43 +5,97 @@ import doctorsIcon from '../../assets/dashboard/home/doctorsIcon.svg'
 import visitorsIcon from '../../assets/dashboard/home/visitorsIcon.svg'
 import optionsIcon from '../../assets/dashboard/home/optionsIcon.svg'
 import deleteIcon from '../../assets/dashboard/home/deleteIcon.svg'
-import editIcon from '../../assets/dashboard/home/editIcon.svg'
+import blockIcon from '../../assets/dashboard/patients/blockIcon.svg'
 // ** Style
 import style from '../../style/pages/dashboard/homeDashboard.module.css'
 // ** Hooks && Tools
 import { useEffect, useState } from 'react'
 // ** Api
 import { fetchDashboardStats } from '../../api/dashboardApi'
-
+import { deletePatient, fetchDashboardPatients } from '../../api/dashboardApi'
+// ** Components
+import DataTable from '../../components/dashboard/DataTable'
 
 
 
 export default function HomeDashboard() {
+    // ** States
     const [dashboardStats,setDashboardStats] = useState({
         doctors: 0,
         patients: 0,
-        visitors: 0
+        site_visits: 0
     })
+    const [patients,setPatients] = useState<{ id: string; name: string; phone: string; national_id: string; email: string; }[]>([]);
 
 
 
+    // ** Handlers
+    const updateData = async ()=>{
+        const updatedPatients = await fetchDashboardPatients();
+        setPatients(updatedPatients);
+    }
+    const deletePatientHandler =async (id:string)=>{
+        try{
+            await deletePatient(id);
+            updateData();
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+
+
+
+    // ** Renders
+    const renderPatientsData = patients.map(patient =>(
+        <tr key={patient.id}>
+            <td>{patient.name}</td>
+            <td>{patient.phone}</td>
+            <td>{patient.national_id}</td>
+            <td>{patient.email}</td>
+            <td>
+                <button>
+                    <img src={blockIcon} alt="edit icon" />
+                </button>
+                <button onClick={()=>{deletePatientHandler(patient.id)}}>
+                    <img src={deleteIcon} alt="delete icon" />
+                </button>
+            </td>
+        </tr>
+    ))
+
+
+
+    // ** UseEffet
     useEffect(()=>{
-        const loadDashboardStats = async ()=>{
+        const loadDashboardPatients = async ()=>{
             try{
-                const dashboardStatsData = await fetchDashboardStats();
-                setDashboardStats(dashboardStatsData)
+                const dashboardPatientsData = await fetchDashboardPatients();
+                setPatients(dashboardPatientsData);
             }
             catch(error){
                 console.log(error)
             }
-            finally
-            {
-                // setIsLoading(false);
+        }
+        loadDashboardPatients();
+    },[])
+    useEffect(()=>{
+        const loadDashboardStats = async ()=>{
+            try{
+                const dashboardStatsData = await fetchDashboardStats();
+                if (dashboardStatsData) {
+                    console.log(dashboardStatsData);
+                    setDashboardStats(dashboardStatsData);
+                } else {
+                    setDashboardStats({ doctors: 0, patients: 0, site_visits: 0 });
+                }
+            }
+            catch(error){
+                console.log(error)
             }
         }
         loadDashboardStats();
     },[])
-
     
     
     return (
@@ -79,7 +133,7 @@ export default function HomeDashboard() {
                             </div>
                             <div className={style.card_data}>
                                 <img src={visitorsIcon} alt="visitors icon" />
-                                <h3>{dashboardStats.visitors}</h3>
+                                <h3>{dashboardStats.site_visits}</h3>
                             </div>
                         </div>
                     </div>
@@ -90,89 +144,7 @@ export default function HomeDashboard() {
                                 <img src={optionsIcon} alt="options icon" />
                             </button>
                         </div>
-                        <table className={style.table}>
-                            <thead>
-                                <tr>
-                                    <th>الاسم</th>
-                                    <th>نتيجه الاشعه</th>
-                                    <th>الهاتف </th>
-                                    <th>رقم القومي</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>عزه حموده</td>
-                                    <td>طبيعيه</td>
-                                    <td>01008410228</td>
-                                    <td>30208051201122</td>
-                                    <td>
-                                        <button>
-                                            <img src={editIcon} alt="edit icon" />
-                                        </button>
-                                        <button>
-                                            <img src={deleteIcon} alt="delete icon" />
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>عزه حموده</td>
-                                    <td>طبيعيه</td>
-                                    <td>01008410228</td>
-                                    <td>30208051201122</td>
-                                    <td>
-                                        <button>
-                                            <img src={editIcon} alt="edit icon" />
-                                        </button>
-                                        <button>
-                                            <img src={deleteIcon} alt="delete icon" />
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>عزه حموده</td>
-                                    <td>طبيعيه</td>
-                                    <td>01008410228</td>
-                                    <td>30208051201122</td>
-                                    <td>
-                                        <button>
-                                            <img src={editIcon} alt="edit icon" />
-                                        </button>
-                                        <button>
-                                            <img src={deleteIcon} alt="delete icon" />
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>عزه حموده</td>
-                                    <td>طبيعيه</td>
-                                    <td>01008410228</td>
-                                    <td>30208051201122</td>
-                                    <td>
-                                        <button>
-                                            <img src={editIcon} alt="edit icon" />
-                                        </button>
-                                        <button>
-                                            <img src={deleteIcon} alt="delete icon" />
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>عزه حموده</td>
-                                    <td>طبيعيه</td>
-                                    <td>01008410228</td>
-                                    <td>30208051201122</td>
-                                    <td>
-                                        <button>
-                                            <img src={editIcon} alt="edit icon" />
-                                        </button>
-                                        <button>
-                                            <img src={deleteIcon} alt="delete icon" />
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <DataTable renderData={renderPatientsData}/>
                     </div>
                 </div>
             </div>

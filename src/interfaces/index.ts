@@ -142,3 +142,18 @@ export interface IAlarmData{
     start_date?: string,
     session_time?: string,
 }
+
+
+// ** Doctor Data
+export interface IDoctorData {
+    id: string;
+    name: string;
+    email: string;
+    password?: string;
+    national_id: string;
+    specialization?: string;
+    specialty?: string,
+    address?: string,
+    phone: string;
+    experience?: number,
+}

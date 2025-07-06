@@ -144,6 +144,16 @@ export const updateUserProfile = async (userData: {
                 Authorization: `Bearer ${token}`
             }
         });
+
+        const updatedPatient = response.data.patient;
+
+        const updatedUser = {
+            ...user,
+            user: updatedPatient
+        };
+
+        storage.setItem("kleitech_user", JSON.stringify(updatedUser));
+        
         return response.data;
     }
     catch(error)

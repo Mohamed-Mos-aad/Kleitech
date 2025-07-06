@@ -48,6 +48,7 @@ export default function Profile() {
                 weight: Number(editedUser.weight),
                 has_chronic_diseases: user.user.has_chronic_diseases
             });
+            editingToggelHanlder();
         } catch (error) {
             console.error(error);
         }

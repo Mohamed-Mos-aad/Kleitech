@@ -141,10 +141,10 @@ export default function SignIn() {
                     <div className={style.form_footer}>
                         <input id='rememberMe' type="checkbox" onChange={toggleRememberMeHandler}/>
                         <label htmlFor="rememberMe">تذكرني</label>
-                        <button onClick={(e)=>{goToForgetPasswordPage(e)}}>هل نسيت كلمه المرور؟</button>
+                        <button type="button" onClick={goToForgetPasswordPage}>هل نسيت كلمه المرور؟</button>
                     </div>
                     <div className={style.form_btn}>
-                        <button onClick={(e)=>{submitLoginHandler(e)}}>تسجيل الدخول</button>
+                        <button type="submit" onClick={submitLoginHandler}>تسجيل الدخول</button>
                     </div>
                     <h2>او إنشاء حساب باستخدام</h2>
                 </form>

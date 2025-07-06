@@ -12,18 +12,9 @@ import SearchElement from '../../components/dashboard/SearchElement'
 import DoctorPop from '../../components/dashboard/DoctorPop'
 // ** Api
 import { addDoctor, deleteDoctor, editeDoctor, fetchDashboardDoctors } from '../../api/dashboardApi'
+import { IDoctorData } from '../../interfaces'
 
 
-// ** Interfaces
-interface IDoctorData {
-    id: string;
-    name: string;
-    email: string;
-    password?: string;
-    national_id: string;
-    specialty?: string;
-    phone: string;
-}
 
 export default function Doctors() {
     // ** Defaults
@@ -33,8 +24,11 @@ export default function Doctors() {
         email: '',
         password: '123456789',
         national_id: '',
+        specialization: 'باطنة',
         specialty: 'باطنة',
         phone: '',
+        address: '',
+        experience: 0,
     }
     // ** States
     const [data,setData] = useState<IDoctorData[]>([]);
@@ -75,9 +69,18 @@ export default function Doctors() {
         }
     }
     const editedoctorHandler = async ()=>{
-        console.log(newDoctor.id);
         try{
-            await editeDoctor(newDoctor,Number(newDoctor.id));
+            const cleanedDoctorData  = {
+                id: newDoctor.id,
+                name: newDoctor.name || '',
+                email: newDoctor.email || '',
+                national_id: newDoctor.national_id || '',
+                phone: newDoctor.phone || '',
+                address: String(newDoctor.address || 'غير معروف'),
+                experience: Number(newDoctor.experience) || 0,
+                specialization: typeof newDoctor.specialization === 'string' ? newDoctor.specialization : 'باطنة',
+            };
+            await editeDoctor(cleanedDoctorData,Number(newDoctor.id));
             updateData();
         }
         catch(error){

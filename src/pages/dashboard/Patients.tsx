@@ -22,9 +22,9 @@ export default function Patients() {
 
     // ** Handlers
     const updateData = async ()=>{
-        const updatedDoctors = await fetchDashboardPatients();
-        setPatients(updatedDoctors);
-        setData(updatedDoctors);
+        const updatedPatients = await fetchDashboardPatients();
+        setPatients(updatedPatients);
+        setData(updatedPatients);
     }
     const deletePatientHandler =async (id:string)=>{
         try{

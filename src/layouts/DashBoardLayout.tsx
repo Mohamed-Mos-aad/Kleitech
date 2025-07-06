@@ -28,6 +28,8 @@ export default function DashBoardLayout() {
         setLogOutPopOpened(prev => !prev);
     }
     const logOutHandler = ()=>{
+        localStorage.removeItem("kleitech_user");
+        sessionStorage.removeItem("kleitech_user");
         goToAuthPageHandler();
         logOutPopToggleHandler();
     }

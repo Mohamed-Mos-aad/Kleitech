@@ -1,26 +1,31 @@
 // ** Hooks && Tools
 import axios from "axios";
+// ** Interfaces
+import { IDoctorData } from "../interfaces";
 
 
 
-// ** Local Storage
-const storage = localStorage.getItem("kleitech_user") ? localStorage : sessionStorage;
-const userString = storage.getItem("kleitech_user");
-const token = userString ? JSON.parse(userString).token : null;
+// ** Api Instance Dynamic
+const getApiInstance = () => {
+    const storage = localStorage.getItem("kleitech_user") ? localStorage : sessionStorage;
+    const userString = storage.getItem("kleitech_user");
+    const token = userString ? JSON.parse(userString).token : null;
+
+    return axios.create({
+        baseURL: import.meta.env.VITE_BACKEND_API_URL,
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    });
+}
 
 
-// ** Api
-const api = axios.create({
-    baseURL: import.meta.env.VITE_BACKEND_API_URL,
-    headers:{
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-    }
-})
 
 // ** Get Stats
 export const fetchDashboardStats = async ()=>{
     try{
+        const api = getApiInstance();
         const response = await api.get('/stats');
         return response.data;
     }
@@ -30,41 +35,34 @@ export const fetchDashboardStats = async ()=>{
     }
 }
 // ** Get Doctors
-export const fetchDashboardDoctors = async ()=>{
-    try{
+export const fetchDashboardDoctors = async () => {
+    try {
+        const api = getApiInstance();
         const response = await api.get('/all-doctors');
-        console.log(response.data)
         return response.data;
-    }
-    catch(error)
-    {
+    } catch (error) {
         console.log(error);
     }
-}
+};
+
 // ** Add Doctor
-export const addDoctor = async (doctorData: {name: string, email: string,password?: string, national_id: string, specialty?: string, phone: string}) => {
-    console.log(doctorData);
-    try{
+export const addDoctor = async (doctorData: { name: string; email: string; password?: string; national_id: string; specialty?: string; phone: string; }) => {
+    try {
+        const api = getApiInstance();
         const response = await api.post('/doctors', doctorData);
         return response.data;
-    }
-    catch(error)
-    {
+    } catch (error) {
         console.log(error);
         throw error;
     }
-}
+};
 // ** Edit Doctor
-export const editeDoctor = async (doctorData: {name: string, email: string, national_id: string, phone: string},id:number) => {
-    console.log("TOKEN =>", token);
+export const editeDoctor = async (doctorData: IDoctorData,id:number) => {
+    console.log("Data:", doctorData);
     try{
-        const response = await api.put(`/doctors/${id}`, doctorData,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+        const api = getApiInstance();
+        const response = await api.put(`/doctors/${id}`, doctorData);
+        console.log("Response from backend:", response.data);
         return response.data;
     }
     catch(error)
@@ -74,32 +72,31 @@ export const editeDoctor = async (doctorData: {name: string, email: string, nati
     }
 }
 // ** Delete Doctor
-export const deleteDoctor = async (id:number) => {
-    try{
+export const deleteDoctor = async (id: number) => {
+    try {
+        const api = getApiInstance();
         const response = await api.delete(`/doctors/${id}`);
         return response.data;
-    }
-    catch(error)
-    {
+    } catch (error) {
         console.log(error);
         throw error;
     }
-}
+};
 // ** Get Patients
-export const fetchDashboardPatients = async ()=>{
-    try{
+export const fetchDashboardPatients = async () => {
+    try {
+        const api = getApiInstance();
         const response = await api.get('/all-patients');
-        console.log(response.data);
         return response.data;
-    }
-    catch(error)
-    {
+    } catch (error) {
         console.log(error);
+        return [];
     }
-}
+};
 // ** Delete Patients
 export const deletePatient = async (id:string) => {
     try{
+        const api = getApiInstance();
         const response = await api.delete(`/patients/${id}`);
         return response.data;
     }
