@@ -157,3 +157,14 @@ export interface IDoctorData {
     phone: string;
     experience?: number,
 }
+
+
+
+export interface IConsultationEmails{
+    f_name:string,
+    l_name:string,
+    massage:string,
+    created_at:string,
+    id:number,
+    email:string
+}

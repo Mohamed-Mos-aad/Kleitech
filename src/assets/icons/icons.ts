@@ -34,6 +34,7 @@ import arrowDownIcon from '../icons/forms/downArrowIcon.svg'
 import settingIcon from '../icons/navbar/settingIcon.svg'
 import editeIcon from '../icons/navbar/editeIcon.svg'
 import navBarMenuIcon from '../icons/navbar/navBarIcon.svg'
+import consultationIcon from '../icons/navbar/consultationIcon.svg'
 import logOutIcon from '../icons/navbar/logOutIcon.svg'
 
 import userDateIcon from '../icons/forms/userDateIcon.svg'
@@ -113,4 +114,5 @@ export {
     errorIcon,
     successIcon,
     loadingIcon,
+    consultationIcon
 }

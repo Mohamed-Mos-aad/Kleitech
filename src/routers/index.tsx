@@ -32,6 +32,7 @@ import HomeDashboard from './../pages/dashboard/HomeDashboard';
 import Doctors from "../pages/dashboard/Doctors";
 import Patients from "../pages/dashboard/Patients";
 import Suggestions from "../pages/main/Suggestions";
+import ConsultationEmails from "../pages/dashboard/ConsultationEmails";
 
 
 
@@ -70,6 +71,7 @@ export default function Routers() {
                     <Route index element={<HomeDashboard/>}/>
                     <Route path="doctors" element={<Doctors/>}/>
                     <Route path="patients" element={<Patients/>}/>
+                    <Route path="consultation-emails" element={<ConsultationEmails/>}/>
                 </Route>
             </Routes>
         </>

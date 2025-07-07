@@ -10,6 +10,7 @@ import style from '../../style/components/navbar/navbardashboard.module.css'
 // ** Hooks && Tools
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { consultationIcon } from '../../assets/icons/icons'
 
 
 
@@ -85,6 +86,10 @@ export default function NavBarDashBoard({logOutPopToggleHandler}:INavBarDashboar
                                 <li className={activePage === 'patients' ? style.active : ''} onClick={()=>{changePageHandler('patients')}}>
                                     <img src={patientIcon} alt="patient icon" />
                                     المرضي
+                                </li>
+                                <li className={activePage === 'consultation-emails' ? style.active : ''} onClick={()=>{changePageHandler('consultation-emails')}}>
+                                    <img src={consultationIcon} alt="consultation-emails icon" />
+                                    البريد الوارد
                                 </li>
                                 <li onClick={logOutPopToggleHandler}>
                                     <img src={logOutIcon} alt="logOut icon" />

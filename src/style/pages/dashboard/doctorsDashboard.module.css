@@ -166,6 +166,12 @@
 {
     border-bottom: none;
 }
+.dashboard_table_container table tbody tr td
+{
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+}
 .dashboard_table_container table tbody tr td:last-of-type
 {
     display: flex;

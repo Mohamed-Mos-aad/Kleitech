@@ -1,0 +1,236 @@
+/* Start Variables */
+:root
+{
+    --main-color-100: #E0F2FE;
+    --main-color-200: #B9E6FE;
+    --main-color-700: #026AA2;
+    --main-color-800: #00598D;
+    --gray-color-100: #F6F6F6;
+    --gray-color-200: #EBEBEB;
+    --gray-color-400: #AFAFAF;
+    --gray-color-500: #808080;
+    --gray-color-600: #636363;
+    --gray-color-700: #515151;
+    --gray-color-800: #373737;
+    --gray-color-900: #282828;
+    --red-color-100: #FDE8E8;
+    --red-color-500: #F05252;
+    --green-color-400: #31C48D;
+    --chat-1-color: #E0F0FF;
+    --chat-2-color: #E9EAED;
+    --text-50: #676767;
+    --text-100: #1C1C1C;
+}
+/* End Variables */
+
+
+
+/* Start Consultation Emails Page */
+.consulation_emails_container
+{
+    width: 100%;
+    padding: 24px;
+}
+.consulation_emails_container table
+{
+    width: 100%;
+    table-layout: fixed;
+    background-color: white;
+    padding: 0 24px;
+    border-radius: 8px;
+}
+.consulation_emails_container table tbody
+{
+    display: flex;
+    flex-direction: column-reverse;
+}
+.consulation_emails_container table tbody tr
+{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: solid 1px var(--gray-color-200);
+    text-align: start;
+    cursor: pointer;
+}
+.consulation_emails_container table tbody tr:last-of-type
+{
+    border-bottom: none;
+}
+.consulation_emails_container table tbody tr td
+{
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+}
+.consulation_emails_container table tbody tr td:last-of-type
+{
+    display: flex;
+    justify-content: end;
+    gap: 24px;
+}
+.consulation_emails_container table tbody tr td button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.consulation_emails_container .email_pop_container
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(40, 40, 40, 0.4);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999999;
+}
+.consulation_emails_container .email_pop_container .email_data
+{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    gap: 32px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 24px 48px;
+}
+.email_data .email_title
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.email_data .email_title h1
+{
+    font-size: 24px;
+}
+.email_data .email_title h2
+{
+    font-size: 16px;
+    color: var(--gray-color-500);
+}
+.email_data .email_message p
+{
+    max-height: 50vh;
+    overflow-y: scroll;
+    font-size: 18px;
+}
+.email_data .email_message p::-webkit-scrollbar
+{
+    display: none;
+}
+.email_data .email_btns
+{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}
+.email_data .email_btns button
+{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--red-color-500);
+}
+.email_data .email_btns button:first-child
+{
+    color: black;
+}
+/* End Consultation Emails Page */
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .consulation_emails_container table tbody tr
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .consulation_emails_container table tbody tr td
+    {
+        padding: 8px 0;
+    }
+    .consulation_emails_container table tbody tr td:last-of-type
+    {
+        justify-content: center;
+    }
+    .consulation_emails_container .email_pop_container .email_data
+    {
+        width: 95%;
+        gap: 16px;
+        padding: 32px 16px;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    .consulation_emails_container table tbody tr
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .consulation_emails_container table tbody tr td
+    {
+        padding: 8px 0;
+    }
+    .consulation_emails_container table tbody tr td:last-of-type
+    {
+        justify-content: center;
+    }
+    .consulation_emails_container .email_pop_container .email_data
+    {
+        width: 75%;
+        gap: 16px;
+        padding: 32px 16px;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+    .consulation_emails_container table tbody tr
+    {
+        grid-template-columns: repeat(2,1fr);
+        gap: 16px;
+    }
+    .consulation_emails_container table tbody tr td:last-of-type
+    {
+        grid-column: span 2;
+        justify-content: center;
+    }
+    .consulation_emails_container .email_pop_container .email_data
+    {
+        width: 65%;
+        gap: 16px;
+        padding: 32px;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+    .consulation_emails_container .email_pop_container .email_data
+    {
+        width: 60%;
+        gap: 16px;
+        padding: 32px;
+    }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */
