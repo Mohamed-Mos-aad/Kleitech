@@ -40,7 +40,12 @@ export default function MainLayout() {
     },[])
     useEffect(() => {
         const interval = setInterval(() => {
-            checkAndRedirectReminder(alarmData, navigate);
+            const groupedAlarms = {
+            medications: alarmData.filter(alarm => alarm.type === 'medication'),
+            waters: alarmData.filter(alarm => alarm.type === 'water'),
+            dialysis: alarmData.filter(alarm => alarm.type === 'dialysis'),
+        };
+            checkAndRedirectReminder(groupedAlarms, navigate);
         }, 60 * 1000);
         return () => clearInterval(interval);
     }, [alarmData,navigate]);
