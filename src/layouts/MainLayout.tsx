@@ -45,6 +45,8 @@ export default function MainLayout() {
         return () => clearInterval(interval);
     }, [alarmData,navigate]);
 
+
+    
     return (
         <>
             <div className={style.main_layout}>

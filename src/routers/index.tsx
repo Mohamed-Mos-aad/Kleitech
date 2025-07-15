@@ -33,6 +33,7 @@ import Doctors from "../pages/dashboard/Doctors";
 import Patients from "../pages/dashboard/Patients";
 import Suggestions from "../pages/main/Suggestions";
 import ConsultationEmails from "../pages/dashboard/ConsultationEmails";
+import Reminder from "../pages/main/Reminder";
 
 
 
@@ -63,6 +64,7 @@ export default function Routers() {
                     <Route path="doctor/:id" element={<DoctorDetails />} />
                     <Route path="booking-details" element={<BookingDetails />} />
                     <Route path="alarm" element={<Alarm />} />
+                    <Route path="reminder" element={<Reminder />} />
                     <Route path="suggestions" element={<Suggestions />}/>
                     <Route path="profile" element={<Profile />}/>
                 </Route>
