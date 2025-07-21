@@ -29,6 +29,7 @@
     flex-direction: column;
     background-color: rgb(250, 250, 250);
     position: absolute;
+    z-index: 400000000;
     right: 24px;
     bottom: 12vh;
     border-radius: 12px;
